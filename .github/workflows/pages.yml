@@ -1,9 +1,8 @@
 # Publica la carpeta tal cual en GitHub Pages.
 #
-# OJO: GitHub Pages NO funciona en repositorios privados con el plan gratuito.
-# Mientras este repositorio sea privado el trabajo se salta solo (ver el `if`
-# de abajo), para no llenar el correo de fallos. En cuanto se ponga en público,
-# el siguiente push lo publica sin tocar nada más.
+# GitHub Pages NO funciona en repositorios privados con el plan gratuito. El
+# `if` de abajo deja el trabajo en pausa si el repositorio vuelve a ser privado
+# alguna vez, en lugar de fallar en cada push.
 name: Publicar en GitHub Pages
 
 on:
@@ -22,8 +21,8 @@ concurrency:
 
 jobs:
   publicar:
-    # Si el repositorio es privado, Pages no está disponible: nos saltamos el
-    # trabajo en lugar de fallar. Al hacerlo público, esto pasa a ser cierto solo.
+    # Si el repositorio fuese privado, Pages no estaría disponible: mejor
+    # saltarse el trabajo que fallar.
     if: github.event.repository.private == false
     runs-on: ubuntu-latest
     environment:

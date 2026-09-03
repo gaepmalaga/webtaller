@@ -82,13 +82,14 @@ Es una carpeta de archivos estáticos: vale cualquier alojamiento.
   python3 herramientas/construir-archivo-unico.py
   ```
 
-- **GitHub Pages**: el workflow `.github/workflows/pages.yml` ya está puesto,
-  pero **está en pausa mientras el repositorio sea privado**: Pages no funciona
-  en repositorios privados con el plan gratuito de GitHub. En cuanto se ponga en
-  público, el siguiente `push` lo publica solo en
-  `https://gaepmalaga.github.io/webtaller/`. No hay que tocar Settings.
+- **GitHub Pages**: activo. El workflow `.github/workflows/pages.yml` republica
+  el sitio en cada `push` a esta rama:
+  **https://gaepmalaga.github.io/webtaller/**
+
+  El repositorio es público, que es lo que exige Pages en el plan gratuito. Si
+  algún día vuelve a ser privado, el workflow se queda en pausa solo en vez de
+  fallar en cada push.
 - **Netlify / Cloudflare Pages**: arrastrar la carpeta. Sin comando de build.
-  Es la vía si el repositorio tiene que seguir siendo privado.
 - **Hosting clásico**: subir todo por FTP a `public_html`.
 
 ### Cuando haya dominio propio
