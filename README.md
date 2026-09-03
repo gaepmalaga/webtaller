@@ -46,6 +46,9 @@ index.html            La página. Todo el contenido está aquí.
 aviso-legal.html      Aviso legal y privacidad (PENDIENTE de rellenar, ver abajo)
 robots.txt
 sitemap.xml
+hidrocar-una-sola-pagina.html   La web entera en un archivo (generado)
+herramientas/
+  construir-archivo-unico.py    Genera el archivo de arriba
 assets/
   css/style.css       Hoja de estilo única
   js/main.js          Horario en vivo, año, aparición al hacer scroll
@@ -70,10 +73,22 @@ funciona igual).
 
 Es una carpeta de archivos estáticos: vale cualquier alojamiento.
 
-- **GitHub Pages**: ya está configurado. El workflow
-  `.github/workflows/pages.yml` publica el sitio en cada `push` a esta rama.
-  Dirección provisional: **https://gaepmalaga.github.io/webtaller/**
+- **Archivo único** (lo más rápido para enseñarla): `hidrocar-una-sola-pagina.html`
+  lleva dentro la tipografía, los estilos y el JavaScript. Se abre con doble
+  clic, **funciona sin internet**, se manda por WhatsApp o correo y se puede
+  arrastrar a Netlify Drop. Se regenera con:
+
+  ```bash
+  python3 herramientas/construir-archivo-unico.py
+  ```
+
+- **GitHub Pages**: el workflow `.github/workflows/pages.yml` ya está puesto,
+  pero **está en pausa mientras el repositorio sea privado**: Pages no funciona
+  en repositorios privados con el plan gratuito de GitHub. En cuanto se ponga en
+  público, el siguiente `push` lo publica solo en
+  `https://gaepmalaga.github.io/webtaller/`. No hay que tocar Settings.
 - **Netlify / Cloudflare Pages**: arrastrar la carpeta. Sin comando de build.
+  Es la vía si el repositorio tiene que seguir siendo privado.
 - **Hosting clásico**: subir todo por FTP a `public_html`.
 
 ### Cuando haya dominio propio
