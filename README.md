@@ -70,15 +70,26 @@ funciona igual).
 
 Es una carpeta de archivos estáticos: vale cualquier alojamiento.
 
-- **GitHub Pages**: Settings → Pages → Source: `Deploy from a branch`, rama
-  `main`, carpeta `/ (root)`. El archivo `.nojekyll` ya está puesto.
+- **GitHub Pages**: ya está configurado. El workflow
+  `.github/workflows/pages.yml` publica el sitio en cada `push` a esta rama.
+  Dirección provisional: **https://gaepmalaga.github.io/webtaller/**
 - **Netlify / Cloudflare Pages**: arrastrar la carpeta. Sin comando de build.
 - **Hosting clásico**: subir todo por FTP a `public_html`.
 
-**El dominio hay que recuperarlo o contratar uno nuevo.** Si cambia el dominio,
-hay que actualizar la URL en tres sitios: las etiquetas `canonical` y `og:` de
-`index.html`, el bloque JSON-LD del final de `index.html`, y `sitemap.xml` /
-`robots.txt`.
+### Cuando haya dominio propio
+
+La dirección de GitHub Pages es provisional, para poder enseñar la web. Mientras
+lo sea, la página lleva `noindex` para no competir en Google con el dominio
+definitivo. Al recuperar `hidrocarmalaga.com` (o contratar otro), hay que tocar
+**cuatro sitios**:
+
+1. `index.html`, cabecera: `canonical`, `og:url` y `og:image`.
+2. `index.html`, `noindex` → `index, follow` (hay un comentario justo encima).
+3. `index.html`, bloque JSON-LD del final: `url` e `image`.
+4. `robots.txt` y `sitemap.xml`.
+
+Son literalmente buscar y reemplazar `gaepmalaga.github.io/webtaller` por el
+dominio nuevo, más la línea del `noindex`.
 
 ## Cambiar datos
 

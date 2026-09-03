@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /aviso-legal.html
 
-Sitemap: https://www.hidrocarmalaga.com/sitemap.xml
+Sitemap: https://gaepmalaga.github.io/webtaller/sitemap.xml
