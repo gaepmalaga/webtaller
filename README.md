@@ -82,13 +82,21 @@ Es una carpeta de archivos estáticos: vale cualquier alojamiento.
   python3 herramientas/construir-archivo-unico.py
   ```
 
-- **GitHub Pages**: activo. El workflow `.github/workflows/pages.yml` republica
-  el sitio en cada `push` a esta rama:
+- **GitHub Pages**: publicando. El workflow `.github/workflows/pages.yml`
+  republica el sitio en cada `push` a esta rama:
   **https://gaepmalaga.github.io/webtaller/**
 
-  El repositorio es público, que es lo que exige Pages en el plan gratuito. Si
-  algún día vuelve a ser privado, el workflow se queda en pausa solo en vez de
-  fallar en cada push.
+  Si alguna vez hay que rehacer esto en otro repositorio, hacen falta dos cosas
+  que solo se hacen una vez:
+
+  1. **Repositorio público.** Pages no está disponible en repositorios privados
+     con el plan gratuito. (Si este volviese a ser privado, el workflow se queda
+     en pausa solo en vez de fallar en cada push.)
+  2. **Activar Pages a mano**: Settings → Pages → Source: **GitHub Actions**.
+     El `enablement: true` del workflow no basta: crear un sitio de Pages exige
+     permisos de administrador del repositorio y el token de Actions no los
+     tiene. Sin ese paso, el despliegue falla con *Create Pages site failed:
+     Resource not accessible by integration*.
 - **Netlify / Cloudflare Pages**: arrastrar la carpeta. Sin comando de build.
 - **Hosting clásico**: subir todo por FTP a `public_html`.
 

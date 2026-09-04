@@ -1,8 +1,17 @@
 # Publica la carpeta tal cual en GitHub Pages.
 #
-# GitHub Pages NO funciona en repositorios privados con el plan gratuito. El
-# `if` de abajo deja el trabajo en pausa si el repositorio vuelve a ser privado
-# alguna vez, en lugar de fallar en cada push.
+# Para que esto funcione hicieron falta dos cosas, una sola vez:
+#
+#   1. Repositorio público. Pages no está disponible en repositorios privados
+#      con el plan gratuito. El `if` de abajo deja el trabajo en pausa si
+#      volviese a ser privado, en lugar de fallar en cada push.
+#   2. Activar Pages a mano en Settings -> Pages -> Source: GitHub Actions.
+#      El `enablement: true` de abajo NO basta por sí solo: crear un sitio de
+#      Pages desde cero exige permisos de administrador del repositorio, y el
+#      GITHUB_TOKEN de Actions no los tiene. Sin ese paso manual falla con
+#      "Create Pages site failed: Resource not accessible by integration".
+#      Una vez creado el sitio, `enablement` ya no intenta crearlo y el
+#      despliegue va solo en cada push.
 name: Publicar en GitHub Pages
 
 on:
