@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Che Bolú">
+  <rect width="64" height="64" rx="14" fill="#16110d"/>
+  <!-- la brasa -->
+  <path d="M32 8c1.6 9.4-4.2 12.2-7.6 16.6-3.2 4.1-4.9 8-4.9 12.4C19.5 47.4 25.2 54 32 54s12.5-6.6 12.5-17c0-5.6-2.6-9.9-6.4-14.6-2.3 3-4.1 3.9-5.5 2.6 2.4-4.6 2.2-11.6-.6-17z" fill="#d33f1c"/>
+  <path d="M32 27c3.6 4.3 6 7.9 6 12.2 0 4.6-2.7 7.8-6 7.8s-6-3.2-6-7.8c0-3.1 1.6-6 3.4-8.4 1 1.3 1.9 1.2 2.6-3.8z" fill="#e0a52f"/>
+  <!-- la parrilla -->
+  <g stroke="#7cb9dd" stroke-width="3" stroke-linecap="round">
+    <path d="M14 58h36"/>
+  </g>
+</svg>
