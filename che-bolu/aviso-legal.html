@@ -9,6 +9,13 @@
 <meta name="theme-color" content="#16110d">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
+<script>
+  /* DEMO: mantiene la paleta elegida al llegar desde el inicio. */
+  try {
+    var _p = localStorage.getItem('chebolu-paleta');
+    if (_p) { document.documentElement.setAttribute('data-paleta', _p); }
+  } catch (e) {}
+</script>
 </head>
 <body>
 

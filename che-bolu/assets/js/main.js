@@ -117,4 +117,30 @@
     setTimeout(revelarTodo, 2000);
     window.addEventListener('load', function () { setTimeout(revelarTodo, 400); });
   }
+
+  /* ------------------------------------- 5. selector de paletas (DEMO) -- */
+  /* Deja ver la misma web con distintas paletas. Quitar cuando el dueño
+     elija: este bloque, el HTML .demo-paleta y su CSS en style.css. */
+  var panelPaleta = document.querySelector('.demo-paleta');
+  if (panelPaleta) {
+    var opciones = panelPaleta.querySelectorAll('[data-p]');
+
+    function aplicarPaleta(p) {
+      if (p) { document.documentElement.setAttribute('data-paleta', p); }
+      else { document.documentElement.removeAttribute('data-paleta'); }
+      Array.prototype.forEach.call(opciones, function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-p') === p ? 'true' : 'false');
+      });
+      try { localStorage.setItem('chebolu-paleta', p); } catch (e) {}
+    }
+
+    Array.prototype.forEach.call(opciones, function (b) {
+      b.addEventListener('click', function () { aplicarPaleta(b.getAttribute('data-p')); });
+    });
+
+    var guardada = '';
+    try { guardada = localStorage.getItem('chebolu-paleta') || ''; } catch (e) {}
+    aplicarPaleta(guardada);
+    panelPaleta.hidden = false;
+  }
 })();

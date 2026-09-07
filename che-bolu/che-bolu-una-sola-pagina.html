@@ -71,6 +71,7 @@
   --tinta:    #2a1f17;   /* texto sobre hueso */
   --tinta-2:  #5f4c3b;   /* texto secundario sobre hueso */
   --crema-3:  #d9c8ac;   /* texto secundario sobre carbón */
+  --tarjeta:  #fffdf8;   /* fondo de tarjetas y fichas sobre hueso */
 
   --linea:    color-mix(in srgb, var(--tinta) 16%, transparent);
   --linea-cl: color-mix(in srgb, var(--oro) 22%, transparent);
@@ -83,6 +84,42 @@
 
   /* Tipografía de rótulo: Archivo estrechada al máximo, como letra pintada. */
   --display-stretch: 70%;
+}
+
+/* --------------------------------------------------- paletas (DEMO) -- */
+/* Bloque de prueba para enseñar la misma web con distintos colores.
+   Cuando el dueño elija una, se copian sus valores al :root de arriba y se
+   borra: este bloque, el HTML .demo-paleta y el JS «5. selector de paletas».
+   Cada paleta solo redefine los colores «semilla»; el resto se calcula. */
+
+:root[data-paleta="almacen"] {          /* verdulería: verde botella y latón */
+  --carbon: #15130e; --carbon-2: #211d15; --carbon-3: #372f22;
+  --hueso: #f6f1e2; --hueso-2: #ece4cd; --hueso-3: #ddd0b2;
+  --brasa: #2f7247; --brasa-viva: #3f9560;
+  --oro: #d9a53a; --oro-cl: #eec368;
+  --celeste: #c46b3c;
+  --tinta: #231d12; --tinta-2: #5a4f38; --crema-3: #d6cba8;
+  --tarjeta: #fffdf5;
+}
+
+:root[data-paleta="bandera"] {          /* argentino clásico: celeste y sol */
+  --carbon: #12161c; --carbon-2: #1b2028; --carbon-3: #2d333d;
+  --hueso: #f4f4ef; --hueso-2: #e8e9e2; --hueso-3: #d5d7cb;
+  --brasa: #1c6e9e; --brasa-viva: #37a0d4;
+  --oro: #e0a92c; --oro-cl: #f1c85f;
+  --celeste: #5aa9d0;
+  --tinta: #1c2530; --tinta-2: #4d5b68; --crema-3: #c3cdd6;
+  --tarjeta: #ffffff;
+}
+
+:root[data-paleta="bodegon"] {          /* sobrio: terracota apagada y bronce */
+  --carbon: #1a1613; --carbon-2: #262019; --carbon-3: #3a3025;
+  --hueso: #efe9df; --hueso-2: #e5ddd0; --hueso-3: #d4c9b6;
+  --brasa: #a2442a; --brasa-viva: #c0613f;
+  --oro: #b98a3f; --oro-cl: #d3a862;
+  --celeste: #6f7d84;
+  --tinta: #2b241d; --tinta-2: #615647; --crema-3: #c9bda6;
+  --tarjeta: #fbf7ef;
 }
 
 /* ---------------------------------------------------------------- reset -- */
@@ -395,7 +432,7 @@ b, strong { font-weight: 700; }
 @media (min-width: 54rem) { .menu { grid-template-columns: repeat(2, 1fr); gap: 1.3rem; } }
 
 .menu__bloque {
-  background: #fffdf8;
+  background: var(--tarjeta);
   border: 1px solid var(--linea);
   border-radius: var(--r);
   padding: 1.7rem 1.6rem;
@@ -456,7 +493,7 @@ b, strong { font-weight: 700; }
   display: flex; flex-direction: column; gap: 0.5rem;
   border: 1px solid var(--linea); border-radius: var(--r);
   padding: 1.7rem 1.5rem;
-  background: #fffdf8;
+  background: var(--tarjeta);
 }
 .tarj__n {
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; color: var(--brasa);
@@ -474,7 +511,7 @@ b, strong { font-weight: 700; }
 .tabla {
   max-width: 44rem; margin: 0 auto; font-size: 1.02rem;
   border: 1px solid var(--linea); border-radius: var(--r);
-  background: #fffdf8; overflow: hidden;
+  background: var(--tarjeta); overflow: hidden;
 }
 .tabla caption { text-align: left; }
 .tabla thead th {
@@ -518,7 +555,7 @@ b, strong { font-weight: 700; }
 
 .donde__lista {
   border: 1px solid var(--linea); border-radius: var(--r);
-  background: #fffdf8; padding: 0.4rem 1.3rem;
+  background: var(--tarjeta); padding: 0.4rem 1.3rem;
 }
 .donde__lista li {
   display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
@@ -587,6 +624,42 @@ b, strong { font-weight: 700; }
 .barra__a--fuego { background: var(--brasa); color: #fff; }
 @media (min-width: 64rem) { .barra { display: none; } }
 
+/* ------------------------------------------- selector de paletas (DEMO) -- */
+/* Panel flotante para enseñar la web en varias paletas. Se borra cuando el
+   dueño elija (este bloque + el HTML .demo-paleta + el JS «5. …»). */
+.demo-paleta {
+  position: fixed; z-index: 60;
+  right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom));
+  background: var(--carbon); color: var(--hueso);
+  border: 1px solid var(--linea-cl); border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.55);
+  max-width: calc(100vw - 2rem);
+}
+.demo-paleta__t {
+  margin: 0 0 0.55rem; font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--oro);
+}
+.demo-paleta__op { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.demo-paleta__op button {
+  font: inherit; cursor: pointer;
+  border: 1px solid var(--linea-cl); border-radius: 999px;
+  background: transparent; color: var(--hueso);
+  padding: 0.32rem 0.72rem; font-size: 0.78rem; font-weight: 600;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.demo-paleta__op button:hover { border-color: var(--oro); }
+.demo-paleta__op button[aria-pressed="true"] {
+  background: var(--oro); color: var(--carbon); border-color: var(--oro);
+}
+@media (max-width: 64rem) {
+  .demo-paleta {
+    left: 0.6rem; right: 0.6rem;
+    bottom: calc(3.9rem + env(safe-area-inset-bottom));
+  }
+}
+@media print { .demo-paleta { display: none !important; } }
+
 /* ------------------------------------------------------- aparición suave -- */
 .aparece { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .aparece.visible { opacity: 1; transform: none; }
@@ -629,7 +702,14 @@ html:not(.js) .aparece { opacity: 1; transform: none; }
 }
 
 </style>
-<script>document.documentElement.className = 'js';</script>
+<script>
+  document.documentElement.className = 'js';
+  /* DEMO: recuerda la paleta elegida entre páginas y evita el parpadeo. */
+  try {
+    var _p = localStorage.getItem('chebolu-paleta');
+    if (_p) { document.documentElement.setAttribute('data-paleta', _p); }
+  } catch (e) {}
+</script>
 </head>
 
 <body>
@@ -973,6 +1053,20 @@ html:not(.js) .aparece { opacity: 1; transform: none; }
   <a class="barra__a" href="https://maps.app.goo.gl/ys17KKWqV1HzEeys6" target="_blank" rel="noopener">Llegar</a>
 </div>
 
+<!-- ================================================================ DEMO --
+     Selector de paletas para enseñar la web en varios colores. Cuando el
+     dueño elija una, se pasan sus valores al :root de style.css y se borra
+     este bloque, su CSS (.demo-paleta*) y el JS («5. selector de paletas»). -->
+<div class="demo-paleta" hidden>
+  <p class="demo-paleta__t">Vista de prueba · paleta</p>
+  <div class="demo-paleta__op" role="group" aria-label="Elegir paleta de color">
+    <button type="button" data-p="" aria-pressed="true">Brasa</button>
+    <button type="button" data-p="almacen" aria-pressed="false">Almacén</button>
+    <button type="button" data-p="bandera" aria-pressed="false">Bandera</button>
+    <button type="button" data-p="bodegon" aria-pressed="false">Bodegón</button>
+  </div>
+</div>
+
 <script>
 /* ==========================================================================
    Che Bolú Torremolinos — JavaScript, sin dependencias.
@@ -1092,6 +1186,32 @@ html:not(.js) .aparece { opacity: 1; transform: none; }
        observador que no dispara), a los 2 s se muestra todo igualmente. */
     setTimeout(revelarTodo, 2000);
     window.addEventListener('load', function () { setTimeout(revelarTodo, 400); });
+  }
+
+  /* ------------------------------------- 5. selector de paletas (DEMO) -- */
+  /* Deja ver la misma web con distintas paletas. Quitar cuando el dueño
+     elija: este bloque, el HTML .demo-paleta y su CSS en style.css. */
+  var panelPaleta = document.querySelector('.demo-paleta');
+  if (panelPaleta) {
+    var opciones = panelPaleta.querySelectorAll('[data-p]');
+
+    function aplicarPaleta(p) {
+      if (p) { document.documentElement.setAttribute('data-paleta', p); }
+      else { document.documentElement.removeAttribute('data-paleta'); }
+      Array.prototype.forEach.call(opciones, function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-p') === p ? 'true' : 'false');
+      });
+      try { localStorage.setItem('chebolu-paleta', p); } catch (e) {}
+    }
+
+    Array.prototype.forEach.call(opciones, function (b) {
+      b.addEventListener('click', function () { aplicarPaleta(b.getAttribute('data-p')); });
+    });
+
+    var guardada = '';
+    try { guardada = localStorage.getItem('chebolu-paleta') || ''; } catch (e) {}
+    aplicarPaleta(guardada);
+    panelPaleta.hidden = false;
   }
 })();
 

@@ -30,7 +30,14 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
-<script>document.documentElement.className = 'js';</script>
+<script>
+  document.documentElement.className = 'js';
+  /* DEMO: recuerda la paleta elegida entre páginas y evita el parpadeo. */
+  try {
+    var _p = localStorage.getItem('chebolu-paleta');
+    if (_p) { document.documentElement.setAttribute('data-paleta', _p); }
+  } catch (e) {}
+</script>
 </head>
 
 <body>
@@ -372,6 +379,20 @@
   </a>
   <a class="barra__a" href="https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu" target="_blank" rel="noopener">Pedir</a>
   <a class="barra__a" href="https://maps.app.goo.gl/ys17KKWqV1HzEeys6" target="_blank" rel="noopener">Llegar</a>
+</div>
+
+<!-- ================================================================ DEMO --
+     Selector de paletas para enseñar la web en varios colores. Cuando el
+     dueño elija una, se pasan sus valores al :root de style.css y se borra
+     este bloque, su CSS (.demo-paleta*) y el JS («5. selector de paletas»). -->
+<div class="demo-paleta" hidden>
+  <p class="demo-paleta__t">Vista de prueba · paleta</p>
+  <div class="demo-paleta__op" role="group" aria-label="Elegir paleta de color">
+    <button type="button" data-p="" aria-pressed="true">Brasa</button>
+    <button type="button" data-p="almacen" aria-pressed="false">Almacén</button>
+    <button type="button" data-p="bandera" aria-pressed="false">Bandera</button>
+    <button type="button" data-p="bodegon" aria-pressed="false">Bodegón</button>
+  </div>
 </div>
 
 <script src="assets/js/main.js" defer></script>
