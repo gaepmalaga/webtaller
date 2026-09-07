@@ -15,7 +15,7 @@
      Si cambia el horario hay que tocar TRES sitios y deben coincidir:
      esta constante, la tabla de index.html y el bloque JSON-LD del final. */
   var HORARIO = {
-    0: [[1200, 1440]],   // domingo    20:00 – 00:00
+    0: [[720, 1020]],    // domingo    12:00 – 17:00
     1: [],               // lunes      cerrado
     2: [[720, 1440]],    // martes     12:00 – 00:00
     3: [[720, 1440]],    // miércoles
