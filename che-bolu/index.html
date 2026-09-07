@@ -30,15 +30,32 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.className = 'js';</script>
 </head>
 
 <body>
 <a class="saltar" href="#carta">Saltar a la carta</a>
 
+<!-- Arcos para el texto en órbita del sello. Se definen una sola vez. -->
+<svg class="vh" aria-hidden="true" focusable="false"><defs>
+  <path id="sello-t" fill="none" d="M23,60 A37,37 0 0 1 97,60"></path>
+  <path id="sello-b" fill="none" d="M23,60 A37,37 0 0 0 97,60"></path>
+</defs></svg>
+
 <header class="cab">
   <a class="cab__marca" href="#top" aria-label="Che Bolú Torremolinos, inicio">
-    <span class="cab__che">Che</span> <span class="cab__bolu">Bolú</span>
-    <span class="cab__loc">Torremolinos</span>
+    <span class="cab__sello">
+      <svg class="sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <circle class="sello__aro" cx="60" cy="60" r="56"></circle>
+        <circle class="sello__aro sello__aro--fino" cx="60" cy="60" r="49"></circle>
+        <text class="sello__orbita" text-anchor="middle"><textPath href="#sello-t" startOffset="50%">El original</textPath></text>
+        <text class="sello__orbita" text-anchor="middle"><textPath href="#sello-b" startOffset="50%">Desde 2004</textPath></text>
+        <text class="sello__wm" x="60" y="58">CHE</text>
+        <text class="sello__wm" x="60" y="83">BOLÚ</text>
+        <path class="sello__llama" d="M60 93c-3.4 0-5.7-2.2-5.7-5.3 0-2.5 1.7-3.9 2.7-6.2.7 2 1.9 2.1 2.1 4 .9-1.6.7-3.4 2.2-4.9.2 3.3 3.9 4.9 3.9 8 0 3-2.4 4.4-4.1 4.4z"></path>
+      </svg>
+    </span>
+    <span class="cab__wm"><b>Che Bolú</b><i>El original · Torremolinos</i></span>
   </a>
   <nav class="cab__nav" aria-label="Secciones">
     <a href="#carta">Carta</a>
@@ -57,8 +74,17 @@
   <!-- ================================================================ hero -->
   <section class="hero">
     <div class="hero__brasa" aria-hidden="true"></div>
+    <svg class="sello hero__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <circle class="sello__aro" cx="60" cy="60" r="56"></circle>
+      <circle class="sello__aro sello__aro--fino" cx="60" cy="60" r="49"></circle>
+      <text class="sello__orbita" text-anchor="middle"><textPath href="#sello-t" startOffset="50%">El original</textPath></text>
+      <text class="sello__orbita" text-anchor="middle"><textPath href="#sello-b" startOffset="50%">Desde 2004</textPath></text>
+      <text class="sello__wm" x="60" y="58">CHE</text>
+      <text class="sello__wm" x="60" y="83">BOLÚ</text>
+      <path class="sello__llama" d="M60 93c-3.4 0-5.7-2.2-5.7-5.3 0-2.5 1.7-3.9 2.7-6.2.7 2 1.9 2.1 2.1 4 .9-1.6.7-3.4 2.2-4.9.2 3.3 3.9 4.9 3.9 8 0 3-2.4 4.4-4.1 4.4z"></path>
+    </svg>
     <div class="hero__in">
-      <p class="hero__sobre">Parrilla argentina · Torremolinos</p>
+      <p class="hero__kicker">Parrilla argentina · Torremolinos · desde 2004</p>
       <h1 class="hero__h1">
         <span>Che Bolú</span>
         <em>La carne, al fuego y a la vista.</em>
@@ -82,9 +108,9 @@
       </div>
 
       <ul class="hero__datos">
-        <li><b>Calle de la Cruz, 26</b><span>29620 Torremolinos, Málaga</span></li>
-        <li><b>Martes a sábado</b><span>de 12:00 a medianoche</span></li>
-        <li><b>Domingo</b><span>mediodía, de 12:00 a 17:00</span></li>
+        <li><b>Dónde</b><span>Calle de la Cruz, 26 · Torremolinos</span></li>
+        <li><b>Martes a sábado</b><span>12:00 – 00:00, cocina sin cierre</span></li>
+        <li><b>Domingo</b><span>solo mediodía, 12:00 – 17:00</span></li>
       </ul>
     </div>
   </section>
@@ -94,6 +120,7 @@
     <h2 class="vh" id="t-casa">Cómo es la casa</h2>
     <ol class="casa__lista">
       <li>
+        <svg class="casa__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="7"></circle><path d="M5 10h14M12 3v14M7.2 5.2l9.6 9.6M16.8 5.2l-9.6 9.6"></path><path d="M9 16.5 7 21M15 16.5 17 21"></path></svg>
         <span class="casa__n">01</span>
         <h3>Parrilla a la vista</h3>
         <p>
@@ -102,6 +129,7 @@
         </p>
       </li>
       <li>
+        <svg class="casa__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6.5"></circle><circle cx="15" cy="12" r="6.5"></circle></svg>
         <span class="casa__n">02</span>
         <h3>Platos para compartir</h3>
         <p>
@@ -110,6 +138,7 @@
         </p>
       </li>
       <li>
+        <svg class="casa__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M15 8.8a4 4 0 1 0 0 6.4M8 11h5M8 13.2h5"></path></svg>
         <span class="casa__n">03</span>
         <h3>Precio de barrio</h3>
         <p>
@@ -209,6 +238,7 @@
 
     <div class="pedir__rejilla">
       <article class="tarj">
+        <span class="tarj__n">01</span>
         <h3>En el restaurante</h3>
         <p>
           Hay salón y terraza. Se puede entrar sin reserva entre semana; los
@@ -219,6 +249,7 @@
       </article>
 
       <article class="tarj">
+        <span class="tarj__n">02</span>
         <h3>Para recoger</h3>
         <p>
           Llamas, lo pides, te dicen la hora y pasas a por ello. Las empanadas y
@@ -228,6 +259,7 @@
       </article>
 
       <article class="tarj">
+        <span class="tarj__n">03</span>
         <h3>A domicilio</h3>
         <p>
           El reparto y la recogida con pago online van por Just Eat, donde está
@@ -270,6 +302,7 @@
 
   <!-- ================================================================ dónde -->
   <section class="donde" id="donde" aria-labelledby="t-donde">
+   <div class="donde__in">
     <div class="donde__txt">
       <p class="sec__sobre">Dónde estamos</p>
       <h2 class="sec__h2" id="t-donde">Calle de la Cruz, 26</h2>
@@ -292,11 +325,12 @@
       <li><b>Instagram</b><a href="https://www.instagram.com/chebolutorremolinos" target="_blank" rel="noopener">@chebolutorremolinos</a></li>
       <li><b>A domicilio</b><a href="https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu" target="_blank" rel="noopener">Just Eat</a></li>
     </ul>
+   </div>
   </section>
 
   <!-- ================================================================ cierre -->
   <section class="cierre">
-    <p class="cierre__frase">«Me sentí en casa, en Argentina, como cualquier domingo.»</p>
+    <p class="cierre__frase">Me sentí en casa, en Argentina, como cualquier domingo.</p>
     <p class="cierre__quien">De una reseña en Google</p>
     <a class="btn btn--fuego btn--grande" href="tel:+34951909511">Reservar mesa · 951 90 95 11</a>
   </section>
@@ -305,6 +339,15 @@
 
 <footer class="pie">
   <div class="pie__in">
+    <svg class="sello pie__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <circle class="sello__aro" cx="60" cy="60" r="56"></circle>
+      <circle class="sello__aro sello__aro--fino" cx="60" cy="60" r="49"></circle>
+      <text class="sello__orbita" text-anchor="middle"><textPath href="#sello-t" startOffset="50%">El original</textPath></text>
+      <text class="sello__orbita" text-anchor="middle"><textPath href="#sello-b" startOffset="50%">Desde 2004</textPath></text>
+      <text class="sello__wm" x="60" y="58">CHE</text>
+      <text class="sello__wm" x="60" y="83">BOLÚ</text>
+      <path class="sello__llama" d="M60 93c-3.4 0-5.7-2.2-5.7-5.3 0-2.5 1.7-3.9 2.7-6.2.7 2 1.9 2.1 2.1 4 .9-1.6.7-3.4 2.2-4.9.2 3.3 3.9 4.9 3.9 8 0 3-2.4 4.4-4.1 4.4z"></path>
+    </svg>
     <p class="pie__marca">Che Bolú <span>Torremolinos</span></p>
     <p class="pie__dir">
       Calle de la Cruz, 26 · 29620 Torremolinos (Málaga)<br>

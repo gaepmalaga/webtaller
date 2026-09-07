@@ -96,14 +96,25 @@
   var animar = window.matchMedia('(prefers-reduced-motion: reduce)').matches === false;
   if (animar && 'IntersectionObserver' in window) {
     var objetivos = document.querySelectorAll('.casa__lista > li, .menu__bloque, .tarj, .donde__txt, .donde__lista, .tabla');
+
+    function revelar(el) { el.classList.add('visible'); }
+    function revelarTodo() {
+      Array.prototype.forEach.call(objetivos, revelar);
+    }
+
     Array.prototype.forEach.call(objetivos, function (el) { el.classList.add('aparece'); });
 
     var obs = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (x) {
-        if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); }
+        if (x.isIntersecting) { revelar(x.target); obs.unobserve(x.target); }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
     Array.prototype.forEach.call(objetivos, function (el) { obs.observe(el); });
+
+    /* Red de seguridad: si algo falla (pestaña en segundo plano al cargar,
+       observador que no dispara), a los 2 s se muestra todo igualmente. */
+    setTimeout(revelarTodo, 2000);
+    window.addEventListener('load', function () { setTimeout(revelarTodo, 400); });
   }
 })();
