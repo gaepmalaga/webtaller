@@ -105,7 +105,9 @@ Es una carpeta de archivos estáticos: vale cualquier alojamiento.
   **https://gaepmalaga.github.io/webtaller/**
 
   Si alguna vez hay que rehacer esto en otro repositorio, hacen falta dos cosas
-  que solo se hacen una vez:
+  que solo se hacen una vez, más una tercera que hay que repetir **cada vez
+  que se publica un sitio nuevo en una rama nueva** (ver más abajo, "Al añadir
+  un sitio nuevo"):
 
   1. **Repositorio público.** Pages no está disponible en repositorios privados
      con el plan gratuito. (Si este volviese a ser privado, el workflow se queda
@@ -115,6 +117,15 @@ Es una carpeta de archivos estáticos: vale cualquier alojamiento.
      permisos de administrador del repositorio y el token de Actions no los
      tiene. Sin ese paso, el despliegue falla con *Create Pages site failed:
      Resource not accessible by integration*.
+  3. **Permitir cada rama nueva en el entorno `github-pages`**: Settings →
+     Environments → github-pages → *Deployment branches and tags*. Por
+     defecto GitHub solo deja desplegar desde la rama con la que se creó el
+     sitio. Esto pasó de verdad con Che Bolú: el push a
+     `claude/che-bolu-website-vxnsss` disparó el workflow pero el job falló en
+     2 segundos sin logs de ningún paso — la firma de que la rama no estaba en
+     la lista permitida. Tampoco se puede relanzar el job a mano con el token
+     de Actions (`403 Resource not accessible by integration`); hay que añadir
+     la rama y esperar al siguiente push.
 - **Netlify / Cloudflare Pages**: arrastrar la carpeta. Sin comando de build.
 - **Hosting clásico**: subir todo por FTP a `public_html`.
 

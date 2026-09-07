@@ -1,17 +1,27 @@
 # Publica la carpeta tal cual en GitHub Pages.
 #
-# Para que esto funcione hicieron falta dos cosas, una sola vez:
+# Para que esto funcione hicieron falta tres cosas, algunas una sola vez y
+# otras cada vez que se añade una rama nueva a la lista de abajo:
 #
 #   1. Repositorio público. Pages no está disponible en repositorios privados
 #      con el plan gratuito. El `if` de abajo deja el trabajo en pausa si
-#      volviese a ser privado, en lugar de fallar en cada push.
+#      volviese a ser privado, en lugar de fallar en cada push. (Una sola vez.)
 #   2. Activar Pages a mano en Settings -> Pages -> Source: GitHub Actions.
 #      El `enablement: true` de abajo NO basta por sí solo: crear un sitio de
 #      Pages desde cero exige permisos de administrador del repositorio, y el
 #      GITHUB_TOKEN de Actions no los tiene. Sin ese paso manual falla con
 #      "Create Pages site failed: Resource not accessible by integration".
 #      Una vez creado el sitio, `enablement` ya no intenta crearlo y el
-#      despliegue va solo en cada push.
+#      despliegue va solo en cada push. (Una sola vez.)
+#   3. Permitir la rama en el entorno `github-pages`, en Settings ->
+#      Environments -> github-pages -> Deployment branches and tags. GitHub
+#      limita ese entorno, por defecto, a la rama con la que se creó el sitio
+#      la primera vez. Al añadir una rama nueva aquí abajo (un sitio nuevo,
+#      como pasó con Che Bolú) el push la despliega pero el job falla en
+#      2 segundos y sin logs de ningún paso si esa rama no está en la lista
+#      permitida. El GITHUB_TOKEN tampoco puede relanzar ese job a mano
+#      (`403 Resource not accessible by integration`): hay que añadir la rama
+#      a mano y esperar al siguiente push. (Cada rama nueva.)
 name: Publicar en GitHub Pages
 
 # Las dos ramas publican el repositorio entero, que ya contiene los dos
