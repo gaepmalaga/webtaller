@@ -1,3 +1,18 @@
+# Webs estáticas de gaepmalaga
+
+Este repositorio aloja **dos sitios**, los dos hechos igual: HTML, CSS y un
+poco de JavaScript escritos a mano, sin frameworks ni proceso de compilación.
+
+| Sitio | Carpeta | Dirección |
+|---|---|---|
+| Taller Hidrocar (Churriana) | raíz | https://gaepmalaga.github.io/webtaller/ |
+| Che Bolú Torremolinos | [`che-bolu/`](che-bolu/) | https://gaepmalaga.github.io/webtaller/che-bolu/ |
+
+La documentación de Che Bolú está en [`che-bolu/README.md`](che-bolu/README.md).
+El resto de este archivo es la de Hidrocar.
+
+---
+
 # Web de Taller Hidrocar
 
 Sitio web estático para **Taller Hidrocar** (Pol. Ind. El Rompedizo, Churriana, Málaga).
@@ -81,6 +96,9 @@ Es una carpeta de archivos estáticos: vale cualquier alojamiento.
   ```bash
   python3 herramientas/construir-archivo-unico.py
   ```
+
+  (El mismo script genera el de Che Bolú:
+  `python3 herramientas/construir-archivo-unico.py che-bolu`.)
 
 - **GitHub Pages**: publicando. El workflow `.github/workflows/pages.yml`
   republica el sitio en cada `push` a esta rama:

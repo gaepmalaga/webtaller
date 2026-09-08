@@ -14,9 +14,15 @@
 #      despliegue va solo en cada push.
 name: Publicar en GitHub Pages
 
+# Las dos ramas publican el repositorio entero, que ya contiene los dos
+# sitios: Hidrocar en la raíz y Che Bolú en /che-bolu/. Publica la última que
+# reciba un push, y como ambas llevan el mismo contenido el resultado es el
+# mismo.
 on:
   push:
-    branches: [claude/fix-hidrocar-malaga-website-krgygu]
+    branches:
+      - claude/fix-hidrocar-malaga-website-krgygu
+      - claude/che-bolu-website-vxnsss
   workflow_dispatch:
 
 permissions:

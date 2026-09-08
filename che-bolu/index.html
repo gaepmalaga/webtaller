@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Che Bolú Torremolinos · Parrilla argentina, el original desde 2004</title>
+<meta name="description" content="Asador argentino en el centro de Torremolinos desde 2004. Carne a la brasa hecha a la vista, empanadas criollas, pollo a la brasa y platos para compartir. Calle de la Cruz, 26. Reservas 951 90 95 11.">
+
+<!-- Dirección provisional de GitHub Pages, mientras no haya dominio propio.
+     Al contratar el dominio hay que cambiar canonical, og:url, og:image, el
+     JSON-LD del final, robots.txt y sitemap.xml, y quitar el noindex de abajo. -->
+<link rel="canonical" href="https://gaepmalaga.github.io/webtaller/che-bolu/">
+
+<!-- PROVISIONAL: quitar esta línea (dejar «index, follow») cuando la web
+     esté aprobada por el restaurante y tenga su dominio definitivo. -->
+<meta name="robots" content="noindex, follow">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Che Bolú Torremolinos">
+<meta property="og:title" content="Che Bolú Torremolinos · El original desde 2004">
+<meta property="og:description" content="Parrilla argentina a la vista, empanadas criollas y platos para compartir, en la calle de la Cruz, 26.">
+<meta property="og:url" content="https://gaepmalaga.github.io/webtaller/che-bolu/">
+<meta property="og:image" content="https://gaepmalaga.github.io/webtaller/che-bolu/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#20180f">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+<a class="skip" href="#carta">Saltar a la carta</a>
+<div class="progreso" aria-hidden="true"><span></span></div>
+
+<!-- Arcos para el texto en órbita del sello. Definidos una sola vez. -->
+<svg width="0" height="0" class="u-hide" aria-hidden="true" focusable="false"><defs>
+  <path id="arc-t" fill="none" d="M16,62 A46,46 0 0 1 108,62"></path>
+  <path id="arc-b" fill="none" d="M16,62 A46,46 0 0 0 108,62"></path>
+</defs></svg>
+
+<header class="site" id="top">
+  <div class="site__in">
+    <a class="marca" href="#top" aria-label="Che Bolú Torremolinos, inicio">
+      <span class="marca__sello">
+        <svg class="sello" viewBox="0 0 124 124" aria-hidden="true" focusable="false">
+          <circle cx="62" cy="62" r="58" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+          <circle cx="62" cy="62" r="51" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="0.5 6.6" stroke-linecap="round"></circle>
+          <circle cx="62" cy="62" r="42.5" fill="none" stroke="currentColor" stroke-width="1"></circle>
+          <text class="sello__arc" text-anchor="middle"><textPath href="#arc-t" startOffset="50%">El original</textPath></text>
+          <text class="sello__arc" text-anchor="middle"><textPath href="#arc-b" startOffset="50%">Torremolinos · 2004</textPath></text>
+          <text class="sello__wm" x="62" y="59" text-anchor="middle">Che</text>
+          <text class="sello__wm" x="62" y="82" text-anchor="middle">Bolú</text>
+        </svg>
+      </span>
+      <span class="marca__txt">
+        <b>Che Bolú</b>
+        <i>Parrilla argentina · Torremolinos</i>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Secciones">
+      <button class="nav__tog" type="button" aria-expanded="false" aria-controls="nav-panel">
+        <span></span> Menú
+      </button>
+      <ul class="nav__panel" id="nav-panel" hidden>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#casa">La casa</a></li>
+        <li><a href="#horario">Horario</a></li>
+        <li><a href="#donde">Dónde</a></li>
+        <li class="nav__cta"><a class="btn btn--ember" href="tel:+34951909511">Reservar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================================================================== hero -->
+  <section class="hero">
+    <canvas class="hero__brasa" aria-hidden="true"></canvas>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <svg class="sello hero__sello" viewBox="0 0 124 124" aria-hidden="true" focusable="false">
+      <circle cx="62" cy="62" r="58" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+      <circle cx="62" cy="62" r="51" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="0.5 6.6" stroke-linecap="round"></circle>
+      <circle cx="62" cy="62" r="42.5" fill="none" stroke="currentColor" stroke-width="1"></circle>
+      <text class="sello__arc" text-anchor="middle"><textPath href="#arc-t" startOffset="50%">El original</textPath></text>
+      <text class="sello__arc" text-anchor="middle"><textPath href="#arc-b" startOffset="50%">Torremolinos · 2004</textPath></text>
+      <text class="sello__wm" x="62" y="59" text-anchor="middle">Che</text>
+      <text class="sello__wm" x="62" y="82" text-anchor="middle">Bolú</text>
+    </svg>
+
+    <div class="hero__in">
+      <p class="kicker kicker--luz">Asador argentino · en el centro de Torremolinos · desde 2004</p>
+      <h1 class="hero__h1">
+        <span class="hero__l1">Che</span>
+        <span class="hero__l2">Bolú</span>
+      </h1>
+      <p class="hero__lema"><em>La carne, al fuego y a la vista.</em></p>
+      <p class="hero__txt">
+        Parrilla a dos calles del centro. Carnes a la brasa que se hacen delante
+        de ti, pollo al carbón, empanadas criollas y milanesas como en casa.
+        Raciones de las de antes y la cuenta de barrio.
+      </p>
+
+      <p class="estado" id="estado" hidden>
+        <span class="estado__pt" aria-hidden="true"></span>
+        <span class="estado__tx"></span>
+      </p>
+
+      <div class="hero__btns">
+        <a class="btn btn--ember btn--lg" href="tel:+34951909511">Llamar y reservar</a>
+        <a class="btn btn--linea btn--lg" href="#carta">Ver la carta</a>
+      </div>
+
+      <dl class="hero__facts">
+        <div>
+          <dt>Dónde</dt>
+          <dd>Calle de la Cruz, 26<span>29620 Torremolinos, Málaga</span></dd>
+        </div>
+        <div>
+          <dt>Cuándo</dt>
+          <dd>Martes a sábado, 12–24 h<span>domingo solo mediodía · lunes cerrado</span></dd>
+        </div>
+        <div>
+          <dt>Reservas</dt>
+          <dd><a href="tel:+34951909511">951 90 95 11</a><span>y por Instagram</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <a class="hero__scroll" href="#casa" aria-label="Bajar">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ================================================================== marquesina -->
+  <div class="tira" aria-hidden="true">
+    <div class="tira__pista">
+      <span>Parrillada Che Bolú</span><i>·</i>
+      <span>Entraña</span><i>·</i>
+      <span>Vacío y matambre</span><i>·</i>
+      <span>Pollo a la brasa</span><i>·</i>
+      <span>Mollejas</span><i>·</i>
+      <span>Chorizo criollo</span><i>·</i>
+      <span>Provoleta</span><i>·</i>
+      <span>Empanadas criollas</span><i>·</i>
+      <span>Milanesa napolitana</span><i>·</i>
+      <span>Pastas caseras</span><i>·</i>
+      <span>Lomitos</span><i>·</i>
+      <span>Pionono de dulce de leche</span><i>·</i>
+    </div>
+    <div class="tira__pista" aria-hidden="true">
+      <span>Parrillada Che Bolú</span><i>·</i>
+      <span>Entraña</span><i>·</i>
+      <span>Vacío y matambre</span><i>·</i>
+      <span>Pollo a la brasa</span><i>·</i>
+      <span>Mollejas</span><i>·</i>
+      <span>Chorizo criollo</span><i>·</i>
+      <span>Provoleta</span><i>·</i>
+      <span>Empanadas criollas</span><i>·</i>
+      <span>Milanesa napolitana</span><i>·</i>
+      <span>Pastas caseras</span><i>·</i>
+      <span>Lomitos</span><i>·</i>
+      <span>Pionono de dulce de leche</span><i>·</i>
+    </div>
+  </div>
+
+  <!-- ================================================================== la casa -->
+  <section class="casa" id="casa" aria-labelledby="t-casa">
+    <div class="wrap">
+      <header class="cab reveal">
+        <p class="kicker">Cómo es la casa</p>
+        <h2 class="h2" id="t-casa">Tres cosas y ninguna más</h2>
+      </header>
+      <ol class="casa__lista">
+        <li class="reveal" style="--i:0">
+          <span class="casa__n">01</span>
+          <h3>Parrilla a la vista</h3>
+          <p>
+            La parrilla está en el salón. Ves cómo se hace tu pieza, la pides al
+            punto que quieras y sale al punto que has pedido. Sin misterio.
+          </p>
+        </li>
+        <li class="reveal" style="--i:1">
+          <span class="casa__n">02</span>
+          <h3>Para compartir</h3>
+          <p>
+            Las raciones son de las de antes. La parrillada de dos suele dar para
+            tres, y lo que sobra se va a casa en un táper. Aquí no se pasa hambre.
+          </p>
+        </li>
+        <li class="reveal" style="--i:2">
+          <span class="casa__n">03</span>
+          <h3>Precio de barrio</h3>
+          <p>
+            Es lo que más repiten quienes vuelven: buena carne, cantidad de sobra
+            y la cuenta razonable. Comer bien no tiene por qué costar una fortuna.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================================================================== cifras -->
+  <section class="cifras" aria-label="El restaurante en números">
+    <div class="wrap cifras__grid">
+      <div class="reveal">
+        <b class="num" data-n="21">21</b>
+        <span>años en la calle de la Cruz</span>
+      </div>
+      <div class="reveal" style="--i:1">
+        <b class="num" data-n="4.2" data-dec="1">4,2</b>
+        <span>de nota media en Google</span>
+      </div>
+      <div class="reveal" style="--i:2">
+        <b class="num" data-n="5374">5.374</b>
+        <span>opiniones de clientes</span>
+      </div>
+      <div class="reveal" style="--i:3">
+        <b class="num num--txt">12&#8202;→&#8202;24 h</b>
+        <span>cocina sin cierre, de martes a sábado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== carta -->
+  <section class="carta" id="carta" aria-labelledby="t-carta">
+    <div class="wrap">
+      <header class="cab reveal">
+        <p class="kicker">La carta</p>
+        <h2 class="h2" id="t-carta">Qué se come en Che Bolú</h2>
+        <p class="cab__intro">
+          Una selección de lo que más sale de la cocina y de la parrilla. La carta
+          completa, con los precios del día, está en la mesa y en
+          <a href="https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu" target="_blank" rel="noopener">Just&nbsp;Eat</a>.
+        </p>
+      </header>
+
+      <nav class="carta__tabs" aria-label="Apartados de la carta">
+        <a href="#c-parrilla">Parrilla</a>
+        <a href="#c-empanadas">Empanadas</a>
+        <a href="#c-cocina">Cocina</a>
+        <a href="#c-pan">Bocadillos y pizzas</a>
+        <a href="#c-postres">Postres</a>
+      </nav>
+
+      <div class="menu">
+        <article class="grupo grupo--estrella reveal" id="c-parrilla">
+          <h3>De la parrilla</h3>
+          <ul>
+            <li><b>Parrillada Che Bolú</b><span>Para dos, con empanadas, patatas y ensalada. La pide medio comedor.</span></li>
+            <li><b>Pollo a la brasa</b><span>Entero o medio, con patatas. Una seña de la casa desde hace años.</span></li>
+            <li><b>Entraña</b><span>Jugosa por dentro, tostada por fuera. De las que no necesitan salsa.</span></li>
+            <li><b>Vacío y matambre</b><span>Los cortes argentinos de siempre, hechos despacio.</span></li>
+            <li><b>Costillas y chuletón</b><span>A la brasa, para hincar el diente sin prisa.</span></li>
+            <li><b>Brocheta mixta</b><span>Pollo, cerdo y ternera con verduras, a la parrilla.</span></li>
+            <li><b>Chorizo criollo, provoleta y mollejas</b><span>Así se empieza un asado en cualquier parte del mundo.</span></li>
+          </ul>
+        </article>
+
+        <article class="grupo reveal" id="c-empanadas">
+          <h3>Empanadas</h3>
+          <ul>
+            <li><b>Criolla</b><span>Carne cortada a cuchillo. La de siempre.</span></li>
+            <li><b>Jamón y queso</b><span>Sencilla y sin fallo.</span></li>
+            <li><b>Al horno o fritas</b><span>Tú eliges. Y se piden por unidades para el camino.</span></li>
+          </ul>
+        </article>
+
+        <article class="grupo reveal" id="c-cocina">
+          <h3>De la cocina</h3>
+          <ul>
+            <li><b>Milanesa</b><span>De ternera, cerdo o pollo, y más de diez maneras de tomarla.</span></li>
+            <li><b>Milanesa napolitana</b><span>Con tomate, jamón y queso gratinado.</span></li>
+            <li><b>Pastas caseras</b><span>Con la salsa que quieras: pesto, boloñesa, pomodoro, bechamel o al tonno.</span></li>
+            <li><b>Ensaladas grandes</b><span>De las que valen como plato.</span></li>
+            <li><b>Patatas y batatas</b><span>Fritas, y la batata para quien la conoce.</span></li>
+          </ul>
+        </article>
+
+        <article class="grupo reveal" id="c-pan">
+          <h3>Bocadillos, pizzas y hamburguesas</h3>
+          <ul>
+            <li><b>Lomitos</b><span>El bocadillo argentino: pan tierno y carne jugosa dentro.</span></li>
+            <li><b>Camperos y paninis</b><span>Para una cena rápida sin renunciar a la plancha.</span></li>
+            <li><b>Pizzas y calzones</b><span>Masa de casa, al gusto de toda la mesa.</span></li>
+            <li><b>Hamburguesas</b><span>Las nuevas —la Entrañable, la Smash y la Gaucho— con carne madurada y chimichurri.</span></li>
+          </ul>
+        </article>
+
+        <article class="grupo reveal" id="c-postres">
+          <h3>Postres</h3>
+          <ul>
+            <li><b>Pionono de dulce de leche</b><span>El que llevan recomendando desde hace años.</span></li>
+            <li><b>Alfajores caseros</b><span>De chocolate o de café, hechos aquí.</span></li>
+            <li><b>Flan y tartas</b><span>Para cerrar la comida como toca.</span></li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="carta__pie reveal">
+        <p>
+          <b>Sábados y domingos al mediodía</b>, de 12:30 a 15:00, hay almuerzos
+          con menú del día. Para mesas de tres o más, mejor reservar.
+        </p>
+        <p>
+          Los platos pueden cambiar según el día y el mercado. Si tienes alergias
+          o intolerancias, dilo al pedir: te dicen sin problema qué lleva cada cosa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== pedir -->
+  <section class="pedir" id="pedir" aria-labelledby="t-pedir">
+    <div class="wrap">
+      <header class="cab reveal">
+        <p class="kicker kicker--luz">Tres maneras</p>
+        <h2 class="h2" id="t-pedir">Cómo pedir</h2>
+      </header>
+      <div class="pedir__grid">
+        <article class="tarjeta reveal" style="--i:0">
+          <span class="tarjeta__n">01</span>
+          <h3>Mesa en el restaurante</h3>
+          <p>
+            Hay salón y terraza. Entre semana se entra sin reserva; los fines de
+            semana y festivos se llena, así que mejor llamar antes, sobre todo si
+            venís en grupo.
+          </p>
+          <a class="btn btn--ember" href="tel:+34951909511">Reservar por teléfono</a>
+        </article>
+        <article class="tarjeta reveal" style="--i:1">
+          <span class="tarjeta__n">02</span>
+          <h3>Para recoger</h3>
+          <p>
+            Llamas, lo pides, te dicen la hora y pasas a por ello. Las empanadas y
+            los lomitos salen recién hechos y aguantan bien el camino a casa.
+          </p>
+          <a class="btn btn--linea" href="tel:+34951909511">Encargar por teléfono</a>
+        </article>
+        <article class="tarjeta reveal" style="--i:2">
+          <span class="tarjeta__n">03</span>
+          <h3>A domicilio</h3>
+          <p>
+            El reparto y el pago online van por Just Eat, donde está también la
+            carta completa con los precios actualizados.
+          </p>
+          <a class="btn btn--linea" href="https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu" target="_blank" rel="noopener">Ver en Just&nbsp;Eat</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== horario -->
+  <section class="horario" id="horario" aria-labelledby="t-horario">
+    <div class="wrap horario__in">
+      <div class="horario__txt reveal">
+        <p class="kicker">Horario</p>
+        <h2 class="h2" id="t-horario">Cuándo estamos abiertos</h2>
+        <p>
+          De martes a sábado la cocina no cierra: se puede comer también a media
+          tarde. Los domingos se abre solo al mediodía, hasta las 17:00. Los lunes
+          cierra. En vísperas de festivo puede cambiar; una llamada lo confirma.
+        </p>
+        <p class="estado estado--claro" id="estado2" hidden>
+          <span class="estado__pt" aria-hidden="true"></span>
+          <span class="estado__tx"></span>
+        </p>
+      </div>
+      <table class="tabla reveal">
+        <caption class="u-vh">Horario de apertura de Che Bolú Torremolinos</caption>
+        <thead><tr><th scope="col">Día</th><th scope="col">Horario</th></tr></thead>
+        <tbody>
+          <tr data-dia="1"><th scope="row">Lunes</th><td class="cerrado">Cerrado</td></tr>
+          <tr data-dia="2"><th scope="row">Martes</th><td>12:00 – 00:00</td></tr>
+          <tr data-dia="3"><th scope="row">Miércoles</th><td>12:00 – 00:00</td></tr>
+          <tr data-dia="4"><th scope="row">Jueves</th><td>12:00 – 00:00</td></tr>
+          <tr data-dia="5"><th scope="row">Viernes</th><td>12:00 – 00:00</td></tr>
+          <tr data-dia="6"><th scope="row">Sábado</th><td>12:00 – 00:00</td></tr>
+          <tr data-dia="0"><th scope="row">Domingo</th><td>12:00 – 17:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================================================================== dónde -->
+  <section class="donde" id="donde" aria-labelledby="t-donde">
+    <div class="wrap donde__in">
+      <div class="donde__txt reveal">
+        <p class="kicker">Dónde estamos</p>
+        <h2 class="h2 donde__dir" id="t-donde">Calle de la Cruz, 26</h2>
+        <p class="donde__cp">29620 Torremolinos, Málaga</p>
+        <p>
+          A un paso del centro, en una calle tranquila. Se llega andando desde la
+          plaza de la Costa del Sol y desde la calle San Miguel en pocos minutos.
+          Se aparca en la calle, aunque en hora punta cuesta encontrar sitio.
+        </p>
+        <div class="donde__btns">
+          <a class="btn btn--ember" href="https://maps.app.goo.gl/ys17KKWqV1HzEeys6" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn btn--linea" href="tel:+34951909511">951 90 95 11</a>
+        </div>
+        <ul class="datos">
+          <li><b>Teléfono</b><span><a href="tel:+34951909511">951 90 95 11</a> · <a href="tel:+34952054484">952 05 44 84</a></span></li>
+          <li><b>Correo</b><span><a href="mailto:chebolu@hotmail.es">chebolu@hotmail.es</a></span></li>
+          <li><b>Instagram</b><span><a href="https://www.instagram.com/chebolutorremolinos" target="_blank" rel="noopener">@chebolutorremolinos</a></span></li>
+          <li><b>A domicilio</b><span><a href="https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu" target="_blank" rel="noopener">Just Eat</a></span></li>
+        </ul>
+      </div>
+
+      <figure class="mapa reveal" aria-label="Plano orientativo: la calle de la Cruz, entre la plaza de la Costa del Sol y la calle San Miguel">
+        <svg viewBox="0 0 400 460" role="img" aria-hidden="true">
+          <rect width="400" height="460" fill="var(--papel-2)"></rect>
+          <g stroke="var(--tinta-3)" stroke-width="1" fill="none" opacity="0.5">
+            <path d="M0 90 H400 M0 200 H400 M0 320 H400 M0 410 H400"></path>
+            <path d="M70 0 V460 M170 0 V460 M270 0 V460 M350 0 V460"></path>
+          </g>
+          <path d="M170 0 V460" stroke="var(--ember)" stroke-width="6" fill="none"></path>
+          <path d="M0 200 H400" stroke="var(--tinta)" stroke-width="3" fill="none" opacity="0.55"></path>
+          <path d="M270 320 H400" stroke="var(--tinta)" stroke-width="3" fill="none" opacity="0.55"></path>
+          <circle cx="170" cy="248" r="9" fill="var(--ember)" stroke="var(--papel)" stroke-width="3"></circle>
+          <g fill="var(--tinta)" font-family="Archivo, sans-serif" font-size="12.5" font-weight="700">
+            <text x="176" y="238">Che Bolú</text>
+          </g>
+          <g fill="var(--tinta-3)" font-family="Archivo, sans-serif" font-size="11" letter-spacing="0.06em">
+            <text x="176" y="20" transform="rotate(90 176 20)">CALLE DE LA CRUZ</text>
+            <text x="14" y="194">PLAZA COSTA DEL SOL</text>
+            <text x="276" y="336">CALLE SAN MIGUEL</text>
+          </g>
+        </svg>
+        <figcaption>Plano orientativo. Para la ruta, pulsa «Cómo llegar».</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================================================================== cierre -->
+  <section class="cierre">
+    <div class="wrap">
+      <p class="cierre__marca" aria-hidden="true">”</p>
+      <blockquote class="cierre__cita reveal">
+        Me sentí en casa, en Argentina, como cualquier domingo.
+      </blockquote>
+      <p class="cierre__quien reveal">De una reseña en Google</p>
+      <a class="btn btn--ember btn--lg reveal" href="tel:+34951909511">Reservar mesa · 951 90 95 11</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="wrap pie__in">
+    <div class="pie__marca">
+      <svg class="sello" viewBox="0 0 124 124" aria-hidden="true" focusable="false">
+        <circle cx="62" cy="62" r="58" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+        <circle cx="62" cy="62" r="51" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="0.5 6.6" stroke-linecap="round"></circle>
+        <circle cx="62" cy="62" r="42.5" fill="none" stroke="currentColor" stroke-width="1"></circle>
+        <text class="sello__arc" text-anchor="middle"><textPath href="#arc-t" startOffset="50%">El original</textPath></text>
+        <text class="sello__arc" text-anchor="middle"><textPath href="#arc-b" startOffset="50%">Torremolinos · 2004</textPath></text>
+        <text class="sello__wm" x="62" y="59" text-anchor="middle">Che</text>
+        <text class="sello__wm" x="62" y="82" text-anchor="middle">Bolú</text>
+      </svg>
+      <p>Che Bolú <span>Torremolinos</span></p>
+    </div>
+    <div class="pie__col">
+      <p>
+        Calle de la Cruz, 26 · 29620 Torremolinos (Málaga)<br>
+        <a href="tel:+34951909511">951 90 95 11</a> · <a href="tel:+34952054484">952 05 44 84</a><br>
+        <a href="mailto:chebolu@hotmail.es">chebolu@hotmail.es</a>
+      </p>
+      <nav class="pie__nav" aria-label="Enlaces del pie">
+        <a href="https://www.instagram.com/chebolutorremolinos" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu" target="_blank" rel="noopener">Just Eat</a>
+        <a href="https://maps.app.goo.gl/ys17KKWqV1HzEeys6" target="_blank" rel="noopener">Google Maps</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+      </nav>
+    </div>
+    <p class="pie__nota">
+      © <span id="anio">2026</span> Che Bolú Torremolinos · Sin cookies ni rastreadores.<br>
+      Web de muestra. Los datos salen de fuentes públicas y están pendientes
+      de confirmar con el restaurante.
+    </p>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Acciones rápidas">
+  <a href="tel:+34951909511">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.7.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.7.1.4 0 .8-.2 1l-2.3 2.1Z"/></svg>
+    Llamar
+  </a>
+  <a href="#carta">Carta</a>
+  <a href="https://maps.app.goo.gl/ys17KKWqV1HzEeys6" target="_blank" rel="noopener">Llegar</a>
+</nav>
+
+<script src="assets/js/main.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Che Bolú Torremolinos",
+  "description": "Parrilla argentina en el centro de Torremolinos desde 2004: carne a la brasa hecha a la vista, empanadas criollas, pollo a la brasa, milanesas, pizzas y postres caseros.",
+  "foundingDate": "2004",
+  "url": "https://gaepmalaga.github.io/webtaller/che-bolu/",
+  "image": "https://gaepmalaga.github.io/webtaller/che-bolu/assets/img/og.png",
+  "telephone": "+34951909511",
+  "email": "chebolu@hotmail.es",
+  "servesCuisine": ["Argentina", "Parrilla", "Carne a la brasa"],
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "acceptsReservations": "True",
+  "hasMenu": "https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle de la Cruz, 26",
+    "addressLocality": "Torremolinos",
+    "addressRegion": "Málaga",
+    "postalCode": "29620",
+    "addressCountry": "ES"
+  },
+  "sameAs": [
+    "https://www.instagram.com/chebolutorremolinos",
+    "https://www.just-eat.es/restaurants-che-bolu-torremolinos-torremolinos/menu"
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "12:00", "closes": "00:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "17:00" }
+  ]
+}
+</script>
+</body>
+</html>
