@@ -48,12 +48,15 @@ def main(clave='hidrocar'):
     css = leer('assets/css/style.css')
     js = leer('assets/js/main.js')
 
-    # La tipografía entra como data URI. Solo el subconjunto «latin»:
-    # latin-ext no hace falta para escribir en español y pesa otros 84 KB.
-    fuente = datauri('assets/fonts/archivo-latin.woff2', 'font/woff2')
-    css = css.replace("url('../fonts/archivo-latin.woff2')", "url(%s)" % fuente)
+    # Las tipografías entran como data URI. El bloque latin-ext de Archivo no
+    # viaja: no hace falta para escribir en español y pesa de más.
     css = re.sub(
         r"@font-face \{[^}]*archivo-latin-ext\.woff2[^}]*\}\n?", '', css, flags=re.S)
+    # Se incrusta cualquier woff2 de assets/fonts/ que la hoja siga referenciando.
+    for ref in sorted(set(re.findall(r"\.\./fonts/([\w-]+\.woff2)", css))):
+        if (base / 'assets' / 'fonts' / ref).exists():
+            css = css.replace("url('../fonts/%s')" % ref,
+                              "url(%s)" % datauri('assets/fonts/%s' % ref, 'font/woff2'))
 
     # Fuera el precargado y la hoja externa: los estilos van incrustados.
     html = re.sub(r'<link rel="preload"[^>]*>\n?', '', html)

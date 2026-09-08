@@ -6,29 +6,40 @@
 <title>Aviso legal y privacidad · Che Bolú Torremolinos</title>
 <meta name="description" content="Aviso legal, política de privacidad y de cookies de Che Bolú Torremolinos.">
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#16110d">
+<meta name="theme-color" content="#20180f">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
-<script>
-  /* DEMO: mantiene la paleta elegida al llegar desde el inicio. */
-  try {
-    var _p = localStorage.getItem('chebolu-paleta');
-    if (_p) { document.documentElement.setAttribute('data-paleta', _p); }
-  } catch (e) {}
-</script>
 </head>
 <body>
 
-<a class="saltar" href="#contenido">Saltar al contenido</a>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
-<header class="cab">
-  <a class="cab__marca" href="index.html" aria-label="Che Bolú Torremolinos, inicio">
-    <span class="cab__che">Che</span> <span class="cab__bolu">Bolú</span>
-    <span class="cab__loc">Torremolinos</span>
-  </a>
-  <nav class="cab__nav" aria-label="Principal" style="display:flex">
-    <a href="index.html">Volver al inicio</a>
-  </nav>
+<svg width="0" height="0" class="u-hide" aria-hidden="true" focusable="false"><defs>
+  <path id="arc-t" fill="none" d="M16,62 A46,46 0 0 1 108,62"></path>
+  <path id="arc-b" fill="none" d="M16,62 A46,46 0 0 0 108,62"></path>
+</defs></svg>
+
+<header class="site site--doc">
+  <div class="site__in">
+    <a class="marca" href="index.html" aria-label="Che Bolú Torremolinos, inicio">
+      <span class="marca__sello">
+        <svg class="sello" viewBox="0 0 124 124" aria-hidden="true" focusable="false">
+          <circle cx="62" cy="62" r="58" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+          <circle cx="62" cy="62" r="51" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="0.5 6.6" stroke-linecap="round"></circle>
+          <circle cx="62" cy="62" r="42.5" fill="none" stroke="currentColor" stroke-width="1"></circle>
+          <text class="sello__arc" text-anchor="middle"><textPath href="#arc-t" startOffset="50%">El original</textPath></text>
+          <text class="sello__arc" text-anchor="middle"><textPath href="#arc-b" startOffset="50%">Torremolinos · 2004</textPath></text>
+          <text class="sello__wm" x="62" y="59" text-anchor="middle">Che</text>
+          <text class="sello__wm" x="62" y="82" text-anchor="middle">Bolú</text>
+        </svg>
+      </span>
+      <span class="marca__txt">
+        <b>Che Bolú</b>
+        <i>Parrilla argentina · Torremolinos</i>
+      </span>
+    </a>
+    <a class="volver" href="index.html">Volver al inicio</a>
+  </div>
 </header>
 
 <main class="doc" id="contenido">
@@ -69,10 +80,10 @@
 
   <h2>4. Propiedad intelectual</h2>
   <p>
-    Los textos, el diseño y el código de esta web pertenecen a su titular, salvo la
-    tipografía Archivo (Omnibus-Type), distribuida bajo la SIL Open Font License 1.1.
-    Las marcas y logotipos de terceros que puedan aparecer pertenecen a sus
-    respectivos propietarios.
+    Los textos, el diseño y el código de esta web pertenecen a su titular, salvo las
+    tipografías Fraunces y Archivo, distribuidas bajo la SIL Open Font License 1.1
+    (texto de la licencia en <code>assets/fonts/OFL.txt</code>). Las marcas y
+    logotipos de terceros que puedan aparecer pertenecen a sus respectivos propietarios.
   </p>
 
   <h2>5. Protección de datos</h2>
@@ -97,7 +108,7 @@
   <p>
     Esta web <strong>no utiliza cookies</strong> ni ninguna otra tecnología de
     seguimiento. No hay analítica, ni píxeles publicitarios, ni recursos cargados
-    desde servidores de terceros: la tipografía, los estilos y el código se sirven
+    desde servidores de terceros: las tipografías, los estilos y el código se sirven
     desde este mismo dominio. Por eso no aparece ningún aviso de cookies.
   </p>
   <p>
@@ -116,11 +127,34 @@
 </main>
 
 <footer class="pie">
-  <div class="pie__in">
-    <p class="pie__marca">Che Bolú <span>Torremolinos</span></p>
-    <p class="pie__dir">Calle de la Cruz, 26 · 29620 Torremolinos (Málaga) · <a href="tel:+34951909511">951 90 95 11</a></p>
+  <div class="wrap pie__in">
+    <div class="pie__marca">
+      <svg class="sello" viewBox="0 0 124 124" aria-hidden="true" focusable="false">
+        <circle cx="62" cy="62" r="58" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+        <circle cx="62" cy="62" r="51" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="0.5 6.6" stroke-linecap="round"></circle>
+        <circle cx="62" cy="62" r="42.5" fill="none" stroke="currentColor" stroke-width="1"></circle>
+        <text class="sello__arc" text-anchor="middle"><textPath href="#arc-t" startOffset="50%">El original</textPath></text>
+        <text class="sello__arc" text-anchor="middle"><textPath href="#arc-b" startOffset="50%">Torremolinos · 2004</textPath></text>
+        <text class="sello__wm" x="62" y="59" text-anchor="middle">Che</text>
+        <text class="sello__wm" x="62" y="82" text-anchor="middle">Bolú</text>
+      </svg>
+      <p>Che Bolú <span>Torremolinos</span></p>
+    </div>
+    <div class="pie__col">
+      <p>
+        Calle de la Cruz, 26 · 29620 Torremolinos (Málaga)<br>
+        <a href="tel:+34951909511">951 90 95 11</a> ·
+        <a href="mailto:chebolu@hotmail.es">chebolu@hotmail.es</a>
+      </p>
+      <nav class="pie__nav" aria-label="Enlaces del pie">
+        <a href="index.html">Inicio</a>
+        <a href="https://www.instagram.com/chebolutorremolinos" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+    <p class="pie__nota">© <span id="anio">2026</span> Che Bolú Torremolinos · Sin cookies ni rastreadores.</p>
   </div>
 </footer>
 
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

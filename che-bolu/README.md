@@ -3,9 +3,14 @@
 Sitio web estático para **Che Bolú Torremolinos**, parrilla argentina en la
 calle de la Cruz, 26 (Torremolinos, Málaga).
 
-Escrito a mano: un HTML, una hoja de estilo y unos 4 KB de JavaScript. **Sin
+Escrito a mano: un HTML, una hoja de estilo y unos 11 KB de JavaScript. **Sin
 WordPress, sin plantilla, sin framework, sin proceso de compilación.** No hay
 `node_modules` que actualizar ni plugins que se rompan solos dentro de dos años.
+
+Diseño: almacén argentino con solera. Papel de estraza, mostaza del cartel,
+carbón y rojo de brasa. Los titulares van en **Fraunces** (serif de rótulo con
+carácter); el texto, en **Archivo**. Todo lo carga el tipo y el color: **no hay
+ni una foto**.
 
 **Dirección provisional:** https://gaepmalaga.github.io/webtaller/che-bolu/
 
@@ -26,18 +31,22 @@ construida alrededor de eso.
 - **Indicador de «abierto / cerrado ahora»** calculado en hora de Madrid,
   independientemente del reloj del visitante, con la hora a la que abre o
   cierra. El día actual se resalta en la tabla de horarios.
-- **Barra fija en móvil**: llamar, pedir y llegar siempre a un toque.
-- **La carta por secciones**, con lo que sale de la parrilla y de la cocina.
-  Sin precios: para eso está el enlace a Just Eat, donde están al día
-  (ver `CONTENIDO-PARA-REVISAR.md`, punto 4).
+- **Barra fija en móvil**: llamar, ver carta y llegar siempre a un toque.
+  Menú desplegable y cabecera que se compacta al hacer scroll.
+- **La carta por secciones** con navegación por pestañas que se ilumina según
+  lo que estás mirando. Sin precios: para eso está el enlace a Just Eat, donde
+  están al día (ver `CONTENIDO-PARA-REVISAR.md`, punto 4).
+- **Detalles con medida**: chispas de brasa en el hero (canvas ligero),
+  marquesina de cortes, revelado escalonado de secciones, cifras que cuentan
+  al aparecer, barra de progreso, plano dibujado a mano de la calle de la Cruz.
 - **Datos estructurados `Restaurant`** (JSON-LD) con dirección, teléfono,
   horario, tipo de cocina y enlace a la carta: es lo que Google lee para la
   ficha del negocio y para «restaurante argentino en Torremolinos».
-- **Cero peticiones a terceros.** La tipografía se sirve desde el propio
+- **Cero peticiones a terceros.** Las dos tipografías se sirven desde el propio
   dominio. Sin Google Fonts, sin analítica, sin píxeles: por eso la página no
   necesita aviso de cookies.
-- Funciona **sin JavaScript** (solo se pierde el aviso de abierto/cerrado),
-  se imprime bien y respeta `prefers-reduced-motion`.
+- Funciona **sin JavaScript** (solo se pierden los extras interactivos),
+  se imprime bien y respeta `prefers-reduced-motion` (apaga todo el movimiento).
 
 ## Estructura
 
@@ -48,8 +57,8 @@ CONTENIDO-PARA-REVISAR.md   Lo que hay que confirmar con el restaurante
 che-bolu-una-sola-pagina.html   La web entera en un archivo (generado)
 assets/
   css/style.css       Hoja de estilo única
-  js/main.js          Horario en vivo, año, aparición al hacer scroll
-  fonts/              Tipografía Archivo (SIL OFL, incluida en OFL.txt)
+  js/main.js          Horario en vivo, navegación activa, revelado, cifras…
+  fonts/              Fraunces + Archivo (SIL OFL, texto en OFL.txt)
   img/favicon.svg     Icono
   img/og.png          Imagen al compartir en WhatsApp/redes
 ```
@@ -104,9 +113,10 @@ por el dominio nuevo, más la línea del `noindex`.
 |---|---|
 | Teléfono | `index.html` — buscar `951909511` (enlaces `tel:` y JSON-LD) |
 | Horario | `assets/js/main.js` (constante `HORARIO`), la tabla de `index.html` y el bloque JSON-LD. Los tres tienen que coincidir |
-| Dirección | `index.html` — hero, sección «Dónde estamos», pie y JSON-LD |
-| Platos | `index.html`, bloques `<article class="menu__bloque">` |
+| Dirección | `index.html` — hero, sección «Dónde», pie y JSON-LD |
+| Platos | `index.html`, bloques `<article class="grupo">` de la carta |
 | Colores | `assets/css/style.css`, bloque `:root` del principio |
+| Textos de la carta corriendo | `index.html`, bloque `<div class="tira">` (dos copias iguales) |
 
 ## Pendiente antes de publicar de verdad
 
@@ -118,5 +128,6 @@ por el dominio nuevo, más la línea del `noindex`.
 
 ## Licencias
 
-Tipografía **Archivo** de Omnibus-Type, bajo SIL Open Font License 1.1
-(`assets/fonts/OFL.txt`). El resto del código es original.
+Tipografías **Fraunces** (The Fraunces Project) y **Archivo** (Omnibus-Type),
+ambas bajo SIL Open Font License 1.1 (`assets/fonts/OFL.txt`). El resto del
+código es original.
