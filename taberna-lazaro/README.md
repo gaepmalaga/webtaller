@@ -61,8 +61,10 @@ la derecha para recuperarla; en móvil baja la hoja y queda la tira.
 
 ## Qué tiene
 
-- **La carta entera con precios**, maquetada como la impresa: nombre, puntitos
-  y precio, fluyendo en dos columnas. Cada plato es una línea de HTML, así que
+- **La carta entera con precios**, maquetada como la impresa: cada sección en
+  su caja —la de comer en caja llena, como en el papel—, con el rótulo por
+  encima de los platos y no por debajo, y un índice arriba para saltar de una
+  a otra. Nombre, puntitos y precio, fluyendo en dos columnas. Cada plato es una línea de HTML, así que
   actualizarla cuesta menos que abrir el archivo.
 - **La calculadora**, que se puede cerrar y recuperar, con la guasa de la casa
   cambiando según lo que lleves.
@@ -100,7 +102,7 @@ assets/
 ## Al cambiar los estilos, subir la versión
 
 `index.html` y `aviso-legal.html` enlazan la hoja de estilo y el script con un
-número detrás: `style.css?v=4`, `main.js?v=4`. **Hay que subirlo cada vez que se
+número detrás: `style.css?v=5`, `main.js?v=5`. **Hay que subirlo cada vez que se
 toquen.** Sin eso, a quien ya haya visto la web el navegador le sirve el CSS
 viejo con el HTML nuevo, y la página se ve rota (pasó: secciones nuevas sin
 estilo ninguno).
@@ -153,6 +155,7 @@ apruebe. Al cambiar de dirección hay que tocar **cinco sitios**:
 | Horario | `assets/js/main.js` (constante `HORARIO`), la tabla de `index.html` y el JSON-LD. Los tres tienen que coincidir |
 | Teléfono, Instagram, correo | `index.html` — hero, «Dónde estamos», pie y JSON-LD |
 | Colores | `assets/css/style.css`, bloque `:root` del principio |
+| Una sección de la carta | `index.html`, su `<section class="grupo">`. El `id` es el que usa el índice de arriba |
 | Logotipo | `index.html`, bloque `<symbol id="ramo">` |
 
 ## Pendiente

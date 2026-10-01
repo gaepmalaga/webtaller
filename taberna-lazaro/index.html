@@ -25,7 +25,7 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=4">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
 </head>
 
 <body>
@@ -150,6 +150,14 @@
         cuando venga el camarero. <b>No se pide nada desde aquí</b>: la lista no
         sale de tu móvil.
       </p>
+      <nav class="indice" aria-label="Secciones de la carta">
+        <a href="#g-comer">Para comer</a>
+        <a href="#g-cervezas">Cervezas</a>
+        <a href="#g-vinos">Vinos</a>
+        <a href="#g-copas">Copas</a>
+        <a href="#g-cafes">Cafés</a>
+        <a href="#g-frias">Frías</a>
+      </nav>
     </header>
 
     <div class="carta__cuerpo">
@@ -162,7 +170,7 @@
              número, con punto). El precio visible se escribe aparte, en
              <i class="it__p">, para poder ponerlo como se quiera.
              ================================================================ -->
-        <section class="grupo grupo--destacado">
+        <section id="g-comer" class="grupo grupo--destacado">
           <h3 class="grupo__t">Para comer</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="comer" data-id="gilda" data-n="Gilda" data-p="2.20"><span class="it__n">Gilda</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
@@ -184,7 +192,7 @@
           <p class="grupo__sug">Y pregúntanos por las <em>sugerencias del día</em>.</p>
         </section>
 
-        <section class="grupo">
+        <section id="g-cervezas" class="grupo">
           <h3 class="grupo__t">Cervezas</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="cana-alhambra" data-n="Caña Alhambra" data-p="2.00"><span class="it__n">Caña Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
@@ -201,7 +209,7 @@
           </ul>
         </section>
 
-        <section class="grupo">
+        <section id="g-vinos" class="grupo">
           <h3 class="grupo__t">Vinos</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="copa-verdejo" data-n="Copa Verdejo" data-p="3.20"><span class="it__n">Copa Verdejo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
@@ -216,7 +224,7 @@
           </p>
         </section>
 
-        <section class="grupo">
+        <section id="g-copas" class="grupo">
           <h3 class="grupo__t">Copas y licores</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="barcelo" data-n="Barceló" data-p="6.50"><span class="it__n">Barceló</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
@@ -237,7 +245,7 @@
           </ul>
         </section>
 
-        <section class="grupo">
+        <section id="g-cafes" class="grupo">
           <h3 class="grupo__t">Cafés e infusiones</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="cafe-solo" data-n="Café solo" data-p="1.50"><span class="it__n">Café solo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
@@ -254,7 +262,7 @@
           </ul>
         </section>
 
-        <section class="grupo grupo--ancho">
+        <section id="g-frias" class="grupo grupo--ancho">
           <h3 class="grupo__t">Bebidas frías</h3>
           <ul class="lista lista--dos">
             <li><button type="button" class="it" data-t="beber" data-id="agua" data-n="Agua 0,5 L" data-p="2.00"><span class="it__n">Agua 0,5 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
@@ -400,7 +408,7 @@
   <span class="tira__c" id="tira-c">0,00 €</span>
 </button>
 
-<script src="assets/js/main.js?v=4" defer></script>
+<script src="assets/js/main.js?v=5" defer></script>
 
 <script type="application/ld+json">
 {

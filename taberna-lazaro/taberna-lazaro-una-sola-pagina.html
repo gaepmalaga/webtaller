@@ -114,6 +114,11 @@ p { margin: 0 0 1em; }
 ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
 img, svg { max-width: 100%; }
 a { color: inherit; text-underline-offset: 0.2em; }
+
+/* Cualquier `display` propio gana al `display:none` que el navegador aplica a
+   [hidden], y eso ya ha dejado a la vista tres cosas que debían estar ocultas.
+   Se zanja aquí para toda la hoja. */
+[hidden] { display: none !important; }
 :focus-visible { outline: 2.5px solid var(--ambar); outline-offset: 3px; border-radius: 2px; }
 
 .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
@@ -288,6 +293,24 @@ body::before {
 }
 .ronda:hover { background: var(--oliva-osc); border-color: var(--oliva-osc); }
 
+/* El índice: para saltar de una sección a otra sin barrer toda la carta. */
+.indice {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 1.5rem; padding-top: 1.3rem;
+  border-top: 1px solid var(--hair);
+}
+.indice a {
+  padding: 0.38rem 0.85rem;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; color: var(--crema-2);
+  border: 1px solid var(--hair); border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.indice a:hover { background: var(--crema); color: var(--oliva-osc); border-color: var(--crema); }
+
+/* Al saltar, que el rótulo no quede pegado al borde de arriba. */
+.grupo { scroll-margin-top: 1.2rem; }
+
 /* -------------------------------------------- la carta y el ticket, juntos */
 .carta__cuerpo { max-width: var(--max); margin: 0 auto; display: grid; gap: 2.5rem; }
 @media (min-width: 72rem) {
@@ -299,14 +322,22 @@ body::before {
 @media (min-width: 46rem) { .carta__cols { columns: 2; } }
 @media (min-width: 72rem) { .carta__cols { columns: 2; } }
 
-.grupo { break-inside: avoid; margin: 0 0 2.6rem; }
+.grupo {
+  break-inside: avoid; margin: 0 0 1.3rem;
+  padding: 1.4rem 1.3rem 1.2rem;
+  border: 1px solid var(--hair); border-radius: 14px;
+  background: color-mix(in srgb, var(--oliva-osc) 24%, transparent);
+}
+/* La de comer va en caja llena, como en la carta de papel. */
+.grupo--destacado { background: var(--oliva-osc); border-color: var(--oliva-osc); }
 .grupo--ancho { column-span: all; }
 
+/* El rótulo manda sobre los platos, no al revés. */
 .grupo__t {
   font-family: var(--f-txt); font-weight: 800;
-  font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--crema); padding-bottom: 0.55rem; margin-bottom: 0.3rem;
-  border-bottom: 1px solid var(--hair);
+  font-size: clamp(1rem, 2.6vw, 1.15rem); letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--crema); padding-bottom: 0.8rem; margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--crema-3);
 }
 .grupo--destacado .grupo__t { border-bottom-color: var(--crema-2); }
 
@@ -340,7 +371,7 @@ body::before {
 
 /* Lo interactivo solo aparece si hay JavaScript. */
 .js .it { cursor: pointer; transition: background 0.14s ease; position: relative; }
-.js .it:hover { background: color-mix(in srgb, var(--oliva-osc) 70%, transparent); }
+.js .it:hover { background: color-mix(in srgb, var(--crema) 11%, transparent); }
 .js .it:hover .it__d { opacity: 0.6; }
 /* El «+» asoma al pasar por encima, pegado al precio. */
 .js .it::after {
@@ -351,7 +382,7 @@ body::before {
 .js .it:hover::after, .js .it:focus-visible::after { width: 0.9em; margin-left: 0.35rem; }
 
 /* Lo que ya está apuntado. */
-.js .it.is-puesto { background: color-mix(in srgb, var(--oliva-osc) 85%, transparent); }
+.js .it.is-puesto { background: color-mix(in srgb, var(--crema) 16%, transparent); }
 .js .it.is-puesto .it__n { font-weight: 600; }
 .js .it.is-puesto::after,
 .js .it.is-puesto:hover::after { content: attr(data-x); width: auto; margin-left: 0.35rem; color: var(--ambar); font-size: 0.82em; }
@@ -483,10 +514,6 @@ body::before {
   border: 0; border-radius: 2px; cursor: pointer;
   box-shadow: 0 14px 34px -18px rgba(0,0,0,0.7);
 }
-/* `display` propio gana al `display:none` que el navegador da a [hidden]:
-   sin esta línea la pestaña se vería sin haber cerrado nada, y la tira
-   aparecería incluso sin JavaScript. */
-.pestana[hidden], .tira[hidden] { display: none; }
 .pestana:hover { background: #fff; }
 .pestana__c { font-variant-numeric: tabular-nums; color: color-mix(in srgb, var(--tinta) 62%, transparent); }
 .pestana__c:empty { display: none; }
@@ -526,7 +553,6 @@ body::before {
 .tira__t { flex: 1; }
 .tira__c { flex: none; font-variant-numeric: tabular-nums; }
 .tira__c:empty { display: none; }
-.tira__n[hidden] { display: none; }
 /* Sin nada apuntado, la tira invita en vez de pregonar un cero. */
 .tira:has(.tira__n[hidden]) .tira__t { font-weight: 600; color: var(--crema-2); }
 @media (min-width: 72rem) { .tira { display: none; } }
@@ -583,7 +609,6 @@ body::before {
   border: 1px solid var(--hair-o); border-radius: 999px;
   font-size: 0.85rem; font-weight: 600;
 }
-.estado[hidden] { display: none; }
 .estado__punto { width: 8px; height: 8px; border-radius: 50%; background: var(--crema-3); flex: none; }
 .estado.is-abierto .estado__punto { background: #3f8d5c; box-shadow: 0 0 0 3px rgba(63,141,92,0.2); }
 .estado.is-cerrado .estado__punto { background: #b08224; box-shadow: 0 0 0 3px rgba(176,130,36,0.18); }
@@ -771,6 +796,14 @@ body::before {
         cuando venga el camarero. <b>No se pide nada desde aquí</b>: la lista no
         sale de tu móvil.
       </p>
+      <nav class="indice" aria-label="Secciones de la carta">
+        <a href="#g-comer">Para comer</a>
+        <a href="#g-cervezas">Cervezas</a>
+        <a href="#g-vinos">Vinos</a>
+        <a href="#g-copas">Copas</a>
+        <a href="#g-cafes">Cafés</a>
+        <a href="#g-frias">Frías</a>
+      </nav>
     </header>
 
     <div class="carta__cuerpo">
@@ -783,7 +816,7 @@ body::before {
              número, con punto). El precio visible se escribe aparte, en
              <i class="it__p">, para poder ponerlo como se quiera.
              ================================================================ -->
-        <section class="grupo grupo--destacado">
+        <section id="g-comer" class="grupo grupo--destacado">
           <h3 class="grupo__t">Para comer</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="comer" data-id="gilda" data-n="Gilda" data-p="2.20"><span class="it__n">Gilda</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
@@ -805,7 +838,7 @@ body::before {
           <p class="grupo__sug">Y pregúntanos por las <em>sugerencias del día</em>.</p>
         </section>
 
-        <section class="grupo">
+        <section id="g-cervezas" class="grupo">
           <h3 class="grupo__t">Cervezas</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="cana-alhambra" data-n="Caña Alhambra" data-p="2.00"><span class="it__n">Caña Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
@@ -822,7 +855,7 @@ body::before {
           </ul>
         </section>
 
-        <section class="grupo">
+        <section id="g-vinos" class="grupo">
           <h3 class="grupo__t">Vinos</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="copa-verdejo" data-n="Copa Verdejo" data-p="3.20"><span class="it__n">Copa Verdejo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
@@ -837,7 +870,7 @@ body::before {
           </p>
         </section>
 
-        <section class="grupo">
+        <section id="g-copas" class="grupo">
           <h3 class="grupo__t">Copas y licores</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="barcelo" data-n="Barceló" data-p="6.50"><span class="it__n">Barceló</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
@@ -858,7 +891,7 @@ body::before {
           </ul>
         </section>
 
-        <section class="grupo">
+        <section id="g-cafes" class="grupo">
           <h3 class="grupo__t">Cafés e infusiones</h3>
           <ul class="lista">
             <li><button type="button" class="it" data-t="beber" data-id="cafe-solo" data-n="Café solo" data-p="1.50"><span class="it__n">Café solo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
@@ -875,7 +908,7 @@ body::before {
           </ul>
         </section>
 
-        <section class="grupo grupo--ancho">
+        <section id="g-frias" class="grupo grupo--ancho">
           <h3 class="grupo__t">Bebidas frías</h3>
           <ul class="lista lista--dos">
             <li><button type="button" class="it" data-t="beber" data-id="agua" data-n="Agua 0,5 L" data-p="2.00"><span class="it__n">Agua 0,5 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
