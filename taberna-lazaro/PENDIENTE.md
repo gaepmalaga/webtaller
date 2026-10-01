@@ -50,15 +50,19 @@ Transcrita de las dos fotos de la carta. **Que la lea el dueño**, sobre todo:
 Si la carta cambia, cada plato es **una línea** de `index.html`: nombre, los
 puntitos y el precio. Se tarda más en abrir el archivo que en cambiarlo.
 
-## 5. El ticket
+## 5. La calculadora
 
-La web deja que la gente vaya tocando platos y le suma la cuenta. **Avisa de
-que es una cuenta de mentira**, para hacerse una idea, y lo dice en el propio
-ticket. Repasar dos cosas con el dueño:
+La web deja ir tocando platos y va echando la cuenta. Está montada para que
+**nadie pueda creer que está pidiendo**: se llama «Echa la cuenta», lleva
+debajo «calculadora · aquí no se pide nada», el total se llama «saldría por»,
+no hay membrete del bar y el aviso va enmarcado dentro. Aun así, dos cosas que
+decidir con el dueño:
 
-- Que le parezca bien la idea (a algún hostelero no le gusta que se vea el
-  total antes de sentarse; a la mayoría le encanta, porque aquí los precios
-  juegan a favor).
+- **Si quiere tenerla.** A algún hostelero no le gusta que se vea el total
+  antes de sentarse. Aquí los precios juegan a favor, así que la recomendación
+  es dejarla; pero si dice que no, se quita entera borrando la sección
+  `<aside class="cuenta">`, la tira, la pestaña y el bloque 1 del JavaScript:
+  la carta se queda igual de bien.
 - Las frases que salen según lo que lleves —«eso no es ni calentar», «ahí ya se
   cena en condiciones»— **las ha escrito la web**, imitando su tono. Están
   todas juntas en `assets/js/main.js`, función `guasa()`.

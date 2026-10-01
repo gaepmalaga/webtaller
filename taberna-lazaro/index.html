@@ -81,20 +81,73 @@
     </div>
   </section>
 
+
+  <!-- =============================================================== intro -->
+  <section class="intro">
+    <div class="intro__in">
+      <p class="intro__sobre">La taberna</p>
+      <p class="intro__txt">
+        Taberna Lázaro abrió hace poco en la calle Alfredo Catalani, en pleno
+        <b>Huelin</b>. Tapas para compartir, cervezas bien tiradas y copas, a
+        precios de barrio: la caña a <b>2,00 €</b> y la gilda a <b>2,20 €</b>.
+        La carta es corta a propósito, y lo que no está escrito se pregunta en
+        la barra.
+      </p>
+      <ul class="intro__datos">
+        <li><b>Dónde</b> C/ Alfredo Catalani, 3 · Huelin, Málaga</li>
+        <li><b>Metro</b> L2, parada Princesa-Huelin</li>
+        <li><b>Horario</b> <span class="falta">pendiente</span></li>
+        <li><b>Reservas</b> <span class="falta">teléfono pendiente</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ cuánto -->
+  <!-- Los totales los calcula el JavaScript con los precios de la carta de
+       abajo, así que no pueden quedarse desfasados. Los que van escritos aquí
+       son el valor correcto para quien no tenga JavaScript. -->
+  <section class="cuanto">
+    <div class="cuanto__cab">
+      <h2 class="cuanto__t">¿Y esto qué vale?</h2>
+      <p class="cuanto__s">Tres cuentas de verdad, con los precios de la carta.</p>
+    </div>
+    <ul class="escenas">
+      <li>
+        <button type="button" class="esc" data-ronda='[["cana-alhambra",1],["gilda",1]]'>
+          <span class="esc__n">Una caña y una tapa</span>
+          <span class="esc__d">Lo que se entra a tomar sin pensarlo</span>
+          <span class="esc__t" data-total>4,20 €</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="esc" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>
+          <span class="esc__n">Picoteo para dos</span>
+          <span class="esc__d">Dos cañas, dos gildas, croquetas y japo bravas</span>
+          <span class="esc__t" data-total>19,90 €</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="esc" data-ronda='[["gyozas",1],["japo-bravas",1],["tartar-salchichon",1],["rusa",1],["cana-alhambra",2],["pan",1]]'>
+          <span class="esc__n">Cena para dos, sin mirar</span>
+          <span class="esc__d">Cuatro cosas en medio, dos cañas y pan</span>
+          <span class="esc__t" data-total>32,00 €</span>
+        </button>
+      </li>
+    </ul>
+    <p class="cuanto__pie">
+      Toca cualquiera y te la pasamos a la calculadora de la carta.
+      <b>Aquí no se pide nada</b>: es para hacerte una idea antes de venir.
+    </p>
+  </section>
+
   <!-- =============================================================== carta -->
   <section class="carta" id="carta">
     <header class="carta__cab">
       <h2 class="carta__t">La carta</h2>
       <p class="carta__modo">
-        Toca cualquier línea y te la vamos apuntando.
-        <b>Así sabes lo que llevas antes de pedirlo.</b>
+        Toca lo que te pedirías y la calculadora te va echando la cuenta.
+        <b>No se pide nada desde aquí</b> — es solo para ver el precio.
       </p>
-      <div class="rondas" hidden>
-        <span class="rondas__t">O empieza por una ronda hecha:</span>
-        <button type="button" class="ronda" data-ronda='[["cana-alhambra",2],["gilda",2]]'>La de siempre</button>
-        <button type="button" class="ronda" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>Picoteo entre dos</button>
-        <button type="button" class="ronda" data-ronda='[["copa-rioja",1]]'>Solo una copa</button>
-      </div>
     </header>
 
     <div class="carta__cuerpo">
@@ -228,18 +281,22 @@
       <!-- El ticket. Oculto sin JavaScript: entonces esto es solo una carta. -->
       <aside class="cuenta" id="cuenta" hidden aria-labelledby="cuenta-t">
         <div class="cuenta__papel">
-          <h2 class="cuenta__t" id="cuenta-t">Tu cuenta</h2>
-          <p class="cuenta__sitio">Taberna Lázaro · Huelin</p>
+          <button type="button" class="cuenta__cerrar" id="cuenta-cerrar" aria-label="Cerrar la calculadora">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </button>
+
+          <h2 class="cuenta__t" id="cuenta-t">Echa la cuenta</h2>
+          <p class="cuenta__sitio">Calculadora · aquí no se pide nada</p>
 
           <ul class="cuenta__lineas" id="cuenta-lineas"></ul>
 
           <p class="cuenta__vacia" id="cuenta-vacia">
-            Todavía no has pedido nada.<br>
-            <span>Toca un plato o una caña ahí al lado.</span>
+            Toca un plato o una caña de la carta<br>
+            <span>y te vamos echando la cuenta.</span>
           </p>
 
           <div class="cuenta__total" id="cuenta-total" hidden>
-            <span class="cuenta__tl">Total</span>
+            <span class="cuenta__tl">Saldría por</span>
             <output class="cuenta__tn" id="cuenta-cifra" for="cuenta-lineas">0,00 €</output>
           </div>
 
@@ -250,8 +307,9 @@
           </div>
 
           <p class="cuenta__nota">
-            Es una cuenta de mentira, para hacerse una idea. La de verdad te la
-            damos en la barra, y con el IVA ya incluido igual que aquí.
+            Esto no llega a la cocina ni a la barra: es una calculadora para
+            hacerte una idea antes de venir. La cuenta de verdad se pide dentro,
+            y lleva el IVA incluido igual que estos precios.
           </p>
         </div>
       </aside>
@@ -328,10 +386,16 @@
   </p>
 </footer>
 
-<!-- Barra de la cuenta en móvil. La pone el JavaScript. -->
+<!-- Para volver a abrir la calculadora en escritorio cuando se ha cerrado. -->
+<button type="button" class="pestana" id="pestana" hidden aria-controls="cuenta">
+  Echa la cuenta
+  <span class="pestana__c" id="pestana-c"></span>
+</button>
+
+<!-- Barra de la calculadora en móvil. La pone el JavaScript. -->
 <button type="button" class="tira" id="tira" hidden aria-expanded="false" aria-controls="cuenta">
   <span class="tira__n" id="tira-n">0</span>
-  <span class="tira__t">Tu cuenta</span>
+  <span class="tira__t">Echa la cuenta</span>
   <span class="tira__c" id="tira-c">0,00 €</span>
 </button>
 

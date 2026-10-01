@@ -35,7 +35,13 @@
   var elTira     = document.getElementById('tira');
   var elTiraN    = document.getElementById('tira-n');
   var elTiraC    = document.getElementById('tira-c');
-  var elRondas   = document.querySelector('.rondas');
+  var elEscenas  = document.querySelector('.escenas');
+  var elCerrar   = document.getElementById('cuenta-cerrar');
+  var elPestana  = document.getElementById('pestana');
+  var elPestanaC = document.getElementById('pestana-c');
+  var elCuerpo   = document.querySelector('.carta__cuerpo');
+
+  var anchaDeSobra = window.matchMedia('(min-width: 72rem)');
 
   /* La guasa de la casa, según lo que lleves. El tono lo marca la carta. */
   function guasa(total, unidades) {
@@ -99,9 +105,10 @@
     elCifra.textContent = euros.format(t);
     elGuasa.textContent = guasa(t, n);
 
-    /* La tira de abajo, en móvil. */
+    /* La tira de abajo en móvil y la pestaña de escritorio. */
     elTiraN.textContent = String(n);
     elTiraC.textContent = euros.format(t);
+    elPestanaC.textContent = n ? euros.format(t) : '';
 
     /* Y las marcas en la propia carta. */
     document.querySelectorAll('.it').forEach(function (b) {
@@ -137,17 +144,40 @@
     b.addEventListener('click', function () { poner(b.dataset.id, nombre, precio); });
   });
 
-  /* Las rondas hechas. */
-  if (elRondas) {
-    elRondas.hidden = false;
-    elRondas.querySelectorAll('.ronda').forEach(function (b) {
+  /* ------------------------------------------------------- los escenarios --
+     Los totales de «¿Y esto qué vale?» NO están escritos a mano: se calculan
+     con los precios de la carta de abajo. Así no pueden quedarse desfasados
+     cuando cambie un precio. Lo que va escrito en el HTML es el valor correcto
+     para quien no tenga JavaScript. */
+  function lista(b) {
+    try { return JSON.parse(b.dataset.ronda); } catch (e) { return []; }
+  }
+
+  function precioDe(id) {
+    var origen = document.querySelector('.it[data-id="' + id + '"]');
+    return origen ? { n: origen.dataset.n, p: parseFloat(origen.dataset.p) } : null;
+  }
+
+  if (elEscenas) {
+    elEscenas.querySelectorAll('.esc').forEach(function (b) {
+      var partes = lista(b);
+      var suma = 0;
+      partes.forEach(function (par) {
+        var it = precioDe(par[0]);
+        if (it) { suma += it.p * par[1]; }
+      });
+
+      var cifra = b.querySelector('[data-total]');
+      if (cifra && suma > 0) { cifra.textContent = euros.format(suma); }
+
       b.addEventListener('click', function () {
-        var lista;
-        try { lista = JSON.parse(b.dataset.ronda); } catch (e) { return; }
-        lista.forEach(function (par) {
-          var origen = document.querySelector('.it[data-id="' + par[0] + '"]');
-          if (origen) { poner(par[0], origen.dataset.n, parseFloat(origen.dataset.p), par[1]); }
+        pedido = Object.create(null);
+        partes.forEach(function (par) {
+          var it = precioDe(par[0]);
+          if (it) { poner(par[0], it.n, it.p, par[1]); }
         });
+        cerrar(false);
+        document.getElementById('carta').scrollIntoView({ block: 'start' });
         abrir(true);
       });
     });
@@ -158,9 +188,22 @@
     pintar();
   });
 
+  /* ------------------------------------------- cerrarla y volver a abrirla --
+     Cerrada: en escritorio desaparece el papel y la carta se queda con todo el
+     ancho, con una pestaña abajo a la derecha para recuperarla; en móvil la
+     hoja baja y queda la tira, que es su propio tirador. */
+  function cerrar(si) {
+    elCuenta.classList.toggle('is-cerrada', si);
+    if (elCuerpo) { elCuerpo.classList.toggle('sin-cuenta', si); }
+    elPestana.hidden = !si;
+    if (si) { elCuenta.classList.remove('is-abierta'); }
+    elTira.setAttribute('aria-expanded', 'false');
+  }
+
   /* --------------------------------------------- la hoja de abajo en móvil */
   function abrir(si) {
-    if (window.matchMedia('(min-width: 72rem)').matches) { return; }
+    if (anchaDeSobra.matches) { return; }
+    if (si) { cerrar(false); }
     elCuenta.classList.toggle('is-abierta', si);
     elTira.setAttribute('aria-expanded', si ? 'true' : 'false');
   }
@@ -169,15 +212,30 @@
     abrir(!elCuenta.classList.contains('is-abierta'));
   });
 
+  elCerrar.addEventListener('click', function () {
+    if (anchaDeSobra.matches) { cerrar(true); } else { abrir(false); }
+  });
+
+  elPestana.addEventListener('click', function () { cerrar(false); });
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { abrir(false); }
+    if (e.key !== 'Escape') { return; }
+    if (anchaDeSobra.matches) { cerrar(true); } else { abrir(false); }
   });
 
   document.addEventListener('click', function (e) {
     if (!elCuenta.classList.contains('is-abierta')) { return; }
     if (elCuenta.contains(e.target) || elTira.contains(e.target)) { return; }
-    if (e.target.closest && e.target.closest('.it, .ronda')) { return; }
+    /* Un toque en la carta o en un escenario acaba de abrirla: ese mismo
+       clic no puede cerrarla al subir por el documento. */
+    if (e.target.closest && e.target.closest('.it, .esc')) { return; }
     abrir(false);
+  });
+
+  anchaDeSobra.addEventListener('change', function () {
+    elCuenta.classList.remove('is-abierta');
+    elTira.setAttribute('aria-expanded', 'false');
+    elPestana.hidden = !elCuenta.classList.contains('is-cerrada');
   });
 
   elCuenta.hidden = false;

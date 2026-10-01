@@ -23,27 +23,46 @@ remate y los lemas— sale de **la carta de la casa**, no de ninguna plantilla.
 
 ## La idea
 
-**La web es la carta.** No hay portada con titular y tres bloques debajo: se
-abre como se abre una carta —tapa, y dentro los platos— y la carta entera es
-lo que ocupa la página.
+**La carta es el centro de la web.** La página se abre como se abre una carta
+—tapa, y dentro los platos— y la carta entera, con sus precios, es lo que
+ocupa el sitio. Antes de ella hay lo justo: quién es la taberna, dónde está, y
+tres cuentas de ejemplo.
 
-Y la carta se toca. Al pulsar una línea, el plato se apunta en **un ticket que
-va sumando solo**, pegado al lado mientras bajas (o en una hoja que sube desde
-abajo, en el móvil). Responde a la pregunta que tiene cualquiera que no conoce
-un bar y mira la carta por fuera: *¿esto cuánto me va a costar?* Dos gildas y
-dos cañas, 8,40 €. Ahí lo tienes, sin calcular.
+Y la carta se toca: al pulsar una línea, el plato pasa a **una calculadora que
+va sumando**, pegada al lado mientras bajas, o en una hoja que sube desde abajo
+en el móvil. Responde a lo que se pregunta cualquiera que mira la carta de un
+bar que no conoce: *¿esto cuánto me va a costar?*
 
-Es un juego, no una comanda: no se manda nada a ninguna parte, no se guarda
-nada y no hay ni una petición a terceros.
+### Que no parezca una comanda
+
+Es el riesgo evidente de la idea, y por eso se ataja en el diseño y no en la
+letra pequeña:
+
+- Se llama **«Echa la cuenta»**, no «tu cuenta», y debajo pone
+  **«calculadora · aquí no se pide nada»**.
+- El total no se llama «total» sino **«saldría por»**.
+- No lleva membrete del bar: un ticket que ponga «Taberna Lázaro · Huelin» con
+  un total debajo parece una comanda de verdad, y eso se quitó.
+- El aviso va **enmarcado dentro del propio ticket**, no al pie.
+- Y la instrucción de la carta dice *«toca lo que te pedirías»*, no *«te lo
+  apuntamos»*.
+
+Además: no se manda nada a ninguna parte, no se guarda nada y no hay ni una
+petición a terceros. Se puede **cerrar** (la × del ticket, o Escape): en
+escritorio la carta se queda con todo el ancho y aparece una pestaña abajo a
+la derecha para recuperarla; en móvil baja la hoja y queda la tira.
 
 ## Qué tiene
 
 - **La carta entera con precios**, maquetada como la impresa: nombre, puntitos
   y precio, fluyendo en dos columnas. Cada plato es una línea de HTML, así que
   actualizarla cuesta menos que abrir el archivo.
-- **El ticket que suma solo**, con tres «rondas hechas» para empezar de un
-  toque (la de siempre, picoteo entre dos, solo una copa) y la guasa de la casa
+- **La calculadora**, que se puede cerrar y recuperar, con la guasa de la casa
   cambiando según lo que lleves.
+- **«¿Y esto qué vale?»**: tres cuentas de ejemplo (una caña y una tapa,
+  picoteo para dos, cena para dos) cuyos totales **los calcula el JavaScript
+  con los precios de la carta**, para que no puedan quedarse desfasados. Al
+  tocar una, se pasa a la calculadora.
 - **Indicador de «abierto / cerrado ahora»** calculado en hora de Málaga,
   independientemente del reloj del visitante, con el día de hoy resaltado en la
   tabla. *Se enciende solo en cuanto se rellene el horario* (ver `PENDIENTE.md`).
@@ -113,7 +132,7 @@ apruebe. Al cambiar de dirección hay que tocar **cinco sitios**:
 | Qué | Dónde |
 |---|---|
 | Un plato o un precio | `index.html`, su línea. Lo que cuenta: `data-id` (único), `data-n` (nombre) y `data-p` (precio en número). El precio visible va aparte, en `<i class="it__p">` |
-| Una ronda hecha | `index.html`, el `data-ronda` de cada `<button class="ronda">`: pares de `[id, cantidad]` |
+| Una cuenta de ejemplo | `index.html`, el `data-ronda` de cada `<button class="esc">`: pares de `[id, cantidad]`. El total se recalcula solo |
 | La guasa del ticket | `assets/js/main.js`, función `guasa()` |
 | Una sección entera de la carta | `index.html`, el `<article class="menu__bloque">` que toque |
 | Horario | `assets/js/main.js` (constante `HORARIO`), la tabla de `index.html` y el JSON-LD. Los tres tienen que coincidir |

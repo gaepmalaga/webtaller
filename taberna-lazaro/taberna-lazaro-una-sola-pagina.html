@@ -203,6 +203,67 @@ body::before {
 @keyframes baja { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 @media (prefers-reduced-motion: reduce) { .tapa__abrir svg { animation: none; } }
 
+
+/* ================================================== INTRO Y CUÁNTO VALE == */
+/* La cara interior de la tapa: papel, y encima la nota de la casa. */
+.intro, .cuanto { background: var(--papel); color: var(--tinta); }
+.intro { padding: clamp(2.8rem, 8vw, 5rem) var(--pad) clamp(2rem, 5vw, 3rem); }
+.intro__in { max-width: 54rem; margin: 0 auto; }
+.intro__sobre {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--tinta) 50%, transparent); margin-bottom: 1.2rem;
+}
+.intro__txt {
+  font-family: var(--f-tit); font-weight: 400; font-variation-settings: 'opsz' 48;
+  font-size: clamp(1.25rem, 3.2vw, 1.85rem); line-height: 1.35;
+  max-width: 34ch; margin-bottom: 2rem;
+}
+.intro__txt b { font-weight: 600; }
+.intro__datos {
+  display: grid; gap: 0; border-top: 1px solid var(--hair-o);
+  font-size: 0.93rem;
+}
+@media (min-width: 46rem) { .intro__datos { grid-template-columns: repeat(2, 1fr); column-gap: 2.5rem; } }
+.intro__datos li {
+  display: flex; flex-wrap: wrap; gap: 0.2rem 0.8rem;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--hair-o);
+}
+.intro__datos b {
+  flex: none; min-width: 5rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--tinta) 52%, transparent); align-self: center;
+}
+
+.cuanto { padding: clamp(1.5rem, 4vw, 2.5rem) var(--pad) clamp(3rem, 8vw, 5rem); }
+.cuanto__cab { max-width: 54rem; margin: 0 auto 1.6rem; }
+.cuanto__t { font-size: clamp(1.9rem, 5.5vw, 3rem); font-variation-settings: 'opsz' 72; }
+.cuanto__s { margin: 0.4rem 0 0; color: color-mix(in srgb, var(--tinta) 65%, transparent); }
+
+/* Los tres escenarios: filas, no tarjetas. */
+.escenas { max-width: 54rem; margin: 0 auto; border-top: 1px solid var(--hair-o); }
+.escenas li { border-bottom: 1px solid var(--hair-o); }
+.esc {
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline;
+  gap: 0.15rem 1.5rem; width: 100%; padding: 1.1rem 0.4rem;
+  font: inherit; color: inherit; text-align: left;
+  background: none; border: 0; cursor: pointer;
+  transition: background 0.15s ease, padding 0.15s ease;
+}
+.esc:hover { background: color-mix(in srgb, var(--tinta) 5%, transparent); padding-inline: 0.8rem; }
+.esc__n { font-family: var(--f-tit); font-size: clamp(1.15rem, 3vw, 1.5rem); font-variation-settings: 'opsz' 24; }
+.esc__d { grid-column: 1; font-size: 0.88rem; color: color-mix(in srgb, var(--tinta) 60%, transparent); }
+.esc__t {
+  grid-row: 1 / 3; grid-column: 2; align-self: center;
+  font-family: var(--f-tit); font-weight: 600; font-variation-settings: 'opsz' 48;
+  font-size: clamp(1.4rem, 4.5vw, 1.9rem); font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em; white-space: nowrap;
+}
+.cuanto__pie {
+  max-width: 54rem; margin: 1.4rem auto 0;
+  font-size: 0.88rem; color: color-mix(in srgb, var(--tinta) 62%, transparent);
+}
+.cuanto__pie b { color: var(--tinta); }
+
 /* ================================================================= CARTA == */
 .carta { padding: clamp(2.5rem, 7vw, 5rem) var(--pad) clamp(3rem, 7vw, 5rem); }
 .carta__cab { max-width: var(--max); margin: 0 auto clamp(2rem, 5vw, 3.2rem); }
@@ -328,9 +389,10 @@ body::before {
   text-align: center;
 }
 .cuenta__sitio {
-  text-align: center; font-size: 0.72rem; letter-spacing: 0.1em;
-  color: color-mix(in srgb, var(--tinta) 55%, transparent);
-  margin: 0.3rem 0 1.1rem; padding-bottom: 1rem;
+  text-align: center; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--tinta) 50%, transparent);
+  margin: 0.35rem 0 1.1rem; padding-bottom: 1rem;
   border-bottom: 1px dashed var(--hair-o);
 }
 
@@ -392,10 +454,45 @@ body::before {
 .cuenta__borrar:hover { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
 
 .cuenta__nota {
-  margin: 1.2rem 0 0; padding-top: 0.9rem; border-top: 1px dashed var(--hair-o);
-  font-size: 0.72rem; line-height: 1.45;
-  color: color-mix(in srgb, var(--tinta) 52%, transparent);
+  margin: 1.2rem 0 0; padding: 0.7rem 0.75rem; border: 1px dashed var(--hair-o);
+  font-size: 0.75rem; line-height: 1.45;
+  color: color-mix(in srgb, var(--tinta) 68%, transparent);
 }
+
+
+/* ------------------------------------------------ cerrarla y recuperarla -- */
+.cuenta__cerrar {
+  position: absolute; top: 0.6rem; right: 0.6rem;
+  display: grid; place-content: center;
+  width: 1.9rem; height: 1.9rem; padding: 0;
+  background: none; border: 0; border-radius: 50%;
+  color: color-mix(in srgb, var(--tinta) 55%, transparent); cursor: pointer;
+}
+.cuenta__cerrar:hover { background: color-mix(in srgb, var(--tinta) 10%, transparent); color: var(--tinta); }
+
+.cuenta.is-cerrada .cuenta__papel { display: none; }
+/* Cerrada en escritorio, la carta se queda con todo el ancho. */
+@media (min-width: 72rem) {
+  .carta__cuerpo.sin-cuenta { grid-template-columns: minmax(0, 1fr); }
+}
+
+.pestana {
+  position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 61;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.75rem 1.2rem;
+  font: inherit; font-size: 0.9rem; font-weight: 700;
+  background: var(--papel); color: var(--tinta);
+  border: 0; border-radius: 2px; cursor: pointer;
+  box-shadow: 0 14px 34px -18px rgba(0,0,0,0.7);
+}
+/* `display` propio gana al `display:none` que el navegador da a [hidden]:
+   sin esta línea la pestaña se vería sin haber cerrado nada, y la tira
+   aparecería incluso sin JavaScript. */
+.pestana[hidden], .tira[hidden] { display: none; }
+.pestana:hover { background: #fff; }
+.pestana__c { font-variant-numeric: tabular-nums; color: color-mix(in srgb, var(--tinta) 62%, transparent); }
+.pestana__c:empty { display: none; }
+@media (max-width: 71.99rem) { .pestana { display: none; } }
 
 /* ----------------------------------- en móvil, el ticket es una hoja abajo */
 @media (max-width: 71.99rem) {
@@ -408,6 +505,7 @@ body::before {
     transition: transform 0.26s cubic-bezier(.3,.8,.3,1);
   }
   .cuenta.is-abierta { transform: none; }
+  .cuenta.is-cerrada { transform: translateY(102%); }
   .cuenta__papel { box-shadow: 0 -16px 40px -16px rgba(0,0,0,0.5); }
   @media (prefers-reduced-motion: reduce) { .cuenta { transition: none; } }
 }
@@ -602,20 +700,73 @@ body::before {
     </div>
   </section>
 
+
+  <!-- =============================================================== intro -->
+  <section class="intro">
+    <div class="intro__in">
+      <p class="intro__sobre">La taberna</p>
+      <p class="intro__txt">
+        Taberna Lázaro abrió hace poco en la calle Alfredo Catalani, en pleno
+        <b>Huelin</b>. Tapas para compartir, cervezas bien tiradas y copas, a
+        precios de barrio: la caña a <b>2,00 €</b> y la gilda a <b>2,20 €</b>.
+        La carta es corta a propósito, y lo que no está escrito se pregunta en
+        la barra.
+      </p>
+      <ul class="intro__datos">
+        <li><b>Dónde</b> C/ Alfredo Catalani, 3 · Huelin, Málaga</li>
+        <li><b>Metro</b> L2, parada Princesa-Huelin</li>
+        <li><b>Horario</b> <span class="falta">pendiente</span></li>
+        <li><b>Reservas</b> <span class="falta">teléfono pendiente</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ cuánto -->
+  <!-- Los totales los calcula el JavaScript con los precios de la carta de
+       abajo, así que no pueden quedarse desfasados. Los que van escritos aquí
+       son el valor correcto para quien no tenga JavaScript. -->
+  <section class="cuanto">
+    <div class="cuanto__cab">
+      <h2 class="cuanto__t">¿Y esto qué vale?</h2>
+      <p class="cuanto__s">Tres cuentas de verdad, con los precios de la carta.</p>
+    </div>
+    <ul class="escenas">
+      <li>
+        <button type="button" class="esc" data-ronda='[["cana-alhambra",1],["gilda",1]]'>
+          <span class="esc__n">Una caña y una tapa</span>
+          <span class="esc__d">Lo que se entra a tomar sin pensarlo</span>
+          <span class="esc__t" data-total>4,20 €</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="esc" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>
+          <span class="esc__n">Picoteo para dos</span>
+          <span class="esc__d">Dos cañas, dos gildas, croquetas y japo bravas</span>
+          <span class="esc__t" data-total>19,90 €</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="esc" data-ronda='[["gyozas",1],["japo-bravas",1],["tartar-salchichon",1],["rusa",1],["cana-alhambra",2],["pan",1]]'>
+          <span class="esc__n">Cena para dos, sin mirar</span>
+          <span class="esc__d">Cuatro cosas en medio, dos cañas y pan</span>
+          <span class="esc__t" data-total>32,00 €</span>
+        </button>
+      </li>
+    </ul>
+    <p class="cuanto__pie">
+      Toca cualquiera y te la pasamos a la calculadora de la carta.
+      <b>Aquí no se pide nada</b>: es para hacerte una idea antes de venir.
+    </p>
+  </section>
+
   <!-- =============================================================== carta -->
   <section class="carta" id="carta">
     <header class="carta__cab">
       <h2 class="carta__t">La carta</h2>
       <p class="carta__modo">
-        Toca cualquier línea y te la vamos apuntando.
-        <b>Así sabes lo que llevas antes de pedirlo.</b>
+        Toca lo que te pedirías y la calculadora te va echando la cuenta.
+        <b>No se pide nada desde aquí</b> — es solo para ver el precio.
       </p>
-      <div class="rondas" hidden>
-        <span class="rondas__t">O empieza por una ronda hecha:</span>
-        <button type="button" class="ronda" data-ronda='[["cana-alhambra",2],["gilda",2]]'>La de siempre</button>
-        <button type="button" class="ronda" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>Picoteo entre dos</button>
-        <button type="button" class="ronda" data-ronda='[["copa-rioja",1]]'>Solo una copa</button>
-      </div>
     </header>
 
     <div class="carta__cuerpo">
@@ -749,18 +900,22 @@ body::before {
       <!-- El ticket. Oculto sin JavaScript: entonces esto es solo una carta. -->
       <aside class="cuenta" id="cuenta" hidden aria-labelledby="cuenta-t">
         <div class="cuenta__papel">
-          <h2 class="cuenta__t" id="cuenta-t">Tu cuenta</h2>
-          <p class="cuenta__sitio">Taberna Lázaro · Huelin</p>
+          <button type="button" class="cuenta__cerrar" id="cuenta-cerrar" aria-label="Cerrar la calculadora">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </button>
+
+          <h2 class="cuenta__t" id="cuenta-t">Echa la cuenta</h2>
+          <p class="cuenta__sitio">Calculadora · aquí no se pide nada</p>
 
           <ul class="cuenta__lineas" id="cuenta-lineas"></ul>
 
           <p class="cuenta__vacia" id="cuenta-vacia">
-            Todavía no has pedido nada.<br>
-            <span>Toca un plato o una caña ahí al lado.</span>
+            Toca un plato o una caña de la carta<br>
+            <span>y te vamos echando la cuenta.</span>
           </p>
 
           <div class="cuenta__total" id="cuenta-total" hidden>
-            <span class="cuenta__tl">Total</span>
+            <span class="cuenta__tl">Saldría por</span>
             <output class="cuenta__tn" id="cuenta-cifra" for="cuenta-lineas">0,00 €</output>
           </div>
 
@@ -771,8 +926,9 @@ body::before {
           </div>
 
           <p class="cuenta__nota">
-            Es una cuenta de mentira, para hacerse una idea. La de verdad te la
-            damos en la barra, y con el IVA ya incluido igual que aquí.
+            Esto no llega a la cocina ni a la barra: es una calculadora para
+            hacerte una idea antes de venir. La cuenta de verdad se pide dentro,
+            y lleva el IVA incluido igual que estos precios.
           </p>
         </div>
       </aside>
@@ -849,10 +1005,16 @@ body::before {
   </p>
 </footer>
 
-<!-- Barra de la cuenta en móvil. La pone el JavaScript. -->
+<!-- Para volver a abrir la calculadora en escritorio cuando se ha cerrado. -->
+<button type="button" class="pestana" id="pestana" hidden aria-controls="cuenta">
+  Echa la cuenta
+  <span class="pestana__c" id="pestana-c"></span>
+</button>
+
+<!-- Barra de la calculadora en móvil. La pone el JavaScript. -->
 <button type="button" class="tira" id="tira" hidden aria-expanded="false" aria-controls="cuenta">
   <span class="tira__n" id="tira-n">0</span>
-  <span class="tira__t">Tu cuenta</span>
+  <span class="tira__t">Echa la cuenta</span>
   <span class="tira__c" id="tira-c">0,00 €</span>
 </button>
 
@@ -894,7 +1056,13 @@ body::before {
   var elTira     = document.getElementById('tira');
   var elTiraN    = document.getElementById('tira-n');
   var elTiraC    = document.getElementById('tira-c');
-  var elRondas   = document.querySelector('.rondas');
+  var elEscenas  = document.querySelector('.escenas');
+  var elCerrar   = document.getElementById('cuenta-cerrar');
+  var elPestana  = document.getElementById('pestana');
+  var elPestanaC = document.getElementById('pestana-c');
+  var elCuerpo   = document.querySelector('.carta__cuerpo');
+
+  var anchaDeSobra = window.matchMedia('(min-width: 72rem)');
 
   /* La guasa de la casa, según lo que lleves. El tono lo marca la carta. */
   function guasa(total, unidades) {
@@ -958,9 +1126,10 @@ body::before {
     elCifra.textContent = euros.format(t);
     elGuasa.textContent = guasa(t, n);
 
-    /* La tira de abajo, en móvil. */
+    /* La tira de abajo en móvil y la pestaña de escritorio. */
     elTiraN.textContent = String(n);
     elTiraC.textContent = euros.format(t);
+    elPestanaC.textContent = n ? euros.format(t) : '';
 
     /* Y las marcas en la propia carta. */
     document.querySelectorAll('.it').forEach(function (b) {
@@ -996,17 +1165,40 @@ body::before {
     b.addEventListener('click', function () { poner(b.dataset.id, nombre, precio); });
   });
 
-  /* Las rondas hechas. */
-  if (elRondas) {
-    elRondas.hidden = false;
-    elRondas.querySelectorAll('.ronda').forEach(function (b) {
+  /* ------------------------------------------------------- los escenarios --
+     Los totales de «¿Y esto qué vale?» NO están escritos a mano: se calculan
+     con los precios de la carta de abajo. Así no pueden quedarse desfasados
+     cuando cambie un precio. Lo que va escrito en el HTML es el valor correcto
+     para quien no tenga JavaScript. */
+  function lista(b) {
+    try { return JSON.parse(b.dataset.ronda); } catch (e) { return []; }
+  }
+
+  function precioDe(id) {
+    var origen = document.querySelector('.it[data-id="' + id + '"]');
+    return origen ? { n: origen.dataset.n, p: parseFloat(origen.dataset.p) } : null;
+  }
+
+  if (elEscenas) {
+    elEscenas.querySelectorAll('.esc').forEach(function (b) {
+      var partes = lista(b);
+      var suma = 0;
+      partes.forEach(function (par) {
+        var it = precioDe(par[0]);
+        if (it) { suma += it.p * par[1]; }
+      });
+
+      var cifra = b.querySelector('[data-total]');
+      if (cifra && suma > 0) { cifra.textContent = euros.format(suma); }
+
       b.addEventListener('click', function () {
-        var lista;
-        try { lista = JSON.parse(b.dataset.ronda); } catch (e) { return; }
-        lista.forEach(function (par) {
-          var origen = document.querySelector('.it[data-id="' + par[0] + '"]');
-          if (origen) { poner(par[0], origen.dataset.n, parseFloat(origen.dataset.p), par[1]); }
+        pedido = Object.create(null);
+        partes.forEach(function (par) {
+          var it = precioDe(par[0]);
+          if (it) { poner(par[0], it.n, it.p, par[1]); }
         });
+        cerrar(false);
+        document.getElementById('carta').scrollIntoView({ block: 'start' });
         abrir(true);
       });
     });
@@ -1017,9 +1209,22 @@ body::before {
     pintar();
   });
 
+  /* ------------------------------------------- cerrarla y volver a abrirla --
+     Cerrada: en escritorio desaparece el papel y la carta se queda con todo el
+     ancho, con una pestaña abajo a la derecha para recuperarla; en móvil la
+     hoja baja y queda la tira, que es su propio tirador. */
+  function cerrar(si) {
+    elCuenta.classList.toggle('is-cerrada', si);
+    if (elCuerpo) { elCuerpo.classList.toggle('sin-cuenta', si); }
+    elPestana.hidden = !si;
+    if (si) { elCuenta.classList.remove('is-abierta'); }
+    elTira.setAttribute('aria-expanded', 'false');
+  }
+
   /* --------------------------------------------- la hoja de abajo en móvil */
   function abrir(si) {
-    if (window.matchMedia('(min-width: 72rem)').matches) { return; }
+    if (anchaDeSobra.matches) { return; }
+    if (si) { cerrar(false); }
     elCuenta.classList.toggle('is-abierta', si);
     elTira.setAttribute('aria-expanded', si ? 'true' : 'false');
   }
@@ -1028,15 +1233,30 @@ body::before {
     abrir(!elCuenta.classList.contains('is-abierta'));
   });
 
+  elCerrar.addEventListener('click', function () {
+    if (anchaDeSobra.matches) { cerrar(true); } else { abrir(false); }
+  });
+
+  elPestana.addEventListener('click', function () { cerrar(false); });
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { abrir(false); }
+    if (e.key !== 'Escape') { return; }
+    if (anchaDeSobra.matches) { cerrar(true); } else { abrir(false); }
   });
 
   document.addEventListener('click', function (e) {
     if (!elCuenta.classList.contains('is-abierta')) { return; }
     if (elCuenta.contains(e.target) || elTira.contains(e.target)) { return; }
-    if (e.target.closest && e.target.closest('.it, .ronda')) { return; }
+    /* Un toque en la carta o en un escenario acaba de abrirla: ese mismo
+       clic no puede cerrarla al subir por el documento. */
+    if (e.target.closest && e.target.closest('.it, .esc')) { return; }
     abrir(false);
+  });
+
+  anchaDeSobra.addEventListener('change', function () {
+    elCuenta.classList.remove('is-abierta');
+    elTira.setAttribute('aria-expanded', 'false');
+    elPestana.hidden = !elCuenta.classList.contains('is-cerrada');
   });
 
   elCuenta.hidden = false;
