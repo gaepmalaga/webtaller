@@ -3,23 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Taberna Lázaro — Tapas y copas en Huelin, Málaga</title>
-<meta name="description" content="Taberna Lázaro: gildas, croquetas, gyozas, japo bravas y tartar de salchichón, con cervezas, vinos y copas. C/ Alfredo Catalani, 3, Huelin, Málaga. Carta y precios.">
+<title>Taberna Lázaro — La carta, en Huelin (Málaga)</title>
+<meta name="description" content="La carta de Taberna Lázaro con sus precios: gildas, croquetas, japo bravas, tartar de salchichón, cañas a 2 €. Ve sumando tu cuenta mientras la lees. C/ Alfredo Catalani, 3, Huelin, Málaga.">
 
-<!-- Dirección provisional de GitHub Pages, mientras no haya dominio propio.
-     Al contratar el dominio hay que cambiar canonical, og:url, og:image,
-     el JSON-LD del final, robots.txt y sitemap.xml. -->
 <link rel="canonical" href="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
-
-<!-- PROVISIONAL: quitar esta línea (dejar «index, follow») cuando la web
-     esté aprobada por el local. -->
+<!-- PROVISIONAL: quitar cuando la web esté aprobada por el local. -->
 <meta name="robots" content="noindex, follow">
 
 <meta property="og:type" content="restaurant">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Taberna Lázaro">
-<meta property="og:title" content="Taberna Lázaro — Tapas y copas en Huelin, Málaga">
-<meta property="og:description" content="Lázaro, levántate y pídete otra. Carta, precios y dónde estamos.">
+<meta property="og:title" content="Taberna Lázaro — La carta, en Huelin (Málaga)">
+<meta property="og:description" content="Lázaro, levántate y pídete otra. La carta entera con precios, y la cuenta sumándose sola.">
 <meta property="og:url" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
 <meta property="og:image" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/assets/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -36,30 +31,11 @@
 <body>
 <a class="saltar" href="#carta">Saltar a la carta</a>
 
-<!-- ==========================================================================
-     BORRADOR. Se quita borrando este bloque entero. Ver PENDIENTE.md.
-     ========================================================================== -->
-<div class="borrador">
-  <strong>Borrador</strong> · La carta y los precios son los de la casa; lo marcado en
-  <span class="falta">amarillo</span> sigue sin confirmar.
-</div>
-
-<header class="cab">
-  <a class="cab__marca" href="#top" aria-label="Taberna Lázaro, inicio">
-    <svg class="cab__ramo" viewBox="0 0 64 28" aria-hidden="true" focusable="false">
-      <use href="#ramo"/>
-    </svg>
-    <span class="cab__nom">Lázaro</span>
-    <span class="cab__loc">Taberna</span>
-  </a>
-  <nav class="cab__nav" aria-label="Secciones">
-    <a href="#carta">Carta</a>
-    <a href="#beber">Para beber</a>
-    <a href="#horario">Horario</a>
-    <a href="#donde">Dónde</a>
-  </nav>
-  <a class="btn btn--crema btn--pq" href="#donde">Cómo llegar</a>
-</header>
+<!-- BORRADOR: se quita borrando este bloque. Ver PENDIENTE.md. -->
+<p class="aviso">
+  <b>Borrador</b> · la carta y los precios son los de la casa; lo marcado en
+  <span class="falta">amarillo</span> sigue sin confirmar
+</p>
 
 <!-- El ramo de olivo de la marca, definido una vez y reutilizado. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -77,318 +53,290 @@
   </symbol>
 </svg>
 
-<main id="top">
+<main>
 
-  <!-- ================================================================ hero -->
-  <section class="hero">
-    <div class="hero__in">
-      <svg class="hero__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
+  <!-- ============================================================= portada -->
+  <!-- La tapa de la carta: marco impreso, el nombre y poco más. -->
+  <section class="tapa">
+    <div class="tapa__marco">
+      <svg class="tapa__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
 
-      <h1 class="hero__h1">
-        <span class="hero__nom">Lázaro</span>
-        <span class="hero__tab">Taberna</span>
+      <h1 class="tapa__h1">
+        <span class="tapa__nom">Lázaro</span>
+        <span class="tapa__sub">Taberna</span>
       </h1>
 
-      <p class="hero__lema">Lázaro, levántate<br>y pídete otra.</p>
+      <p class="tapa__lema">Lázaro, levántate<br>y pídete otra.</p>
 
-      <p class="hero__txt">
-        Tapas, cervezas bien tiradas y copas en Huelin. Gildas, croquetas,
-        gyozas de langostinos y japo bravas, en la calle Alfredo Catalani.
+      <p class="tapa__pie">
+        <span>C/ Alfredo Catalani, 3 · Huelin · Málaga</span>
+        <span class="tapa__sep" aria-hidden="true">·</span>
+        <span>Caña 2,00 € · Gilda 2,20 €</span>
       </p>
 
-      <p class="estado" id="estado" hidden>
-        <span class="estado__punto" aria-hidden="true"></span>
-        <span class="estado__txt"></span>
-      </p>
+      <a class="tapa__abrir" href="#carta">
+        Abrir la carta
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v15m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
 
-      <div class="hero__btns">
-        <a class="btn btn--crema" href="#carta">Ver la carta</a>
-        <a class="btn btn--linea" href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Cómo llegar</a>
+  <!-- =============================================================== carta -->
+  <section class="carta" id="carta">
+    <header class="carta__cab">
+      <h2 class="carta__t">La carta</h2>
+      <p class="carta__modo">
+        Toca cualquier línea y te la vamos apuntando.
+        <b>Así sabes lo que llevas antes de pedirlo.</b>
+      </p>
+      <div class="rondas" hidden>
+        <span class="rondas__t">O empieza por una ronda hecha:</span>
+        <button type="button" class="ronda" data-ronda='[["cana-alhambra",2],["gilda",2]]'>La de siempre</button>
+        <button type="button" class="ronda" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>Picoteo entre dos</button>
+        <button type="button" class="ronda" data-ronda='[["copa-rioja",1]]'>Solo una copa</button>
+      </div>
+    </header>
+
+    <div class="carta__cuerpo">
+
+      <div class="carta__cols">
+        <!-- ================================================================
+             CÓMO SE TOCA LA CARTA
+             Cada plato es un <li> con un <button class="it">. Lo único que
+             importa: data-id (único), data-n (nombre) y data-p (precio en
+             número, con punto). El precio visible se escribe aparte, en
+             <i class="it__p">, para poder ponerlo como se quiera.
+             ================================================================ -->
+        <section class="grupo grupo--destacado">
+          <h3 class="grupo__t">Para comer</h3>
+          <ul class="lista">
+            <li><button type="button" class="it" data-id="gilda" data-n="Gilda" data-p="2.20"><span class="it__n">Gilda</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="ibericos" data-n="Ibéricos" data-p="4.50"><span class="it__n">Ibéricos</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="queso" data-n="Queso" data-p="4.00"><span class="it__n">Queso</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="rusa" data-n="Rusa" data-p="5.50"><span class="it__n">Rusa</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="tomate-ventresca" data-n="Tomate y ventresca" data-p="5.50"><span class="it__n">Tomate y ventresca</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="croquetas" data-n="Croquetas" data-p="5.00"><span class="it__n">Croquetas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="gyozas" data-n="Gyozas de langostinos" data-p="6.50"><span class="it__n">Gyozas de langostinos</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="japo-bravas" data-n="Japo bravas" data-p="6.50"><span class="it__n">Japo bravas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="tortilla-trufada" data-n="Tortilla trufada" data-p="4.00"><span class="it__n">Tortilla trufada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="tartar-salchichon" data-n="Tartar de salchichón" data-p="8.50"><span class="it__n">Tartar de salchichón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="miniburger" data-n="Miniburger" data-p="4.50"><span class="it__n">Miniburger</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
+          </ul>
+          <p class="grupo__pie">
+            <button type="button" class="it it--chico" data-id="pan" data-n="Pan" data-p="1.00"><span class="it__n">Pan</span><i class="it__p">1,00 €</i></button>
+            <button type="button" class="it it--chico" data-id="salsa" data-n="Salsa extra" data-p="0.50"><span class="it__n">Salsa extra</span><i class="it__p">0,50 €</i></button>
+          </p>
+          <p class="grupo__sug">Y pregúntanos por las <em>sugerencias del día</em>.</p>
+        </section>
+
+        <section class="grupo">
+          <h3 class="grupo__t">Cervezas</h3>
+          <ul class="lista">
+            <li><button type="button" class="it" data-id="cana-alhambra" data-n="Caña Alhambra" data-p="2.00"><span class="it__n">Caña Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="copa-alhambra" data-n="Copa Alhambra" data-p="2.50"><span class="it__n">Copa Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="alhambra-especial" data-n="Alhambra Especial" data-p="2.50"><span class="it__n">Alhambra Especial</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="alhambra-1925" data-n="Alhambra Verde 1925" data-p="3.00"><span class="it__n">Alhambra Verde 1925</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="alhambra-radler" data-n="Alhambra Radler" data-p="2.60"><span class="it__n">Alhambra Radler</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
+            <li><button type="button" class="it" data-id="sm-especial" data-n="San Miguel Especial" data-p="2.50"><span class="it__n">San Miguel Especial</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="sm-00" data-n="San Miguel 0,0" data-p="2.60"><span class="it__n">San Miguel 0,0</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
+            <li><button type="button" class="it" data-id="sm-00-tostada" data-n="San Miguel 0,0 Tostada" data-p="2.60"><span class="it__n">San Miguel 0,0 Tostada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
+            <li><button type="button" class="it" data-id="mahou5" data-n="Mahou 5 Estrellas" data-p="2.80"><span class="it__n">Mahou 5 Estrellas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,80 €</i></button></li>
+            <li><button type="button" class="it" data-id="corona" data-n="Corona" data-p="3.00"><span class="it__n">Corona</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="sin-gluten" data-n="Cerveza sin gluten" data-p="3.00"><span class="it__n">Sin gluten</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+          </ul>
+        </section>
+
+        <section class="grupo">
+          <h3 class="grupo__t">Vinos</h3>
+          <ul class="lista">
+            <li><button type="button" class="it" data-id="copa-verdejo" data-n="Copa Verdejo" data-p="3.20"><span class="it__n">Copa Verdejo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="copa-rioja" data-n="Copa Rioja" data-p="3.20"><span class="it__n">Copa Rioja</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="copa-ribera" data-n="Copa Ribera del Duero" data-p="3.50"><span class="it__n">Copa Ribera del Duero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="tinto-verano" data-n="Tinto de verano" data-p="3.00"><span class="it__n">Tinto de verano</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="vermut" data-n="Vermut Bandarra" data-p="3.00"><span class="it__n">Vermut Bandarra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="copa-manzanilla" data-n="Copa Manzanilla" data-p="3.20"><span class="it__n">Copa Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+          </ul>
+          <p class="grupo__sug">
+            ¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b>
+          </p>
+        </section>
+
+        <section class="grupo">
+          <h3 class="grupo__t">Copas y licores</h3>
+          <ul class="lista">
+            <li><button type="button" class="it" data-id="barcelo" data-n="Barceló" data-p="6.50"><span class="it__n">Barceló</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="cacique" data-n="Cacique" data-p="6.00"><span class="it__n">Cacique</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="cacique500" data-n="Cacique 500" data-p="8.00"><span class="it__n">Cacique 500</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="red-label" data-n="Red Label" data-p="6.00"><span class="it__n">Red Label</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="black-label" data-n="Black Label" data-p="8.00"><span class="it__n">Black Label</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="larios" data-n="Larios" data-p="6.00"><span class="it__n">Larios</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="beefeater" data-n="Beefeater" data-p="6.00"><span class="it__n">Beefeater</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="seagrams" data-n="Seagram's" data-p="6.50"><span class="it__n">Seagram's</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="bombay" data-n="Bombay Sapphire" data-p="7.00"><span class="it__n">Bombay Sapphire</span><span class="it__d" aria-hidden="true"></span><i class="it__p">7,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="tanqueray" data-n="Tanqueray" data-p="6.00"><span class="it__n">Tanqueray</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="ballantines" data-n="Ballantine's" data-p="6.00"><span class="it__n">Ballantine's</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="absolut" data-n="Absolut" data-p="6.00"><span class="it__n">Absolut</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="chupito" data-n="Chupito" data-p="1.50"><span class="it__n">Chupito</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="baileys" data-n="Baileys" data-p="4.00"><span class="it__n">Baileys</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="pacharan" data-n="Pacharán" data-p="4.00"><span class="it__n">Pacharán</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+          </ul>
+        </section>
+
+        <section class="grupo">
+          <h3 class="grupo__t">Cafés e infusiones</h3>
+          <ul class="lista">
+            <li><button type="button" class="it" data-id="cafe-solo" data-n="Café solo" data-p="1.50"><span class="it__n">Café solo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="cafe-americano" data-n="Café americano" data-p="1.50"><span class="it__n">Café americano</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="cafe-leche" data-n="Café con leche" data-p="1.90"><span class="it__n">Café con leche</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,90 €</i></button></li>
+            <li><button type="button" class="it" data-id="cafe-bombon" data-n="Café bombón" data-p="2.50"><span class="it__n">Café bombón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="cafelys" data-n="Cafélys" data-p="3.20"><span class="it__n">Cafélys</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="vaso-leche" data-n="Vaso de leche" data-p="1.70"><span class="it__n">Vaso de leche</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,70 €</i></button></li>
+            <li><button type="button" class="it" data-id="cola-cao" data-n="Cola Cao" data-p="2.20"><span class="it__n">Cola Cao</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="manzanilla" data-n="Manzanilla" data-p="2.20"><span class="it__n">Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="tila" data-n="Tila" data-p="2.20"><span class="it__n">Tila</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="te-verde" data-n="Té verde" data-p="2.20"><span class="it__n">Té verde</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="te-rojo" data-n="Té rojo" data-p="2.20"><span class="it__n">Té rojo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+          </ul>
+        </section>
+
+        <section class="grupo grupo--ancho">
+          <h3 class="grupo__t">Bebidas frías</h3>
+          <ul class="lista lista--dos">
+            <li><button type="button" class="it" data-id="agua" data-n="Agua 0,5 L" data-p="2.00"><span class="it__n">Agua 0,5 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="agua-gas" data-n="Agua con gas 0,33 L" data-p="2.00"><span class="it__n">Agua con gas 0,33 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
+            <li><button type="button" class="it" data-id="zumo-pina" data-n="Zumo de piña" data-p="2.20"><span class="it__n">Zumo de piña</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="zumo-melocoton" data-n="Zumo de melocotón" data-p="2.20"><span class="it__n">Zumo de melocotón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="puleva-fresa" data-n="Puleva fresa" data-p="2.50"><span class="it__n">Puleva fresa</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="puleva-choco" data-n="Puleva chocolate" data-p="2.50"><span class="it__n">Puleva chocolate</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-id="coca-cola" data-n="Coca-Cola" data-p="2.20"><span class="it__n">Coca-Cola</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="coca-zero" data-n="Coca-Cola Zero" data-p="2.20"><span class="it__n">Coca-Cola Zero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="coca-zero-zero" data-n="Coca-Cola Zero Zero" data-p="2.20"><span class="it__n">Coca-Cola Zero Zero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="fanta-naranja" data-n="Fanta naranja" data-p="2.20"><span class="it__n">Fanta naranja</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="fanta-limon" data-n="Fanta limón" data-p="2.20"><span class="it__n">Fanta limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="aquarius" data-n="Aquarius limón" data-p="2.20"><span class="it__n">Aquarius limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="fuze-limon" data-n="Fuze Tea limón" data-p="2.20"><span class="it__n">Fuze Tea limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="fuze-maracuya" data-n="Fuze Tea maracuyá" data-p="2.20"><span class="it__n">Fuze Tea maracuyá</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="tonica" data-n="Tónica" data-p="2.20"><span class="it__n">Tónica</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-id="sprite" data-n="Sprite" data-p="2.20"><span class="it__n">Sprite</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+          </ul>
+        </section>
+
+        <p class="carta__iva">Todos los precios incluyen IVA.</p>
       </div>
 
-      <ul class="hero__datos">
-        <li><b>C/ Alfredo Catalani, 3</b><span>Huelin · 29003 Málaga</span></li>
-        <li><b>Horario</b><span class="falta">pendiente</span></li>
-        <li><b>Reservas</b><span class="falta">teléfono pendiente</span></li>
-      </ul>
+      <!-- ============================================================ cuenta -->
+      <!-- El ticket. Oculto sin JavaScript: entonces esto es solo una carta. -->
+      <aside class="cuenta" id="cuenta" hidden aria-labelledby="cuenta-t">
+        <div class="cuenta__papel">
+          <h2 class="cuenta__t" id="cuenta-t">Tu cuenta</h2>
+          <p class="cuenta__sitio">Taberna Lázaro · Huelin</p>
+
+          <ul class="cuenta__lineas" id="cuenta-lineas"></ul>
+
+          <p class="cuenta__vacia" id="cuenta-vacia">
+            Todavía no has pedido nada.<br>
+            <span>Toca un plato o una caña ahí al lado.</span>
+          </p>
+
+          <div class="cuenta__total" id="cuenta-total" hidden>
+            <span class="cuenta__tl">Total</span>
+            <output class="cuenta__tn" id="cuenta-cifra" for="cuenta-lineas">0,00 €</output>
+          </div>
+
+          <p class="cuenta__guasa" id="cuenta-guasa" aria-live="polite"></p>
+
+          <div class="cuenta__acciones" hidden id="cuenta-acciones">
+            <button type="button" class="cuenta__borrar" id="cuenta-borrar">Empezar de cero</button>
+          </div>
+
+          <p class="cuenta__nota">
+            Es una cuenta de mentira, para hacerse una idea. La de verdad te la
+            damos en la barra, y con el IVA ya incluido igual que aquí.
+          </p>
+        </div>
+      </aside>
+
     </div>
   </section>
 
-  <!-- ============================================================== la casa -->
-  <section class="casa" aria-labelledby="t-casa">
-    <h2 class="vh" id="t-casa">Cómo es la casa</h2>
-    <ol class="casa__lista">
-      <li>
-        <span class="casa__n">01</span>
-        <h3>Para picar y compartir</h3>
+  <!-- ================================================================ dorso -->
+  <!-- El reverso de la carta: la letra pequeña, que es la que hace falta. -->
+  <section class="dorso" id="dorso">
+    <h2 class="dorso__t">El reverso</h2>
+
+    <div class="dorso__rejilla">
+      <div class="dorso__bloque">
+        <h3>Dónde</h3>
+        <p class="dorso__dir">C/ Alfredo Catalani, 3<br>Huelin · 29003 Málaga</p>
         <p>
-          Gilda, ibéricos, queso, rusa, croquetas. Lo de siempre bien hecho, y
-          algún capricho de los que no te esperas en una taberna de barrio.
+          Metro <b>L2, parada Princesa-Huelin</b>. Andando, desde el paseo
+          marítimo subiendo por el barrio.
         </p>
-      </li>
-      <li>
-        <span class="casa__n">02</span>
-        <h3>Precios de taberna</h3>
-        <p>
-          La caña a 2,00 €, la copa de vino a 3,20 € y casi toda la comida por
-          debajo de siete. IVA incluido, sin sorpresas al final.
+        <p class="dorso__falta">En coche: <span class="falta">confirmar aparcamiento</span></p>
+        <a class="dorso__enlace" href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Abrir en Google Maps →</a>
+      </div>
+
+      <div class="dorso__bloque">
+        <h3>Cuándo</h3>
+        <p class="estado" id="estado" hidden>
+          <span class="estado__punto" aria-hidden="true"></span>
+          <span class="estado__txt"></span>
         </p>
-      </li>
-      <li>
-        <span class="casa__n">03</span>
-        <h3>Sugerencias del día</h3>
-        <p>
-          Además de la carta siempre hay algo fuera de ella. Se pregunta en la
-          barra: es donde están las mejores cosas.
+        <table class="dorso__tabla">
+          <caption class="vh">Horario de Taberna Lázaro</caption>
+          <tbody>
+            <tr data-dia="1"><th scope="row">Lunes</th><td><span class="falta">pendiente</span></td></tr>
+            <tr data-dia="2"><th scope="row">Martes</th><td><span class="falta">pendiente</span></td></tr>
+            <tr data-dia="3"><th scope="row">Miércoles</th><td><span class="falta">pendiente</span></td></tr>
+            <tr data-dia="4"><th scope="row">Jueves</th><td><span class="falta">pendiente</span></td></tr>
+            <tr data-dia="5"><th scope="row">Viernes</th><td><span class="falta">pendiente</span></td></tr>
+            <tr data-dia="6"><th scope="row">Sábado</th><td><span class="falta">pendiente</span></td></tr>
+            <tr data-dia="0"><th scope="row">Domingo</th><td><span class="falta">pendiente</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="dorso__bloque">
+        <h3>Avisar</h3>
+        <p>Para mesa, para grupo o para preguntar qué hay hoy fuera de carta.</p>
+        <dl class="dorso__datos">
+          <dt>Teléfono</dt><dd><span class="falta">pendiente</span></dd>
+          <dt>Instagram</dt><dd><span class="falta">pendiente</span></dd>
+          <dt>Correo</dt><dd><span class="falta">pendiente</span></dd>
+        </dl>
+        <p class="dorso__min">
+          En la barra siempre se puede entrar sin avisar.
         </p>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ================================================================ carta -->
-  <section class="carta" id="carta" aria-labelledby="t-carta">
-    <div class="sec__cab">
-      <p class="sobre">La carta</p>
-      <h2 class="sec__h2" id="t-carta">Comida</h2>
-      <p class="sec__intro">
-        Y pregúntanos por las <em>sugerencias del día</em>: siempre hay algo que
-        no está escrito.
-      </p>
-    </div>
-
-    <div class="menu">
-      <article class="menu__bloque menu__bloque--ancho">
-        <h3>Para comer</h3>
-        <ul class="lista">
-          <li><span class="pl">Gilda</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Ibéricos</span><span class="pt" aria-hidden="true"></span><span class="pr">4,50 €</span></li>
-          <li><span class="pl">Queso</span><span class="pt" aria-hidden="true"></span><span class="pr">4,00 €</span></li>
-          <li><span class="pl">Rusa</span><span class="pt" aria-hidden="true"></span><span class="pr">5,50 €</span></li>
-          <li><span class="pl">Tomate y ventresca</span><span class="pt" aria-hidden="true"></span><span class="pr">5,50 €</span></li>
-          <li><span class="pl">Croquetas</span><span class="pt" aria-hidden="true"></span><span class="pr">5,00 €</span></li>
-          <li><span class="pl">Gyozas de langostinos</span><span class="pt" aria-hidden="true"></span><span class="pr">6,50 €</span></li>
-          <li><span class="pl">Japo bravas</span><span class="pt" aria-hidden="true"></span><span class="pr">6,50 €</span></li>
-          <li><span class="pl">Tortilla trufada</span><span class="pt" aria-hidden="true"></span><span class="pr">4,00 €</span></li>
-          <li><span class="pl">Tartar de salchichón</span><span class="pt" aria-hidden="true"></span><span class="pr">8,50 €</span></li>
-          <li><span class="pl">Miniburger</span><span class="pt" aria-hidden="true"></span><span class="pr">4,50 €</span></li>
-        </ul>
-        <p class="menu__pie">Pan 1,00 € · Salsa extra 0,50 €</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- ================================================================ beber -->
-  <section class="beber" id="beber" aria-labelledby="t-beber">
-    <div class="sec__cab">
-      <p class="sobre sobre--claro">La carta</p>
-      <h2 class="sec__h2" id="t-beber">Para beber</h2>
-    </div>
-
-    <div class="menu">
-      <article class="menu__bloque">
-        <h3>Cervezas</h3>
-        <ul class="lista">
-          <li><span class="pl">Caña Alhambra</span><span class="pt" aria-hidden="true"></span><span class="pr">2,00 €</span></li>
-          <li><span class="pl">Copa Alhambra</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li>
-          <li><span class="pl">Alhambra Especial</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li>
-          <li><span class="pl">Alhambra Verde 1925</span><span class="pt" aria-hidden="true"></span><span class="pr">3,00 €</span></li>
-          <li><span class="pl">Alhambra Radler</span><span class="pt" aria-hidden="true"></span><span class="pr">2,60 €</span></li>
-          <li><span class="pl">San Miguel Especial</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li>
-          <li><span class="pl">San Miguel 0,0</span><span class="pt" aria-hidden="true"></span><span class="pr">2,60 €</span></li>
-          <li><span class="pl">San Miguel 0,0 Tostada</span><span class="pt" aria-hidden="true"></span><span class="pr">2,60 €</span></li>
-          <li><span class="pl">Mahou 5 Estrellas</span><span class="pt" aria-hidden="true"></span><span class="pr">2,80 €</span></li>
-          <li><span class="pl">Corona</span><span class="pt" aria-hidden="true"></span><span class="pr">3,00 €</span></li>
-          <li><span class="pl">Sin gluten</span><span class="pt" aria-hidden="true"></span><span class="pr">3,00 €</span></li>
-        </ul>
-      </article>
-
-      <article class="menu__bloque">
-        <h3>Vinos</h3>
-        <ul class="lista">
-          <li><span class="pl">Copa Verdejo</span><span class="pt" aria-hidden="true"></span><span class="pr">3,20 €</span></li>
-          <li><span class="pl">Copa Rioja</span><span class="pt" aria-hidden="true"></span><span class="pr">3,20 €</span></li>
-          <li><span class="pl">Copa Ribera del Duero</span><span class="pt" aria-hidden="true"></span><span class="pr">3,50 €</span></li>
-          <li><span class="pl">Tinto de verano</span><span class="pt" aria-hidden="true"></span><span class="pr">3,00 €</span></li>
-          <li><span class="pl">Vermut Bandarra</span><span class="pt" aria-hidden="true"></span><span class="pr">3,00 €</span></li>
-          <li><span class="pl">Copa Manzanilla</span><span class="pt" aria-hidden="true"></span><span class="pr">3,20 €</span></li>
-        </ul>
-        <p class="menu__nota">
-          ¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b>
-        </p>
-      </article>
-
-      <article class="menu__bloque">
-        <h3>Copas y licores</h3>
-        <ul class="lista">
-          <li><span class="pl">Barceló</span><span class="pt" aria-hidden="true"></span><span class="pr">6,50 €</span></li>
-          <li><span class="pl">Cacique</span><span class="pt" aria-hidden="true"></span><span class="pr">6,00 €</span></li>
-          <li><span class="pl">Cacique 500</span><span class="pt" aria-hidden="true"></span><span class="pr">8,00 €</span></li>
-          <li><span class="pl">Red Label</span><span class="pt" aria-hidden="true"></span><span class="pr">6,00 €</span></li>
-          <li><span class="pl">Black Label</span><span class="pt" aria-hidden="true"></span><span class="pr">8,00 €</span></li>
-          <li><span class="pl">Larios</span><span class="pt" aria-hidden="true"></span><span class="pr">6,00 €</span></li>
-          <li><span class="pl">Beefeater</span><span class="pt" aria-hidden="true"></span><span class="pr">6,00 €</span></li>
-          <li><span class="pl">Seagram's</span><span class="pt" aria-hidden="true"></span><span class="pr">6,50 €</span></li>
-          <li><span class="pl">Bombay Sapphire</span><span class="pt" aria-hidden="true"></span><span class="pr">7,00 €</span></li>
-          <li><span class="pl">Tanqueray</span><span class="pt" aria-hidden="true"></span><span class="pr">6,00 €</span></li>
-          <li><span class="pl">Ballantine's</span><span class="pt" aria-hidden="true"></span><span class="pr">6,00 €</span></li>
-          <li><span class="pl">Absolut</span><span class="pt" aria-hidden="true"></span><span class="pr">6,00 €</span></li>
-          <li><span class="pl">Chupito</span><span class="pt" aria-hidden="true"></span><span class="pr">1,50 €</span></li>
-          <li><span class="pl">Baileys</span><span class="pt" aria-hidden="true"></span><span class="pr">4,00 €</span></li>
-          <li><span class="pl">Pacharán</span><span class="pt" aria-hidden="true"></span><span class="pr">4,00 €</span></li>
-        </ul>
-      </article>
-
-      <article class="menu__bloque">
-        <h3>Cafés e infusiones</h3>
-        <ul class="lista">
-          <li><span class="pl">Café solo</span><span class="pt" aria-hidden="true"></span><span class="pr">1,50 €</span></li>
-          <li><span class="pl">Café americano</span><span class="pt" aria-hidden="true"></span><span class="pr">1,50 €</span></li>
-          <li><span class="pl">Café con leche</span><span class="pt" aria-hidden="true"></span><span class="pr">1,90 €</span></li>
-          <li><span class="pl">Café bombón</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li>
-          <li><span class="pl">Cafélys</span><span class="pt" aria-hidden="true"></span><span class="pr">3,20 €</span></li>
-          <li><span class="pl">Vaso de leche</span><span class="pt" aria-hidden="true"></span><span class="pr">1,70 €</span></li>
-          <li><span class="pl">Cola Cao</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Manzanilla</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Tila</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Té verde</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Té rojo</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-        </ul>
-      </article>
-
-      <article class="menu__bloque menu__bloque--ancho">
-        <h3>Bebidas frías</h3>
-        <ul class="lista lista--dos">
-          <li><span class="pl">Agua 0,5 L</span><span class="pt" aria-hidden="true"></span><span class="pr">2,00 €</span></li>
-          <li><span class="pl">Agua con gas 0,33 L</span><span class="pt" aria-hidden="true"></span><span class="pr">2,00 €</span></li>
-          <li><span class="pl">Zumo de piña</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Zumo de melocotón</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Puleva fresa</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li>
-          <li><span class="pl">Puleva chocolate</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li>
-          <li><span class="pl">Coca-Cola</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Coca-Cola Zero</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Coca-Cola Zero Zero</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Fanta naranja</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Fanta limón</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Aquarius limón</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Fuze Tea limón</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Fuze Tea maracuyá</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Tónica</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-          <li><span class="pl">Sprite</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li>
-        </ul>
-      </article>
-    </div>
-
-    <p class="beber__iva">Todos los precios incluyen IVA. La carta puede cambiar: esta página se actualiza en cinco minutos.</p>
-  </section>
-
-  <!-- ============================================================ instagram -->
-  <section class="ig" id="instagram" aria-labelledby="t-ig">
-    <div class="ig__in">
-      <p class="sobre sobre--claro">El día a día</p>
-      <h2 class="sec__h2" id="t-ig">Las sugerencias, en Instagram</h2>
-      <p class="ig__txt">
-        Lo que no está en la carta se cuenta ahí: el plato del día, lo que entra
-        cada mañana y los cierres por fiesta.
-      </p>
-      <!-- Cuando sepamos la cuenta: cambiar este <span> por
-           <a class="btn btn--crema" href="https://www.instagram.com/LACUENTA" target="_blank" rel="noopener">Seguir en Instagram</a> -->
-      <span class="btn btn--crema btn--inerte">Cuenta <span class="falta">pendiente</span></span>
-    </div>
-  </section>
-
-  <!-- ============================================================== horario -->
-  <section class="horario" id="horario" aria-labelledby="t-horario">
-    <div class="sec__cab">
-      <p class="sobre">Horario</p>
-      <h2 class="sec__h2" id="t-horario">Cuándo estamos abiertos</h2>
-    </div>
-
-    <table class="tabla">
-      <caption class="vh">Horario de apertura de Taberna Lázaro</caption>
-      <thead>
-        <tr><th scope="col">Día</th><th scope="col">Cocina</th></tr>
-      </thead>
-      <tbody>
-        <tr data-dia="1"><th scope="row">Lunes</th><td><span class="falta">pendiente</span></td></tr>
-        <tr data-dia="2"><th scope="row">Martes</th><td><span class="falta">pendiente</span></td></tr>
-        <tr data-dia="3"><th scope="row">Miércoles</th><td><span class="falta">pendiente</span></td></tr>
-        <tr data-dia="4"><th scope="row">Jueves</th><td><span class="falta">pendiente</span></td></tr>
-        <tr data-dia="5"><th scope="row">Viernes</th><td><span class="falta">pendiente</span></td></tr>
-        <tr data-dia="6"><th scope="row">Sábado</th><td><span class="falta">pendiente</span></td></tr>
-        <tr data-dia="0"><th scope="row">Domingo</th><td><span class="falta">pendiente</span></td></tr>
-      </tbody>
-    </table>
-    <div class="horario__pie">
-      <p class="horario__nota">
-        Con el horario puesto, la página calcula sola si está <b>abierto ahora</b>
-        —en hora de Málaga, no en la del móvil de quien mira— y marca el día de hoy
-        en esta tabla. Es lo primero que busca quien anda decidiendo dónde cenar.
-      </p>
-    </div>
-  </section>
-
-  <!-- ================================================================ dónde -->
-  <section class="donde" id="donde" aria-labelledby="t-donde">
-    <div class="donde__txt">
-      <p class="sobre">Dónde estamos</p>
-      <h2 class="sec__h2" id="t-donde">C/ Alfredo Catalani, 3</h2>
-      <p class="donde__dir">Huelin · 29003 Málaga</p>
-      <p>
-        En pleno Huelin, en el distrito de Carretera de Cádiz: barrio de toda la
-        vida, a un paseo del parque y de la playa.
-      </p>
-      <ul class="donde__llegar">
-        <li><b>En metro</b> Línea 2, parada <b>Princesa-Huelin</b>.</li>
-        <li><b>Andando</b> desde el paseo marítimo, subiendo por el barrio.</li>
-        <li><b>En coche</b> <span class="falta">confirmar aparcamiento cercano</span></li>
-      </ul>
-      <div class="donde__btns">
-        <a class="btn btn--crema" href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Abrir en Google Maps</a>
       </div>
     </div>
-
-    <ul class="donde__lista">
-      <li><b>Dirección</b><span>C/ Alfredo Catalani, 3</span></li>
-      <li><b>Teléfono</b><span class="falta">pendiente</span></li>
-      <li><b>Instagram</b><span class="falta">pendiente</span></li>
-      <li><b>Correo</b><span class="falta">pendiente</span></li>
-    </ul>
   </section>
 
-  <!-- =============================================================== cierre -->
-  <section class="cierre">
-    <svg class="cierre__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
-    <p class="cierre__frase">Una mijilla más<br><em>y nos vamos.</em></p>
-    <a class="btn btn--crema btn--grande" href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Cómo llegar</a>
+  <!-- ============================================================ despedida -->
+  <section class="fin">
+    <svg class="fin__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
+    <p class="fin__frase">Una mijilla más<br><em>y nos vamos.</em></p>
   </section>
 
 </main>
 
 <footer class="pie">
-  <div class="pie__in">
-    <p class="pie__marca">Taberna Lázaro</p>
-    <p class="pie__dir">C/ Alfredo Catalani, 3 · Huelin · 29003 Málaga</p>
-    <nav class="pie__nav" aria-label="Enlaces del pie">
-      <a href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Google Maps</a>
-      <a href="#carta">Carta</a>
-      <a href="aviso-legal.html">Aviso legal</a>
-    </nav>
-    <p class="pie__legal">© <span id="anio">2026</span> Taberna Lázaro. Sin cookies ni rastreadores.</p>
-  </div>
+  <p>Taberna Lázaro · C/ Alfredo Catalani, 3 · Huelin · 29003 Málaga</p>
+  <p>
+    <a href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Google Maps</a> ·
+    <a href="aviso-legal.html">Aviso legal</a> ·
+    <span>© <span id="anio">2026</span>. Sin cookies ni rastreadores.</span>
+  </p>
 </footer>
 
-<!-- Barra fija en móvil. -->
-<div class="barra">
-  <a class="barra__a barra__a--crema" href="#carta">Carta</a>
-  <a class="barra__a" href="#beber">Beber</a>
-  <a class="barra__a" href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Llegar</a>
-</div>
+<!-- Barra de la cuenta en móvil. La pone el JavaScript. -->
+<button type="button" class="tira" id="tira" hidden aria-expanded="false" aria-controls="cuenta">
+  <span class="tira__n" id="tira-n">0</span>
+  <span class="tira__t">Tu cuenta</span>
+  <span class="tira__c" id="tira-c">0,00 €</span>
+</button>
 
 <script src="assets/js/main.js" defer></script>
 
-<!-- Datos estructurados. Solo lleva lo confirmado: en cuanto haya teléfono y
-     horario hay que añadir telephone y openingHoursSpecification, que es lo
-     que Google usa para la ficha del negocio. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

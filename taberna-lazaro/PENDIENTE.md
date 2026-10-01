@@ -50,7 +50,20 @@ Transcrita de las dos fotos de la carta. **Que la lea el dueño**, sobre todo:
 Si la carta cambia, cada plato es **una línea** de `index.html`: nombre, los
 puntitos y el precio. Se tarda más en abrir el archivo que en cambiarlo.
 
-## 5. Los textos
+## 5. El ticket
+
+La web deja que la gente vaya tocando platos y le suma la cuenta. **Avisa de
+que es una cuenta de mentira**, para hacerse una idea, y lo dice en el propio
+ticket. Repasar dos cosas con el dueño:
+
+- Que le parezca bien la idea (a algún hostelero no le gusta que se vea el
+  total antes de sentarse; a la mayoría le encanta, porque aquí los precios
+  juegan a favor).
+- Las frases que salen según lo que lleves —«eso no es ni calentar», «ahí ya se
+  cena en condiciones»— **las ha escrito la web**, imitando su tono. Están
+  todas juntas en `assets/js/main.js`, función `guasa()`.
+
+## 6. Los textos
 
 Los lemas son suyos, copiados de la carta:
 
@@ -62,7 +75,7 @@ Los lemas son suyos, copiados de la carta:
 Los tres bloques de «cómo es la casa» y el texto de debajo del título **sí los
 ha escrito la web**, no la casa. Que les dé el visto bueno.
 
-## 6. Y por último
+## 7. Y por último
 
 1. Quitar la franja `<div class="borrador">` de `index.html`.
 2. Cambiar el `noindex` por `index, follow` (hay un comentario justo encima).

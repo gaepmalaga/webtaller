@@ -21,15 +21,33 @@ abierto y cómo llegar**. La página está construida alrededor de eso.
 La identidad —el verde oliva, la crema, el ramo de olivo, la tipografía con
 remate y los lemas— sale de **la carta de la casa**, no de ninguna plantilla.
 
+## La idea
+
+**La web es la carta.** No hay portada con titular y tres bloques debajo: se
+abre como se abre una carta —tapa, y dentro los platos— y la carta entera es
+lo que ocupa la página.
+
+Y la carta se toca. Al pulsar una línea, el plato se apunta en **un ticket que
+va sumando solo**, pegado al lado mientras bajas (o en una hoja que sube desde
+abajo, en el móvil). Responde a la pregunta que tiene cualquiera que no conoce
+un bar y mira la carta por fuera: *¿esto cuánto me va a costar?* Dos gildas y
+dos cañas, 8,40 €. Ahí lo tienes, sin calcular.
+
+Es un juego, no una comanda: no se manda nada a ninguna parte, no se guarda
+nada y no hay ni una petición a terceros.
+
 ## Qué tiene
 
-- **La carta entera con precios**, maquetada como la carta impresa: nombre,
-  puntitos y precio. Cada plato es una línea de HTML, así que actualizarla
-  cuesta menos que abrir el archivo.
+- **La carta entera con precios**, maquetada como la impresa: nombre, puntitos
+  y precio, fluyendo en dos columnas. Cada plato es una línea de HTML, así que
+  actualizarla cuesta menos que abrir el archivo.
+- **El ticket que suma solo**, con tres «rondas hechas» para empezar de un
+  toque (la de siempre, picoteo entre dos, solo una copa) y la guasa de la casa
+  cambiando según lo que lleves.
 - **Indicador de «abierto / cerrado ahora»** calculado en hora de Málaga,
   independientemente del reloj del visitante, con el día de hoy resaltado en la
   tabla. *Se enciende solo en cuanto se rellene el horario* (ver `PENDIENTE.md`).
-- **Barra fija en móvil**: carta, bebidas y cómo llegar a un toque.
+
 - **Datos estructurados `BarOrPub`** (JSON-LD) con dirección, tipo de cocina y
   enlace a la carta: es lo que Google lee para la ficha del negocio.
 - **Cero peticiones a terceros.** Las tipografías se sirven desde el propio
@@ -94,7 +112,9 @@ apruebe. Al cambiar de dirección hay que tocar **cinco sitios**:
 
 | Qué | Dónde |
 |---|---|
-| Un plato o un precio | `index.html`, la línea correspondiente dentro de `<ul class="lista">` |
+| Un plato o un precio | `index.html`, su línea. Lo que cuenta: `data-id` (único), `data-n` (nombre) y `data-p` (precio en número). El precio visible va aparte, en `<i class="it__p">` |
+| Una ronda hecha | `index.html`, el `data-ronda` de cada `<button class="ronda">`: pares de `[id, cantidad]` |
+| La guasa del ticket | `assets/js/main.js`, función `guasa()` |
 | Una sección entera de la carta | `index.html`, el `<article class="menu__bloque">` que toque |
 | Horario | `assets/js/main.js` (constante `HORARIO`), la tabla de `index.html` y el JSON-LD. Los tres tienen que coincidir |
 | Teléfono, Instagram, correo | `index.html` — hero, «Dónde estamos», pie y JSON-LD |
