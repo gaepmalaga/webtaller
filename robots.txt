@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /aviso-legal.html
 Disallow: /che-bolu/aviso-legal.html
+Disallow: /taberna-lazaro/aviso-legal.html
 
 Sitemap: https://gaepmalaga.github.io/webtaller/sitemap.xml

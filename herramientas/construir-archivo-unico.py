@@ -23,8 +23,9 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
 # clave de la línea de comandos -> (carpeta del sitio, archivo de salida)
 SITIOS = {
-    'hidrocar': ('.',        'hidrocar-una-sola-pagina.html'),
-    'che-bolu': ('che-bolu', 'che-bolu-una-sola-pagina.html'),
+    'hidrocar':       ('.',              'hidrocar-una-sola-pagina.html'),
+    'che-bolu':       ('che-bolu',       'che-bolu-una-sola-pagina.html'),
+    'taberna-lazaro': ('taberna-lazaro', 'taberna-lazaro-una-sola-pagina.html'),
 }
 
 
@@ -48,12 +49,14 @@ def main(clave='hidrocar'):
     css = leer('assets/css/style.css')
     js = leer('assets/js/main.js')
 
-    # La tipografía entra como data URI. Solo el subconjunto «latin»:
-    # latin-ext no hace falta para escribir en español y pesa otros 84 KB.
-    fuente = datauri('assets/fonts/archivo-latin.woff2', 'font/woff2')
-    css = css.replace("url('../fonts/archivo-latin.woff2')", "url(%s)" % fuente)
-    css = re.sub(
-        r"@font-face \{[^}]*archivo-latin-ext\.woff2[^}]*\}\n?", '', css, flags=re.S)
+    # Las tipografías entran como data URI, cada una la suya. Solo el
+    # subconjunto «latin»: latin-ext no hace falta para escribir en español y
+    # cada archivo pesa otros 60-85 KB. Primero se tiran los @font-face de
+    # latin-ext enteros, y luego se incrusta lo que queda.
+    css = re.sub(r"@font-face \{[^}]*-latin-ext\.woff2[^}]*\}\n?", '', css, flags=re.S)
+    for rel in sorted(set(re.findall(r"url\('\.\./fonts/([\w-]+\.woff2)'\)", css))):
+        css = css.replace("url('../fonts/%s')" % rel,
+                          "url(%s)" % datauri('assets/fonts/' + rel, 'font/woff2'))
 
     # Fuera el precargado y la hoja externa: los estilos van incrustados.
     html = re.sub(r'<link rel="preload"[^>]*>\n?', '', html)

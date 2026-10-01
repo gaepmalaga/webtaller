@@ -1,15 +1,17 @@
 # Webs estáticas de gaepmalaga
 
-Este repositorio aloja **dos sitios**, los dos hechos igual: HTML, CSS y un
+Este repositorio aloja **tres sitios**, los tres hechos igual: HTML, CSS y un
 poco de JavaScript escritos a mano, sin frameworks ni proceso de compilación.
 
 | Sitio | Carpeta | Dirección |
 |---|---|---|
 | Taller Hidrocar (Churriana) | raíz | https://gaepmalaga.github.io/webtaller/ |
 | Che Bolú Torremolinos | [`che-bolu/`](che-bolu/) | https://gaepmalaga.github.io/webtaller/che-bolu/ |
+| Taberna Lázaro (Huelin, Málaga) | [`taberna-lazaro/`](taberna-lazaro/) | https://gaepmalaga.github.io/webtaller/taberna-lazaro/ |
 
-La documentación de Che Bolú está en [`che-bolu/README.md`](che-bolu/README.md).
-El resto de este archivo es la de Hidrocar.
+Cada uno tiene su propio README: [Che Bolú](che-bolu/README.md) y
+[Taberna Lázaro](taberna-lazaro/README.md). El resto de este archivo es la
+documentación de Hidrocar.
 
 ---
 
@@ -97,8 +99,9 @@ Es una carpeta de archivos estáticos: vale cualquier alojamiento.
   python3 herramientas/construir-archivo-unico.py
   ```
 
-  (El mismo script genera el de Che Bolú:
-  `python3 herramientas/construir-archivo-unico.py che-bolu`.)
+  (El mismo script genera los otros dos:
+  `python3 herramientas/construir-archivo-unico.py che-bolu` y
+  `python3 herramientas/construir-archivo-unico.py taberna-lazaro`.)
 
 - **GitHub Pages**: publicando. El workflow `.github/workflows/pages.yml`
   republica el sitio en cada `push` a esta rama:

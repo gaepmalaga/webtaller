@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Taberna Lázaro">
+  <rect width="64" height="64" rx="13" fill="#3d392d"/>
+  <!-- La L de Lázaro, con el remate de la tipografía de la casa. -->
+  <path d="M18 17h12v26h17v7H18z" fill="#f1efe4"/>
+  <!-- La aceituna del ramo. -->
+  <circle cx="44" cy="19" r="5" fill="#5d6140" stroke="#f1efe4" stroke-width="2"/>
+</svg>
