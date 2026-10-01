@@ -1,4 +1,13 @@
-Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)
+Fuentes tipográficas de esta web (self-hosted, sin peticiones a terceros):
+
+- Fraunces — © The Fraunces Project Authors. SIL Open Font License 1.1.
+- Archivo  — © The Archivo Project Authors (Omnibus-Type). SIL Open Font License 1.1.
+
+Texto completo de la licencia (aplica a ambas):
+
+----------------------------------------------------------------------
+
+Copyright 2018 The Fraunces Project Authors (https://github.com/undercasetype/Fraunces)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
