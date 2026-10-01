@@ -60,10 +60,13 @@ def main(clave='hidrocar'):
                               "url(%s)" % datauri('assets/fonts/%s' % ref, 'font/woff2'))
 
     # Fuera el precargado y la hoja externa: los estilos van incrustados.
+    # El `?v=N` que llevan los enlaces para saltarse la caché tiene que entrar
+    # en el patrón, o aquí no se sustituiría nada y el archivo saldría sin
+    # estilos (pasó: 33 KB en vez de 380).
     html = re.sub(r'<link rel="preload"[^>]*>\n?', '', html)
-    html = html.replace(
-        '<link rel="stylesheet" href="assets/css/style.css">',
-        '<style>\n%s\n</style>' % css)
+    html = re.sub(
+        r'<link rel="stylesheet" href="assets/css/style\.css(?:\?[^"]*)?">',
+        lambda m: '<style>\n%s\n</style>' % css, html)
 
     # El icono, también incrustado.
     html = html.replace(
@@ -71,9 +74,9 @@ def main(clave='hidrocar'):
         'href="%s"' % datauri('assets/img/favicon.svg', 'image/svg+xml'))
 
     # Y el script.
-    html = html.replace(
-        '<script src="assets/js/main.js" defer></script>',
-        '<script>\n%s\n</script>' % js)
+    html = re.sub(
+        r'<script src="assets/js/main\.js(?:\?[^"]*)?" defer></script>',
+        lambda m: '<script>\n%s\n</script>' % js, html)
 
     # El aviso legal no viaja en este archivo: el enlace no llevaría a ninguna
     # parte, así que se queda como texto.
