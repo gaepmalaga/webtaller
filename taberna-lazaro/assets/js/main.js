@@ -35,6 +35,7 @@
   var elTira     = document.getElementById('tira');
   var elTiraN    = document.getElementById('tira-n');
   var elTiraC    = document.getElementById('tira-c');
+  var elTiraT    = document.querySelector('.tira__t');
   var elEscenas  = document.querySelector('.escenas');
   var elCerrar   = document.getElementById('cuenta-cerrar');
   var elPestana  = document.getElementById('pestana');
@@ -43,15 +44,22 @@
 
   var anchaDeSobra = window.matchMedia('(min-width: 72rem)');
 
-  /* La guasa de la casa, según lo que lleves. El tono lo marca la carta. */
-  function guasa(total, unidades) {
-    if (unidades === 0) { return ''; }
-    if (total < 6)  { return 'Eso no es ni calentar.'; }
-    if (total < 12) { return 'Ya hay con qué entretenerse.'; }
-    if (total < 22) { return 'Ahí ya se cena en condiciones.'; }
-    if (total < 35) { return '¿Solo una copa? No nos engañemos…'; }
-    if (total < 60) { return 'Una mijilla más y nos vamos.'; }
-    return 'Lázaro, levántate y pídete otra. Pero mañana.';
+  /* El comentario de la casa. Mira QUÉ has cogido, no cuánto suma: si solo
+     hay bebida falta comer, si solo hay comida falta beber. El dinero no
+     pinta nada aquí. */
+  function comentario() {
+    var n = 0, comer = 0, beber = 0;
+    for (var id in pedido) {
+      n += pedido[id].x;
+      if (pedido[id].t === 'comer') { comer += pedido[id].x; } else { beber += pedido[id].x; }
+    }
+    if (n === 0)     { return ''; }
+    if (comer === 0) { return n > 2 ? 'Mucha sed y poca hambre.' : '¿Y de comer, nada?'; }
+    if (beber === 0) { return 'Eso pide algo para beber.'; }
+    if (n <= 2)      { return 'Por algo se empieza.'; }
+    if (n <= 5)      { return 'Eso ya tiene buena pinta.'; }
+    if (n <= 9)      { return 'Con eso se sale rodado.'; }
+    return 'Ahí ya venís con hambre de verdad.';
   }
 
   function unidades() {
@@ -103,11 +111,14 @@
     elTotal.hidden    = n === 0;
     elAcciones.hidden = n === 0;
     elCifra.textContent = euros.format(t);
-    elGuasa.textContent = guasa(t, n);
+    elGuasa.textContent = comentario();
 
-    /* La tira de abajo en móvil y la pestaña de escritorio. */
+    /* La tira de abajo en móvil y la pestaña de escritorio. Con la lista
+       vacía no se enseña un 0,00 €: se invita, que es de lo que va esto. */
     elTiraN.textContent = String(n);
-    elTiraC.textContent = euros.format(t);
+    elTiraN.hidden = n === 0;
+    elTiraT.textContent = n ? 'Lo que te vas a pedir' : 'Ve apuntando lo que te apetezca';
+    elTiraC.textContent = n ? euros.format(t) : '';
     elPestanaC.textContent = n ? euros.format(t) : '';
 
     /* Y las marcas en la propia carta. */
@@ -123,8 +134,8 @@
     });
   }
 
-  function poner(id, nombre, precio, cuantos) {
-    if (!pedido[id]) { pedido[id] = { n: nombre, p: precio, x: 0 }; }
+  function poner(id, nombre, precio, cuantos, tipo) {
+    if (!pedido[id]) { pedido[id] = { n: nombre, p: precio, x: 0, t: tipo || 'beber' }; }
     pedido[id].x += (cuantos || 1);
     pintar();
   }
@@ -141,7 +152,7 @@
     var nombre = b.dataset.n;
     var precio = parseFloat(b.dataset.p);
     b.setAttribute('aria-label', 'Apuntar ' + nombre + ', ' + euros.format(precio));
-    b.addEventListener('click', function () { poner(b.dataset.id, nombre, precio); });
+    b.addEventListener('click', function () { poner(b.dataset.id, nombre, precio, 1, b.dataset.t); });
   });
 
   /* ------------------------------------------------------- los escenarios --
@@ -155,7 +166,7 @@
 
   function precioDe(id) {
     var origen = document.querySelector('.it[data-id="' + id + '"]');
-    return origen ? { n: origen.dataset.n, p: parseFloat(origen.dataset.p) } : null;
+    return origen ? { n: origen.dataset.n, p: parseFloat(origen.dataset.p), t: origen.dataset.t } : null;
   }
 
   if (elEscenas) {
@@ -174,7 +185,7 @@
         pedido = Object.create(null);
         partes.forEach(function (par) {
           var it = precioDe(par[0]);
-          if (it) { poner(par[0], it.n, it.p, par[1]); }
+          if (it) { poner(par[0], it.n, it.p, par[1], it.t); }
         });
         cerrar(false);
         document.getElementById('carta').scrollIntoView({ block: 'start' });

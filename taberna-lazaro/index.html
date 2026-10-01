@@ -25,7 +25,7 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
 </head>
 
 <body>
@@ -87,11 +87,11 @@
     <div class="intro__in">
       <p class="intro__sobre">La taberna</p>
       <p class="intro__txt">
-        Taberna Lázaro abrió hace poco en la calle Alfredo Catalani, en pleno
-        <b>Huelin</b>. Tapas para compartir, cervezas bien tiradas y copas, a
-        precios de barrio: la caña a <b>2,00 €</b> y la gilda a <b>2,20 €</b>.
-        La carta es corta a propósito, y lo que no está escrito se pregunta en
-        la barra.
+        Una taberna recién abierta en la calle Alfredo Catalani, en pleno
+        <b>Huelin</b>. Para sentarse a <b>picar sin prisa</b>: gildas, croquetas,
+        gyozas, una tortilla trufada, el tartar de salchichón. La carta es corta
+        a propósito, y lo mejor del día casi nunca está escrito — eso se
+        pregunta en la barra.
       </p>
       <ul class="intro__datos">
         <li><b>Dónde</b> C/ Alfredo Catalani, 3 · Huelin, Málaga</li>
@@ -108,35 +108,36 @@
        son el valor correcto para quien no tenga JavaScript. -->
   <section class="cuanto">
     <div class="cuanto__cab">
-      <h2 class="cuanto__t">¿Y esto qué vale?</h2>
-      <p class="cuanto__s">Tres cuentas de verdad, con los precios de la carta.</p>
+      <h2 class="cuanto__t">Por dónde empezar</h2>
+      <p class="cuanto__s">Si no te quieres pensar mucho, por aquí.</p>
     </div>
     <ul class="escenas">
       <li>
         <button type="button" class="esc" data-ronda='[["cana-alhambra",1],["gilda",1]]'>
           <span class="esc__n">Una caña y una tapa</span>
-          <span class="esc__d">Lo que se entra a tomar sin pensarlo</span>
+          <span class="esc__d">Caña de Alhambra y una gilda. Lo que se entra a tomar sin pensarlo.</span>
           <span class="esc__t" data-total>4,20 €</span>
         </button>
       </li>
       <li>
         <button type="button" class="esc" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>
           <span class="esc__n">Picoteo para dos</span>
-          <span class="esc__d">Dos cañas, dos gildas, croquetas y japo bravas</span>
+          <span class="esc__d">Dos gildas, croquetas y japo bravas, con sus dos cañas. Para alargarlo.</span>
           <span class="esc__t" data-total>19,90 €</span>
         </button>
       </li>
       <li>
         <button type="button" class="esc" data-ronda='[["gyozas",1],["japo-bravas",1],["tartar-salchichon",1],["rusa",1],["cana-alhambra",2],["pan",1]]'>
           <span class="esc__n">Cena para dos, sin mirar</span>
-          <span class="esc__d">Cuatro cosas en medio, dos cañas y pan</span>
+          <span class="esc__d">Gyozas, japo bravas, tartar de salchichón y rusa, con pan y dos cañas.</span>
           <span class="esc__t" data-total>32,00 €</span>
         </button>
       </li>
     </ul>
     <p class="cuanto__pie">
-      Toca cualquiera y te la pasamos a la calculadora de la carta.
-      <b>Aquí no se pide nada</b>: es para hacerte una idea antes de venir.
+      Toca cualquiera y se te apunta en tu lista. <b>No se pide nada desde
+      aquí</b>: la lista es tuya, para enseñarla o leerla cuando venga el
+      camarero.
     </p>
   </section>
 
@@ -145,8 +146,9 @@
     <header class="carta__cab">
       <h2 class="carta__t">La carta</h2>
       <p class="carta__modo">
-        Toca lo que te pedirías y la calculadora te va echando la cuenta.
-        <b>No se pide nada desde aquí</b> — es solo para ver el precio.
+        Ve tocando lo que te apetezca y se te va apuntando, para no liarte
+        cuando venga el camarero. <b>No se pide nada desde aquí</b>: la lista no
+        sale de tu móvil.
       </p>
     </header>
 
@@ -163,21 +165,21 @@
         <section class="grupo grupo--destacado">
           <h3 class="grupo__t">Para comer</h3>
           <ul class="lista">
-            <li><button type="button" class="it" data-id="gilda" data-n="Gilda" data-p="2.20"><span class="it__n">Gilda</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="ibericos" data-n="Ibéricos" data-p="4.50"><span class="it__n">Ibéricos</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="queso" data-n="Queso" data-p="4.00"><span class="it__n">Queso</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="rusa" data-n="Rusa" data-p="5.50"><span class="it__n">Rusa</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="tomate-ventresca" data-n="Tomate y ventresca" data-p="5.50"><span class="it__n">Tomate y ventresca</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="croquetas" data-n="Croquetas" data-p="5.00"><span class="it__n">Croquetas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="gyozas" data-n="Gyozas de langostinos" data-p="6.50"><span class="it__n">Gyozas de langostinos</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="japo-bravas" data-n="Japo bravas" data-p="6.50"><span class="it__n">Japo bravas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="tortilla-trufada" data-n="Tortilla trufada" data-p="4.00"><span class="it__n">Tortilla trufada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="tartar-salchichon" data-n="Tartar de salchichón" data-p="8.50"><span class="it__n">Tartar de salchichón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="miniburger" data-n="Miniburger" data-p="4.50"><span class="it__n">Miniburger</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="gilda" data-n="Gilda" data-p="2.20"><span class="it__n">Gilda</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="ibericos" data-n="Ibéricos" data-p="4.50"><span class="it__n">Ibéricos</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="queso" data-n="Queso" data-p="4.00"><span class="it__n">Queso</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="rusa" data-n="Rusa" data-p="5.50"><span class="it__n">Rusa</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="tomate-ventresca" data-n="Tomate y ventresca" data-p="5.50"><span class="it__n">Tomate y ventresca</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="croquetas" data-n="Croquetas" data-p="5.00"><span class="it__n">Croquetas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">5,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="gyozas" data-n="Gyozas de langostinos" data-p="6.50"><span class="it__n">Gyozas de langostinos</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="japo-bravas" data-n="Japo bravas" data-p="6.50"><span class="it__n">Japo bravas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="tortilla-trufada" data-n="Tortilla trufada" data-p="4.00"><span class="it__n">Tortilla trufada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="tartar-salchichon" data-n="Tartar de salchichón" data-p="8.50"><span class="it__n">Tartar de salchichón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="comer" data-id="miniburger" data-n="Miniburger" data-p="4.50"><span class="it__n">Miniburger</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
           </ul>
           <p class="grupo__pie">
-            <button type="button" class="it it--chico" data-id="pan" data-n="Pan" data-p="1.00"><span class="it__n">Pan</span><i class="it__p">1,00 €</i></button>
-            <button type="button" class="it it--chico" data-id="salsa" data-n="Salsa extra" data-p="0.50"><span class="it__n">Salsa extra</span><i class="it__p">0,50 €</i></button>
+            <button type="button" class="it it--chico" data-t="comer" data-id="pan" data-n="Pan" data-p="1.00"><span class="it__n">Pan</span><i class="it__p">1,00 €</i></button>
+            <button type="button" class="it it--chico" data-t="comer" data-id="salsa" data-n="Salsa extra" data-p="0.50"><span class="it__n">Salsa extra</span><i class="it__p">0,50 €</i></button>
           </p>
           <p class="grupo__sug">Y pregúntanos por las <em>sugerencias del día</em>.</p>
         </section>
@@ -185,29 +187,29 @@
         <section class="grupo">
           <h3 class="grupo__t">Cervezas</h3>
           <ul class="lista">
-            <li><button type="button" class="it" data-id="cana-alhambra" data-n="Caña Alhambra" data-p="2.00"><span class="it__n">Caña Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="copa-alhambra" data-n="Copa Alhambra" data-p="2.50"><span class="it__n">Copa Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="alhambra-especial" data-n="Alhambra Especial" data-p="2.50"><span class="it__n">Alhambra Especial</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="alhambra-1925" data-n="Alhambra Verde 1925" data-p="3.00"><span class="it__n">Alhambra Verde 1925</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="alhambra-radler" data-n="Alhambra Radler" data-p="2.60"><span class="it__n">Alhambra Radler</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
-            <li><button type="button" class="it" data-id="sm-especial" data-n="San Miguel Especial" data-p="2.50"><span class="it__n">San Miguel Especial</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="sm-00" data-n="San Miguel 0,0" data-p="2.60"><span class="it__n">San Miguel 0,0</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
-            <li><button type="button" class="it" data-id="sm-00-tostada" data-n="San Miguel 0,0 Tostada" data-p="2.60"><span class="it__n">San Miguel 0,0 Tostada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
-            <li><button type="button" class="it" data-id="mahou5" data-n="Mahou 5 Estrellas" data-p="2.80"><span class="it__n">Mahou 5 Estrellas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,80 €</i></button></li>
-            <li><button type="button" class="it" data-id="corona" data-n="Corona" data-p="3.00"><span class="it__n">Corona</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="sin-gluten" data-n="Cerveza sin gluten" data-p="3.00"><span class="it__n">Sin gluten</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cana-alhambra" data-n="Caña Alhambra" data-p="2.00"><span class="it__n">Caña Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="copa-alhambra" data-n="Copa Alhambra" data-p="2.50"><span class="it__n">Copa Alhambra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="alhambra-especial" data-n="Alhambra Especial" data-p="2.50"><span class="it__n">Alhambra Especial</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="alhambra-1925" data-n="Alhambra Verde 1925" data-p="3.00"><span class="it__n">Alhambra Verde 1925</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="alhambra-radler" data-n="Alhambra Radler" data-p="2.60"><span class="it__n">Alhambra Radler</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="sm-especial" data-n="San Miguel Especial" data-p="2.50"><span class="it__n">San Miguel Especial</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="sm-00" data-n="San Miguel 0,0" data-p="2.60"><span class="it__n">San Miguel 0,0</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="sm-00-tostada" data-n="San Miguel 0,0 Tostada" data-p="2.60"><span class="it__n">San Miguel 0,0 Tostada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="mahou5" data-n="Mahou 5 Estrellas" data-p="2.80"><span class="it__n">Mahou 5 Estrellas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,80 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="corona" data-n="Corona" data-p="3.00"><span class="it__n">Corona</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="sin-gluten" data-n="Cerveza sin gluten" data-p="3.00"><span class="it__n">Sin gluten</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
           </ul>
         </section>
 
         <section class="grupo">
           <h3 class="grupo__t">Vinos</h3>
           <ul class="lista">
-            <li><button type="button" class="it" data-id="copa-verdejo" data-n="Copa Verdejo" data-p="3.20"><span class="it__n">Copa Verdejo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="copa-rioja" data-n="Copa Rioja" data-p="3.20"><span class="it__n">Copa Rioja</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="copa-ribera" data-n="Copa Ribera del Duero" data-p="3.50"><span class="it__n">Copa Ribera del Duero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="tinto-verano" data-n="Tinto de verano" data-p="3.00"><span class="it__n">Tinto de verano</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="vermut" data-n="Vermut Bandarra" data-p="3.00"><span class="it__n">Vermut Bandarra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="copa-manzanilla" data-n="Copa Manzanilla" data-p="3.20"><span class="it__n">Copa Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="copa-verdejo" data-n="Copa Verdejo" data-p="3.20"><span class="it__n">Copa Verdejo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="copa-rioja" data-n="Copa Rioja" data-p="3.20"><span class="it__n">Copa Rioja</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="copa-ribera" data-n="Copa Ribera del Duero" data-p="3.50"><span class="it__n">Copa Ribera del Duero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="tinto-verano" data-n="Tinto de verano" data-p="3.00"><span class="it__n">Tinto de verano</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="vermut" data-n="Vermut Bandarra" data-p="3.00"><span class="it__n">Vermut Bandarra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="copa-manzanilla" data-n="Copa Manzanilla" data-p="3.20"><span class="it__n">Copa Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
           </ul>
           <p class="grupo__sug">
             ¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b>
@@ -217,64 +219,64 @@
         <section class="grupo">
           <h3 class="grupo__t">Copas y licores</h3>
           <ul class="lista">
-            <li><button type="button" class="it" data-id="barcelo" data-n="Barceló" data-p="6.50"><span class="it__n">Barceló</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="cacique" data-n="Cacique" data-p="6.00"><span class="it__n">Cacique</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="cacique500" data-n="Cacique 500" data-p="8.00"><span class="it__n">Cacique 500</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="red-label" data-n="Red Label" data-p="6.00"><span class="it__n">Red Label</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="black-label" data-n="Black Label" data-p="8.00"><span class="it__n">Black Label</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="larios" data-n="Larios" data-p="6.00"><span class="it__n">Larios</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="beefeater" data-n="Beefeater" data-p="6.00"><span class="it__n">Beefeater</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="seagrams" data-n="Seagram's" data-p="6.50"><span class="it__n">Seagram's</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="bombay" data-n="Bombay Sapphire" data-p="7.00"><span class="it__n">Bombay Sapphire</span><span class="it__d" aria-hidden="true"></span><i class="it__p">7,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="tanqueray" data-n="Tanqueray" data-p="6.00"><span class="it__n">Tanqueray</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="ballantines" data-n="Ballantine's" data-p="6.00"><span class="it__n">Ballantine's</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="absolut" data-n="Absolut" data-p="6.00"><span class="it__n">Absolut</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="chupito" data-n="Chupito" data-p="1.50"><span class="it__n">Chupito</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="baileys" data-n="Baileys" data-p="4.00"><span class="it__n">Baileys</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="pacharan" data-n="Pacharán" data-p="4.00"><span class="it__n">Pacharán</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="barcelo" data-n="Barceló" data-p="6.50"><span class="it__n">Barceló</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cacique" data-n="Cacique" data-p="6.00"><span class="it__n">Cacique</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cacique500" data-n="Cacique 500" data-p="8.00"><span class="it__n">Cacique 500</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="red-label" data-n="Red Label" data-p="6.00"><span class="it__n">Red Label</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="black-label" data-n="Black Label" data-p="8.00"><span class="it__n">Black Label</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="larios" data-n="Larios" data-p="6.00"><span class="it__n">Larios</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="beefeater" data-n="Beefeater" data-p="6.00"><span class="it__n">Beefeater</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="seagrams" data-n="Seagram's" data-p="6.50"><span class="it__n">Seagram's</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="bombay" data-n="Bombay Sapphire" data-p="7.00"><span class="it__n">Bombay Sapphire</span><span class="it__d" aria-hidden="true"></span><i class="it__p">7,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="tanqueray" data-n="Tanqueray" data-p="6.00"><span class="it__n">Tanqueray</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="ballantines" data-n="Ballantine's" data-p="6.00"><span class="it__n">Ballantine's</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="absolut" data-n="Absolut" data-p="6.00"><span class="it__n">Absolut</span><span class="it__d" aria-hidden="true"></span><i class="it__p">6,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="chupito" data-n="Chupito" data-p="1.50"><span class="it__n">Chupito</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="baileys" data-n="Baileys" data-p="4.00"><span class="it__n">Baileys</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="pacharan" data-n="Pacharán" data-p="4.00"><span class="it__n">Pacharán</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,00 €</i></button></li>
           </ul>
         </section>
 
         <section class="grupo">
           <h3 class="grupo__t">Cafés e infusiones</h3>
           <ul class="lista">
-            <li><button type="button" class="it" data-id="cafe-solo" data-n="Café solo" data-p="1.50"><span class="it__n">Café solo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="cafe-americano" data-n="Café americano" data-p="1.50"><span class="it__n">Café americano</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="cafe-leche" data-n="Café con leche" data-p="1.90"><span class="it__n">Café con leche</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,90 €</i></button></li>
-            <li><button type="button" class="it" data-id="cafe-bombon" data-n="Café bombón" data-p="2.50"><span class="it__n">Café bombón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="cafelys" data-n="Cafélys" data-p="3.20"><span class="it__n">Cafélys</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="vaso-leche" data-n="Vaso de leche" data-p="1.70"><span class="it__n">Vaso de leche</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,70 €</i></button></li>
-            <li><button type="button" class="it" data-id="cola-cao" data-n="Cola Cao" data-p="2.20"><span class="it__n">Cola Cao</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="manzanilla" data-n="Manzanilla" data-p="2.20"><span class="it__n">Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="tila" data-n="Tila" data-p="2.20"><span class="it__n">Tila</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="te-verde" data-n="Té verde" data-p="2.20"><span class="it__n">Té verde</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="te-rojo" data-n="Té rojo" data-p="2.20"><span class="it__n">Té rojo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cafe-solo" data-n="Café solo" data-p="1.50"><span class="it__n">Café solo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cafe-americano" data-n="Café americano" data-p="1.50"><span class="it__n">Café americano</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cafe-leche" data-n="Café con leche" data-p="1.90"><span class="it__n">Café con leche</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,90 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cafe-bombon" data-n="Café bombón" data-p="2.50"><span class="it__n">Café bombón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cafelys" data-n="Cafélys" data-p="3.20"><span class="it__n">Cafélys</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="vaso-leche" data-n="Vaso de leche" data-p="1.70"><span class="it__n">Vaso de leche</span><span class="it__d" aria-hidden="true"></span><i class="it__p">1,70 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="cola-cao" data-n="Cola Cao" data-p="2.20"><span class="it__n">Cola Cao</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="manzanilla" data-n="Manzanilla" data-p="2.20"><span class="it__n">Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="tila" data-n="Tila" data-p="2.20"><span class="it__n">Tila</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="te-verde" data-n="Té verde" data-p="2.20"><span class="it__n">Té verde</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="te-rojo" data-n="Té rojo" data-p="2.20"><span class="it__n">Té rojo</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
           </ul>
         </section>
 
         <section class="grupo grupo--ancho">
           <h3 class="grupo__t">Bebidas frías</h3>
           <ul class="lista lista--dos">
-            <li><button type="button" class="it" data-id="agua" data-n="Agua 0,5 L" data-p="2.00"><span class="it__n">Agua 0,5 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="agua-gas" data-n="Agua con gas 0,33 L" data-p="2.00"><span class="it__n">Agua con gas 0,33 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
-            <li><button type="button" class="it" data-id="zumo-pina" data-n="Zumo de piña" data-p="2.20"><span class="it__n">Zumo de piña</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="zumo-melocoton" data-n="Zumo de melocotón" data-p="2.20"><span class="it__n">Zumo de melocotón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="puleva-fresa" data-n="Puleva fresa" data-p="2.50"><span class="it__n">Puleva fresa</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="puleva-choco" data-n="Puleva chocolate" data-p="2.50"><span class="it__n">Puleva chocolate</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
-            <li><button type="button" class="it" data-id="coca-cola" data-n="Coca-Cola" data-p="2.20"><span class="it__n">Coca-Cola</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="coca-zero" data-n="Coca-Cola Zero" data-p="2.20"><span class="it__n">Coca-Cola Zero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="coca-zero-zero" data-n="Coca-Cola Zero Zero" data-p="2.20"><span class="it__n">Coca-Cola Zero Zero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="fanta-naranja" data-n="Fanta naranja" data-p="2.20"><span class="it__n">Fanta naranja</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="fanta-limon" data-n="Fanta limón" data-p="2.20"><span class="it__n">Fanta limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="aquarius" data-n="Aquarius limón" data-p="2.20"><span class="it__n">Aquarius limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="fuze-limon" data-n="Fuze Tea limón" data-p="2.20"><span class="it__n">Fuze Tea limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="fuze-maracuya" data-n="Fuze Tea maracuyá" data-p="2.20"><span class="it__n">Fuze Tea maracuyá</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="tonica" data-n="Tónica" data-p="2.20"><span class="it__n">Tónica</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
-            <li><button type="button" class="it" data-id="sprite" data-n="Sprite" data-p="2.20"><span class="it__n">Sprite</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="agua" data-n="Agua 0,5 L" data-p="2.00"><span class="it__n">Agua 0,5 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="agua-gas" data-n="Agua con gas 0,33 L" data-p="2.00"><span class="it__n">Agua con gas 0,33 L</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="zumo-pina" data-n="Zumo de piña" data-p="2.20"><span class="it__n">Zumo de piña</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="zumo-melocoton" data-n="Zumo de melocotón" data-p="2.20"><span class="it__n">Zumo de melocotón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="puleva-fresa" data-n="Puleva fresa" data-p="2.50"><span class="it__n">Puleva fresa</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="puleva-choco" data-n="Puleva chocolate" data-p="2.50"><span class="it__n">Puleva chocolate</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,50 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="coca-cola" data-n="Coca-Cola" data-p="2.20"><span class="it__n">Coca-Cola</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="coca-zero" data-n="Coca-Cola Zero" data-p="2.20"><span class="it__n">Coca-Cola Zero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="coca-zero-zero" data-n="Coca-Cola Zero Zero" data-p="2.20"><span class="it__n">Coca-Cola Zero Zero</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="fanta-naranja" data-n="Fanta naranja" data-p="2.20"><span class="it__n">Fanta naranja</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="fanta-limon" data-n="Fanta limón" data-p="2.20"><span class="it__n">Fanta limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="aquarius" data-n="Aquarius limón" data-p="2.20"><span class="it__n">Aquarius limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="fuze-limon" data-n="Fuze Tea limón" data-p="2.20"><span class="it__n">Fuze Tea limón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="fuze-maracuya" data-n="Fuze Tea maracuyá" data-p="2.20"><span class="it__n">Fuze Tea maracuyá</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="tonica" data-n="Tónica" data-p="2.20"><span class="it__n">Tónica</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="sprite" data-n="Sprite" data-p="2.20"><span class="it__n">Sprite</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,20 €</i></button></li>
           </ul>
         </section>
 
-        <p class="carta__iva">Todos los precios incluyen IVA.</p>
+        <p class="carta__iva">IVA incluido.</p>
       </div>
 
       <!-- ============================================================ cuenta -->
@@ -285,31 +287,30 @@
             <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
           </button>
 
-          <h2 class="cuenta__t" id="cuenta-t">Echa la cuenta</h2>
-          <p class="cuenta__sitio">Calculadora · aquí no se pide nada</p>
+          <h2 class="cuenta__t" id="cuenta-t">Lo que te vas a pedir</h2>
+          <p class="cuenta__sitio">Tu lista · no se manda a ningún sitio</p>
 
           <ul class="cuenta__lineas" id="cuenta-lineas"></ul>
 
           <p class="cuenta__vacia" id="cuenta-vacia">
-            Toca un plato o una caña de la carta<br>
-            <span>y te vamos echando la cuenta.</span>
+            Ve tocando lo que te apetezca<br>
+            <span>y se te queda apuntado aquí.</span>
           </p>
 
           <div class="cuenta__total" id="cuenta-total" hidden>
-            <span class="cuenta__tl">Saldría por</span>
+            <span class="cuenta__tl">Llevas</span>
             <output class="cuenta__tn" id="cuenta-cifra" for="cuenta-lineas">0,00 €</output>
           </div>
 
           <p class="cuenta__guasa" id="cuenta-guasa" aria-live="polite"></p>
 
           <div class="cuenta__acciones" hidden id="cuenta-acciones">
-            <button type="button" class="cuenta__borrar" id="cuenta-borrar">Empezar de cero</button>
+            <button type="button" class="cuenta__borrar" id="cuenta-borrar">Borrar la lista</button>
           </div>
 
           <p class="cuenta__nota">
-            Esto no llega a la cocina ni a la barra: es una calculadora para
-            hacerte una idea antes de venir. La cuenta de verdad se pide dentro,
-            y lleva el IVA incluido igual que estos precios.
+            Esta lista no llega a la cocina ni a la barra: se queda en tu móvil,
+            para que no se te olvide nada al pedir.
           </p>
         </div>
       </aside>
@@ -388,18 +389,18 @@
 
 <!-- Para volver a abrir la calculadora en escritorio cuando se ha cerrado. -->
 <button type="button" class="pestana" id="pestana" hidden aria-controls="cuenta">
-  Echa la cuenta
+  Tu lista
   <span class="pestana__c" id="pestana-c"></span>
 </button>
 
 <!-- Barra de la calculadora en móvil. La pone el JavaScript. -->
 <button type="button" class="tira" id="tira" hidden aria-expanded="false" aria-controls="cuenta">
   <span class="tira__n" id="tira-n">0</span>
-  <span class="tira__t">Echa la cuenta</span>
+  <span class="tira__t">Lo que te vas a pedir</span>
   <span class="tira__c" id="tira-c">0,00 €</span>
 </button>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
 
 <script type="application/ld+json">
 {

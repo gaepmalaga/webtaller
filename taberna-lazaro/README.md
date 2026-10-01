@@ -33,19 +33,26 @@ va sumando**, pegada al lado mientras bajas, o en una hoja que sube desde abajo
 en el móvil. Responde a lo que se pregunta cualquiera que mira la carta de un
 bar que no conoce: *¿esto cuánto me va a costar?*
 
+### De qué va la lista
+
+No es una calculadora de la cuenta: es **tu lista**, para ir apuntando lo que
+te apetece y no liarte cuando llegue el camarero. Por eso lo que se lee son los
+platos, el precio va al lado y en gris, y el comentario de la casa mira **qué**
+has cogido, no cuánto suma: si solo hay bebida dice «¿y de comer, nada?», si
+solo hay comida «eso pide algo para beber».
+
 ### Que no parezca una comanda
 
 Es el riesgo evidente de la idea, y por eso se ataja en el diseño y no en la
 letra pequeña:
 
-- Se llama **«Echa la cuenta»**, no «tu cuenta», y debajo pone
-  **«calculadora · aquí no se pide nada»**.
-- El total no se llama «total» sino **«saldría por»**.
+- Se llama **«Lo que te vas a pedir»**, y debajo pone **«tu lista · no se manda
+  a ningún sitio»**.
+- La suma no se llama «total»: es un **«llevas»** pequeño y en gris al final.
 - No lleva membrete del bar: un ticket que ponga «Taberna Lázaro · Huelin» con
   un total debajo parece una comanda de verdad, y eso se quitó.
 - El aviso va **enmarcado dentro del propio ticket**, no al pie.
-- Y la instrucción de la carta dice *«toca lo que te pedirías»*, no *«te lo
-  apuntamos»*.
+- Y la instrucción de la carta habla de **no liarte al pedir**, no de precios.
 
 Además: no se manda nada a ninguna parte, no se guarda nada y no hay ni una
 petición a terceros. Se puede **cerrar** (la × del ticket, o Escape): en
@@ -89,6 +96,14 @@ assets/
   img/favicon.svg     Icono
   img/og.png          Imagen al compartir en WhatsApp/redes
 ```
+
+## Al cambiar los estilos, subir la versión
+
+`index.html` y `aviso-legal.html` enlazan la hoja de estilo y el script con un
+número detrás: `style.css?v=4`, `main.js?v=4`. **Hay que subirlo cada vez que se
+toquen.** Sin eso, a quien ya haya visto la web el navegador le sirve el CSS
+viejo con el HTML nuevo, y la página se ve rota (pasó: secciones nuevas sin
+estilo ninguno).
 
 ## Verla en local
 
