@@ -69,6 +69,15 @@ decidir con el dueño:
 
 ## 6. Los textos
 
+Los lemas de la tapa, la carta y el cierre son suyos, copiados de la carta. El
+resto —la descripción de la taberna, «por dónde empezar», la instrucción de la
+lista y los comentarios— **los ha escrito la web imitando su tono**. Están
+pensados con guasa a propósito, pero conviene que los lea el dueño: hay un
+guiño al nombre del bar («un tartar de salchichón que levanta a un muerto —de
+eso aquí sabemos—») que o le hace gracia o lo quita en diez segundos.
+
+## 6 bis. Los lemas de la casa
+
 Los lemas son suyos, copiados de la carta:
 
 - «Lázaro, levántate y pídete otra.»
