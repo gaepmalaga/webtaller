@@ -275,10 +275,13 @@ code {
 .ranura__quita {
   position: absolute; top: 2px; right: 2px; z-index: 2;
   width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 0; cursor: pointer;
-  background: rgba(38,35,24,.78); color: #fff; font-size: 0.7rem; line-height: 1;
+  background: rgba(38,35,24,.72); color: #fff; font-size: 0.7rem; line-height: 1;
   display: none; place-content: center;
 }
-.ranura.is-puesta:hover .ranura__quita { display: grid; }
+/* Visible siempre que haya foto: en un móvil no hay «pasar el ratón», así que
+   si solo saliera al hacer hover no se podría quitar una foto desde el bar. */
+.ranura.is-puesta .ranura__quita { display: grid; }
+.ranura.is-puesta:hover .ranura__quita { background: var(--mal); }
 
 .acciones { display: flex; gap: 0.2rem; }
 .mini {

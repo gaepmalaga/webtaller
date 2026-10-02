@@ -35,6 +35,8 @@
   var datos = null;
   var original = '';
   var fotosNuevas = {};
+  var fotosBorradas = {};   /* las que había y se han quitado: se borran del repositorio */
+  var fotosDelRepo = {};    /* las que ya estaban al cargar */
   var sucio = false;
   var filtro = '';
 
@@ -100,6 +102,10 @@
     }).then(function (f) {
       datos = JSON.parse(deBase64(f.content));
       original = JSON.stringify(datos);
+      fotosDelRepo = {};
+      datos.grupos.forEach(function (g) {
+        g.platos.forEach(function (x) { if (x.foto) { fotosDelRepo[RUTA_FOTOS + x.id + '.jpg'] = true; } });
+      });
       $('#pantalla-entrar').hidden = true;
       $('#pantalla-panel').hidden = false;
       $('#estado-conexion').textContent = repo + ' · ' + rama;
@@ -110,7 +116,9 @@
 
   /* ------------------------------------------------------------- cambios -- */
   function toco() {
-    sucio = JSON.stringify(datos) !== original || Object.keys(fotosNuevas).length > 0;
+    sucio = JSON.stringify(datos) !== original
+      || Object.keys(fotosNuevas).length > 0
+      || Object.keys(fotosBorradas).length > 0;
     $('#guardar').disabled = !sucio;
     $('#descartar').hidden = !sucio;
     var p = $('#pastilla');
@@ -295,7 +303,11 @@
       quita.type = 'button'; quita.title = 'Quitar la foto';
       quita.addEventListener('click', function (e) {
         e.preventDefault(); e.stopPropagation();
-        delete fotosNuevas[RUTA_FOTOS + p.id + '.jpg'];
+        var ruta = RUTA_FOTOS + p.id + '.jpg';
+        delete fotosNuevas[ruta];
+        /* Si la foto ya estaba subida, se borra también del repositorio: si no,
+           quedaría ahí ocupando sitio para siempre. */
+        if (fotosDelRepo[ruta]) { fotosBorradas[ruta] = true; }
         p.foto = ''; toco(); pintarCarta();
       });
       ranura.appendChild(quita);
@@ -308,6 +320,7 @@
       if (!file.files[0]) { return; }
       encoger(file.files[0]).then(function (b64) {
         fotosNuevas[RUTA_FOTOS + p.id + '.jpg'] = b64;
+        delete fotosBorradas[RUTA_FOTOS + p.id + '.jpg'];
         p.foto = 'assets/img/platos/' + p.id + '.jpg';
         toco(); pintarCarta();
         aviso('Foto lista. Se sube al publicar.', 'bien');
@@ -769,7 +782,13 @@
           return api('/repos/' + repo + '/git/blobs', {
             method: 'POST', body: JSON.stringify({ content: a.contenido, encoding: 'base64' })
           }).then(function (b) { return { path: a.ruta, mode: '100644', type: 'blob', sha: b.sha }; });
-        }));
+        })).then(function (entradas) {
+          /* `sha: null` en el árbol es como se borra un archivo. */
+          Object.keys(fotosBorradas).forEach(function (r) {
+            entradas.push({ path: r, mode: '100644', type: 'blob', sha: null });
+          });
+          return entradas;
+        });
       })
       .then(function (entradas) {
         paso('Montando el cambio…');
@@ -779,10 +798,14 @@
       })
       .then(function (t) {
         var n = Object.keys(fotosNuevas).length;
+        var q = Object.keys(fotosBorradas).length;
+        var detalle = [];
+        if (n) { detalle.push(n + (n === 1 ? ' foto nueva' : ' fotos nuevas')); }
+        if (q) { detalle.push(q + (q === 1 ? ' foto quitada' : ' fotos quitadas')); }
         return api('/repos/' + repo + '/git/commits', {
           method: 'POST',
           body: JSON.stringify({
-            message: 'Taberna Lázaro: cambios desde el panel' + (n ? ' (' + n + (n === 1 ? ' foto' : ' fotos') + ')' : ''),
+            message: 'Taberna Lázaro: cambios desde el panel' + (detalle.length ? ' (' + detalle.join(', ') + ')' : ''),
             tree: t.sha, parents: [baseSha]
           })
         });
@@ -794,7 +817,9 @@
         });
       })
       .then(function () {
-        fotosNuevas = {};
+        Object.keys(fotosNuevas).forEach(function (r) { fotosDelRepo[r] = true; });
+        Object.keys(fotosBorradas).forEach(function (r) { delete fotosDelRepo[r]; });
+        fotosNuevas = {}; fotosBorradas = {};
         original = JSON.stringify(datos);
         toco();
         $('#ruleta').hidden = true;
@@ -850,7 +875,7 @@
   });
   $('#descartar').addEventListener('click', function () {
     if (!confirm('¿Descartar todos los cambios sin publicar?')) { return; }
-    datos = JSON.parse(original); fotosNuevas = {}; todo();
+    datos = JSON.parse(original); fotosNuevas = {}; fotosBorradas = {}; todo();
     aviso('Cambios descartados.', 'bien');
   });
   document.addEventListener('click', function (e) {
