@@ -18,14 +18,14 @@
     "facebook": "La Taberna De Churriana"
   },
   "textos": {
-    "lema": "Buen tapeo\nen Churriana.",
+    "lema": "Buen tapeo en Churriana.",
     "tapaPie": "Caña 2,00 € · Pincho de langostinos 2,50 €",
     "tapaAbrir": "Ver la carta",
     "introSobre": "La casa",
     "introUno": "Raciones para poner en medio, tostas que crujen, mini-burgers de Angus y carne a la plancha. <b>Sabor de verdad</b>, y a precio de taberna.",
-    "introDos": "Huevos rotos con secreto, albóndigas de las de siempre, croquetas de cocido y de rabo de toro. Lo que no esté escrito se pregunta en la barra, que para eso está.",
+    "introDos": "Huevos rotos con secreto, albóndigas de las de siempre, croquetas de cocido y de rabo de toro.",
     "empezarTitulo": "Por dónde empezar",
-    "empezarSub": "Menos pensar y más tapear: tres mesas ya puestas, para los que entran diciendo «ponme lo que quieras».",
+    "empezarSub": "Menos pensar y más tapear: tres propuestas para los indecisos.",
     "empezarPie": "Toca cualquiera y se te pasa a la lista. <b>De aquí no sale ningún pedido</b>: solo las ganas.",
     "cartaTitulo": "La carta",
     "cartaModo": "Ve tocando lo que te apetezca y se te queda apuntado, que luego llega el camarero y se nos olvida la mitad.",
@@ -41,8 +41,8 @@
     "tiraLlena": "Lo que te vas a pedir",
     "dorsoTitulo": "El reverso",
     "avisarTexto": "Para mesa, para grupo, o para preguntar qué hay hoy fuera de carta.",
-    "avisarMin": "En la barra no hace falta avisar: se entra y ya está.",
-    "fin": "Esto no se comparte.\n<em>Pero ven y lo hablamos.</em>"
+    "avisarMin": "",
+    "fin": ""
   },
   "comentarios": {
     "soloBeberPoco": "¿Y de comer, nada?",
@@ -174,49 +174,49 @@
         {
           "id": "ensaladilla",
           "nombre": "Ensaladilla rusa",
-          "precio": 7.0,
+          "precio": 7,
           "descripcion": "Nuestra ensaladilla rusa clásica con el toque especial y secreto de la Taberna.",
           "foto": ""
         },
         {
           "id": "bravas",
           "nombre": "Patatas bravas",
-          "precio": 7.0,
+          "precio": 7,
           "descripcion": "Patatas de corte «teja» extra crujientes, servidas con nuestra salsa brava artesanal.",
           "foto": ""
         },
         {
           "id": "patatas-queso-bacon",
           "nombre": "Patatas queso y bacon",
-          "precio": 7.0,
+          "precio": 7,
           "descripcion": "Un festín de patatas tejas con queso y tropezones de bacon ahumado.",
           "foto": ""
         },
         {
           "id": "albondigas",
           "nombre": "Albóndigas caseras",
-          "precio": 7.0,
+          "precio": 7,
           "descripcion": "Receta tradicional, cocinadas a fuego lento en salsa de tomate natural.",
           "foto": ""
         },
         {
           "id": "langostinos-crujientes",
           "nombre": "Langostinos crujientes",
-          "precio": 7.0,
+          "precio": 7,
           "descripcion": "Langostinos envueltos en panko japonés y acompañados de nuestra salsa especial.",
           "foto": ""
         },
         {
           "id": "huevos-secreto",
           "nombre": "Huevos rotos con secreto",
-          "precio": 8.0,
+          "precio": 8,
           "descripcion": "La combinación perfecta de patatas fritas, huevos de corral y finas tiras de secreto ibérico.",
           "foto": ""
         },
         {
           "id": "huevos-langostinos",
           "nombre": "Huevos rotos con langostinos",
-          "precio": 8.0,
+          "precio": 8,
           "descripcion": "Una variante marinera de nuestro clásico, con langostinos salteados al punto.",
           "foto": ""
         }
@@ -258,7 +258,7 @@
         {
           "id": "burger-cheddar",
           "nombre": "Cheddar Boom",
-          "precio": 4.0,
+          "precio": 4,
           "descripcion": "La estrella de la casa. Carne Angus bañada en una cascada de cheddar, bacon y cebolla crujiente.",
           "foto": ""
         }
@@ -293,7 +293,7 @@
         {
           "id": "tosta-filetitos",
           "nombre": "Filetitos",
-          "precio": 7.0,
+          "precio": 7,
           "descripcion": "Finos filetes con nuestro aliño especial, queso Edam fundido y alioli sobre pan tostado.",
           "foto": ""
         },
@@ -351,7 +351,7 @@
         {
           "id": "flamenquin",
           "nombre": "Flamenquín casero",
-          "precio": 8.0,
+          "precio": 8,
           "descripcion": "Cinta de lomo, jamón serrano y queso.",
           "foto": ""
         },
@@ -365,7 +365,7 @@
         {
           "id": "solomillo",
           "nombre": "Solomillo",
-          "precio": 9.0,
+          "precio": 9,
           "descripcion": "Solomillo de cerdo de primera calidad con guarnición de patatas fritas.",
           "foto": ""
         },
@@ -400,14 +400,14 @@
         {
           "id": "brochetitas",
           "nombre": "Brochetitas de pollo",
-          "precio": 8.0,
+          "precio": 8,
           "descripcion": "Brochetas de pollo con toque de chimichurri, verduras y patatas fritas.",
           "foto": ""
         },
         {
           "id": "plato-taberna",
           "nombre": "El plato de la Taberna",
-          "precio": 10.0,
+          "precio": 10,
           "descripcion": "El festín definitivo: cinta de lomo, pimentitos fritos, huevo, chorizo y una montaña de patatas fritas.",
           "foto": ""
         }
@@ -424,7 +424,7 @@
         {
           "id": "cana",
           "nombre": "Caña",
-          "precio": 2.0,
+          "precio": 2,
           "descripcion": "",
           "foto": ""
         },
@@ -445,7 +445,7 @@
         {
           "id": "verde",
           "nombre": "Verde",
-          "precio": 3.0,
+          "precio": 3,
           "descripcion": "",
           "foto": ""
         },
@@ -459,7 +459,7 @@
         {
           "id": "agua",
           "nombre": "Agua",
-          "precio": 1.0,
+          "precio": 1,
           "descripcion": "",
           "foto": ""
         },
@@ -487,7 +487,7 @@
         {
           "id": "tinto-verano",
           "nombre": "Tinto de verano",
-          "precio": 3.0,
+          "precio": 3,
           "descripcion": "",
           "foto": ""
         }
