@@ -155,7 +155,7 @@
         {
           "id": "queso",
           "nombre": "Queso",
-          "precio": 4.0,
+          "precio": 4,
           "foto": ""
         },
         {
@@ -173,7 +173,7 @@
         {
           "id": "croquetas",
           "nombre": "Croquetas",
-          "precio": 5.0,
+          "precio": 5,
           "foto": ""
         },
         {
@@ -191,7 +191,7 @@
         {
           "id": "tortilla-trufada",
           "nombre": "Tortilla trufada",
-          "precio": 4.0,
+          "precio": 4,
           "foto": ""
         },
         {
@@ -211,7 +211,7 @@
         {
           "id": "pan",
           "nombre": "Pan",
-          "precio": 1.0
+          "precio": 1
         },
         {
           "id": "salsa",
@@ -228,7 +228,7 @@
         {
           "id": "cana-alhambra",
           "nombre": "Caña Alhambra",
-          "precio": 2.0,
+          "precio": 2,
           "foto": ""
         },
         {
@@ -246,7 +246,7 @@
         {
           "id": "alhambra-1925",
           "nombre": "Alhambra Verde 1925",
-          "precio": 3.0,
+          "precio": 3,
           "foto": ""
         },
         {
@@ -282,13 +282,13 @@
         {
           "id": "corona",
           "nombre": "Corona",
-          "precio": 3.0,
+          "precio": 3,
           "foto": ""
         },
         {
           "id": "sin-gluten",
           "nombre": "Sin gluten",
-          "precio": 3.0,
+          "precio": 3,
           "foto": ""
         }
       ]
@@ -320,13 +320,13 @@
         {
           "id": "tinto-verano",
           "nombre": "Tinto de verano",
-          "precio": 3.0,
+          "precio": 3,
           "foto": ""
         },
         {
           "id": "vermut",
           "nombre": "Vermut Bandarra",
-          "precio": 3.0,
+          "precio": 3,
           "foto": ""
         },
         {
@@ -351,37 +351,37 @@
         {
           "id": "cacique",
           "nombre": "Cacique",
-          "precio": 6.0,
+          "precio": 6,
           "foto": ""
         },
         {
           "id": "cacique500",
           "nombre": "Cacique 500",
-          "precio": 8.0,
+          "precio": 8,
           "foto": ""
         },
         {
           "id": "red-label",
           "nombre": "Red Label",
-          "precio": 6.0,
+          "precio": 6,
           "foto": ""
         },
         {
           "id": "black-label",
           "nombre": "Black Label",
-          "precio": 8.0,
+          "precio": 8,
           "foto": ""
         },
         {
           "id": "larios",
           "nombre": "Larios",
-          "precio": 6.0,
+          "precio": 6,
           "foto": ""
         },
         {
           "id": "beefeater",
           "nombre": "Beefeater",
-          "precio": 6.0,
+          "precio": 6,
           "foto": ""
         },
         {
@@ -393,25 +393,25 @@
         {
           "id": "bombay",
           "nombre": "Bombay Sapphire",
-          "precio": 7.0,
+          "precio": 7,
           "foto": ""
         },
         {
           "id": "tanqueray",
           "nombre": "Tanqueray",
-          "precio": 6.0,
+          "precio": 6,
           "foto": ""
         },
         {
           "id": "ballantines",
           "nombre": "Ballantine's",
-          "precio": 6.0,
+          "precio": 6,
           "foto": ""
         },
         {
           "id": "absolut",
           "nombre": "Absolut",
-          "precio": 6.0,
+          "precio": 6,
           "foto": ""
         },
         {
@@ -423,13 +423,13 @@
         {
           "id": "baileys",
           "nombre": "Baileys",
-          "precio": 4.0,
+          "precio": 4,
           "foto": ""
         },
         {
           "id": "pacharan",
           "nombre": "Pacharán",
-          "precio": 4.0,
+          "precio": 4,
           "foto": ""
         }
       ]
@@ -517,13 +517,13 @@
         {
           "id": "agua",
           "nombre": "Agua 0,5 L",
-          "precio": 2.0,
+          "precio": 2,
           "foto": ""
         },
         {
           "id": "agua-gas",
           "nombre": "Agua con gas 0,33 L",
-          "precio": 2.0,
+          "precio": 2,
           "foto": ""
         },
         {
