@@ -26,6 +26,7 @@ SITIOS = {
     'hidrocar':       ('.',              'hidrocar-una-sola-pagina.html'),
     'che-bolu':       ('che-bolu',       'che-bolu-una-sola-pagina.html'),
     'taberna-lazaro': ('taberna-lazaro', 'taberna-lazaro-una-sola-pagina.html'),
+    'churriana':      ('churriana',      'churriana-una-sola-pagina.html'),
 }
 
 
@@ -68,10 +69,20 @@ def main(clave='hidrocar'):
         r'<link rel="stylesheet" href="assets/css/style\.css(?:\?[^"]*)?">',
         lambda m: '<style>\n%s\n</style>' % css, html)
 
-    # El icono, también incrustado.
-    html = html.replace(
-        'href="assets/img/favicon.svg"',
-        'href="%s"' % datauri('assets/img/favicon.svg', 'image/svg+xml'))
+    # Las imágenes del sitio —el icono, el logo, las fotos de los platos—
+    # también incrustadas. Lo que no exista se deja como está en vez de
+    # reventar: cada sitio tiene las suyas.
+    MIMES = {'.svg': 'image/svg+xml', '.png': 'image/png',
+             '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp'}
+
+    def incrustar(m):
+        atributo, rel = m.group(1), m.group(2)
+        mime = MIMES.get(pathlib.PurePosixPath(rel).suffix.lower())
+        if not mime or not (base / rel).exists():
+            return m.group(0)
+        return '%s="%s"' % (atributo, datauri(rel, mime))
+
+    html = re.sub(r'(href|src)="(assets/img/[^"?]+)"', incrustar, html)
 
     # Y el script.
     html = re.sub(

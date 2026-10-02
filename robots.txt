@@ -4,5 +4,7 @@ Disallow: /aviso-legal.html
 Disallow: /che-bolu/aviso-legal.html
 Disallow: /taberna-lazaro/aviso-legal.html
 Disallow: /taberna-lazaro/admin/
+Disallow: /churriana/aviso-legal.html
+Disallow: /churriana/admin/
 
 Sitemap: https://gaepmalaga.github.io/webtaller/sitemap.xml

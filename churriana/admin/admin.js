@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Panel de Taberna Lázaro.
+   Panel de La Taberna de Churriana.
 
    Lee datos/contenido.json del repositorio, deja tocarlo, y al publicar lo
    sube —con las fotos— en un solo commit. GitHub Pages reconstruye la web.
@@ -9,8 +9,8 @@
   'use strict';
 
   var API = 'https://api.github.com';
-  var RUTA = 'taberna-lazaro/datos/contenido.json';
-  var RUTA_FOTOS = 'taberna-lazaro/assets/img/platos/';
+  var RUTA = 'churriana/datos/contenido.json';
+  var RUTA_FOTOS = 'churriana/assets/img/platos/';
 
   var $ = function (s) { return document.querySelector(s); };
   function el(t, c, x) {
@@ -662,7 +662,7 @@
         return api('/repos/' + repo + '/git/commits', {
           method: 'POST',
           body: JSON.stringify({
-            message: 'Taberna Lázaro: cambios desde el panel' + (detalle.length ? ' (' + detalle.join(', ') + ')' : ''),
+            message: 'La Taberna de Churriana: cambios desde el panel' + (detalle.length ? ' (' + detalle.join(', ') + ')' : ''),
             tree: t.sha, parents: [baseSha]
           })
         });

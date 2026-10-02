@@ -1,0 +1,416 @@
+/* ==========================================================================
+   Panel de La Taberna de Churriana.
+   Una herramienta, pero de la casa: el negro y el amarillo de la carta.
+   Densa donde hay que trabajar, con aire donde hay que leer.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Archivo'; font-style: normal; font-weight: 400 800;
+  font-stretch: 62% 125%; font-display: swap;
+  src: url('../assets/fonts/archivo-latin.woff2') format('woff2');
+}
+
+:root {
+  --oliva:     #1b1b1b;   /* el color de marca: aquí, el negro */
+  --oliva-osc: #000000;
+  --noche:     #000000;
+  --crema:     #f4f3ef;
+
+  --fondo:     #edecE8;   /* el escritorio */
+  --papel:     #ffffff;   /* las tarjetas */
+  --papel-2:   #f6f5f1;
+  --tinta:     #17161a;
+  --tinta-2:   #55545a;
+  --tinta-3:   #8a8990;
+  --linea:     #dedcd6;
+  --linea-2:   #eceae5;
+
+  --dato:      #7a6300;   /* el color de los datos: validado para gráficos */
+  --dato-cl:   #f6edc2;
+  --oro:       #8a6a00;
+  --ambar:     #fbee86;
+  --bien:      #2f7d4f;
+  --mal:       #a83d28;
+
+  --f-tit: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --f: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --r: 12px;
+  --sombra: 0 1px 2px rgba(43,41,32,.05), 0 8px 24px -16px rgba(43,41,32,.3);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--fondo); color: var(--tinta);
+  font-family: var(--f); font-size: 15px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { margin: 0; line-height: 1.15; font-family: var(--f-tit); font-weight: 800; letter-spacing: -0.01em; }
+p { margin: 0 0 0.75em; }
+ul, ol { margin: 0 0 0.75em; padding-left: 1.15rem; }
+a { color: var(--oliva); text-underline-offset: 0.2em; }
+button { font-family: inherit; }
+[hidden] { display: none !important; }
+.sprite { position: absolute; }
+code {
+  background: var(--papel-2); border: 1px solid var(--linea);
+  border-radius: 4px; padding: 0.08em 0.4em; font-size: 0.88em;
+}
+:focus-visible { outline: 2px solid var(--dato); outline-offset: 2px; border-radius: 4px; }
+
+/* ================================================================ portal == */
+.portal {
+  min-height: 100svh; display: grid; place-items: center; padding: 1.2rem;
+  background:
+    radial-gradient(80% 60% at 50% 0%, #272727 0%, transparent 70%),
+    var(--oliva);
+}
+.portal__caja {
+  width: 100%; max-width: 27rem; background: var(--papel);
+  border-radius: 16px; padding: 2rem 1.8rem 1.6rem;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.5);
+  text-align: center;
+}
+.portal__logo { display: block; width: 4.6rem; height: auto; margin: 0 auto 1rem; }
+.portal h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.35rem; }
+.portal h1 em { font-style: normal; background: var(--ambar); padding: 0.02em 0.25em; }
+.portal__sub { color: var(--tinta-3); font-size: 0.92rem; margin-bottom: 1.6rem; }
+.portal .campo { text-align: left; }
+
+.comollave { margin-top: 1.4rem; text-align: left; font-size: 0.88rem; border-top: 1px solid var(--linea); padding-top: 1rem; }
+.comollave summary { cursor: pointer; font-weight: 700; color: var(--oliva); list-style: none; }
+.comollave summary::-webkit-details-marker { display: none; }
+.comollave summary::before { content: '＋ '; }
+.comollave[open] summary::before { content: '－ '; }
+.comollave ol { margin-top: 0.7rem; color: var(--tinta-2); }
+.comollave li { margin-bottom: 0.3rem; }
+.nota-sutil {
+  background: var(--papel-2); border-left: 2px solid var(--ambar);
+  padding: 0.6rem 0.75rem; margin: 0.8rem 0 0;
+  font-size: 0.84rem; color: var(--tinta-2);
+}
+
+/* =================================================================== app == */
+.app { display: grid; grid-template-columns: 1fr; min-height: 100svh; }
+@media (min-width: 60rem) { .app { grid-template-columns: 15rem 1fr; } }
+
+/* ------------------------------------------------------------- lateral --- */
+.lateral {
+  display: none; flex-direction: column; gap: 1.6rem;
+  padding: 1.4rem 1rem; background: var(--oliva-osc); color: var(--crema);
+  position: sticky; top: 0; height: 100svh;
+}
+@media (min-width: 60rem) { .lateral { display: flex; } }
+
+.marca { display: grid; justify-items: start; gap: 0.1rem; text-decoration: none; color: inherit; padding: 0 0.5rem; }
+.marca__logo { width: 3rem; height: auto; margin-bottom: 0.4rem; }
+.marca__n { font-family: var(--f-tit); font-size: 1.35rem; font-weight: 800; font-stretch: 80%; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; }
+.marca__p { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #a9a794; }
+
+.menu { display: grid; gap: 0.15rem; }
+.menu__i {
+  display: flex; align-items: center; gap: 0.7rem; width: 100%;
+  padding: 0.6rem 0.75rem; border: 0; border-radius: 8px; cursor: pointer;
+  background: transparent; color: #cfccbc;
+  font-size: 0.93rem; font-weight: 600; text-align: left;
+  transition: background .14s ease, color .14s ease;
+}
+.menu__i svg { width: 19px; height: 19px; flex: none; opacity: .8; }
+.menu__i:hover { background: rgba(255,255,255,.07); color: var(--crema); }
+.menu__i.is-aqui { background: var(--crema); color: var(--oliva-osc); }
+.menu__i.is-aqui svg { opacity: 1; }
+.menu__i .globo {
+  margin-left: auto; min-width: 1.35rem; padding: 0 .35rem; border-radius: 99px;
+  background: var(--ambar); color: #4a3a00;
+  font-size: .72rem; font-weight: 800; text-align: center; line-height: 1.35rem;
+}
+
+.lateral__pie { margin-top: auto; display: grid; gap: 0.7rem; padding: 0 0.5rem; }
+.enlace-fuera {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: #cfccbc; text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.enlace-fuera svg { width: 15px; height: 15px; }
+.enlace-fuera:hover { color: #fff; }
+.conexion { margin: 0; font-size: 0.72rem; color: #8b8878; word-break: break-all; }
+
+/* ---------------------------------------------------------------- tope --- */
+.centro { min-width: 0; display: flex; flex-direction: column; }
+.tope {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: 1rem clamp(1rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--fondo) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linea);
+}
+.tope__t { font-size: 1.5rem; }
+.tope__s { margin: 0.1rem 0 0; font-size: 0.85rem; color: var(--tinta-3); }
+.tope__acc { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; }
+
+.pastilla {
+  font-size: 0.78rem; font-weight: 700; color: var(--tinta-3);
+  padding: 0.3rem 0.7rem; border-radius: 99px; background: var(--papel-2);
+  border: 1px solid var(--linea);
+}
+.pastilla.is-sucio { background: var(--ambar); border-color: #e4c86d; color: #4a3a00; }
+
+.lienzo { padding: clamp(1rem, 3vw, 2rem); padding-bottom: 7rem; max-width: 62rem; width: 100%; }
+@media (min-width: 60rem) { .lienzo { padding-bottom: 3rem; } }
+
+/* --------------------------------------------------------------- botón --- */
+.btn {
+  font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  padding: 0.55rem 1.1rem; border-radius: 8px; border: 1px solid transparent;
+  transition: background .14s ease, color .14s ease, border-color .14s ease, transform .1s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn--principal { background: var(--oliva-osc); color: var(--crema); }
+.btn--principal:hover { background: var(--noche); }
+.btn--principal:disabled { background: var(--linea); color: var(--tinta-3); cursor: default; transform: none; }
+.btn--llano { background: transparent; color: var(--tinta-2); border-color: var(--linea); }
+.btn--llano:hover { background: var(--papel-2); color: var(--tinta); }
+.btn--ancho { width: 100%; margin-top: 0.3rem; }
+
+/* -------------------------------------------------------------- tarjeta -- */
+.tarjeta {
+  background: var(--papel); border: 1px solid var(--linea); border-radius: var(--r);
+  padding: 1.2rem 1.2rem 1rem; margin-bottom: 1rem; box-shadow: var(--sombra);
+}
+.tarjeta__t {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--f); font-size: 0.74rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--oliva);
+  padding-bottom: 0.7rem; margin-bottom: 1rem; border-bottom: 1px solid var(--linea-2);
+}
+.tarjeta__t .n { margin-left: auto; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--tinta-3); font-size: 0.8rem; }
+.tarjeta__d { margin: -0.4rem 0 1rem; font-size: 0.88rem; color: var(--tinta-3); }
+
+/* --------------------------------------------------------------- campos -- */
+.campo { display: block; margin-bottom: 0.9rem; }
+.campo__et {
+  display: block; margin-bottom: 0.3rem;
+  font-size: 0.78rem; font-weight: 700; color: var(--tinta-2);
+}
+.campo__p { display: block; font-weight: 400; font-size: 0.8rem; color: var(--tinta-3); margin-top: 0.1rem; }
+.campo input, .campo textarea, .campo select {
+  width: 100%; font: inherit; color: inherit;
+  padding: 0.55rem 0.7rem; background: #fff;
+  border: 1px solid var(--linea); border-radius: 8px;
+  transition: border-color .14s ease, box-shadow .14s ease;
+}
+.campo textarea { min-height: 5rem; resize: vertical; line-height: 1.5; }
+.campo input:hover, .campo textarea:hover { border-color: #c9c4ae; }
+.campo input:focus, .campo textarea:focus, .campo select:focus {
+  outline: 0; border-color: var(--dato); box-shadow: 0 0 0 3px color-mix(in srgb, var(--dato) 18%, transparent);
+}
+.rejilla2 { display: grid; gap: 0 1rem; }
+@media (min-width: 42rem) { .rejilla2 { grid-template-columns: 1fr 1fr; } }
+
+/* ------------------------------------------------------------ interruptor */
+.inter { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; user-select: none; }
+.inter input { position: absolute; opacity: 0; width: 0; height: 0; }
+.inter__p {
+  flex: none; width: 2.5rem; height: 1.45rem; border-radius: 99px;
+  background: #cfcbb8; position: relative; transition: background .16s ease;
+}
+.inter__p::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 1.05rem; height: 1.05rem; border-radius: 50%; background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .16s ease;
+}
+.inter input:checked + .inter__p { background: var(--dato); }
+.inter input:checked + .inter__p::after { transform: translateX(1.05rem); }
+.inter input:focus-visible + .inter__p { outline: 2px solid var(--dato); outline-offset: 2px; }
+.inter__t { font-size: 0.9rem; }
+
+/* --------------------------------------------------------------- buscar -- */
+.buscar { position: relative; margin-bottom: 1rem; }
+.buscar svg { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--tinta-3); pointer-events: none; }
+.buscar input {
+  width: 100%; font: inherit; padding: 0.65rem 0.8rem 0.65rem 2.5rem;
+  background: var(--papel); border: 1px solid var(--linea); border-radius: 99px;
+}
+.buscar input:focus { outline: 0; border-color: var(--dato); box-shadow: 0 0 0 3px color-mix(in srgb, var(--dato) 18%, transparent); }
+
+/* ---------------------------------------------------------------- plato -- */
+.plato {
+  display: grid; align-items: center; gap: 0.6rem;
+  grid-template-columns: 3.25rem 1fr 6.5rem auto;
+  padding: 0.5rem 0.4rem; border-radius: 8px;
+  transition: background .12s ease;
+}
+.plato:hover { background: var(--papel-2); }
+.plato + .plato { border-top: 1px solid var(--linea-2); }
+.plato input {
+  font: inherit; padding: 0.45rem 0.6rem; width: 100%;
+  background: #fff; border: 1px solid var(--linea); border-radius: 7px;
+}
+.plato input:focus { outline: 0; border-color: var(--dato); box-shadow: 0 0 0 3px color-mix(in srgb, var(--dato) 18%, transparent); }
+.plato .precio { position: relative; }
+.plato .precio input { text-align: right; padding-right: 1.6rem; }
+.plato .precio::after { content: '€'; position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); color: var(--tinta-3); font-size: 0.9rem; pointer-events: none; }
+
+.ranura {
+  position: relative; width: 3.25rem; height: 3.25rem;
+  border-radius: 9px; overflow: hidden; cursor: pointer;
+  background: var(--papel-2); border: 1.5px dashed var(--linea);
+  display: grid; place-content: center; color: var(--tinta-3);
+  transition: border-color .14s ease, color .14s ease;
+}
+.ranura:hover { border-color: var(--dato); color: var(--dato); }
+.ranura svg { width: 20px; height: 20px; }
+.ranura img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ranura.is-puesta { border-style: solid; border-color: var(--linea); }
+.ranura input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.ranura__quita {
+  position: absolute; top: 2px; right: 2px; z-index: 2;
+  width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(38,35,24,.72); color: #fff; font-size: 0.7rem; line-height: 1;
+  display: none; place-content: center;
+}
+/* Visible siempre que haya foto: en un móvil no hay «pasar el ratón», así que
+   si solo saliera al hacer hover no se podría quitar una foto desde el bar. */
+.ranura.is-puesta .ranura__quita { display: grid; }
+.ranura.is-puesta:hover .ranura__quita { background: var(--mal); }
+
+.acciones { display: flex; gap: 0.2rem; }
+.mini {
+  display: grid; place-content: center;
+  width: 1.9rem; height: 1.9rem; padding: 0; cursor: pointer;
+  font-size: 0.85rem; line-height: 1;
+  background: #fff; color: var(--tinta-3);
+  border: 1px solid var(--linea); border-radius: 7px;
+  transition: background .12s ease, color .12s ease, border-color .12s ease;
+}
+.mini:hover { background: var(--oliva-osc); color: var(--crema); border-color: var(--oliva-osc); }
+.mini--mal:hover { background: var(--mal); border-color: var(--mal); }
+
+.anadir {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font: inherit; font-size: 0.86rem; font-weight: 700; cursor: pointer;
+  margin-top: 0.9rem; padding: 0.45rem 0.95rem;
+  background: transparent; color: var(--oliva);
+  border: 1.5px dashed var(--linea); border-radius: 8px;
+}
+.anadir:hover { border-color: var(--oliva); border-style: solid; background: var(--papel-2); }
+
+/* -------------------------------------------------------------- horario -- */
+.dia {
+  display: grid; align-items: center; gap: 0.7rem;
+  grid-template-columns: 7.5rem 1fr; padding: 0.55rem 0;
+}
+.dia + .dia { border-top: 1px solid var(--linea-2); }
+.dia > b { font-weight: 600; }
+.tramos { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.tramos input[type="time"] {
+  font: inherit; padding: 0.35rem 0.5rem; background: #fff;
+  border: 1px solid var(--linea); border-radius: 7px;
+}
+.tramos .flecha { color: var(--tinta-3); }
+.cerrado-txt { color: var(--tinta-3); font-size: 0.9rem; }
+
+.previo {
+  margin-top: 1rem; padding: 0.8rem 0.9rem; border-radius: 9px;
+  background: var(--oliva-osc); color: var(--crema); font-size: 0.9rem;
+}
+.previo b { color: var(--ambar); }
+
+/* -------------------------------------------------------------- resumen -- */
+.fichas { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); margin-bottom: 1rem; }
+.ficha {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  background: var(--papel); border: 1px solid var(--linea); border-radius: var(--r);
+  padding: 1rem; box-shadow: var(--sombra);
+}
+.ficha svg { width: 20px; height: 20px; flex: none; margin-top: 2px; }
+.ficha.is-falta svg { color: var(--oro); }
+.ficha.is-bien svg { color: var(--bien); }
+.ficha b { display: block; font-size: 0.95rem; }
+.ficha span { display: block; font-size: 0.84rem; color: var(--tinta-3); }
+.ficha .btn { display: block; margin-top: 0.6rem; padding: 0.35rem 0.8rem; font-size: 0.8rem; }
+
+/* ----------------------------------------------------------- cifras ------ */
+.cifras { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); margin-bottom: 1rem; }
+.cifra {
+  background: var(--papel); border: 1px solid var(--linea); border-radius: var(--r);
+  padding: 1rem 1.1rem; box-shadow: var(--sombra);
+}
+.cifra__e { font-size: 0.8rem; font-weight: 600; color: var(--tinta-3); }
+/* El número manda, y va en la misma sans: una serif aquí lee a decorado. */
+.cifra__v { font-size: 2.6rem; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+
+.vacio { text-align: center; padding: 2rem 1rem; color: var(--tinta-3); }
+.vacio svg { width: 28px; height: 28px; opacity: .5; margin-bottom: 0.5rem; }
+
+/* --------------------------------------------------------------- avisos -- */
+.avisos { position: fixed; left: 50%; bottom: 1.2rem; transform: translateX(-50%); z-index: 60; display: grid; gap: 0.5rem; width: calc(100% - 2rem); max-width: 25rem; }
+.aviso-t {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: var(--noche); color: var(--crema);
+  padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600;
+  box-shadow: 0 16px 40px -18px rgba(0,0,0,.7);
+  animation: entra .22s ease;
+}
+.aviso-t svg { width: 18px; height: 18px; flex: none; }
+.aviso-t.is-bien svg { color: #8fd49f; }
+.aviso-t.is-mal { background: var(--mal); }
+@keyframes entra { from { opacity: 0; transform: translateY(8px); } }
+
+.recado { margin: 0.7rem 0 0; font-size: 0.88rem; min-height: 1.2em; }
+.recado.is-mal { color: var(--mal); font-weight: 600; }
+
+/* ----------------------------------------------------------------- velo -- */
+.velo { position: fixed; inset: 0; z-index: 70; display: grid; place-content: center; padding: 1rem; background: rgba(38,35,24,.75); backdrop-filter: blur(3px); }
+.velo__caja { background: var(--papel); border-radius: 14px; padding: 1.8rem 1.6rem; max-width: 24rem; text-align: center; }
+.velo__t { font-family: var(--f-tit); font-size: 1.25rem; font-weight: 800; margin: 0.6rem 0 0.3rem; }
+.velo__p { color: var(--tinta-3); font-size: 0.9rem; white-space: pre-line; margin-bottom: 0; }
+.velo__caja .btn { margin-top: 1rem; }
+.ruleta {
+  width: 2rem; height: 2rem; margin: 0 auto; border-radius: 50%;
+  border: 3px solid var(--linea); border-top-color: var(--oliva);
+  animation: gira .8s linear infinite;
+}
+@keyframes gira { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ruleta { animation: none; } .aviso-t { animation: none; } }
+
+/* ------------------------------------------------------- menú en móvil --- */
+.menu-movil {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  background: var(--oliva-osc);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@media (min-width: 60rem) { .menu-movil { display: none; } }
+.menu-movil button {
+  display: grid; justify-items: center; gap: 0.15rem;
+  padding: 0.5rem 0.1rem; border: 0; background: transparent; cursor: pointer;
+  color: #a9a794; font-size: 0.6rem; font-weight: 700;
+}
+.menu-movil svg { width: 20px; height: 20px; }
+.menu-movil button.is-aqui { color: var(--crema); }
+
+@media (max-width: 38rem) {
+  .plato { grid-template-columns: 3rem 1fr auto; grid-template-areas: 'f n n' 'f p a'; }
+  .ranura { grid-area: f; }
+  .plato .nombre { grid-area: n; }
+  .plato .precio { grid-area: p; width: 6.5rem; }
+  .acciones { grid-area: a; justify-self: end; }
+  .dia { grid-template-columns: 1fr; gap: 0.35rem; }
+  .tope__acc { width: 100%; }
+  .tope__acc .btn--principal { margin-left: auto; }
+}
+
+/* --------------------------------------------------------------------------
+   El amarillo de la casa, puesto donde señala lo que estás tocando. En papel
+   blanco no se puede usar como texto —no se lee—, así que va siempre de fondo
+   con la tinta negra encima.
+   -------------------------------------------------------------------------- */
+.menu__i.is-aqui { background: var(--ambar); color: #000; }
+.menu-movil button.is-aqui { color: var(--ambar); }
+.titulillo { color: var(--tinta-2); }
+.btn--principal { background: #000; color: #fff; }
+.btn--principal:hover { background: #2a2a2a; }
+.mini:hover { background: #000; color: #fff; border-color: #000; }
+.velo__rueda { border-top-color: var(--ambar); }

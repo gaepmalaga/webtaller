@@ -15,7 +15,8 @@
 name: Publicar en GitHub Pages
 
 # Las dos ramas publican el repositorio entero, que ya contiene los dos
-# sitios: Hidrocar en la raíz y Che Bolú en /che-bolu/. Publica la última que
+# sitios: Hidrocar en la raíz, Che Bolú en /che-bolu/, Taberna Lázaro en
+# /taberna-lazaro/ y La Taberna de Churriana en /churriana/. Publica la última que
 # reciba un push, y como ambas llevan el mismo contenido el resultado es el
 # mismo.
 on:
@@ -47,18 +48,19 @@ jobs:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
 
-      # La web de Taberna Lázaro se genera a partir de datos/contenido.json,
-      # que es lo que toca el panel de /admin/. Se reconstruye aquí para que lo
-      # publicado siempre coincida con los datos, aunque el index.html del
-      # repositorio se haya quedado atrás.
-      - name: Generar la web de Taberna Lázaro
-        run: node herramientas/construir-taberna.js
+      # Las webs de las tabernas se generan a partir de su
+      # datos/contenido.json, que es lo que toca el panel de /admin/. Se
+      # reconstruyen aquí para que lo publicado siempre coincida con los datos,
+      # aunque el index.html del repositorio se haya quedado atrás.
+      - name: Generar las webs de las tabernas
+        run: node herramientas/construir.js
 
       - name: Rehacer los archivos de una sola página
         run: |
           python3 herramientas/construir-archivo-unico.py hidrocar
           python3 herramientas/construir-archivo-unico.py che-bolu
           python3 herramientas/construir-archivo-unico.py taberna-lazaro
+          python3 herramientas/construir-archivo-unico.py churriana
 
       - name: Configurar Pages
         uses: actions/configure-pages@v5

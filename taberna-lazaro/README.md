@@ -95,7 +95,7 @@ Todo lo editable vive en `datos/contenido.json`. El panel lo sube a GitHub y el
 despliegue vuelve a generar `index.html`. Está explicado en [ADMIN.md](ADMIN.md).
 
 > **`index.html` es un archivo generado.** No se edita a mano: se toca el JSON
-> (o el panel) y se regenera con `node herramientas/construir-taberna.js`.
+> (o el panel) y se regenera con `node herramientas/construir.js taberna-lazaro`.
 
 ## Estructura
 
@@ -119,7 +119,7 @@ Y fuera de esta carpeta:
 
 ```
 herramientas/render-taberna.js      Monta el HTML a partir del JSON
-herramientas/construir-taberna.js   El comando que lo ejecuta
+herramientas/construir.js taberna-lazaro   El comando que lo ejecuta
 ```
 
 ## La versión anti-caché se calcula sola

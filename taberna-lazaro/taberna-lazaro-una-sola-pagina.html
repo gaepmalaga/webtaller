@@ -1365,8 +1365,11 @@ body::before {
   }
 
   function hhmm(min) {
-    if (min >= 1440) { return 'medianoche'; }
-    return 'las ' + Math.floor(min / 60) + ':' + String(min % 60).padStart(2, '0');
+    if (min === 1440) { return 'medianoche'; }
+    /* Más de 1440 es madrugada del día siguiente: 1500 son la 1:00. */
+    var m = min % 1440;
+    var h = Math.floor(m / 60);
+    return (h === 1 ? 'la ' : 'las ') + h + ':' + String(m % 60).padStart(2, '0');
   }
 
   /* Hora de Málaga, sea cual sea el reloj de quien mira. */

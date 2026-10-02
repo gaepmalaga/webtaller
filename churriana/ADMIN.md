@@ -1,6 +1,6 @@
 # El panel: cambiar la web sin pedírselo a nadie
 
-**Dirección:** https://gaepmalaga.github.io/webtaller/taberna-lazaro/admin/
+**Dirección:** https://gaepmalaga.github.io/webtaller/churriana/admin/
 
 Desde ahí se cambian los textos, los platos, los precios, las fotos, el horario
 y los datos del local. Se guarda, y **en un minuto está publicado**. No hay que
@@ -18,7 +18,7 @@ Tú tocas algo en /admin/
         ↓
 el panel sube contenido.json (y las fotos) a GitHub, en un solo commit
         ↓
-GitHub vuelve a generar index.html con herramientas/construir.js taberna-lazaro
+GitHub vuelve a generar index.html con herramientas/construir.js churriana
         ↓
 publicado
 ```
@@ -73,5 +73,5 @@ para que no haya que acordarse.
 También se puede editar `datos/contenido.json` a mano y luego:
 
 ```bash
-node herramientas/construir.js taberna-lazaro
+node herramientas/construir.js churriana
 ```
