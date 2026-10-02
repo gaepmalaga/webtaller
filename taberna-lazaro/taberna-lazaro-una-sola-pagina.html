@@ -6,14 +6,18 @@
 <title>Taberna Lázaro — La carta, en Huelin (Málaga)</title>
 <meta name="description" content="Taberna Lázaro, en Huelin (Málaga). Tapas para compartir, cañas bien tiradas y carta corta: gildas, croquetas, gyozas, tortilla trufada, tartar de salchichón. C/ Alfredo Catalani, 3.">
 
+<!-- GENERADO. No editar a mano: esta página la monta
+     herramientas/render-taberna.js a partir de datos/contenido.json.
+     Para cambiar textos, platos, precios o fotos: /admin/ -->
+
 <link rel="canonical" href="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
-<!-- PROVISIONAL: quitar cuando la web esté aprobada por el local. -->
+<!-- Mientras sea un borrador no se indexa. Se quita solo al poner "borrador": false. -->
 <meta name="robots" content="noindex, follow">
 
 <meta property="og:type" content="restaurant">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Taberna Lázaro">
-<meta property="og:title" content="Taberna Lázaro — La carta, en Huelin (Málaga)">
+<meta property="og:title" content="Taberna Lázaro — Tapas y copas en Huelin, Málaga">
 <meta property="og:description" content="Lázaro, levántate y pídete otra. Tapas, barra y carta corta en Huelin, Málaga.">
 <meta property="og:url" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
 <meta property="og:image" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/assets/img/og.png">
@@ -367,6 +371,16 @@ body::before {
   padding: 0.42rem 0.45rem; margin: 0 -0.45rem;
   cursor: default;
 }
+/* La foto del plato, si la hay. Se sube desde /admin/ y se guarda ya
+   recortada y comprimida, para que la carta siga cargando en un suspiro. */
+.it__f {
+  flex: none; width: 2.5rem; height: 2.5rem;
+  object-fit: cover; border-radius: 6px;
+  align-self: center; margin-right: 0.15rem;
+  background: color-mix(in srgb, var(--crema) 12%, transparent);
+}
+.it--foto { padding-top: 0.3rem; padding-bottom: 0.3rem; }
+
 .it__n { flex: 0 1 auto; }
 .it__d {
   flex: 1 1 1.2rem; min-width: 1rem; align-self: center;
@@ -682,13 +696,11 @@ body::before {
 <body>
 <a class="saltar" href="#carta">Saltar a la carta</a>
 
-<!-- BORRADOR: se quita borrando este bloque. Ver PENDIENTE.md. -->
 <p class="aviso">
   <b>Borrador</b> · la carta y los precios son los de la casa; lo marcado en
   <span class="falta">amarillo</span> sigue sin confirmar
 </p>
 
-<!-- El ramo de olivo de la marca, definido una vez y reutilizado. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="ramo" viewBox="0 0 64 28">
     <path d="M2 25C14 24 28 19 40 11 48 5.6 55 3.2 62 2.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -706,8 +718,6 @@ body::before {
 
 <main>
 
-  <!-- ============================================================= portada -->
-  <!-- La tapa de la carta: marco impreso, el nombre y poco más. -->
   <section class="tapa">
     <div class="tapa__marco">
       <svg class="tapa__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
@@ -732,21 +742,12 @@ body::before {
     </div>
   </section>
 
-
-  <!-- =============================================================== intro -->
   <section class="intro">
     <div class="intro__in">
       <p class="intro__sobre">La taberna</p>
 
-      <p class="intro__txt">
-        Aquí los milagros son modestos: <b>levantar a cualquiera con una gilda y
-        una caña</b>, y que se le vaya la tarde sin darse cuenta.
-      </p>
-      <p class="intro__txt2">
-        Croquetas, gyozas, una tortilla trufada, un tartar de salchichón que no
-        te esperabas. Y luego lo de cada día, que nunca llega a escribirse: eso
-        se pregunta en la barra, que no mordemos.
-      </p>
+      <p class="intro__txt">Aquí los milagros son modestos: <b>levantar a cualquiera con una gilda y una caña</b>, y que se le vaya la tarde sin darse cuenta.</p>
+      <p class="intro__txt2">Croquetas, gyozas, una tortilla trufada, un tartar de salchichón que no te esperabas. Y luego lo de cada día, que nunca llega a escribirse: eso se pregunta en la barra, que no mordemos.</p>
 
       <ul class="intro__datos">
         <li><b>Dónde</b> C/ Alfredo Catalani, 3 · Huelin, Málaga</li>
@@ -757,75 +758,54 @@ body::before {
     </div>
   </section>
 
-  <!-- ============================================================ cuánto -->
-  <!-- Los totales los calcula el JavaScript con los precios de la carta de
-       abajo, así que no pueden quedarse desfasados. Los que van escritos aquí
-       son el valor correcto para quien no tenga JavaScript. -->
   <section class="cuanto">
     <div class="cuanto__cab">
       <h2 class="cuanto__t">Por dónde empezar</h2>
-      <p class="cuanto__s">
-        Menos pensar y más picar: tres apaños ya resueltos, para los que entran
-        diciendo «ponme lo que quieras».
-      </p>
+      <p class="cuanto__s">Menos pensar y más picar: tres apaños ya resueltos, para los que entran diciendo «ponme lo que quieras».</p>
     </div>
     <ul class="escenas">
-      <li>
-        <button type="button" class="esc" data-ronda='[["cana-alhambra",1],["gilda",1]]'>
-          <span class="esc__n">Una caña y una tapa</span>
-          <span class="esc__d">Caña de Alhambra y una gilda. Lo que se entra a tomar sin pensarlo.</span>
-          <span class="esc__t" data-total>4,20 €</span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="esc" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>
-          <span class="esc__n">Picoteo para dos</span>
-          <span class="esc__d">Dos gildas, croquetas y japo bravas, con sus dos cañas. Para alargarlo.</span>
-          <span class="esc__t" data-total>19,90 €</span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="esc" data-ronda='[["gyozas",1],["japo-bravas",1],["tartar-salchichon",1],["rusa",1],["cana-alhambra",2],["pan",1]]'>
-          <span class="esc__n">Cena para dos, sin mirar</span>
-          <span class="esc__d">Gyozas, japo bravas, tartar de salchichón y rusa, con pan y dos cañas.</span>
-          <span class="esc__t" data-total>32,00 €</span>
-        </button>
-      </li>
+        <li>
+          <button type="button" class="esc" data-ronda='[["cana-alhambra",1],["gilda",1]]'>
+            <span class="esc__n">Una caña y una tapa</span>
+            <span class="esc__d">Caña de Alhambra y una gilda. Lo que se entra a tomar sin pensarlo.</span>
+            <span class="esc__t" data-total></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="esc" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>
+            <span class="esc__n">Picoteo para dos</span>
+            <span class="esc__d">Dos gildas, croquetas y japo bravas, con sus dos cañas. Para alargarlo.</span>
+            <span class="esc__t" data-total></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="esc" data-ronda='[["gyozas",1],["japo-bravas",1],["tartar-salchichon",1],["rusa",1],["cana-alhambra",2],["pan",1]]'>
+            <span class="esc__n">Cena para dos, sin mirar</span>
+            <span class="esc__d">Gyozas, japo bravas, tartar de salchichón y rusa, con pan y dos cañas.</span>
+            <span class="esc__t" data-total></span>
+          </button>
+        </li>
     </ul>
-    <p class="cuanto__pie">
-      Toca cualquiera y se te pasa a la lista. <b>De aquí no sale ningún
-      pedido</b>: solo las ganas.
-    </p>
+    <p class="cuanto__pie">Toca cualquiera y se te pasa a la lista. <b>De aquí no sale ningún pedido</b>: solo las ganas.</p>
   </section>
 
-  <!-- =============================================================== carta -->
   <section class="carta" id="carta">
     <header class="carta__cab">
       <h2 class="carta__t">La carta</h2>
-      <p class="carta__modo">
-        Ve tocando lo que te apetezca y se te queda apuntado, que luego llega el
-        camarero y se nos olvida la mitad.
-      </p>
+      <p class="carta__modo">Ve tocando lo que te apetezca y se te queda apuntado, que luego llega el camarero y se nos olvida la mitad.</p>
       <nav class="indice" aria-label="Secciones de la carta">
         <a href="#g-comer">Para comer</a>
         <a href="#g-cervezas">Cervezas</a>
         <a href="#g-vinos">Vinos</a>
-        <a href="#g-copas">Copas</a>
-        <a href="#g-cafes">Cafés</a>
-        <a href="#g-frias">Frías</a>
+        <a href="#g-copas">Copas y licores</a>
+        <a href="#g-cafes">Cafés e infusiones</a>
+        <a href="#g-frias">Bebidas frías</a>
       </nav>
     </header>
 
     <div class="carta__cuerpo">
 
       <div class="carta__cols">
-        <!-- ================================================================
-             CÓMO SE TOCA LA CARTA
-             Cada plato es un <li> con un <button class="it">. Lo único que
-             importa: data-id (único), data-n (nombre) y data-p (precio en
-             número, con punto). El precio visible se escribe aparte, en
-             <i class="it__p">, para poder ponerlo como se quiera.
-             ================================================================ -->
         <section id="g-comer" class="grupo grupo--destacado">
           <h3 class="grupo__t">Para comer</h3>
           <ul class="lista">
@@ -841,10 +821,8 @@ body::before {
             <li><button type="button" class="it" data-t="comer" data-id="tartar-salchichon" data-n="Tartar de salchichón" data-p="8.50"><span class="it__n">Tartar de salchichón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,50 €</i></button></li>
             <li><button type="button" class="it" data-t="comer" data-id="miniburger" data-n="Miniburger" data-p="4.50"><span class="it__n">Miniburger</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
           </ul>
-          <p class="grupo__pie">
-            <button type="button" class="it it--chico" data-t="comer" data-id="pan" data-n="Pan" data-p="1.00"><span class="it__n">Pan</span><i class="it__p">1,00 €</i></button>
-            <button type="button" class="it it--chico" data-t="comer" data-id="salsa" data-n="Salsa extra" data-p="0.50"><span class="it__n">Salsa extra</span><i class="it__p">0,50 €</i></button>
-          </p>
+          <p class="grupo__pie"><button type="button" class="it it--chico" data-t="comer" data-id="pan" data-n="Pan" data-p="1.00"><span class="it__n">Pan</span><i class="it__p">1,00 €</i></button>
+            <button type="button" class="it it--chico" data-t="comer" data-id="salsa" data-n="Salsa extra" data-p="0.50"><span class="it__n">Salsa extra</span><i class="it__p">0,50 €</i></button></p>
           <p class="grupo__sug">Y pregúntanos por las <em>sugerencias del día</em>.</p>
         </section>
 
@@ -861,7 +839,7 @@ body::before {
             <li><button type="button" class="it" data-t="beber" data-id="sm-00-tostada" data-n="San Miguel 0,0 Tostada" data-p="2.60"><span class="it__n">San Miguel 0,0 Tostada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
             <li><button type="button" class="it" data-t="beber" data-id="mahou5" data-n="Mahou 5 Estrellas" data-p="2.80"><span class="it__n">Mahou 5 Estrellas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,80 €</i></button></li>
             <li><button type="button" class="it" data-t="beber" data-id="corona" data-n="Corona" data-p="3.00"><span class="it__n">Corona</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
-            <li><button type="button" class="it" data-t="beber" data-id="sin-gluten" data-n="Cerveza sin gluten" data-p="3.00"><span class="it__n">Sin gluten</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="sin-gluten" data-n="Sin gluten" data-p="3.00"><span class="it__n">Sin gluten</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
           </ul>
         </section>
 
@@ -875,9 +853,7 @@ body::before {
             <li><button type="button" class="it" data-t="beber" data-id="vermut" data-n="Vermut Bandarra" data-p="3.00"><span class="it__n">Vermut Bandarra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
             <li><button type="button" class="it" data-t="beber" data-id="copa-manzanilla" data-n="Copa Manzanilla" data-p="3.20"><span class="it__n">Copa Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
           </ul>
-          <p class="grupo__sug">
-            ¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b>
-          </p>
+          <p class="grupo__sug">¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b></p>
         </section>
 
         <section id="g-copas" class="grupo">
@@ -943,11 +919,9 @@ body::before {
         <p class="carta__iva">IVA incluido.</p>
       </div>
 
-      <!-- ============================================================ cuenta -->
-      <!-- El ticket. Oculto sin JavaScript: entonces esto es solo una carta. -->
       <aside class="cuenta" id="cuenta" hidden aria-labelledby="cuenta-t">
         <div class="cuenta__papel">
-          <button type="button" class="cuenta__cerrar" id="cuenta-cerrar" aria-label="Cerrar la calculadora">
+          <button type="button" class="cuenta__cerrar" id="cuenta-cerrar" aria-label="Cerrar la lista">
             <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
           </button>
 
@@ -972,18 +946,13 @@ body::before {
             <button type="button" class="cuenta__borrar" id="cuenta-borrar">Borrar la lista</button>
           </div>
 
-          <p class="cuenta__nota">
-            Esta lista no llega a la cocina ni a la barra: se queda en tu móvil,
-            para que no se te olvide nada al pedir.
-          </p>
+          <p class="cuenta__nota">Esta lista no llega a la cocina ni a la barra: se queda en tu móvil, para que no se te olvide nada al pedir.</p>
         </div>
       </aside>
 
     </div>
   </section>
 
-  <!-- ================================================================ dorso -->
-  <!-- El reverso de la carta: la letra pequeña, que es la que hace falta. -->
   <section class="dorso" id="dorso">
     <h2 class="dorso__t">El reverso</h2>
 
@@ -991,10 +960,7 @@ body::before {
       <div class="dorso__bloque">
         <h3>Dónde</h3>
         <p class="dorso__dir">C/ Alfredo Catalani, 3<br>Huelin · 29003 Málaga</p>
-        <p>
-          Metro <b>L2, parada Princesa-Huelin</b>. Andando, desde el paseo
-          marítimo subiendo por el barrio.
-        </p>
+        <p>Metro <b>L2, parada Princesa-Huelin</b>. Andando, desde el paseo marítimo subiendo por el barrio.</p>
         <p class="dorso__falta">En coche: <span class="falta">confirmar aparcamiento</span></p>
         <a class="dorso__enlace" href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Abrir en Google Maps →</a>
       </div>
@@ -1005,7 +971,7 @@ body::before {
           <span class="estado__punto" aria-hidden="true"></span>
           <span class="estado__txt"></span>
         </p>
-        <table class="dorso__tabla">
+        <table class="dorso__tabla" id="horario">
           <caption class="vh">Horario de Taberna Lázaro</caption>
           <tbody>
             <tr data-dia="1"><th scope="row">Lunes</th><td><span class="falta">pendiente</span></td></tr>
@@ -1021,23 +987,17 @@ body::before {
 
       <div class="dorso__bloque">
         <h3>Avisar</h3>
-        <p>
-          Para mesa, para grupo, o para preguntar qué hay hoy fuera de carta —que
-          suele ser lo bueno.
-        </p>
+        <p>Para mesa, para grupo, o para preguntar qué hay hoy fuera de carta —que suele ser lo bueno.</p>
         <dl class="dorso__datos">
           <dt>Teléfono</dt><dd><span class="falta">pendiente</span></dd>
           <dt>Instagram</dt><dd><a href="https://www.instagram.com/tabernalazaro" target="_blank" rel="noopener">@tabernalazaro</a></dd>
           <dt>Correo</dt><dd><span class="falta">pendiente</span></dd>
         </dl>
-        <p class="dorso__min">
-          En la barra no hace falta avisar: se entra y ya está.
-        </p>
+        <p class="dorso__min">En la barra no hace falta avisar: se entra y ya está.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ despedida -->
   <section class="fin">
     <svg class="fin__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
     <p class="fin__frase">Una mijilla más<br><em>y nos vamos.</em></p>
@@ -1055,19 +1015,18 @@ body::before {
   </p>
 </footer>
 
-<!-- Para volver a abrir la calculadora en escritorio cuando se ha cerrado. -->
 <button type="button" class="pestana" id="pestana" hidden aria-controls="cuenta">
   Tu lista
   <span class="pestana__c" id="pestana-c"></span>
 </button>
 
-<!-- Barra de la calculadora en móvil. La pone el JavaScript. -->
 <button type="button" class="tira" id="tira" hidden aria-expanded="false" aria-controls="cuenta">
   <span class="tira__n" id="tira-n">0</span>
-  <span class="tira__t">Lo que te vas a pedir</span>
-  <span class="tira__c" id="tira-c">0,00 €</span>
+  <span class="tira__t">Ve apuntando lo que te apetezca</span>
+  <span class="tira__c" id="tira-c"></span>
 </button>
 
+<script type="application/json" id="datos">{"horario":{"0":null,"1":null,"2":null,"3":null,"4":null,"5":null,"6":null},"comentarios":{"soloBeberPoco":"¿Y de comer, nada?","soloBeberMucho":"Mucha sed y poca hambre.","soloComer":"Eso pide algo para beber.","dos":"Por algo se empieza.","cinco":"Eso ya tiene buena pinta.","nueve":"Con eso se sale rodado.","muchos":"Con eso resucita cualquiera."},"tira":{"vacia":"Ve apuntando lo que te apetezca","llena":"Lo que te vas a pedir"},"analitica":null}</script>
 <script>
 /* ==========================================================================
    Taberna Lázaro — JavaScript, sin dependencias ni peticiones a nadie.
@@ -1088,6 +1047,19 @@ body::before {
   var raiz = document.documentElement;
   raiz.classList.add('js');
 
+  /* Lo que el generador ha dejado escrito en la página: el horario, los
+     comentarios de la lista y, si está encendida, la analítica. Todo sale de
+     datos/contenido.json y se toca desde /admin/, no aquí. */
+  var DATOS = {};
+  try { DATOS = JSON.parse(document.getElementById('datos').textContent); } catch (e) {}
+
+  var HORARIO = {};
+  for (var dd = 0; dd < 7; dd++) {
+    var tr = DATOS.horario && DATOS.horario[String(dd)];
+    HORARIO[dd] = Array.isArray(tr) ? tr : [];
+  }
+
+
   /* ======================================================== 1. LA CUENTA == */
 
   var euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' });
@@ -1107,6 +1079,8 @@ body::before {
   var elTiraN    = document.getElementById('tira-n');
   var elTiraC    = document.getElementById('tira-c');
   var elTiraT    = document.querySelector('.tira__t');
+  var TIRA_VACIA = (DATOS.tira && DATOS.tira.vacia) || '';
+  var TIRA_LLENA = (DATOS.tira && DATOS.tira.llena) || '';
   var elEscenas  = document.querySelector('.escenas');
   var elCerrar   = document.getElementById('cuenta-cerrar');
   var elPestana  = document.getElementById('pestana');
@@ -1124,13 +1098,14 @@ body::before {
       n += pedido[id].x;
       if (pedido[id].t === 'comer') { comer += pedido[id].x; } else { beber += pedido[id].x; }
     }
+    var c = DATOS.comentarios || {};
     if (n === 0)     { return ''; }
-    if (comer === 0) { return n > 2 ? 'Mucha sed y poca hambre.' : '¿Y de comer, nada?'; }
-    if (beber === 0) { return 'Eso pide algo para beber.'; }
-    if (n <= 2)      { return 'Por algo se empieza.'; }
-    if (n <= 5)      { return 'Eso ya tiene buena pinta.'; }
-    if (n <= 9)      { return 'Con eso se sale rodado.'; }
-    return 'Con eso resucita cualquiera.';
+    if (comer === 0) { return n > 2 ? (c.soloBeberMucho || '') : (c.soloBeberPoco || ''); }
+    if (beber === 0) { return c.soloComer || ''; }
+    if (n <= 2)      { return c.dos || ''; }
+    if (n <= 5)      { return c.cinco || ''; }
+    if (n <= 9)      { return c.nueve || ''; }
+    return c.muchos || '';
   }
 
   function unidades() {
@@ -1188,7 +1163,7 @@ body::before {
        vacía no se enseña un 0,00 €: se invita, que es de lo que va esto. */
     elTiraN.textContent = String(n);
     elTiraN.hidden = n === 0;
-    elTiraT.textContent = n ? 'Lo que te vas a pedir' : 'Ve apuntando lo que te apetezca';
+    elTiraT.textContent = n ? TIRA_LLENA : TIRA_VACIA;
     elTiraC.textContent = n ? euros.format(t) : '';
     elPestanaC.textContent = n ? euros.format(t) : '';
 
@@ -1223,7 +1198,10 @@ body::before {
     var nombre = b.dataset.n;
     var precio = parseFloat(b.dataset.p);
     b.setAttribute('aria-label', 'Apuntar ' + nombre + ', ' + euros.format(precio));
-    b.addEventListener('click', function () { poner(b.dataset.id, nombre, precio, 1, b.dataset.t); });
+    b.addEventListener('click', function () {
+      poner(b.dataset.id, nombre, precio, 1, b.dataset.t);
+      apunta('plato', b.dataset.id);
+    });
   });
 
   /* ------------------------------------------------------- los escenarios --
@@ -1253,6 +1231,7 @@ body::before {
       if (cifra && suma > 0) { cifra.textContent = euros.format(suma); }
 
       b.addEventListener('click', function () {
+        apunta('ronda', String(b.querySelector('.esc__n').textContent).trim());
         pedido = Object.create(null);
         partes.forEach(function (par) {
           var it = precioDe(par[0]);
@@ -1326,28 +1305,6 @@ body::before {
 
   /* ====================================================== 2 y 3. HORARIO == */
 
-  /* ------------------------------------------------------------------------
-     EL HORARIO VA AQUÍ.
-     Minutos desde medianoche. Clave = día (0 = domingo). 1440 = medianoche.
-     Mientras esté vacío, la página no dice si está abierto: es preferible no
-     decir nada a decir algo que no se sabe.
-
-     Ejemplo con dos turnos, comida y cena:
-         2: [[780, 960], [1200, 1440]]   // martes 13:00–16:00 y 20:00–00:00
-
-     Al rellenarlo hay que tocar TRES sitios, y deben coincidir: esta
-     constante, la tabla del reverso en index.html y el bloque JSON-LD.
-     ---------------------------------------------------------------------- */
-  var HORARIO = {
-    0: [],   // domingo
-    1: [],   // lunes
-    2: [],   // martes
-    3: [],   // miércoles
-    4: [],   // jueves
-    5: [],   // viernes
-    6: []    // sábado
-  };
-
   var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
   function hayHorario() {
@@ -1411,7 +1368,53 @@ body::before {
     if (fila) { fila.classList.add('hoy'); }
   }
 
-  /* ========================================================= 4. EL AÑO ==== */
+  /* ====================================================== 4. LA ANALÍTICA ==
+     Apagada salvo que haya una dirección puesta en contenido.json. Si no la
+     hay, la web no manda absolutamente nada a ninguna parte, que es como ha
+     estado siempre.
+
+     Lo que se manda, cuando está encendida: qué se ha tocado, nada más. Sin
+     cookies, sin identificar a nadie, sin guardar de dónde viene. Y se respeta
+     «No rastrear» del navegador.
+     ---------------------------------------------------------------------- */
+  var DESTINO = DATOS.analitica && DATOS.analitica.endpoint;
+  var NO_RASTREAR = navigator.doNotTrack === '1' || window.doNotTrack === '1' ||
+                    navigator.globalPrivacyControl === true;
+
+  var cola = [];
+  var mandado = false;
+
+  function apunta(tipo, id) {
+    if (!DESTINO || NO_RASTREAR) { return; }
+    cola.push(id ? { t: tipo, id: id } : { t: tipo });
+    if (cola.length > 40) { manda(); }
+  }
+
+  function manda() {
+    if (!DESTINO || !cola.length) { return; }
+    var cuerpo = JSON.stringify({ v: 1, e: cola });
+    cola = [];
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(DESTINO, new Blob([cuerpo], { type: 'application/json' }));
+      } else {
+        fetch(DESTINO, { method: 'POST', body: cuerpo, keepalive: true, mode: 'no-cors' });
+      }
+    } catch (e) { /* si falla, se pierde: no es asunto del visitante */ }
+  }
+
+  if (DESTINO && !NO_RASTREAR) {
+    apunta('visita');
+    /* Al irse se manda todo junto, en una sola petición. */
+    addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden' && !mandado) { mandado = true; manda(); }
+    });
+    addEventListener('pagehide', manda);
+    /* Y a los 20 s la primera tanda, por si no se va nunca de la página. */
+    setTimeout(manda, 20000);
+  }
+
+  /* ========================================================= 5. EL AÑO ==== */
   var anio = document.getElementById('anio');
   if (anio) { anio.textContent = new Date().getFullYear(); }
 })();
@@ -1426,11 +1429,14 @@ body::before {
   "description": "Taberna en Huelin, Málaga: tapas para compartir, cervezas, vinos y copas.",
   "url": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/",
   "image": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/assets/img/og.png",
-  "servesCuisine": ["Española", "Andaluza", "Tapas"],
+  "servesCuisine": [
+    "Española",
+    "Andaluza",
+    "Tapas"
+  ],
   "priceRange": "€",
   "currenciesAccepted": "EUR",
   "hasMenu": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/#carta",
-  "sameAs": ["https://www.instagram.com/tabernalazaro"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Calle Alfredo Catalani, 3",
@@ -1438,7 +1444,10 @@ body::before {
     "addressRegion": "Málaga",
     "postalCode": "29003",
     "addressCountry": "ES"
-  }
+  },
+  "sameAs": [
+    "https://www.instagram.com/tabernalazaro"
+  ]
 }
 </script>
 </body>

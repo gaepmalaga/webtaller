@@ -372,6 +372,16 @@ body::before {
   padding: 0.42rem 0.45rem; margin: 0 -0.45rem;
   cursor: default;
 }
+/* La foto del plato, si la hay. Se sube desde /admin/ y se guarda ya
+   recortada y comprimida, para que la carta siga cargando en un suspiro. */
+.it__f {
+  flex: none; width: 2.5rem; height: 2.5rem;
+  object-fit: cover; border-radius: 6px;
+  align-self: center; margin-right: 0.15rem;
+  background: color-mix(in srgb, var(--crema) 12%, transparent);
+}
+.it--foto { padding-top: 0.3rem; padding-bottom: 0.3rem; }
+
 .it__n { flex: 0 1 auto; }
 .it__d {
   flex: 1 1 1.2rem; min-width: 1rem; align-self: center;

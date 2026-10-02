@@ -1,0 +1,211 @@
+/* ==========================================================================
+   Panel de Taberna Lázaro. Herramienta, no escaparate: denso y sin adornos,
+   pero con los colores de la casa para que no parezca otro sitio.
+   ========================================================================== */
+:root {
+  --oliva: #5d6140; --oliva-osc: #3d392d; --noche: #2b281f;
+  --papel: #f6f4ea; --papel-2: #ebe8db; --tinta: #2f2c22;
+  --gris: #7a7668; --linea: #d8d4c4;
+  --ok: #3f8d5c; --mal: #b3402a; --ambar: #f3d98a;
+  --f: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+@font-face {
+  font-family: 'Archivo'; font-style: normal; font-weight: 400 800;
+  font-stretch: 62% 125%; font-display: swap;
+  src: url('../assets/fonts/archivo-latin.woff2') format('woff2');
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--papel-2); color: var(--tinta);
+  font-family: var(--f); font-size: 15px; line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3 { margin: 0; line-height: 1.2; }
+p { margin: 0 0 0.8em; }
+ul, ol { margin: 0 0 0.8em; padding-left: 1.2rem; }
+a { color: var(--oliva); }
+[hidden] { display: none !important; }
+code {
+  background: var(--papel); border: 1px solid var(--linea); border-radius: 3px;
+  padding: 0.05em 0.35em; font-size: 0.9em;
+}
+
+/* ------------------------------------------------------------- cabecera -- */
+.cab {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: 0.8rem 1rem; background: var(--oliva-osc); color: var(--papel);
+}
+.cab h1 { font-size: 1rem; font-weight: 500; }
+.cab b { font-weight: 800; }
+.cab__estado {
+  margin-left: auto; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.75;
+}
+.cab__estado.is-ok { color: #a9dcbb; opacity: 1; }
+
+.pantalla { padding: 1.2rem 1rem 7rem; max-width: 60rem; margin: 0 auto; }
+
+/* --------------------------------------------------------------- entrar -- */
+.caja {
+  background: var(--papel); border: 1px solid var(--linea); border-radius: 10px;
+  padding: 1.4rem 1.3rem; max-width: 34rem; margin: 2rem auto;
+}
+.caja h2 { font-size: 1.3rem; margin-bottom: 0.6rem; }
+.ayuda { color: var(--gris); font-size: 0.92rem; }
+.comollave { margin: 1rem 0 1.4rem; font-size: 0.9rem; }
+.comollave summary { cursor: pointer; font-weight: 700; color: var(--oliva); padding: 0.4rem 0; }
+.comollave li { margin-bottom: 0.35rem; }
+.aviso-llave {
+  background: var(--papel-2); border-left: 3px solid var(--ambar);
+  padding: 0.6rem 0.8rem; margin: 0.8rem 0 0; font-size: 0.86rem; color: var(--gris);
+}
+
+/* --------------------------------------------------------------- campos -- */
+.campo { display: block; margin-bottom: 0.9rem; }
+.campo > span {
+  display: block; margin-bottom: 0.25rem;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gris);
+}
+.campo input, .campo textarea, .campo select {
+  width: 100%; font: inherit; color: inherit;
+  padding: 0.5rem 0.65rem; background: #fff;
+  border: 1px solid var(--linea); border-radius: 6px;
+}
+.campo textarea { min-height: 5.5rem; resize: vertical; line-height: 1.45; }
+.campo input:focus, .campo textarea:focus { outline: 2px solid var(--oliva); outline-offset: 1px; }
+.campo .pista { display: block; margin-top: 0.25rem; font-size: 0.8rem; color: var(--gris); text-transform: none; letter-spacing: 0; font-weight: 400; }
+
+/* ------------------------------------------------------------- pestañas -- */
+.pestanas {
+  display: flex; gap: 0.3rem; overflow-x: auto;
+  margin-bottom: 1.2rem; padding-bottom: 0.3rem;
+}
+.pes {
+  flex: none; font: inherit; font-weight: 700; font-size: 0.88rem;
+  padding: 0.5rem 0.95rem; cursor: pointer; white-space: nowrap;
+  background: transparent; color: var(--gris);
+  border: 1px solid transparent; border-radius: 999px;
+}
+.pes:hover { color: var(--tinta); }
+.pes.is-aqui { background: var(--oliva-osc); color: var(--papel); }
+
+/* --------------------------------------------------------------- bloques -- */
+.bloque {
+  background: var(--papel); border: 1px solid var(--linea); border-radius: 10px;
+  padding: 1.1rem 1.1rem 0.9rem; margin-bottom: 1rem;
+}
+.bloque > h3 {
+  font-size: 0.82rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--oliva);
+  padding-bottom: 0.6rem; margin-bottom: 0.9rem; border-bottom: 1px solid var(--linea);
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.bloque > h3 .cuenta-n { margin-left: auto; font-weight: 500; color: var(--gris); letter-spacing: 0; text-transform: none; font-size: 0.8rem; }
+
+/* ---------------------------------------------------------------- platos -- */
+.plato {
+  display: grid; align-items: center; gap: 0.5rem;
+  grid-template-columns: 3rem 1fr 6rem auto;
+  padding: 0.45rem 0; border-bottom: 1px dashed var(--linea);
+}
+.plato:last-of-type { border-bottom: 0; }
+.plato input { font: inherit; padding: 0.4rem 0.5rem; border: 1px solid var(--linea); border-radius: 5px; background: #fff; width: 100%; }
+.plato input[type="number"] { text-align: right; }
+
+.foto {
+  position: relative; width: 3rem; height: 3rem;
+  border-radius: 7px; overflow: hidden; cursor: pointer;
+  background: var(--papel-2); border: 1px dashed var(--linea);
+  display: grid; place-content: center;
+  font-size: 1.1rem; color: var(--gris);
+}
+.foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.foto input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.foto.is-puesta { border-style: solid; }
+
+.acciones { display: flex; gap: 0.15rem; }
+.mini {
+  font: inherit; font-size: 0.85rem; line-height: 1;
+  width: 1.8rem; height: 1.8rem; padding: 0; cursor: pointer;
+  background: #fff; color: var(--gris);
+  border: 1px solid var(--linea); border-radius: 5px;
+}
+.mini:hover { background: var(--oliva-osc); color: var(--papel); border-color: var(--oliva-osc); }
+.mini--mal:hover { background: var(--mal); border-color: var(--mal); }
+
+.anadir {
+  font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer;
+  margin-top: 0.7rem; padding: 0.4rem 0.9rem;
+  background: transparent; color: var(--oliva);
+  border: 1px dashed var(--oliva); border-radius: 6px;
+}
+.anadir:hover { background: var(--oliva); color: var(--papel); border-style: solid; }
+
+/* --------------------------------------------------------------- horario -- */
+.dia {
+  display: grid; align-items: center; gap: 0.5rem;
+  grid-template-columns: 6.5rem auto 1fr;
+  padding: 0.45rem 0; border-bottom: 1px dashed var(--linea);
+}
+.dia:last-of-type { border-bottom: 0; }
+.dia > b { font-weight: 600; }
+.dia input[type="time"] { font: inherit; padding: 0.35rem 0.4rem; border: 1px solid var(--linea); border-radius: 5px; background: #fff; }
+.dia label { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.85rem; color: var(--gris); }
+.tramos { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; }
+
+/* --------------------------------------------------------------- números -- */
+.cifras { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); margin-bottom: 1.2rem; }
+.cifra { background: var(--papel); border: 1px solid var(--linea); border-radius: 10px; padding: 0.9rem 1rem; }
+.cifra b { display: block; font-size: 1.9rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.cifra span { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); }
+.rank { list-style: none; padding: 0; margin: 0; }
+.rank li { display: grid; grid-template-columns: 1.6rem 1fr auto; align-items: center; gap: 0.6rem; padding: 0.4rem 0; border-bottom: 1px dashed var(--linea); }
+.rank i { font-style: normal; color: var(--gris); font-size: 0.85rem; }
+.rank .barra-r { grid-column: 1 / -1; height: 4px; border-radius: 3px; background: var(--oliva); opacity: 0.35; }
+
+/* --------------------------------------------------------------- guardar -- */
+.barra {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+  background: var(--noche); color: var(--papel);
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.barra__n { flex: 1; font-size: 0.88rem; }
+.barra__n.is-sucio { color: var(--ambar); font-weight: 700; }
+
+.btn {
+  font: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer;
+  padding: 0.6rem 1.1rem; border-radius: 6px; border: 1px solid transparent;
+}
+.btn--si { background: var(--ok); color: #fff; }
+.btn--si:disabled { background: #5a6a60; color: #cfd6d1; cursor: default; }
+.btn--no { background: transparent; color: inherit; border-color: currentColor; }
+.btn--no:hover { background: rgba(255,255,255,0.12); }
+.caja .btn--si { width: 100%; }
+
+.recado { margin: 0.8rem 0 0; font-size: 0.9rem; min-height: 1.2em; }
+.recado.is-mal { color: var(--mal); font-weight: 600; }
+.recado.is-ok { color: var(--ok); font-weight: 600; }
+
+/* ------------------------------------------------------------------ velo -- */
+.velo {
+  position: fixed; inset: 0; z-index: 50;
+  display: grid; place-content: center; padding: 1rem;
+  background: rgba(43,40,31,0.85);
+}
+.velo__caja { background: var(--papel); border-radius: 12px; padding: 1.6rem 1.5rem; max-width: 26rem; text-align: center; }
+.velo__t { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; }
+.velo__p { color: var(--gris); font-size: 0.92rem; white-space: pre-line; }
+
+@media (max-width: 34rem) {
+  .plato { grid-template-columns: 2.6rem 1fr auto; grid-template-areas: 'f n n' 'f p a'; }
+  .foto { grid-area: f; }
+  .plato .n { grid-area: n; }
+  .plato .p { grid-area: p; width: 6rem; }
+  .acciones { grid-area: a; justify-self: end; }
+  .dia { grid-template-columns: 1fr; gap: 0.3rem; }
+}

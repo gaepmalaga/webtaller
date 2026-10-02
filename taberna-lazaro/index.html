@@ -6,14 +6,18 @@
 <title>Taberna Lázaro — La carta, en Huelin (Málaga)</title>
 <meta name="description" content="Taberna Lázaro, en Huelin (Málaga). Tapas para compartir, cañas bien tiradas y carta corta: gildas, croquetas, gyozas, tortilla trufada, tartar de salchichón. C/ Alfredo Catalani, 3.">
 
+<!-- GENERADO. No editar a mano: esta página la monta
+     herramientas/render-taberna.js a partir de datos/contenido.json.
+     Para cambiar textos, platos, precios o fotos: /admin/ -->
+
 <link rel="canonical" href="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
-<!-- PROVISIONAL: quitar cuando la web esté aprobada por el local. -->
+<!-- Mientras sea un borrador no se indexa. Se quita solo al poner "borrador": false. -->
 <meta name="robots" content="noindex, follow">
 
 <meta property="og:type" content="restaurant">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Taberna Lázaro">
-<meta property="og:title" content="Taberna Lázaro — La carta, en Huelin (Málaga)">
+<meta property="og:title" content="Taberna Lázaro — Tapas y copas en Huelin, Málaga">
 <meta property="og:description" content="Lázaro, levántate y pídete otra. Tapas, barra y carta corta en Huelin, Málaga.">
 <meta property="og:url" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
 <meta property="og:image" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/assets/img/og.png">
@@ -25,19 +29,17 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=6">
+<link rel="stylesheet" href="assets/css/style.css?v=76903125">
 </head>
 
 <body>
 <a class="saltar" href="#carta">Saltar a la carta</a>
 
-<!-- BORRADOR: se quita borrando este bloque. Ver PENDIENTE.md. -->
 <p class="aviso">
   <b>Borrador</b> · la carta y los precios son los de la casa; lo marcado en
   <span class="falta">amarillo</span> sigue sin confirmar
 </p>
 
-<!-- El ramo de olivo de la marca, definido una vez y reutilizado. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="ramo" viewBox="0 0 64 28">
     <path d="M2 25C14 24 28 19 40 11 48 5.6 55 3.2 62 2.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -55,8 +57,6 @@
 
 <main>
 
-  <!-- ============================================================= portada -->
-  <!-- La tapa de la carta: marco impreso, el nombre y poco más. -->
   <section class="tapa">
     <div class="tapa__marco">
       <svg class="tapa__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
@@ -81,21 +81,12 @@
     </div>
   </section>
 
-
-  <!-- =============================================================== intro -->
   <section class="intro">
     <div class="intro__in">
       <p class="intro__sobre">La taberna</p>
 
-      <p class="intro__txt">
-        Aquí los milagros son modestos: <b>levantar a cualquiera con una gilda y
-        una caña</b>, y que se le vaya la tarde sin darse cuenta.
-      </p>
-      <p class="intro__txt2">
-        Croquetas, gyozas, una tortilla trufada, un tartar de salchichón que no
-        te esperabas. Y luego lo de cada día, que nunca llega a escribirse: eso
-        se pregunta en la barra, que no mordemos.
-      </p>
+      <p class="intro__txt">Aquí los milagros son modestos: <b>levantar a cualquiera con una gilda y una caña</b>, y que se le vaya la tarde sin darse cuenta.</p>
+      <p class="intro__txt2">Croquetas, gyozas, una tortilla trufada, un tartar de salchichón que no te esperabas. Y luego lo de cada día, que nunca llega a escribirse: eso se pregunta en la barra, que no mordemos.</p>
 
       <ul class="intro__datos">
         <li><b>Dónde</b> C/ Alfredo Catalani, 3 · Huelin, Málaga</li>
@@ -106,75 +97,54 @@
     </div>
   </section>
 
-  <!-- ============================================================ cuánto -->
-  <!-- Los totales los calcula el JavaScript con los precios de la carta de
-       abajo, así que no pueden quedarse desfasados. Los que van escritos aquí
-       son el valor correcto para quien no tenga JavaScript. -->
   <section class="cuanto">
     <div class="cuanto__cab">
       <h2 class="cuanto__t">Por dónde empezar</h2>
-      <p class="cuanto__s">
-        Menos pensar y más picar: tres apaños ya resueltos, para los que entran
-        diciendo «ponme lo que quieras».
-      </p>
+      <p class="cuanto__s">Menos pensar y más picar: tres apaños ya resueltos, para los que entran diciendo «ponme lo que quieras».</p>
     </div>
     <ul class="escenas">
-      <li>
-        <button type="button" class="esc" data-ronda='[["cana-alhambra",1],["gilda",1]]'>
-          <span class="esc__n">Una caña y una tapa</span>
-          <span class="esc__d">Caña de Alhambra y una gilda. Lo que se entra a tomar sin pensarlo.</span>
-          <span class="esc__t" data-total>4,20 €</span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="esc" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>
-          <span class="esc__n">Picoteo para dos</span>
-          <span class="esc__d">Dos gildas, croquetas y japo bravas, con sus dos cañas. Para alargarlo.</span>
-          <span class="esc__t" data-total>19,90 €</span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="esc" data-ronda='[["gyozas",1],["japo-bravas",1],["tartar-salchichon",1],["rusa",1],["cana-alhambra",2],["pan",1]]'>
-          <span class="esc__n">Cena para dos, sin mirar</span>
-          <span class="esc__d">Gyozas, japo bravas, tartar de salchichón y rusa, con pan y dos cañas.</span>
-          <span class="esc__t" data-total>32,00 €</span>
-        </button>
-      </li>
+        <li>
+          <button type="button" class="esc" data-ronda='[["cana-alhambra",1],["gilda",1]]'>
+            <span class="esc__n">Una caña y una tapa</span>
+            <span class="esc__d">Caña de Alhambra y una gilda. Lo que se entra a tomar sin pensarlo.</span>
+            <span class="esc__t" data-total></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="esc" data-ronda='[["cana-alhambra",2],["gilda",2],["croquetas",1],["japo-bravas",1]]'>
+            <span class="esc__n">Picoteo para dos</span>
+            <span class="esc__d">Dos gildas, croquetas y japo bravas, con sus dos cañas. Para alargarlo.</span>
+            <span class="esc__t" data-total></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="esc" data-ronda='[["gyozas",1],["japo-bravas",1],["tartar-salchichon",1],["rusa",1],["cana-alhambra",2],["pan",1]]'>
+            <span class="esc__n">Cena para dos, sin mirar</span>
+            <span class="esc__d">Gyozas, japo bravas, tartar de salchichón y rusa, con pan y dos cañas.</span>
+            <span class="esc__t" data-total></span>
+          </button>
+        </li>
     </ul>
-    <p class="cuanto__pie">
-      Toca cualquiera y se te pasa a la lista. <b>De aquí no sale ningún
-      pedido</b>: solo las ganas.
-    </p>
+    <p class="cuanto__pie">Toca cualquiera y se te pasa a la lista. <b>De aquí no sale ningún pedido</b>: solo las ganas.</p>
   </section>
 
-  <!-- =============================================================== carta -->
   <section class="carta" id="carta">
     <header class="carta__cab">
       <h2 class="carta__t">La carta</h2>
-      <p class="carta__modo">
-        Ve tocando lo que te apetezca y se te queda apuntado, que luego llega el
-        camarero y se nos olvida la mitad.
-      </p>
+      <p class="carta__modo">Ve tocando lo que te apetezca y se te queda apuntado, que luego llega el camarero y se nos olvida la mitad.</p>
       <nav class="indice" aria-label="Secciones de la carta">
         <a href="#g-comer">Para comer</a>
         <a href="#g-cervezas">Cervezas</a>
         <a href="#g-vinos">Vinos</a>
-        <a href="#g-copas">Copas</a>
-        <a href="#g-cafes">Cafés</a>
-        <a href="#g-frias">Frías</a>
+        <a href="#g-copas">Copas y licores</a>
+        <a href="#g-cafes">Cafés e infusiones</a>
+        <a href="#g-frias">Bebidas frías</a>
       </nav>
     </header>
 
     <div class="carta__cuerpo">
 
       <div class="carta__cols">
-        <!-- ================================================================
-             CÓMO SE TOCA LA CARTA
-             Cada plato es un <li> con un <button class="it">. Lo único que
-             importa: data-id (único), data-n (nombre) y data-p (precio en
-             número, con punto). El precio visible se escribe aparte, en
-             <i class="it__p">, para poder ponerlo como se quiera.
-             ================================================================ -->
         <section id="g-comer" class="grupo grupo--destacado">
           <h3 class="grupo__t">Para comer</h3>
           <ul class="lista">
@@ -190,10 +160,8 @@
             <li><button type="button" class="it" data-t="comer" data-id="tartar-salchichon" data-n="Tartar de salchichón" data-p="8.50"><span class="it__n">Tartar de salchichón</span><span class="it__d" aria-hidden="true"></span><i class="it__p">8,50 €</i></button></li>
             <li><button type="button" class="it" data-t="comer" data-id="miniburger" data-n="Miniburger" data-p="4.50"><span class="it__n">Miniburger</span><span class="it__d" aria-hidden="true"></span><i class="it__p">4,50 €</i></button></li>
           </ul>
-          <p class="grupo__pie">
-            <button type="button" class="it it--chico" data-t="comer" data-id="pan" data-n="Pan" data-p="1.00"><span class="it__n">Pan</span><i class="it__p">1,00 €</i></button>
-            <button type="button" class="it it--chico" data-t="comer" data-id="salsa" data-n="Salsa extra" data-p="0.50"><span class="it__n">Salsa extra</span><i class="it__p">0,50 €</i></button>
-          </p>
+          <p class="grupo__pie"><button type="button" class="it it--chico" data-t="comer" data-id="pan" data-n="Pan" data-p="1.00"><span class="it__n">Pan</span><i class="it__p">1,00 €</i></button>
+            <button type="button" class="it it--chico" data-t="comer" data-id="salsa" data-n="Salsa extra" data-p="0.50"><span class="it__n">Salsa extra</span><i class="it__p">0,50 €</i></button></p>
           <p class="grupo__sug">Y pregúntanos por las <em>sugerencias del día</em>.</p>
         </section>
 
@@ -210,7 +178,7 @@
             <li><button type="button" class="it" data-t="beber" data-id="sm-00-tostada" data-n="San Miguel 0,0 Tostada" data-p="2.60"><span class="it__n">San Miguel 0,0 Tostada</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,60 €</i></button></li>
             <li><button type="button" class="it" data-t="beber" data-id="mahou5" data-n="Mahou 5 Estrellas" data-p="2.80"><span class="it__n">Mahou 5 Estrellas</span><span class="it__d" aria-hidden="true"></span><i class="it__p">2,80 €</i></button></li>
             <li><button type="button" class="it" data-t="beber" data-id="corona" data-n="Corona" data-p="3.00"><span class="it__n">Corona</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
-            <li><button type="button" class="it" data-t="beber" data-id="sin-gluten" data-n="Cerveza sin gluten" data-p="3.00"><span class="it__n">Sin gluten</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
+            <li><button type="button" class="it" data-t="beber" data-id="sin-gluten" data-n="Sin gluten" data-p="3.00"><span class="it__n">Sin gluten</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
           </ul>
         </section>
 
@@ -224,9 +192,7 @@
             <li><button type="button" class="it" data-t="beber" data-id="vermut" data-n="Vermut Bandarra" data-p="3.00"><span class="it__n">Vermut Bandarra</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,00 €</i></button></li>
             <li><button type="button" class="it" data-t="beber" data-id="copa-manzanilla" data-n="Copa Manzanilla" data-p="3.20"><span class="it__n">Copa Manzanilla</span><span class="it__d" aria-hidden="true"></span><i class="it__p">3,20 €</i></button></li>
           </ul>
-          <p class="grupo__sug">
-            ¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b>
-          </p>
+          <p class="grupo__sug">¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b></p>
         </section>
 
         <section id="g-copas" class="grupo">
@@ -292,11 +258,9 @@
         <p class="carta__iva">IVA incluido.</p>
       </div>
 
-      <!-- ============================================================ cuenta -->
-      <!-- El ticket. Oculto sin JavaScript: entonces esto es solo una carta. -->
       <aside class="cuenta" id="cuenta" hidden aria-labelledby="cuenta-t">
         <div class="cuenta__papel">
-          <button type="button" class="cuenta__cerrar" id="cuenta-cerrar" aria-label="Cerrar la calculadora">
+          <button type="button" class="cuenta__cerrar" id="cuenta-cerrar" aria-label="Cerrar la lista">
             <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
           </button>
 
@@ -321,18 +285,13 @@
             <button type="button" class="cuenta__borrar" id="cuenta-borrar">Borrar la lista</button>
           </div>
 
-          <p class="cuenta__nota">
-            Esta lista no llega a la cocina ni a la barra: se queda en tu móvil,
-            para que no se te olvide nada al pedir.
-          </p>
+          <p class="cuenta__nota">Esta lista no llega a la cocina ni a la barra: se queda en tu móvil, para que no se te olvide nada al pedir.</p>
         </div>
       </aside>
 
     </div>
   </section>
 
-  <!-- ================================================================ dorso -->
-  <!-- El reverso de la carta: la letra pequeña, que es la que hace falta. -->
   <section class="dorso" id="dorso">
     <h2 class="dorso__t">El reverso</h2>
 
@@ -340,10 +299,7 @@
       <div class="dorso__bloque">
         <h3>Dónde</h3>
         <p class="dorso__dir">C/ Alfredo Catalani, 3<br>Huelin · 29003 Málaga</p>
-        <p>
-          Metro <b>L2, parada Princesa-Huelin</b>. Andando, desde el paseo
-          marítimo subiendo por el barrio.
-        </p>
+        <p>Metro <b>L2, parada Princesa-Huelin</b>. Andando, desde el paseo marítimo subiendo por el barrio.</p>
         <p class="dorso__falta">En coche: <span class="falta">confirmar aparcamiento</span></p>
         <a class="dorso__enlace" href="https://maps.app.goo.gl/hGu5MMxdwgu89M5X6" target="_blank" rel="noopener">Abrir en Google Maps →</a>
       </div>
@@ -354,7 +310,7 @@
           <span class="estado__punto" aria-hidden="true"></span>
           <span class="estado__txt"></span>
         </p>
-        <table class="dorso__tabla">
+        <table class="dorso__tabla" id="horario">
           <caption class="vh">Horario de Taberna Lázaro</caption>
           <tbody>
             <tr data-dia="1"><th scope="row">Lunes</th><td><span class="falta">pendiente</span></td></tr>
@@ -370,23 +326,17 @@
 
       <div class="dorso__bloque">
         <h3>Avisar</h3>
-        <p>
-          Para mesa, para grupo, o para preguntar qué hay hoy fuera de carta —que
-          suele ser lo bueno.
-        </p>
+        <p>Para mesa, para grupo, o para preguntar qué hay hoy fuera de carta —que suele ser lo bueno.</p>
         <dl class="dorso__datos">
           <dt>Teléfono</dt><dd><span class="falta">pendiente</span></dd>
           <dt>Instagram</dt><dd><a href="https://www.instagram.com/tabernalazaro" target="_blank" rel="noopener">@tabernalazaro</a></dd>
           <dt>Correo</dt><dd><span class="falta">pendiente</span></dd>
         </dl>
-        <p class="dorso__min">
-          En la barra no hace falta avisar: se entra y ya está.
-        </p>
+        <p class="dorso__min">En la barra no hace falta avisar: se entra y ya está.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ despedida -->
   <section class="fin">
     <svg class="fin__ramo" viewBox="0 0 64 28" aria-hidden="true"><use href="#ramo"/></svg>
     <p class="fin__frase">Una mijilla más<br><em>y nos vamos.</em></p>
@@ -404,20 +354,19 @@
   </p>
 </footer>
 
-<!-- Para volver a abrir la calculadora en escritorio cuando se ha cerrado. -->
 <button type="button" class="pestana" id="pestana" hidden aria-controls="cuenta">
   Tu lista
   <span class="pestana__c" id="pestana-c"></span>
 </button>
 
-<!-- Barra de la calculadora en móvil. La pone el JavaScript. -->
 <button type="button" class="tira" id="tira" hidden aria-expanded="false" aria-controls="cuenta">
   <span class="tira__n" id="tira-n">0</span>
-  <span class="tira__t">Lo que te vas a pedir</span>
-  <span class="tira__c" id="tira-c">0,00 €</span>
+  <span class="tira__t">Ve apuntando lo que te apetezca</span>
+  <span class="tira__c" id="tira-c"></span>
 </button>
 
-<script src="assets/js/main.js?v=6" defer></script>
+<script type="application/json" id="datos">{"horario":{"0":null,"1":null,"2":null,"3":null,"4":null,"5":null,"6":null},"comentarios":{"soloBeberPoco":"¿Y de comer, nada?","soloBeberMucho":"Mucha sed y poca hambre.","soloComer":"Eso pide algo para beber.","dos":"Por algo se empieza.","cinco":"Eso ya tiene buena pinta.","nueve":"Con eso se sale rodado.","muchos":"Con eso resucita cualquiera."},"tira":{"vacia":"Ve apuntando lo que te apetezca","llena":"Lo que te vas a pedir"},"analitica":null}</script>
+<script src="assets/js/main.js?v=76903125" defer></script>
 
 <script type="application/ld+json">
 {
@@ -427,11 +376,14 @@
   "description": "Taberna en Huelin, Málaga: tapas para compartir, cervezas, vinos y copas.",
   "url": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/",
   "image": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/assets/img/og.png",
-  "servesCuisine": ["Española", "Andaluza", "Tapas"],
+  "servesCuisine": [
+    "Española",
+    "Andaluza",
+    "Tapas"
+  ],
   "priceRange": "€",
   "currenciesAccepted": "EUR",
   "hasMenu": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/#carta",
-  "sameAs": ["https://www.instagram.com/tabernalazaro"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Calle Alfredo Catalani, 3",
@@ -439,7 +391,10 @@
     "addressRegion": "Málaga",
     "postalCode": "29003",
     "addressCountry": "ES"
-  }
+  },
+  "sameAs": [
+    "https://www.instagram.com/tabernalazaro"
+  ]
 }
 </script>
 </body>

@@ -2,14 +2,18 @@
 
 ## 1. Los datos que faltan
 
-Con esto se quita la franja de «Borrador» y todo lo amarillo de la página.
+> **Ya no hace falta pedírselo a nadie.** Todo esto se mete desde el panel:
+> https://gaepmalaga.github.io/webtaller/taberna-lazaro/admin/ → pestaña
+> **Datos** (y **Horario**). Al rellenarlo desaparece lo amarillo, y con el
+> interruptor de «Borrador» en *no* se va también la franja de arriba.
+
 El Instagram ya está puesto: **@tabernalazaro**.
 
 | Dato | Para qué | Dónde se pone |
 |---|---|---|
-| **Teléfono** | Reservas. Es lo que más se pulsa en el móvil. | `index.html` (hero, «Dónde estamos», pie y JSON-LD) |
-| **Horario** | El aviso de «abierto ahora» y el día resaltado | `assets/js/main.js` (`HORARIO`), la tabla de `index.html` y el JSON-LD. Los tres tienen que coincidir |
-| **Correo** | Obligatorio para el aviso legal | `aviso-legal.html` y «Dónde estamos» |
+| **Teléfono** | Reservas. Es lo que más se pulsa en el móvil. | **/admin/ → Datos** |
+| **Horario** | El aviso de «abierto ahora» y el día resaltado | **/admin/ → Horario** |
+| **Correo** | Obligatorio para el aviso legal | **/admin/ → Datos**, y `aviso-legal.html` |
 | **Razón social y CIF** | Obligatorios por la LSSI | `aviso-legal.html`, campos en amarillo |
 
 Y una pregunta suelta: **¿hay aparcamiento cerca?** Está marcado en la sección
@@ -24,12 +28,12 @@ bloque `<symbol id="ramo">`, y se usa en la cabecera, el hero y el cierre.
 
 ## 3. Fotos
 
-Es lo que más le falta a la página: ahora mismo no lleva ninguna, y es a
-propósito —mejor eso que fotos de banco de otra taberna—. Con cinco o seis
-buenas (la barra, la gilda, las japo bravas, el tartar de salchichón, el local
-lleno un viernes) la web cambia por completo.
+Es lo que más le falta a la página. **Y ya se pueden subir desde el móvil**:
+/admin/ → La carta → tocar el cuadrito de cada plato. La foto se encoge sola
+antes de subirse, así que da igual que venga de la cámara.
 
-Van en `assets/img/` y se enlazan desde `index.html`.
+Con cinco o seis buenas (la gilda, las japo bravas, el tartar de salchichón, la
+barra, el local lleno un viernes) la web cambia por completo.
 
 ## 4. Repasar que la carta esté bien copiada
 

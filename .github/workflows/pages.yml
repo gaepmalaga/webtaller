@@ -47,6 +47,19 @@ jobs:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
 
+      # La web de Taberna Lázaro se genera a partir de datos/contenido.json,
+      # que es lo que toca el panel de /admin/. Se reconstruye aquí para que lo
+      # publicado siempre coincida con los datos, aunque el index.html del
+      # repositorio se haya quedado atrás.
+      - name: Generar la web de Taberna Lázaro
+        run: node herramientas/construir-taberna.js
+
+      - name: Rehacer los archivos de una sola página
+        run: |
+          python3 herramientas/construir-archivo-unico.py hidrocar
+          python3 herramientas/construir-archivo-unico.py che-bolu
+          python3 herramientas/construir-archivo-unico.py taberna-lazaro
+
       - name: Configurar Pages
         uses: actions/configure-pages@v5
         with:

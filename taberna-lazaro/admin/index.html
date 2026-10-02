@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel · Taberna Lázaro</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#3d392d">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="cab">
+  <h1>Panel de <b>Taberna Lázaro</b></h1>
+  <div class="cab__estado" id="estado-conexion">sin conectar</div>
+</header>
+
+<!-- ===================================================== entrar ========== -->
+<section class="pantalla" id="pantalla-entrar">
+  <div class="caja">
+    <h2>Entrar</h2>
+    <p class="ayuda">
+      Para poder guardar cambios hace falta una <b>llave de GitHub</b>. Se pide
+      una vez y se queda guardada en este navegador: no se manda a ningún sitio
+      que no sea GitHub.
+    </p>
+
+    <details class="comollave">
+      <summary>Cómo se saca la llave (2 minutos, una sola vez)</summary>
+      <ol>
+        <li>Entra en <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com → llaves de acceso</a> (hay que tener la sesión iniciada).</li>
+        <li>Ponle un nombre: <code>Panel Taberna Lázaro</code>.</li>
+        <li>En <b>Repository access</b>, elige <b>Only select repositories</b> y marca <code>gaepmalaga/webtaller</code>.</li>
+        <li>En <b>Permissions → Repository permissions</b>, busca <b>Contents</b> y ponlo en <b>Read and write</b>.</li>
+        <li>Dale a <b>Generate token</b> y copia lo que salga (empieza por <code>github_pat_</code>). Es la única vez que se ve.</li>
+      </ol>
+      <p class="aviso-llave">
+        Esa llave solo sirve para este repositorio y caduca cuando tú digas. Si
+        alguna vez se pierde el móvil, se borra desde la misma página de GitHub
+        y deja de valer.
+      </p>
+    </details>
+
+    <label class="campo">
+      <span>Llave</span>
+      <input type="password" id="llave" placeholder="github_pat_…" autocomplete="off" spellcheck="false">
+    </label>
+    <label class="campo">
+      <span>Repositorio</span>
+      <input type="text" id="repo" value="gaepmalaga/webtaller" spellcheck="false">
+    </label>
+
+    <button class="btn btn--si" id="conectar">Conectar</button>
+    <p class="recado" id="recado-entrar"></p>
+  </div>
+</section>
+
+<!-- ===================================================== el panel ======== -->
+<section class="pantalla" id="pantalla-panel" hidden>
+
+  <nav class="pestanas" id="pestanas">
+    <button type="button" class="pes is-aqui" data-ir="carta">La carta</button>
+    <button type="button" class="pes" data-ir="frases">Frases</button>
+    <button type="button" class="pes" data-ir="horario">Horario</button>
+    <button type="button" class="pes" data-ir="datos">Datos</button>
+    <button type="button" class="pes" data-ir="numeros">Números</button>
+  </nav>
+
+  <div class="hoja" id="hoja-carta"></div>
+  <div class="hoja" id="hoja-frases" hidden></div>
+  <div class="hoja" id="hoja-horario" hidden></div>
+  <div class="hoja" id="hoja-datos" hidden></div>
+  <div class="hoja" id="hoja-numeros" hidden></div>
+
+</section>
+
+<!-- ===================================================== guardar ========= -->
+<div class="barra" id="barra" hidden>
+  <span class="barra__n" id="barra-n">Sin cambios</span>
+  <button class="btn btn--no" id="descartar" hidden>Descartar</button>
+  <button class="btn btn--si" id="guardar" disabled>Guardar y publicar</button>
+</div>
+
+<div class="velo" id="velo" hidden>
+  <div class="velo__caja">
+    <p class="velo__t" id="velo-t">Publicando…</p>
+    <p class="velo__p" id="velo-p"></p>
+    <button class="btn btn--no" id="velo-cerrar" hidden>Cerrar</button>
+  </div>
+</div>
+
+<script src="admin.js" defer></script>
+</body>
+</html>

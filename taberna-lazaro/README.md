@@ -84,10 +84,28 @@ la derecha para recuperarla; en móvil baja la hoja y queda la tira.
 - Funciona **sin JavaScript**, se imprime bien (la carta en A4 sale decente) y
   respeta `prefers-reduced-motion`.
 
+## El panel: /admin/
+
+Los textos, los platos, los precios, las fotos, el horario y los datos del local
+**se cambian desde la propia web**, sin tocar código:
+
+**https://gaepmalaga.github.io/webtaller/taberna-lazaro/admin/**
+
+Todo lo editable vive en `datos/contenido.json`. El panel lo sube a GitHub y el
+despliegue vuelve a generar `index.html`. Está explicado en [ADMIN.md](ADMIN.md).
+
+> **`index.html` es un archivo generado.** No se edita a mano: se toca el JSON
+> (o el panel) y se regenera con `node herramientas/construir-taberna.js`.
+
+También se puede saber **qué platos mira la gente**, con un recolector propio y
+sin cookies ni terceros: [ANALITICA.md](ANALITICA.md). Viene apagado.
+
 ## Estructura
 
 ```
-index.html            La página. Todo el contenido está aquí.
+datos/contenido.json  TODO lo editable: textos, platos, precios, horario…
+index.html            GENERADO a partir de ese JSON. No tocar a mano.
+admin/                El panel para cambiarlo sin tocar código
 aviso-legal.html      Aviso legal y privacidad (PENDIENTE de rellenar)
 PENDIENTE.md          Lo que falta por confirmar con el local
 taberna-lazaro-una-sola-pagina.html   La web entera en un archivo (generado)
@@ -97,15 +115,22 @@ assets/
   fonts/              Fraunces y Archivo (SIL OFL, licencias incluidas)
   img/favicon.svg     Icono
   img/og.png          Imagen al compartir en WhatsApp/redes
+  img/platos/         Las fotos de los platos (se suben desde /admin/)
 ```
 
-## Al cambiar los estilos, subir la versión
+Y fuera de esta carpeta:
 
-`index.html` y `aviso-legal.html` enlazan la hoja de estilo y el script con un
-número detrás: `style.css?v=5`, `main.js?v=5`. **Hay que subirlo cada vez que se
-toquen.** Sin eso, a quien ya haya visto la web el navegador le sirve el CSS
-viejo con el HTML nuevo, y la página se ve rota (pasó: secciones nuevas sin
-estilo ninguno).
+```
+herramientas/render-taberna.js      Monta el HTML a partir del JSON
+herramientas/construir-taberna.js   El comando que lo ejecuta
+herramientas/analitica-worker.js    El recolector de números (opcional)
+```
+
+## La versión anti-caché se calcula sola
+
+Ya no hay que acordarse: el generador calcula el `?v=…` a partir del contenido
+de `style.css` y `main.js`. Si cambian, cambia solo; si no, se queda igual. Así
+no vuelve a pasar lo de ver la web con el CSS viejo.
 
 ## Verla en local
 
@@ -148,14 +173,14 @@ apruebe. Al cambiar de dirección hay que tocar **cinco sitios**:
 
 | Qué | Dónde |
 |---|---|
-| Un plato o un precio | `index.html`, su línea. Lo que cuenta: `data-id` (único), `data-n` (nombre) y `data-p` (precio en número). El precio visible va aparte, en `<i class="it__p">` |
-| Una cuenta de ejemplo | `index.html`, el `data-ronda` de cada `<button class="esc">`: pares de `[id, cantidad]`. El total se recalcula solo |
-| La guasa del ticket | `assets/js/main.js`, función `guasa()` |
+| Un plato, un precio, una foto | **/admin/ → La carta** |
+| Una cuenta de ejemplo | **/admin/ → Frases**, al final. El total se recalcula solo |
+| Lo que dice la lista | **/admin/ → Frases** |
 | Una sección entera de la carta | `index.html`, el `<article class="menu__bloque">` que toque |
-| Horario | `assets/js/main.js` (constante `HORARIO`), la tabla de `index.html` y el JSON-LD. Los tres tienen que coincidir |
-| Teléfono, Instagram, correo | `index.html` — hero, «Dónde estamos», pie y JSON-LD |
+| Horario | **/admin/ → Horario**. Antes había que cuadrarlo en tres sitios; ahora sale de un único dato |
+| Teléfono, Instagram, correo | **/admin/ → Datos** |
 | Colores | `assets/css/style.css`, bloque `:root` del principio |
-| Una sección de la carta | `index.html`, su `<section class="grupo">`. El `id` es el que usa el índice de arriba |
+| Una sección entera de la carta | `datos/contenido.json`, bloque `grupos` |
 | Logotipo | `index.html`, bloque `<symbol id="ramo">` |
 
 ## Pendiente

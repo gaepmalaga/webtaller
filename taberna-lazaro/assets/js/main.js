@@ -17,6 +17,19 @@
   var raiz = document.documentElement;
   raiz.classList.add('js');
 
+  /* Lo que el generador ha dejado escrito en la página: el horario, los
+     comentarios de la lista y, si está encendida, la analítica. Todo sale de
+     datos/contenido.json y se toca desde /admin/, no aquí. */
+  var DATOS = {};
+  try { DATOS = JSON.parse(document.getElementById('datos').textContent); } catch (e) {}
+
+  var HORARIO = {};
+  for (var dd = 0; dd < 7; dd++) {
+    var tr = DATOS.horario && DATOS.horario[String(dd)];
+    HORARIO[dd] = Array.isArray(tr) ? tr : [];
+  }
+
+
   /* ======================================================== 1. LA CUENTA == */
 
   var euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' });
@@ -36,6 +49,8 @@
   var elTiraN    = document.getElementById('tira-n');
   var elTiraC    = document.getElementById('tira-c');
   var elTiraT    = document.querySelector('.tira__t');
+  var TIRA_VACIA = (DATOS.tira && DATOS.tira.vacia) || '';
+  var TIRA_LLENA = (DATOS.tira && DATOS.tira.llena) || '';
   var elEscenas  = document.querySelector('.escenas');
   var elCerrar   = document.getElementById('cuenta-cerrar');
   var elPestana  = document.getElementById('pestana');
@@ -53,13 +68,14 @@
       n += pedido[id].x;
       if (pedido[id].t === 'comer') { comer += pedido[id].x; } else { beber += pedido[id].x; }
     }
+    var c = DATOS.comentarios || {};
     if (n === 0)     { return ''; }
-    if (comer === 0) { return n > 2 ? 'Mucha sed y poca hambre.' : '¿Y de comer, nada?'; }
-    if (beber === 0) { return 'Eso pide algo para beber.'; }
-    if (n <= 2)      { return 'Por algo se empieza.'; }
-    if (n <= 5)      { return 'Eso ya tiene buena pinta.'; }
-    if (n <= 9)      { return 'Con eso se sale rodado.'; }
-    return 'Con eso resucita cualquiera.';
+    if (comer === 0) { return n > 2 ? (c.soloBeberMucho || '') : (c.soloBeberPoco || ''); }
+    if (beber === 0) { return c.soloComer || ''; }
+    if (n <= 2)      { return c.dos || ''; }
+    if (n <= 5)      { return c.cinco || ''; }
+    if (n <= 9)      { return c.nueve || ''; }
+    return c.muchos || '';
   }
 
   function unidades() {
@@ -117,7 +133,7 @@
        vacía no se enseña un 0,00 €: se invita, que es de lo que va esto. */
     elTiraN.textContent = String(n);
     elTiraN.hidden = n === 0;
-    elTiraT.textContent = n ? 'Lo que te vas a pedir' : 'Ve apuntando lo que te apetezca';
+    elTiraT.textContent = n ? TIRA_LLENA : TIRA_VACIA;
     elTiraC.textContent = n ? euros.format(t) : '';
     elPestanaC.textContent = n ? euros.format(t) : '';
 
@@ -152,7 +168,10 @@
     var nombre = b.dataset.n;
     var precio = parseFloat(b.dataset.p);
     b.setAttribute('aria-label', 'Apuntar ' + nombre + ', ' + euros.format(precio));
-    b.addEventListener('click', function () { poner(b.dataset.id, nombre, precio, 1, b.dataset.t); });
+    b.addEventListener('click', function () {
+      poner(b.dataset.id, nombre, precio, 1, b.dataset.t);
+      apunta('plato', b.dataset.id);
+    });
   });
 
   /* ------------------------------------------------------- los escenarios --
@@ -182,6 +201,7 @@
       if (cifra && suma > 0) { cifra.textContent = euros.format(suma); }
 
       b.addEventListener('click', function () {
+        apunta('ronda', String(b.querySelector('.esc__n').textContent).trim());
         pedido = Object.create(null);
         partes.forEach(function (par) {
           var it = precioDe(par[0]);
@@ -255,28 +275,6 @@
 
   /* ====================================================== 2 y 3. HORARIO == */
 
-  /* ------------------------------------------------------------------------
-     EL HORARIO VA AQUÍ.
-     Minutos desde medianoche. Clave = día (0 = domingo). 1440 = medianoche.
-     Mientras esté vacío, la página no dice si está abierto: es preferible no
-     decir nada a decir algo que no se sabe.
-
-     Ejemplo con dos turnos, comida y cena:
-         2: [[780, 960], [1200, 1440]]   // martes 13:00–16:00 y 20:00–00:00
-
-     Al rellenarlo hay que tocar TRES sitios, y deben coincidir: esta
-     constante, la tabla del reverso en index.html y el bloque JSON-LD.
-     ---------------------------------------------------------------------- */
-  var HORARIO = {
-    0: [],   // domingo
-    1: [],   // lunes
-    2: [],   // martes
-    3: [],   // miércoles
-    4: [],   // jueves
-    5: [],   // viernes
-    6: []    // sábado
-  };
-
   var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
   function hayHorario() {
@@ -340,7 +338,53 @@
     if (fila) { fila.classList.add('hoy'); }
   }
 
-  /* ========================================================= 4. EL AÑO ==== */
+  /* ====================================================== 4. LA ANALÍTICA ==
+     Apagada salvo que haya una dirección puesta en contenido.json. Si no la
+     hay, la web no manda absolutamente nada a ninguna parte, que es como ha
+     estado siempre.
+
+     Lo que se manda, cuando está encendida: qué se ha tocado, nada más. Sin
+     cookies, sin identificar a nadie, sin guardar de dónde viene. Y se respeta
+     «No rastrear» del navegador.
+     ---------------------------------------------------------------------- */
+  var DESTINO = DATOS.analitica && DATOS.analitica.endpoint;
+  var NO_RASTREAR = navigator.doNotTrack === '1' || window.doNotTrack === '1' ||
+                    navigator.globalPrivacyControl === true;
+
+  var cola = [];
+  var mandado = false;
+
+  function apunta(tipo, id) {
+    if (!DESTINO || NO_RASTREAR) { return; }
+    cola.push(id ? { t: tipo, id: id } : { t: tipo });
+    if (cola.length > 40) { manda(); }
+  }
+
+  function manda() {
+    if (!DESTINO || !cola.length) { return; }
+    var cuerpo = JSON.stringify({ v: 1, e: cola });
+    cola = [];
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(DESTINO, new Blob([cuerpo], { type: 'application/json' }));
+      } else {
+        fetch(DESTINO, { method: 'POST', body: cuerpo, keepalive: true, mode: 'no-cors' });
+      }
+    } catch (e) { /* si falla, se pierde: no es asunto del visitante */ }
+  }
+
+  if (DESTINO && !NO_RASTREAR) {
+    apunta('visita');
+    /* Al irse se manda todo junto, en una sola petición. */
+    addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden' && !mandado) { mandado = true; manda(); }
+    });
+    addEventListener('pagehide', manda);
+    /* Y a los 20 s la primera tanda, por si no se va nunca de la página. */
+    setTimeout(manda, 20000);
+  }
+
+  /* ========================================================= 5. EL AÑO ==== */
   var anio = document.getElementById('anio');
   if (anio) { anio.textContent = new Date().getFullYear(); }
 })();
