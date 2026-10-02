@@ -86,7 +86,6 @@ O abriendo `index.html` con doble clic.
   python3 ../herramientas/construir-archivo-unico.py che-bolu
   ```
 
-- **Netlify / Cloudflare Pages**: arrastrar esta carpeta. Sin comando de build.
 
 ### Cuando haya dominio propio
 

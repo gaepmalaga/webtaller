@@ -372,15 +372,54 @@ body::before {
   padding: 0.42rem 0.45rem; margin: 0 -0.45rem;
   cursor: default;
 }
-/* La foto del plato, si la hay. Se sube desde /admin/ y se guarda ya
-   recortada y comprimida, para que la carta siga cargando en un suspiro. */
-.it__f {
-  flex: none; width: 2.5rem; height: 2.5rem;
-  object-fit: cover; border-radius: 6px;
-  align-self: center; margin-right: 0.15rem;
+/* ------------------------------------------------- los platos con foto --- */
+/* La miniatura va al lado de la línea, no dentro: se pulsa para verla grande
+   y la línea sigue sirviendo para apuntar el plato. */
+.lista li.con-foto { display: flex; align-items: center; gap: 0.55rem; }
+.lista li.con-foto .it { flex: 1; min-width: 0; }
+
+.verfoto {
+  flex: none; padding: 0; border: 0; border-radius: 7px; overflow: hidden;
   background: color-mix(in srgb, var(--crema) 12%, transparent);
+  line-height: 0; cursor: zoom-in;
+  transition: transform .14s ease, box-shadow .14s ease;
 }
-.it--foto { padding-top: 0.3rem; padding-bottom: 0.3rem; }
+.verfoto img { width: 2.9rem; height: 2.9rem; object-fit: cover; display: block; }
+.verfoto:hover { transform: scale(1.06); box-shadow: 0 6px 18px -8px rgba(0,0,0,.6); }
+@media (prefers-reduced-motion: reduce) { .verfoto { transition: none; } .verfoto:hover { transform: none; } }
+
+/* ------------------------------------------------------------- el visor -- */
+.visor {
+  position: fixed; inset: 0; z-index: 80;
+  display: grid; place-content: center; padding: clamp(1rem, 5vw, 3rem);
+  background: rgba(22, 20, 14, 0.96);
+  backdrop-filter: blur(4px);
+  animation: visorEntra .18s ease;
+}
+@keyframes visorEntra { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .visor { animation: none; } }
+
+.visor__f { margin: 0; display: grid; gap: 0.9rem; justify-items: center; }
+.visor__f img {
+  max-width: min(46rem, 92vw); max-height: 74svh;
+  width: auto; height: auto; border-radius: 10px; display: block;
+  box-shadow: 0 30px 70px -30px rgba(0,0,0,.9);
+}
+.visor__pie {
+  display: flex; align-items: baseline; gap: 0.8rem; color: var(--crema);
+  font-family: var(--f-tit); font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  font-variation-settings: 'opsz' 24;
+}
+.visor__pie i { font-style: normal; font-family: var(--f-txt); font-weight: 700; font-size: 0.9em; color: var(--crema-3); }
+
+.visor__x {
+  position: absolute; top: clamp(0.6rem, 3vw, 1.4rem); right: clamp(0.6rem, 3vw, 1.4rem);
+  display: grid; place-content: center;
+  width: 2.75rem; height: 2.75rem; padding: 0; cursor: pointer;
+  background: rgba(255,255,255,.1); color: var(--crema);
+  border: 1px solid var(--linea-cl); border-radius: 50%;
+}
+.visor__x:hover { background: rgba(255,255,255,.2); }
 
 .it__n { flex: 0 1 auto; }
 .it__d {

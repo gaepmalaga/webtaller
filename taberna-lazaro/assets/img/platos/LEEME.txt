@@ -1,0 +1,8 @@
+Aquí van las fotos de los platos.
+
+No hace falta ponerlas a mano: se suben desde /admin/ → La carta, tocando el
+cuadrito de cada plato. El panel las encoge en el propio móvil antes de
+subirlas y les pone el nombre que toca (<identificador-del-plato>.jpg).
+
+Este archivo solo está para que la carpeta exista en el repositorio aunque no
+haya ninguna foto todavía.

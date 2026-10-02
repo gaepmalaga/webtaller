@@ -612,9 +612,5 @@
         }
       ]
     }
-  ],
-  "analitica": {
-    "endpoint": "",
-    "_nota": "Lo rellena solo el flujo .github/workflows/analitica.yml al desplegar el recolector. Vacío = no se manda nada a ninguna parte. Ver taberna-lazaro/ANALITICA.md."
-  }
+  ]
 }

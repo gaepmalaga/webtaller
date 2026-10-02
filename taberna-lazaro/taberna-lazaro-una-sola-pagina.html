@@ -371,15 +371,54 @@ body::before {
   padding: 0.42rem 0.45rem; margin: 0 -0.45rem;
   cursor: default;
 }
-/* La foto del plato, si la hay. Se sube desde /admin/ y se guarda ya
-   recortada y comprimida, para que la carta siga cargando en un suspiro. */
-.it__f {
-  flex: none; width: 2.5rem; height: 2.5rem;
-  object-fit: cover; border-radius: 6px;
-  align-self: center; margin-right: 0.15rem;
+/* ------------------------------------------------- los platos con foto --- */
+/* La miniatura va al lado de la línea, no dentro: se pulsa para verla grande
+   y la línea sigue sirviendo para apuntar el plato. */
+.lista li.con-foto { display: flex; align-items: center; gap: 0.55rem; }
+.lista li.con-foto .it { flex: 1; min-width: 0; }
+
+.verfoto {
+  flex: none; padding: 0; border: 0; border-radius: 7px; overflow: hidden;
   background: color-mix(in srgb, var(--crema) 12%, transparent);
+  line-height: 0; cursor: zoom-in;
+  transition: transform .14s ease, box-shadow .14s ease;
 }
-.it--foto { padding-top: 0.3rem; padding-bottom: 0.3rem; }
+.verfoto img { width: 2.9rem; height: 2.9rem; object-fit: cover; display: block; }
+.verfoto:hover { transform: scale(1.06); box-shadow: 0 6px 18px -8px rgba(0,0,0,.6); }
+@media (prefers-reduced-motion: reduce) { .verfoto { transition: none; } .verfoto:hover { transform: none; } }
+
+/* ------------------------------------------------------------- el visor -- */
+.visor {
+  position: fixed; inset: 0; z-index: 80;
+  display: grid; place-content: center; padding: clamp(1rem, 5vw, 3rem);
+  background: rgba(22, 20, 14, 0.96);
+  backdrop-filter: blur(4px);
+  animation: visorEntra .18s ease;
+}
+@keyframes visorEntra { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .visor { animation: none; } }
+
+.visor__f { margin: 0; display: grid; gap: 0.9rem; justify-items: center; }
+.visor__f img {
+  max-width: min(46rem, 92vw); max-height: 74svh;
+  width: auto; height: auto; border-radius: 10px; display: block;
+  box-shadow: 0 30px 70px -30px rgba(0,0,0,.9);
+}
+.visor__pie {
+  display: flex; align-items: baseline; gap: 0.8rem; color: var(--crema);
+  font-family: var(--f-tit); font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  font-variation-settings: 'opsz' 24;
+}
+.visor__pie i { font-style: normal; font-family: var(--f-txt); font-weight: 700; font-size: 0.9em; color: var(--crema-3); }
+
+.visor__x {
+  position: absolute; top: clamp(0.6rem, 3vw, 1.4rem); right: clamp(0.6rem, 3vw, 1.4rem);
+  display: grid; place-content: center;
+  width: 2.75rem; height: 2.75rem; padding: 0; cursor: pointer;
+  background: rgba(255,255,255,.1); color: var(--crema);
+  border: 1px solid var(--linea-cl); border-radius: 50%;
+}
+.visor__x:hover { background: rgba(255,255,255,.2); }
 
 .it__n { flex: 0 1 auto; }
 .it__d {
@@ -1026,7 +1065,21 @@ body::before {
   <span class="tira__c" id="tira-c"></span>
 </button>
 
-<script type="application/json" id="datos">{"horario":{"0":null,"1":null,"2":null,"3":null,"4":null,"5":null,"6":null},"comentarios":{"soloBeberPoco":"¿Y de comer, nada?","soloBeberMucho":"Mucha sed y poca hambre.","soloComer":"Eso pide algo para beber.","dos":"Por algo se empieza.","cinco":"Eso ya tiene buena pinta.","nueve":"Con eso se sale rodado.","muchos":"Con eso resucita cualquiera."},"tira":{"vacia":"Ve apuntando lo que te apetezca","llena":"Lo que te vas a pedir"},"analitica":null}</script>
+<!-- El visor de fotos. Vacío hasta que alguien pulsa una miniatura. -->
+<div class="visor" id="visor" hidden>
+  <button type="button" class="visor__x" id="visor-x" aria-label="Cerrar la foto">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <figure class="visor__f">
+    <img id="visor-img" alt="">
+    <figcaption class="visor__pie">
+      <span id="visor-n"></span>
+      <i id="visor-p"></i>
+    </figcaption>
+  </figure>
+</div>
+
+<script type="application/json" id="datos">{"horario":{"0":null,"1":null,"2":null,"3":null,"4":null,"5":null,"6":null},"comentarios":{"soloBeberPoco":"¿Y de comer, nada?","soloBeberMucho":"Mucha sed y poca hambre.","soloComer":"Eso pide algo para beber.","dos":"Por algo se empieza.","cinco":"Eso ya tiene buena pinta.","nueve":"Con eso se sale rodado.","muchos":"Con eso resucita cualquiera."},"tira":{"vacia":"Ve apuntando lo que te apetezca","llena":"Lo que te vas a pedir"}}</script>
 <script>
 /* ==========================================================================
    Taberna Lázaro — JavaScript, sin dependencias ni peticiones a nadie.
@@ -1035,7 +1088,8 @@ body::before {
      1. La cuenta: tocas una línea de la carta y se te va apuntando.
      2. El aviso de «abierto / cerrado ahora» en hora de Málaga.
      3. El día de hoy, marcado en la tabla del reverso.
-     4. El año del pie.
+     4. El visor: pulsar la foto de un plato para verla en grande.
+     5. El año del pie.
 
    Sin JavaScript la página sigue siendo lo que es: la carta entera con sus
    precios. Solo se pierde el juego de la cuenta, y por eso los botones de la
@@ -1200,7 +1254,6 @@ body::before {
     b.setAttribute('aria-label', 'Apuntar ' + nombre + ', ' + euros.format(precio));
     b.addEventListener('click', function () {
       poner(b.dataset.id, nombre, precio, 1, b.dataset.t);
-      apunta('plato', b.dataset.id);
     });
   });
 
@@ -1231,7 +1284,6 @@ body::before {
       if (cifra && suma > 0) { cifra.textContent = euros.format(suma); }
 
       b.addEventListener('click', function () {
-        apunta('ronda', String(b.querySelector('.esc__n').textContent).trim());
         pedido = Object.create(null);
         partes.forEach(function (par) {
           var it = precioDe(par[0]);
@@ -1368,51 +1420,50 @@ body::before {
     if (fila) { fila.classList.add('hoy'); }
   }
 
-  /* ====================================================== 4. LA ANALÍTICA ==
-     Apagada salvo que haya una dirección puesta en contenido.json. Si no la
-     hay, la web no manda absolutamente nada a ninguna parte, que es como ha
-     estado siempre.
-
-     Lo que se manda, cuando está encendida: qué se ha tocado, nada más. Sin
-     cookies, sin identificar a nadie, sin guardar de dónde viene. Y se respeta
-     «No rastrear» del navegador.
+  /* ======================================================== 4. EL VISOR ===
+     Pulsar la miniatura de un plato la enseña a pantalla completa. Se cierra
+     con la ×, con Escape, o pulsando fuera de la foto. Al cerrarse, el foco
+     vuelve a la miniatura de la que se salió.
      ---------------------------------------------------------------------- */
-  var DESTINO = DATOS.analitica && DATOS.analitica.endpoint;
-  var NO_RASTREAR = navigator.doNotTrack === '1' || window.doNotTrack === '1' ||
-                    navigator.globalPrivacyControl === true;
+  var visor = document.getElementById('visor');
+  if (visor) {
+    var vImg = document.getElementById('visor-img');
+    var vN = document.getElementById('visor-n');
+    var vP = document.getElementById('visor-p');
+    var vX = document.getElementById('visor-x');
+    var deDonde = null;
 
-  var cola = [];
+    function abreVisor(boton) {
+      deDonde = boton;
+      vImg.src = boton.dataset.foto;
+      vImg.alt = 'Foto de ' + boton.dataset.n;
+      vN.textContent = boton.dataset.n;
+      vP.textContent = boton.dataset.p || '';
+      visor.hidden = false;
+      document.body.style.overflow = 'hidden';
+      vX.focus();
+    }
 
-  function apunta(tipo, id) {
-    if (!DESTINO || NO_RASTREAR) { return; }
-    cola.push(id ? { t: tipo, id: id } : { t: tipo });
-    if (cola.length > 40) { manda(); }
-  }
+    function cierraVisor() {
+      if (visor.hidden) { return; }
+      visor.hidden = true;
+      vImg.removeAttribute('src');
+      document.body.style.overflow = '';
+      if (deDonde) { deDonde.focus(); deDonde = null; }
+    }
 
-  function manda() {
-    if (!DESTINO || !cola.length) { return; }
-    var cuerpo = JSON.stringify({ v: 1, e: cola });
-    cola = [];
-    try {
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(DESTINO, new Blob([cuerpo], { type: 'application/json' }));
-      } else {
-        fetch(DESTINO, { method: 'POST', body: cuerpo, keepalive: true, mode: 'no-cors' });
-      }
-    } catch (e) { /* si falla, se pierde: no es asunto del visitante */ }
-  }
-
-  if (DESTINO && !NO_RASTREAR) {
-    apunta('visita');
-    /* Al dejar la página se manda lo acumulado de una vez. Va en `document`,
-       que es donde se dispara visibilitychange, y sin pestillo: si el visitante
-       vuelve y sigue tocando platos, eso también se cuenta. */
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'hidden') { manda(); }
+    document.querySelectorAll('.verfoto').forEach(function (b) {
+      b.addEventListener('click', function () { abreVisor(b); });
     });
-    addEventListener('pagehide', manda);
-    /* Y cada 20 s, por si no se va nunca de la página. */
-    setInterval(manda, 20000);
+
+    vX.addEventListener('click', cierraVisor);
+    /* Pulsar el fondo cierra; pulsar la foto, no. */
+    visor.addEventListener('click', function (e) {
+      if (!e.target.closest('.visor__f') || e.target.tagName === 'FIGCAPTION') { cierraVisor(); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { cierraVisor(); }
+    });
   }
 
   /* ========================================================= 5. EL AÑO ==== */

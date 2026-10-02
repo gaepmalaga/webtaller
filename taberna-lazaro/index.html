@@ -29,7 +29,7 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=ae7b5e12">
+<link rel="stylesheet" href="assets/css/style.css?v=787b9d79">
 </head>
 
 <body>
@@ -365,8 +365,22 @@
   <span class="tira__c" id="tira-c"></span>
 </button>
 
-<script type="application/json" id="datos">{"horario":{"0":null,"1":null,"2":null,"3":null,"4":null,"5":null,"6":null},"comentarios":{"soloBeberPoco":"¿Y de comer, nada?","soloBeberMucho":"Mucha sed y poca hambre.","soloComer":"Eso pide algo para beber.","dos":"Por algo se empieza.","cinco":"Eso ya tiene buena pinta.","nueve":"Con eso se sale rodado.","muchos":"Con eso resucita cualquiera."},"tira":{"vacia":"Ve apuntando lo que te apetezca","llena":"Lo que te vas a pedir"},"analitica":null}</script>
-<script src="assets/js/main.js?v=ae7b5e12" defer></script>
+<!-- El visor de fotos. Vacío hasta que alguien pulsa una miniatura. -->
+<div class="visor" id="visor" hidden>
+  <button type="button" class="visor__x" id="visor-x" aria-label="Cerrar la foto">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <figure class="visor__f">
+    <img id="visor-img" alt="">
+    <figcaption class="visor__pie">
+      <span id="visor-n"></span>
+      <i id="visor-p"></i>
+    </figcaption>
+  </figure>
+</div>
+
+<script type="application/json" id="datos">{"horario":{"0":null,"1":null,"2":null,"3":null,"4":null,"5":null,"6":null},"comentarios":{"soloBeberPoco":"¿Y de comer, nada?","soloBeberMucho":"Mucha sed y poca hambre.","soloComer":"Eso pide algo para beber.","dos":"Por algo se empieza.","cinco":"Eso ya tiene buena pinta.","nueve":"Con eso se sale rodado.","muchos":"Con eso resucita cualquiera."},"tira":{"vacia":"Ve apuntando lo que te apetezca","llena":"Lo que te vas a pedir"}}</script>
+<script src="assets/js/main.js?v=787b9d79" defer></script>
 
 <script type="application/ld+json">
 {

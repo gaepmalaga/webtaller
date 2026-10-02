@@ -5,7 +5,8 @@
      1. La cuenta: tocas una línea de la carta y se te va apuntando.
      2. El aviso de «abierto / cerrado ahora» en hora de Málaga.
      3. El día de hoy, marcado en la tabla del reverso.
-     4. El año del pie.
+     4. El visor: pulsar la foto de un plato para verla en grande.
+     5. El año del pie.
 
    Sin JavaScript la página sigue siendo lo que es: la carta entera con sus
    precios. Solo se pierde el juego de la cuenta, y por eso los botones de la
@@ -170,7 +171,6 @@
     b.setAttribute('aria-label', 'Apuntar ' + nombre + ', ' + euros.format(precio));
     b.addEventListener('click', function () {
       poner(b.dataset.id, nombre, precio, 1, b.dataset.t);
-      apunta('plato', b.dataset.id);
     });
   });
 
@@ -201,7 +201,6 @@
       if (cifra && suma > 0) { cifra.textContent = euros.format(suma); }
 
       b.addEventListener('click', function () {
-        apunta('ronda', String(b.querySelector('.esc__n').textContent).trim());
         pedido = Object.create(null);
         partes.forEach(function (par) {
           var it = precioDe(par[0]);
@@ -338,51 +337,50 @@
     if (fila) { fila.classList.add('hoy'); }
   }
 
-  /* ====================================================== 4. LA ANALÍTICA ==
-     Apagada salvo que haya una dirección puesta en contenido.json. Si no la
-     hay, la web no manda absolutamente nada a ninguna parte, que es como ha
-     estado siempre.
-
-     Lo que se manda, cuando está encendida: qué se ha tocado, nada más. Sin
-     cookies, sin identificar a nadie, sin guardar de dónde viene. Y se respeta
-     «No rastrear» del navegador.
+  /* ======================================================== 4. EL VISOR ===
+     Pulsar la miniatura de un plato la enseña a pantalla completa. Se cierra
+     con la ×, con Escape, o pulsando fuera de la foto. Al cerrarse, el foco
+     vuelve a la miniatura de la que se salió.
      ---------------------------------------------------------------------- */
-  var DESTINO = DATOS.analitica && DATOS.analitica.endpoint;
-  var NO_RASTREAR = navigator.doNotTrack === '1' || window.doNotTrack === '1' ||
-                    navigator.globalPrivacyControl === true;
+  var visor = document.getElementById('visor');
+  if (visor) {
+    var vImg = document.getElementById('visor-img');
+    var vN = document.getElementById('visor-n');
+    var vP = document.getElementById('visor-p');
+    var vX = document.getElementById('visor-x');
+    var deDonde = null;
 
-  var cola = [];
+    function abreVisor(boton) {
+      deDonde = boton;
+      vImg.src = boton.dataset.foto;
+      vImg.alt = 'Foto de ' + boton.dataset.n;
+      vN.textContent = boton.dataset.n;
+      vP.textContent = boton.dataset.p || '';
+      visor.hidden = false;
+      document.body.style.overflow = 'hidden';
+      vX.focus();
+    }
 
-  function apunta(tipo, id) {
-    if (!DESTINO || NO_RASTREAR) { return; }
-    cola.push(id ? { t: tipo, id: id } : { t: tipo });
-    if (cola.length > 40) { manda(); }
-  }
+    function cierraVisor() {
+      if (visor.hidden) { return; }
+      visor.hidden = true;
+      vImg.removeAttribute('src');
+      document.body.style.overflow = '';
+      if (deDonde) { deDonde.focus(); deDonde = null; }
+    }
 
-  function manda() {
-    if (!DESTINO || !cola.length) { return; }
-    var cuerpo = JSON.stringify({ v: 1, e: cola });
-    cola = [];
-    try {
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(DESTINO, new Blob([cuerpo], { type: 'application/json' }));
-      } else {
-        fetch(DESTINO, { method: 'POST', body: cuerpo, keepalive: true, mode: 'no-cors' });
-      }
-    } catch (e) { /* si falla, se pierde: no es asunto del visitante */ }
-  }
-
-  if (DESTINO && !NO_RASTREAR) {
-    apunta('visita');
-    /* Al dejar la página se manda lo acumulado de una vez. Va en `document`,
-       que es donde se dispara visibilitychange, y sin pestillo: si el visitante
-       vuelve y sigue tocando platos, eso también se cuenta. */
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'hidden') { manda(); }
+    document.querySelectorAll('.verfoto').forEach(function (b) {
+      b.addEventListener('click', function () { abreVisor(b); });
     });
-    addEventListener('pagehide', manda);
-    /* Y cada 20 s, por si no se va nunca de la página. */
-    setInterval(manda, 20000);
+
+    vX.addEventListener('click', cierraVisor);
+    /* Pulsar el fondo cierra; pulsar la foto, no. */
+    visor.addEventListener('click', function (e) {
+      if (!e.target.closest('.visor__f') || e.target.tagName === 'FIGCAPTION') { cierraVisor(); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { cierraVisor(); }
+    });
   }
 
   /* ========================================================= 5. EL AÑO ==== */

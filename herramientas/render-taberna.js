@@ -23,10 +23,11 @@ const hhmm = (m) => (m >= 1440 ? '00:00' : String(Math.floor(m / 60)).padStart(2
 /* ------------------------------------------------------------------ piezas -- */
 
 function plato(p, tipo) {
-  const foto = p.foto
-    ? `<img class="it__f" src="${esc(p.foto)}" alt="" loading="lazy" width="44" height="44">`
-    : '';
-  return `            <li><button type="button" class="it${p.foto ? ' it--foto' : ''}" data-t="${tipo}" data-id="${esc(p.id)}" data-n="${esc(p.nombre)}" data-p="${Number(p.precio).toFixed(2)}">${foto}<span class="it__n">${esc(p.nombre)}</span><span class="it__d" aria-hidden="true"></span><i class="it__p">${eur(p.precio)}</i></button></li>`;
+  const boton = `<button type="button" class="it" data-t="${tipo}" data-id="${esc(p.id)}" data-n="${esc(p.nombre)}" data-p="${Number(p.precio).toFixed(2)}"><span class="it__n">${esc(p.nombre)}</span><span class="it__d" aria-hidden="true"></span><i class="it__p">${eur(p.precio)}</i></button>`;
+  if (!p.foto) { return `            <li>${boton}</li>`; }
+  /* Con foto van dos botones hermanos: la miniatura abre el visor y la línea
+     apunta el plato. Nada de un botón dentro de otro. */
+  return `            <li class="con-foto"><button type="button" class="verfoto" data-foto="${esc(p.foto)}" data-n="${esc(p.nombre)}" data-p="${eur(p.precio)}" aria-label="Ver la foto de ${esc(p.nombre)}"><img src="${esc(p.foto)}" alt="" loading="lazy" width="48" height="48"></button>${boton}</li>`;
 }
 
 function grupo(g) {
@@ -127,8 +128,7 @@ export function render(d, version = '1') {
   const paraElNavegador = {
     horario: d.horario,
     comentarios: d.comentarios,
-    tira: { vacia: t.tiraVacia, llena: t.tiraLlena },
-    analitica: d.analitica && d.analitica.endpoint ? { endpoint: d.analitica.endpoint } : null
+    tira: { vacia: t.tiraVacia, llena: t.tiraLlena }
   };
 
   return `<!doctype html>
@@ -357,6 +357,20 @@ ${ORDEN.map((d2) => filaHorario(d2, d.horario)).join('\n')}
   <span class="tira__t">${esc(t.tiraVacia)}</span>
   <span class="tira__c" id="tira-c"></span>
 </button>
+
+<!-- El visor de fotos. Vacío hasta que alguien pulsa una miniatura. -->
+<div class="visor" id="visor" hidden>
+  <button type="button" class="visor__x" id="visor-x" aria-label="Cerrar la foto">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <figure class="visor__f">
+    <img id="visor-img" alt="">
+    <figcaption class="visor__pie">
+      <span id="visor-n"></span>
+      <i id="visor-p"></i>
+    </figcaption>
+  </figure>
+</div>
 
 <script type="application/json" id="datos">${JSON.stringify(paraElNavegador)}</script>
 <script src="assets/js/main.js?v=${version}" defer></script>

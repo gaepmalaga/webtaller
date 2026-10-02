@@ -339,7 +339,7 @@ code {
 .ficha span { display: block; font-size: 0.84rem; color: var(--tinta-3); }
 .ficha .btn { display: block; margin-top: 0.6rem; padding: 0.35rem 0.8rem; font-size: 0.8rem; }
 
-/* -------------------------------------------------------------- números -- */
+/* ----------------------------------------------------------- cifras ------ */
 .cifras { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); margin-bottom: 1rem; }
 .cifra {
   background: var(--papel); border: 1px solid var(--linea); border-radius: var(--r);
@@ -348,15 +348,6 @@ code {
 .cifra__e { font-size: 0.8rem; font-weight: 600; color: var(--tinta-3); }
 /* El número manda, y va en la misma sans: una serif aquí lee a decorado. */
 .cifra__v { font-size: 2.6rem; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-
-.rank { list-style: none; padding: 0; margin: 0; }
-.rank li { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.8rem; padding: 0.5rem 0; align-items: baseline; }
-.rank li + li { border-top: 1px solid var(--linea-2); }
-.rank__n { font-size: 0.93rem; }
-.rank__n i { font-style: normal; color: var(--tinta-3); margin-right: 0.45rem; font-variant-numeric: tabular-nums; }
-.rank__v { font-weight: 700; font-variant-numeric: tabular-nums; }
-.rank__p { grid-column: 1 / -1; height: 10px; background: var(--dato-cl); border-radius: 0 5px 5px 0; }
-.rank__p > i { display: block; height: 100%; background: var(--dato); border-radius: 0 5px 5px 0; }
 
 .vacio { text-align: center; padding: 2rem 1rem; color: var(--tinta-3); }
 .vacio svg { width: 28px; height: 28px; opacity: .5; margin-bottom: 0.5rem; }

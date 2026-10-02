@@ -24,13 +24,6 @@ on:
       - claude/fix-hidrocar-malaga-website-krgygu
       - claude/che-bolu-website-vxnsss
   workflow_dispatch:
-  # Cuando la analítica se despliega sola y escribe su dirección en el JSON,
-  # ese commit lo hace el propio GitHub y por eso no dispara un `push`. Así que
-  # se escucha el final de aquel trabajo para republicar la web con la
-  # analítica ya encendida.
-  workflow_run:
-    workflows: ["Desplegar la analítica"]
-    types: [completed]
 
 permissions:
   contents: read

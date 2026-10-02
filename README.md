@@ -118,7 +118,6 @@ Es una carpeta de archivos estáticos: vale cualquier alojamiento.
      permisos de administrador del repositorio y el token de Actions no los
      tiene. Sin ese paso, el despliegue falla con *Create Pages site failed:
      Resource not accessible by integration*.
-- **Netlify / Cloudflare Pages**: arrastrar la carpeta. Sin comando de build.
 - **Hosting clásico**: subir todo por FTP a `public_html`.
 
 ### Cuando haya dominio propio

@@ -78,9 +78,9 @@ la derecha para recuperarla; en móvil baja la hoja y queda la tira.
 
 - **Datos estructurados `BarOrPub`** (JSON-LD) con dirección, tipo de cocina y
   enlace a la carta: es lo que Google lee para la ficha del negocio.
-- **Cero peticiones a terceros.** Las tipografías se sirven desde el propio
-  dominio. Sin Google Fonts, sin analítica, sin píxeles: por eso la página no
-  necesita aviso de cookies.
+- **Cero peticiones a terceros, de verdad.** Las tipografías se sirven desde el
+  propio dominio. Sin Google Fonts, sin analítica, sin píxeles, sin nada de
+  fuera: por eso la página no necesita aviso de cookies.
 - Funciona **sin JavaScript**, se imprime bien (la carta en A4 sale decente) y
   respeta `prefers-reduced-motion`.
 
@@ -96,9 +96,6 @@ despliegue vuelve a generar `index.html`. Está explicado en [ADMIN.md](ADMIN.md
 
 > **`index.html` es un archivo generado.** No se edita a mano: se toca el JSON
 > (o el panel) y se regenera con `node herramientas/construir-taberna.js`.
-
-También se puede saber **qué platos mira la gente**, con un recolector propio y
-sin cookies ni terceros: [ANALITICA.md](ANALITICA.md). Viene apagado.
 
 ## Estructura
 
@@ -123,7 +120,6 @@ Y fuera de esta carpeta:
 ```
 herramientas/render-taberna.js      Monta el HTML a partir del JSON
 herramientas/construir-taberna.js   El comando que lo ejecuta
-herramientas/analitica/             El recolector de números (se despliega solo)
 ```
 
 ## La versión anti-caché se calcula sola
@@ -155,7 +151,6 @@ O abriendo `index.html` con doble clic.
   python3 ../herramientas/construir-archivo-unico.py taberna-lazaro
   ```
 
-- **Netlify / Cloudflare Pages**: arrastrar esta carpeta. Sin comando de build.
 
 ### Cuando haya dominio propio
 

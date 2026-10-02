@@ -54,7 +54,6 @@ Se guardan en `assets/img/platos/<identificador-del-plato>.jpg`.
 | **Frases** | Todos los textos de la web, uno a uno, con su explicación. También lo que dice la lista según lo que lleves |
 | **Horario** | Los siete días, con uno o dos turnos. Al ponerlo se enciende sola la chapa de «abierto ahora» y se le cuenta a Google |
 | **Datos** | Teléfono, correo, Instagram, dirección, aparcamiento. Y el interruptor de la franja de «Borrador» |
-| **Números** | Visitas, platos más mirados y propuestas más usadas (ver [ANALITICA.md](ANALITICA.md)) |
 
 El menú lateral lleva un globito con **cuántas cosas faltan** en cada sección,
 para que no haya que acordarse.

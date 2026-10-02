@@ -160,8 +160,7 @@
     carta: ['La carta', ''],
     frases: ['Frases', 'Todo lo que dice la web, en su sitio'],
     horario: ['Horario', 'De aquí salen la tabla, el aviso de «abierto ahora» y lo que lee Google'],
-    datos: ['Datos', 'El local, su contacto y el estado de la web'],
-    numeros: ['Números', 'Qué mira la gente de la carta']
+    datos: ['Datos', 'El local, su contacto y el estado de la web']
   };
 
   function pintarResumen() {
@@ -617,150 +616,6 @@
     hoja.appendChild(e);
   }
 
-  /* ======================================================= 6. NÚMEROS ==== */
-  function pintarNumeros() {
-    var hoja = $('#hoja-numeros');
-    hoja.textContent = '';
-
-    var conf = el('div', 'tarjeta');
-    conf.appendChild(tituloTarjeta('De dónde salen los números'));
-    conf.appendChild(campo('Dirección del recolector', (datos.analitica && datos.analitica.endpoint) || '',
-      'Vacío = la web no manda nada a ninguna parte. Para encenderlo hay que desplegarlo una vez: está explicado en ANALITICA.md.',
-      function (v) { datos.analitica.endpoint = v.trim(); toco(); }));
-    hoja.appendChild(conf);
-
-    var destino = datos.analitica && datos.analitica.endpoint;
-
-    if (destino) {
-      var probar = el('button', 'btn btn--llano', 'Probar la conexión');
-      probar.type = 'button';
-      var dicho = el('p', 'campo__p');
-      dicho.style.marginTop = '0.5rem';
-      probar.addEventListener('click', function () {
-        dicho.textContent = 'Llamando…';
-        fetch(destino.replace(/\/+$/, '') + '/', { method: 'GET' })
-          .then(function (r) { return r.json(); })
-          .then(function (j) {
-            dicho.textContent = j && j.que ? 'Responde bien: ' + j.que : 'Responde, pero no parece el recolector.';
-          })
-          .catch(function (e) { dicho.textContent = 'No responde: ' + e.message; });
-      });
-      conf.appendChild(probar);
-      conf.appendChild(dicho);
-    }
-
-    if (!destino) {
-      var v = el('div', 'tarjeta vacio');
-      v.appendChild(icono('i-grafico'));
-      v.appendChild(el('p', null, 'Todavía no hay analítica encendida.'));
-      v.appendChild(el('p', null, 'Se enciende sola desde GitHub: Actions → «Desplegar la analítica». Hacen falta dos secretos, y está explicado paso a paso en ANALITICA.md.'));
-      v.appendChild(el('p', null, 'Mientras tanto la web no hace ni una sola petición a terceros, que tampoco está mal.'));
-      hoja.appendChild(v);
-      return;
-    }
-
-    var clave = localStorage.getItem('tl_clave_analitica') || '';
-    if (!clave) {
-      var c = el('div', 'tarjeta');
-      c.appendChild(tituloTarjeta('Clave de lectura'));
-      var guardar = '';
-      c.appendChild(campo('La clave que pusiste al desplegar el recolector', '',
-        'Se guarda solo en este navegador. No va a GitHub.', function (x) { guardar = x.trim(); }));
-      var b = el('button', 'btn btn--principal', 'Ver los números');
-      b.type = 'button';
-      b.addEventListener('click', function () {
-        if (!guardar) { return; }
-        localStorage.setItem('tl_clave_analitica', guardar); pintarNumeros();
-      });
-      c.appendChild(b);
-      hoja.appendChild(c);
-      return;
-    }
-
-    var cargando = el('div', 'tarjeta vacio');
-    cargando.appendChild(el('p', null, 'Cargando los últimos 30 días…'));
-    hoja.appendChild(cargando);
-
-    fetch(destino.replace(/\/+$/, '') + '/resumen?dias=30&clave=' + encodeURIComponent(clave))
-      .then(function (r) {
-        if (r.status === 401) { throw new Error('La clave de lectura no vale.'); }
-        return r.json();
-      })
-      .then(function (d) { cargando.remove(); pintarPanel(hoja, d); })
-      .catch(function (e) {
-        cargando.textContent = '';
-        cargando.appendChild(icono('i-aviso'));
-        cargando.appendChild(el('p', null, 'No se ha podido leer el resumen: ' + e.message));
-        var otra = el('button', 'btn btn--llano', 'Cambiar la clave');
-        otra.type = 'button';
-        otra.addEventListener('click', function () { localStorage.removeItem('tl_clave_analitica'); pintarNumeros(); });
-        cargando.appendChild(otra);
-      });
-  }
-
-  function pintarPanel(hoja, d) {
-    var cif = el('div', 'cifras');
-    [[d.visitas || 0, 'visitas'], [d.toques || 0, 'platos tocados'], [d.listas || 0, 'listas empezadas']]
-      .forEach(function (c) {
-        var x = el('div', 'cifra');
-        x.appendChild(el('div', 'cifra__v', String(c[0])));
-        x.appendChild(el('div', 'cifra__e', c[1]));
-        cif.appendChild(x);
-      });
-    hoja.appendChild(cif);
-
-    var nombres = {};
-    datos.grupos.forEach(function (g) {
-      g.platos.forEach(function (p) { nombres[p.id] = p.nombre; });
-      (g.extras || []).forEach(function (p) { nombres[p.id] = p.nombre; });
-    });
-
-    var t = el('div', 'tarjeta');
-    t.appendChild(tituloTarjeta('Lo que más miran', 'últimos 30 días'));
-    var top = (d.platos || []).slice(0, 15);
-    if (!top.length) {
-      t.appendChild(el('p', 'tarjeta__d', 'Todavía no ha tocado nadie ningún plato.'));
-    } else {
-      t.appendChild(el('p', 'tarjeta__d', 'Veces que se ha tocado cada plato en la carta. No es lo que más se vende: es lo que más llama la atención.'));
-      var max = top[0][1] || 1;
-      var ol = el('ol', 'rank');
-      top.forEach(function (p, i) {
-        var li = el('li');
-        li.title = (nombres[p[0]] || p[0]) + ': ' + p[1] + (p[1] === 1 ? ' vez' : ' veces');
-        var n = el('div', 'rank__n');
-        n.appendChild(el('i', null, (i + 1) + '.'));
-        n.appendChild(document.createTextNode(nombres[p[0]] || p[0]));
-        li.appendChild(n);
-        li.appendChild(el('div', 'rank__v', String(p[1])));
-        var pista = el('div', 'rank__p');
-        var relleno = el('i');
-        relleno.style.width = Math.max(2, Math.round((p[1] / max) * 100)) + '%';
-        pista.appendChild(relleno);
-        li.appendChild(pista);
-        ol.appendChild(li);
-      });
-      t.appendChild(ol);
-    }
-    hoja.appendChild(t);
-
-    if ((d.rondas || []).length) {
-      var r = el('div', 'tarjeta');
-      r.appendChild(tituloTarjeta('Qué propuesta usan'));
-      var ol2 = el('ol', 'rank');
-      d.rondas.slice(0, 5).forEach(function (x, i) {
-        var li = el('li');
-        var n = el('div', 'rank__n');
-        n.appendChild(el('i', null, (i + 1) + '.'));
-        n.appendChild(document.createTextNode(x[0]));
-        li.appendChild(n);
-        li.appendChild(el('div', 'rank__v', String(x[1])));
-        ol2.appendChild(li);
-      });
-      r.appendChild(ol2);
-      hoja.appendChild(r);
-    }
-  }
-
   /* ======================================================== GUARDAR ====== */
   function guardar() {
     $('#velo').hidden = false;
@@ -844,7 +699,6 @@
     document.querySelectorAll('.hoja').forEach(function (h) { h.hidden = h.id !== 'hoja-' + seccion; });
     $('#tope-t').textContent = TITULOS[seccion][0];
     $('#tope-s').textContent = TITULOS[seccion][1];
-    if (seccion === 'numeros') { pintarNumeros(); }
     if (seccion === 'resumen') { pintarResumen(); }
     scrollTo(0, 0);
   }
@@ -863,7 +717,7 @@
     document.body.appendChild(m);
   }
 
-  function todo() { pintarResumen(); pintarCarta(); pintarFrases(); pintarHorario(); pintarDatos(); pintarNumeros(); toco(); ir('resumen'); }
+  function todo() { pintarResumen(); pintarCarta(); pintarFrases(); pintarHorario(); pintarDatos(); toco(); ir('resumen'); }
 
   /* --------------------------------------------------------- arranque --- */
   $('#conectar').addEventListener('click', entrar);
