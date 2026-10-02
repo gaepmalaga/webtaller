@@ -1,14 +1,14 @@
 # Lo que falta para que la web de Taberna Lázaro esté terminada
 
-## 1. Los cinco datos que faltan
+## 1. Los datos que faltan
 
-Con esto se quita la franja de «Borrador» y todo lo amarillo de la página:
+Con esto se quita la franja de «Borrador» y todo lo amarillo de la página.
+El Instagram ya está puesto: **@tabernalazaro**.
 
 | Dato | Para qué | Dónde se pone |
 |---|---|---|
 | **Teléfono** | Reservas. Es lo que más se pulsa en el móvil. | `index.html` (hero, «Dónde estamos», pie y JSON-LD) |
 | **Horario** | El aviso de «abierto ahora» y el día resaltado | `assets/js/main.js` (`HORARIO`), la tabla de `index.html` y el JSON-LD. Los tres tienen que coincidir |
-| **Cuenta de Instagram** | La sección de sugerencias y el botón | `index.html`, sección `#instagram` (hay un comentario con el cambio exacto) |
 | **Correo** | Obligatorio para el aviso legal | `aviso-legal.html` y «Dónde estamos» |
 | **Razón social y CIF** | Obligatorios por la LSSI | `aviso-legal.html`, campos en amarillo |
 
