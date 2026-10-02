@@ -47,13 +47,17 @@ Se guardan en `assets/img/platos/<identificador-del-plato>.jpg`.
 
 ## Qué se puede cambiar
 
-| Pestaña | Qué hay |
+| Sección | Qué hay |
 |---|---|
+| **Resumen** | Qué falta por poner, con un botón que lleva a cada sitio. El interruptor de borrador. Platos, secciones y fotos de un vistazo |
 | **La carta** | Platos, precios, fotos. Añadir, quitar y reordenar |
 | **Frases** | Todos los textos de la web, uno a uno, con su explicación. También lo que dice la lista según lo que lleves |
 | **Horario** | Los siete días, con uno o dos turnos. Al ponerlo se enciende sola la chapa de «abierto ahora» y se le cuenta a Google |
 | **Datos** | Teléfono, correo, Instagram, dirección, aparcamiento. Y el interruptor de la franja de «Borrador» |
-| **Números** | La analítica (ver [ANALITICA.md](ANALITICA.md)) |
+| **Números** | Visitas, platos más mirados y propuestas más usadas (ver [ANALITICA.md](ANALITICA.md)) |
+
+El menú lateral lleva un globito con **cuántas cosas faltan** en cada sección,
+para que no haya que acordarse.
 
 ## Si algo sale mal
 
