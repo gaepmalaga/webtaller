@@ -101,6 +101,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
 
 .falta {
   background: var(--amarillo); color: #3a3200;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.12);
   padding: 0.08em 0.45em; border-radius: 3px;
   font-weight: 700; font-size: 0.88em; white-space: nowrap;
 }
@@ -168,7 +169,10 @@ a { color: inherit; text-underline-offset: 0.2em; }
 @media (prefers-reduced-motion: reduce) { .tapa__abrir svg, .tapa__abrir { animation: none; transition: none; } }
 
 /* ================================================================= INTRO == */
-.intro { padding: clamp(3rem, 8vw, 5rem) var(--pad) clamp(2rem, 5vw, 3rem); }
+.intro {
+  background: var(--negro-2); border-top: 1px solid var(--linea-2);
+  padding: clamp(3rem, 8vw, 5rem) var(--pad) clamp(3rem, 7vw, 4rem);
+}
 .intro__in { max-width: 54rem; margin: 0 auto; }
 .intro__sobre {
   font-size: 0.72rem; font-weight: 800; letter-spacing: 0.26em;
@@ -194,32 +198,40 @@ a { color: inherit; text-underline-offset: 0.2em; }
 }
 .intro__datos a { color: var(--amarillo); }
 
-/* ================================================================ CUÁNTO == */
-.cuanto { padding: clamp(1.5rem, 4vw, 2.5rem) var(--pad) clamp(3rem, 8vw, 5rem); }
+/* ================================================================ CUÁNTO ==
+   Las propuestas van en amarillo, del derecho. Es lo único de la página que
+   se lee en negro sobre claro, y por eso no se confunde ni con la carta ni
+   con la presentación: se ve que es otra cosa de un vistazo. */
+.cuanto {
+  background: var(--amarillo); color: #000;
+  padding: clamp(2.5rem, 7vw, 4rem) var(--pad) clamp(2.8rem, 7vw, 4rem);
+}
 .cuanto__cab { max-width: 54rem; margin: 0 auto 1.4rem; }
 .cuanto__t {
   font-size: clamp(1.9rem, 6vw, 3.2rem); text-transform: uppercase; font-stretch: 78%;
 }
-.cuanto__s { margin: 0.5rem 0 0; color: var(--gris); max-width: 50ch; }
+.cuanto__s { margin: 0.5rem 0 0; color: rgba(0,0,0,.68); max-width: 50ch; }
 
 .escenas { max-width: 54rem; margin: 0 auto; display: grid; gap: 0.7rem; }
 .esc {
   display: grid; grid-template-columns: 1fr auto; align-items: center;
   gap: 0.2rem 1.5rem; width: 100%; padding: 1.1rem 1.2rem;
   font: inherit; color: inherit; text-align: left; cursor: pointer;
-  background: var(--negro-2); border: 1px solid var(--linea); border-radius: 12px;
+  background: #fff; border: 1px solid rgba(0,0,0,.16); border-radius: 12px;
   transition: background .15s ease, border-color .15s ease, transform .12s ease;
 }
-.esc:hover { background: var(--negro-3); border-color: var(--amarillo); transform: translateY(-2px); }
+.esc:hover { border-color: #000; transform: translateY(-2px); box-shadow: 0 10px 24px -14px rgba(0,0,0,.6); }
 @media (prefers-reduced-motion: reduce) { .esc { transition: none; } .esc:hover { transform: none; } }
 .esc__n { font-size: clamp(1.05rem, 3vw, 1.3rem); font-weight: 800; text-transform: uppercase; font-stretch: 88%; }
-.esc__d { grid-column: 1; max-width: 46ch; font-size: 0.9rem; color: var(--gris); }
+.esc__d { grid-column: 1; max-width: 46ch; font-size: 0.9rem; color: rgba(0,0,0,.62); }
 .esc__t {
   grid-row: 1 / 3; grid-column: 2; align-self: center;
   font-weight: 800; font-size: 1.05rem; font-variant-numeric: tabular-nums;
-  white-space: nowrap; color: var(--amarillo);
+  white-space: nowrap; color: #000;
 }
-.cuanto__pie { max-width: 54rem; margin: 1.3rem auto 0; font-size: 0.88rem; color: var(--gris-2); }
+.cuanto__pie { max-width: 54rem; margin: 1.3rem auto 0; font-size: 0.88rem; color: rgba(0,0,0,.62); }
+/* Sobre amarillo, el marcador amarillo no marca nada: aquí va al revés. */
+.cuanto__pie b { background: #000; color: var(--amarillo); }
 
 /* ================================================================= CARTA == */
 .carta { padding: clamp(2.5rem, 7vw, 4.5rem) var(--pad) clamp(3rem, 7vw, 5rem); }
@@ -248,10 +260,10 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .grupo {
   break-inside: avoid; margin: 0 0 1.2rem;
   padding: 1.3rem 1.3rem 1.1rem;
-  background: var(--negro-2); border: 1px solid var(--linea); border-radius: 14px;
+  background: var(--negro-2); border: 1px solid rgba(255,255,255,.2); border-radius: 14px;
   scroll-margin-top: 1.2rem;
 }
-.grupo--destacado { border-color: var(--amarillo); }
+.grupo--destacado { border-color: var(--amarillo); box-shadow: 0 0 0 1px rgba(251,238,134,.25); }
 .grupo--ancho { column-span: all; }
 
 .grupo__t {
@@ -411,6 +423,9 @@ a { color: inherit; text-underline-offset: 0.2em; }
   padding: 0.85rem var(--pad) calc(0.85rem + env(safe-area-inset-bottom));
   font: inherit; font-weight: 800; text-align: left; cursor: pointer;
   background: var(--amarillo); color: #000; border: 0;
+  /* Sobre la banda amarilla de las propuestas, la tira se confundiría con el
+     fondo: una línea y una sombra la despegan. */
+  box-shadow: 0 -1px 0 rgba(0,0,0,.3), 0 -14px 30px -20px rgba(0,0,0,.8);
 }
 .tira__n {
   flex: none; display: grid; place-content: center;
@@ -423,47 +438,64 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .tira__c:empty { display: none; }
 @media (min-width: 72rem) { .tira { display: none; } }
 
-/* ================================================================= DORSO == */
-.dorso { background: var(--negro-2); padding: clamp(2.5rem, 7vw, 4.5rem) var(--pad); }
+/* ================================================================= DORSO ==
+   Lo práctico —dónde, cuándo, a qué teléfono— sobre claro. Es lo que se mira
+   con prisa y de pie en la calle, así que se lee como una ficha, no como
+   parte de la carta. */
+.dorso {
+  background: #f4f3ef; color: #121212;
+  padding: clamp(2.5rem, 7vw, 4.5rem) var(--pad);
+}
 .dorso__t {
   max-width: var(--max); margin: 0 auto 2rem;
   font-size: 0.74rem; font-weight: 800; letter-spacing: 0.26em;
-  text-transform: uppercase; color: var(--amarillo);
+  text-transform: uppercase; color: #000;
 }
-.dorso__rejilla { max-width: var(--max); margin: 0 auto; display: grid; border-top: 1px solid var(--linea); }
+.dorso__t::after {
+  content: ''; display: block; width: 2.6rem; height: 4px;
+  background: var(--amarillo); margin-top: 0.6rem;
+}
+.dorso__rejilla { max-width: var(--max); margin: 0 auto; display: grid; border-top: 1px solid rgba(0,0,0,.14); }
 @media (min-width: 52rem) {
   .dorso__rejilla { grid-template-columns: repeat(3, 1fr); }
-  .dorso__bloque + .dorso__bloque { border-left: 1px solid var(--linea); padding-left: 2.2rem; }
+  .dorso__bloque + .dorso__bloque { border-left: 1px solid rgba(0,0,0,.14); padding-left: 2.2rem; }
 }
-.dorso__bloque { padding: 1.7rem 0; border-bottom: 1px solid var(--linea); }
+.dorso__bloque { padding: 1.7rem 0; border-bottom: 1px solid rgba(0,0,0,.14); }
 @media (min-width: 52rem) { .dorso__bloque { border-bottom: 0; padding-right: 2.2rem; } }
 .dorso__bloque h3 { font-size: 1.5rem; text-transform: uppercase; font-stretch: 85%; margin-bottom: 0.8rem; }
-.dorso__bloque p { font-size: 0.93rem; color: var(--gris); }
-.dorso__dir { font-weight: 700; color: var(--blanco) !important; }
+.dorso__bloque p { font-size: 0.93rem; color: rgba(0,0,0,.66); }
+.dorso__dir { font-weight: 700; color: #000 !important; }
 .dorso__falta { margin-bottom: 0.9rem; }
-.dorso__enlace { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amarillo); text-decoration: none; border-bottom: 1px solid currentColor; }
+.dorso__enlace { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #000; text-decoration: none; box-shadow: inset 0 -0.45em 0 var(--amarillo); }
+.dorso__enlace:hover { box-shadow: inset 0 -1.05em 0 var(--amarillo); }
 .dorso__min { font-size: 0.85rem !important; margin: 0; }
 
 .dorso__tabla { font-size: 0.92rem; }
-.dorso__tabla th { text-align: left; font-weight: 500; padding: 0.32rem 0; color: var(--gris); }
+.dorso__tabla th { text-align: left; font-weight: 500; padding: 0.32rem 0; color: rgba(0,0,0,.66); }
 .dorso__tabla td { text-align: right; padding: 0.32rem 0; font-variant-numeric: tabular-nums; }
-.dorso__tabla tr.hoy th, .dorso__tabla tr.hoy td { color: var(--amarillo); font-weight: 800; }
+.dorso__tabla tr.hoy th, .dorso__tabla tr.hoy td { color: #000; font-weight: 800; background: var(--amarillo); }
+.dorso__tabla tr.hoy th { padding-left: 0.4rem; }
+.dorso__tabla tr.hoy td { padding-right: 0.4rem; }
 .dorso__tabla tr.hoy th::after { content: ' · hoy'; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
 
 .dorso__datos { display: grid; grid-template-columns: auto 1fr; gap: 0.45rem 1rem; font-size: 0.93rem; margin-bottom: 1rem; }
-.dorso__datos dt { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris-2); align-self: center; }
+.dorso__datos dt { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,.62); align-self: center; }
 .dorso__datos dd { justify-self: start; }
-.dorso__datos a { color: var(--amarillo); }
+.dorso__datos a { color: #000; font-weight: 700; box-shadow: inset 0 -0.45em 0 var(--amarillo); text-decoration: none; }
+.dorso__datos a:hover { box-shadow: inset 0 -1.05em 0 var(--amarillo); }
 
 .estado {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  margin: 0 0 0.9rem; padding: 0.35rem 0.85rem 0.35rem 0.7rem;
-  border: 1px solid var(--linea); border-radius: 99px;
+  margin: 0 0 0.9rem; padding: 0.4rem 0.9rem 0.4rem 0.75rem;
+  background: #000; border-radius: 99px;
   font-size: 0.85rem; font-weight: 700;
 }
+/* La chapa vive dentro de un bloque del reverso, y ahí los párrafos van en
+   gris oscuro: sobre el negro de la chapa no se leería. */
+.dorso .estado { color: #fff; }
 .estado__punto { width: 8px; height: 8px; border-radius: 50%; background: var(--gris-2); flex: none; }
-.estado.is-abierto .estado__punto { background: #6ee7a0; box-shadow: 0 0 0 3px rgba(110,231,160,.2); }
-.estado.is-cerrado .estado__punto { background: var(--amarillo); box-shadow: 0 0 0 3px rgba(251,238,134,.18); }
+.estado.is-abierto .estado__punto { background: #6ee7a0; box-shadow: 0 0 0 3px rgba(110,231,160,.25); }
+.estado.is-cerrado .estado__punto { background: var(--amarillo); box-shadow: 0 0 0 3px rgba(251,238,134,.22); }
 
 /* =================================================================== FIN == */
 .fin { padding: clamp(3rem, 8vw, 5rem) var(--pad); text-align: center; }
