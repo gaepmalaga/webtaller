@@ -226,9 +226,14 @@ body::before {
 .intro__txt {
   font-family: var(--f-tit); font-weight: 400; font-variation-settings: 'opsz' 48;
   font-size: clamp(1.25rem, 3.2vw, 1.85rem); line-height: 1.35;
-  max-width: 34ch; margin-bottom: 2rem;
+  max-width: 36ch; margin-bottom: 1.4rem;
 }
 .intro__txt b { font-weight: 600; }
+/* El segundo párrafo baja la voz: la historia manda, lo de comer acompaña. */
+.intro__txt2 {
+  max-width: 48ch; margin-bottom: 2rem;
+  color: color-mix(in srgb, var(--tinta) 82%, transparent);
+}
 .intro__datos {
   display: grid; gap: 0; border-top: 1px solid var(--hair-o);
   font-size: 0.93rem;

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Taberna Lázaro — La carta, en Huelin (Málaga)</title>
-<meta name="description" content="La carta de Taberna Lázaro con sus precios: gildas, croquetas, japo bravas, tartar de salchichón, cañas a 2 €. Ve sumando tu cuenta mientras la lees. C/ Alfredo Catalani, 3, Huelin, Málaga.">
+<meta name="description" content="Taberna Lázaro, en Huelin (Málaga). Tapas para compartir, cañas bien tiradas y carta corta. El nombre es por el abuelo, que despertaba diciendo «levántate, Lázaro». C/ Alfredo Catalani, 3.">
 
 <link rel="canonical" href="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
 <!-- PROVISIONAL: quitar cuando la web esté aprobada por el local. -->
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Taberna Lázaro">
 <meta property="og:title" content="Taberna Lázaro — La carta, en Huelin (Málaga)">
-<meta property="og:description" content="Lázaro, levántate y pídete otra. La carta entera con precios, y la cuenta sumándose sola.">
+<meta property="og:description" content="Lázaro, levántate y pídete otra. Tapas, barra y carta corta en Huelin, Málaga.">
 <meta property="og:url" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/">
 <meta property="og:image" content="https://gaepmalaga.github.io/webtaller/taberna-lazaro/assets/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -221,9 +221,14 @@ body::before {
 .intro__txt {
   font-family: var(--f-tit); font-weight: 400; font-variation-settings: 'opsz' 48;
   font-size: clamp(1.25rem, 3.2vw, 1.85rem); line-height: 1.35;
-  max-width: 34ch; margin-bottom: 2rem;
+  max-width: 36ch; margin-bottom: 1.4rem;
 }
 .intro__txt b { font-weight: 600; }
+/* El segundo párrafo baja la voz: la historia manda, lo de comer acompaña. */
+.intro__txt2 {
+  max-width: 48ch; margin-bottom: 2rem;
+  color: color-mix(in srgb, var(--tinta) 82%, transparent);
+}
 .intro__datos {
   display: grid; gap: 0; border-top: 1px solid var(--hair-o);
   font-size: 0.93rem;
@@ -731,15 +736,21 @@ body::before {
   <!-- =============================================================== intro -->
   <section class="intro">
     <div class="intro__in">
-      <p class="intro__sobre">La taberna</p>
+      <p class="intro__sobre">De dónde viene el nombre</p>
+
       <p class="intro__txt">
-        Una taberna recién abierta en la calle Alfredo Catalani, en pleno
-        <b>Huelin</b>. De las de sentarse, pedir una gilda y que se te vaya la
-        tarde: croquetas, gyozas, tortilla trufada y un tartar de salchichón
-        <b>que levanta a un muerto</b> —de eso aquí sabemos—. La carta es corta
-        a propósito, y lo mejor de cada día casi nunca está escrito: eso se
-        pregunta en la barra, que para algo está.
+        El abuelo despertaba igual a todo el que durmiera en su casa: se asomaba
+        al cuarto y soltaba <b>«Levántate, Lázaro»</b>. Lo sacaba de la Biblia y
+        lo decía con guasa, cada mañana. Esta taberna lleva su nombre por eso.
       </p>
+      <p class="intro__txt2">
+        El milagro de ahora es más modesto: levantar a cualquiera con una gilda
+        y una caña. Barra, tapas para poner en medio y una carta corta a
+        propósito —croquetas, gyozas, tortilla trufada, un tartar de salchichón—.
+        Lo mejor de cada día casi nunca está escrito: eso se pregunta en la
+        barra, que para algo está.
+      </p>
+
       <ul class="intro__datos">
         <li><b>Dónde</b> C/ Alfredo Catalani, 3 · Huelin, Málaga</li>
         <li><b>Metro</b> L2, parada Princesa-Huelin</li>
@@ -757,8 +768,8 @@ body::before {
     <div class="cuanto__cab">
       <h2 class="cuanto__t">Por dónde empezar</h2>
       <p class="cuanto__s">
-        Tres maneras de no quedarte mirando la carta. Avisamos: casi nadie se
-        queda en la primera.
+        Tres maneras de no quedarte mirando la carta. Avisamos: casi nadie
+        resucita con una sola.
       </p>
     </div>
     <ul class="escenas">
@@ -1014,14 +1025,17 @@ body::before {
 
       <div class="dorso__bloque">
         <h3>Avisar</h3>
-        <p>Para mesa, para grupo o para preguntar qué hay hoy fuera de carta.</p>
+        <p>
+          Para mesa, para grupo, o para preguntar qué hay hoy fuera de carta —que
+          suele ser lo bueno.
+        </p>
         <dl class="dorso__datos">
           <dt>Teléfono</dt><dd><span class="falta">pendiente</span></dd>
           <dt>Instagram</dt><dd><span class="falta">pendiente</span></dd>
           <dt>Correo</dt><dd><span class="falta">pendiente</span></dd>
         </dl>
         <p class="dorso__min">
-          En la barra siempre se puede entrar sin avisar.
+          En la barra no hace falta avisar: se entra y ya está.
         </p>
       </div>
     </div>
@@ -1119,7 +1133,7 @@ body::before {
     if (n <= 2)      { return 'Por algo se empieza.'; }
     if (n <= 5)      { return 'Eso ya tiene buena pinta.'; }
     if (n <= 9)      { return 'Con eso se sale rodado.'; }
-    return 'Ahí ya venís con hambre de verdad.';
+    return 'Con eso resucita cualquiera.';
   }
 
   function unidades() {
@@ -1412,7 +1426,7 @@ body::before {
   "@context": "https://schema.org",
   "@type": "BarOrPub",
   "name": "Taberna Lázaro",
-  "description": "Taberna en Huelin, Málaga: tapas para compartir, cervezas, vinos y copas.",
+  "description": "Taberna en Huelin, Málaga: tapas para compartir, cervezas, vinos y copas. El nombre viene del abuelo de la casa, que despertaba a la familia diciendo «levántate, Lázaro».",
   "url": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/",
   "image": "https://gaepmalaga.github.io/webtaller/taberna-lazaro/assets/img/og.png",
   "servesCuisine": ["Española", "Andaluza", "Tapas"],

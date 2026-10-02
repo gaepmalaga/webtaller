@@ -1,5 +1,24 @@
 # Lo que falta para que la web de Taberna Lázaro esté terminada
 
+> ## ⚠️ Lo primero de todo: la historia del abuelo
+>
+> La web abre contando de dónde viene el nombre: que el abuelo despertaba a
+> quien durmiera en su casa diciendo **«Levántate, Lázaro»**, por el pasaje de
+> la Biblia. Es lo mejor que tiene la página y lo único que ninguna plantilla
+> puede copiar.
+>
+> **Pero es una historia de su familia, contada de oídas y escrita por un
+> tercero.** Antes de que esto sea público hay que:
+>
+> 1. Confirmar que es así, con las palabras exactas que decía.
+> 2. Preguntar si quieren contarla en la web, y si quieren que aparezca el
+>    nombre del abuelo (ahora no aparece, a propósito).
+> 3. Que la lean ellos y la cambien a su gusto. Está en `index.html`, sección
+>    `.intro`, en dos párrafos.
+>
+> Si dicen que no, se quita el primer párrafo y la página sigue funcionando: el
+> segundo ya habla de la taberna.
+
 Fecha: **1 de octubre de 2026**.
 
 La carta, los precios, los colores y los lemas salen de las fotos de la carta

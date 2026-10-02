@@ -59,7 +59,7 @@
     if (n <= 2)      { return 'Por algo se empieza.'; }
     if (n <= 5)      { return 'Eso ya tiene buena pinta.'; }
     if (n <= 9)      { return 'Con eso se sale rodado.'; }
-    return 'Ahí ya venís con hambre de verdad.';
+    return 'Con eso resucita cualquiera.';
   }
 
   function unidades() {
