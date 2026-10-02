@@ -612,9 +612,5 @@
         }
       ]
     }
-  ],
-  "analitica": {
-    "endpoint": "",
-    "_nota": "Vacío = no se envía nada a ningún sitio y la web sigue sin una sola petición a terceros. Para encenderla, despliega herramientas/analitica-worker.js en Cloudflare Workers (gratis) y pega aquí su dirección. Ver taberna-lazaro/ANALITICA.md."
-  }
+  ]
 }
