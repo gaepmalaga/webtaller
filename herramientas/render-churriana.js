@@ -300,15 +300,16 @@ ${ORDEN.map((d2) => filaHorario(d2, d.horario)).join('\n')}
           <dt>Instagram</dt><dd>${ig ? `<a href="${ig}" target="_blank" rel="noopener">@${esc(n.instagram)}</a>` : '<span class="falta">pendiente</span>'}</dd>
           <dt>Correo</dt><dd>${n.correo ? `<a href="mailto:${esc(n.correo)}">${esc(n.correo)}</a>` : '<span class="falta">pendiente</span>'}</dd>
         </dl>
-        <p class="dorso__min">${esc(t.avisarMin)}</p>
+${t.avisarMin.trim() ? `        <p class="dorso__min">${esc(t.avisarMin)}</p>` : ''}
       </div>
     </div>
   </section>
 
+${t.fin.trim() ? `
   <section class="fin">
     <img class="fin__lt" src="assets/img/logo.png" width="512" height="512" alt="" loading="lazy">
     <p class="fin__frase">${t.fin.replace(/\n/g, '<br>')}</p>
-  </section>
+  </section>` : ''}
 
 </main>
 
