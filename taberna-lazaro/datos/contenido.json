@@ -1,8 +1,6 @@
 {
   "_leeme": "Esta es la fuente única de todo lo editable de la web. Se toca desde /admin/ o a mano. Al cambiarlo, `node herramientas/construir-taberna.js` regenera index.html (y el despliegue lo hace solo en cada push).",
-
   "borrador": true,
-
   "negocio": {
     "nombre": "Taberna Lázaro",
     "rotulo": "Lázaro",
@@ -19,7 +17,6 @@
     "metro": "L2, parada Princesa-Huelin",
     "aparcamiento": ""
   },
-
   "textos": {
     "lema": "Lázaro, levántate\ny pídete otra.",
     "tapaPie": "Caña 2,00 € · Gilda 2,20 €",
@@ -49,7 +46,6 @@
     "horarioNota": "Con el horario puesto, la página calcula sola si está <b>abierto ahora</b> —en hora de Málaga, no en la del móvil de quien mira— y marca el día de hoy en esta tabla.",
     "fin": "Una mijilla más\n<em>y nos vamos.</em>"
   },
-
   "comentarios": {
     "soloBeberPoco": "¿Y de comer, nada?",
     "soloBeberMucho": "Mucha sed y poca hambre.",
@@ -59,123 +55,566 @@
     "nueve": "Con eso se sale rodado.",
     "muchos": "Con eso resucita cualquiera."
   },
-
   "horario": {
-    "0": null, "1": null, "2": null, "3": null, "4": null, "5": null, "6": null
+    "0": null,
+    "1": null,
+    "2": null,
+    "3": null,
+    "4": null,
+    "5": null,
+    "6": null
   },
-
   "escenarios": [
-    { "nombre": "Una caña y una tapa",
+    {
+      "nombre": "Una caña y una tapa",
       "descripcion": "Caña de Alhambra y una gilda. Lo que se entra a tomar sin pensarlo.",
-      "lleva": [["cana-alhambra", 1], ["gilda", 1]] },
-    { "nombre": "Picoteo para dos",
+      "lleva": [
+        [
+          "cana-alhambra",
+          1
+        ],
+        [
+          "gilda",
+          1
+        ]
+      ]
+    },
+    {
+      "nombre": "Picoteo para dos",
       "descripcion": "Dos gildas, croquetas y japo bravas, con sus dos cañas. Para alargarlo.",
-      "lleva": [["cana-alhambra", 2], ["gilda", 2], ["croquetas", 1], ["japo-bravas", 1]] },
-    { "nombre": "Cena para dos, sin mirar",
+      "lleva": [
+        [
+          "cana-alhambra",
+          2
+        ],
+        [
+          "gilda",
+          2
+        ],
+        [
+          "croquetas",
+          1
+        ],
+        [
+          "japo-bravas",
+          1
+        ]
+      ]
+    },
+    {
+      "nombre": "Cena para dos, sin mirar",
       "descripcion": "Gyozas, japo bravas, tartar de salchichón y rusa, con pan y dos cañas.",
-      "lleva": [["gyozas", 1], ["japo-bravas", 1], ["tartar-salchichon", 1], ["rusa", 1], ["cana-alhambra", 2], ["pan", 1]] }
+      "lleva": [
+        [
+          "gyozas",
+          1
+        ],
+        [
+          "japo-bravas",
+          1
+        ],
+        [
+          "tartar-salchichon",
+          1
+        ],
+        [
+          "rusa",
+          1
+        ],
+        [
+          "cana-alhambra",
+          2
+        ],
+        [
+          "pan",
+          1
+        ]
+      ]
+    }
   ],
-
   "grupos": [
-    { "id": "g-comer", "titulo": "Para comer", "tipo": "comer", "destacado": true,
+    {
+      "id": "g-comer",
+      "titulo": "Para comer",
+      "tipo": "comer",
+      "destacado": true,
       "nota": "Y pregúntanos por las <em>sugerencias del día</em>.",
       "platos": [
-        { "id": "gilda", "nombre": "Gilda", "precio": 2.20, "foto": "" },
-        { "id": "ibericos", "nombre": "Ibéricos", "precio": 4.50, "foto": "" },
-        { "id": "queso", "nombre": "Queso", "precio": 4.00, "foto": "" },
-        { "id": "rusa", "nombre": "Rusa", "precio": 5.50, "foto": "" },
-        { "id": "tomate-ventresca", "nombre": "Tomate y ventresca", "precio": 5.50, "foto": "" },
-        { "id": "croquetas", "nombre": "Croquetas", "precio": 5.00, "foto": "" },
-        { "id": "gyozas", "nombre": "Gyozas de langostinos", "precio": 6.50, "foto": "" },
-        { "id": "japo-bravas", "nombre": "Japo bravas", "precio": 6.50, "foto": "" },
-        { "id": "tortilla-trufada", "nombre": "Tortilla trufada", "precio": 4.00, "foto": "" },
-        { "id": "tartar-salchichon", "nombre": "Tartar de salchichón", "precio": 8.50, "foto": "" },
-        { "id": "miniburger", "nombre": "Miniburger", "precio": 4.50, "foto": "" }
+        {
+          "id": "gilda",
+          "nombre": "Gilda",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "ibericos",
+          "nombre": "Ibéricos",
+          "precio": 4.5,
+          "foto": ""
+        },
+        {
+          "id": "queso",
+          "nombre": "Queso",
+          "precio": 4.0,
+          "foto": ""
+        },
+        {
+          "id": "rusa",
+          "nombre": "Rusa",
+          "precio": 5.5,
+          "foto": ""
+        },
+        {
+          "id": "tomate-ventresca",
+          "nombre": "Tomate y ventresca",
+          "precio": 5.5,
+          "foto": ""
+        },
+        {
+          "id": "croquetas",
+          "nombre": "Croquetas",
+          "precio": 5.0,
+          "foto": ""
+        },
+        {
+          "id": "gyozas",
+          "nombre": "Gyozas de langostinos",
+          "precio": 6.5,
+          "foto": ""
+        },
+        {
+          "id": "japo-bravas",
+          "nombre": "Japo bravas",
+          "precio": 6.5,
+          "foto": ""
+        },
+        {
+          "id": "tortilla-trufada",
+          "nombre": "Tortilla trufada",
+          "precio": 4.0,
+          "foto": ""
+        },
+        {
+          "id": "tartar-salchichon",
+          "nombre": "Tartar de salchichón",
+          "precio": 8.5,
+          "foto": ""
+        },
+        {
+          "id": "miniburger",
+          "nombre": "Miniburger",
+          "precio": 4.5,
+          "foto": ""
+        }
       ],
       "extras": [
-        { "id": "pan", "nombre": "Pan", "precio": 1.00 },
-        { "id": "salsa", "nombre": "Salsa extra", "precio": 0.50 }
-      ] },
-
-    { "id": "g-cervezas", "titulo": "Cervezas", "tipo": "beber", "platos": [
-        { "id": "cana-alhambra", "nombre": "Caña Alhambra", "precio": 2.00, "foto": "" },
-        { "id": "copa-alhambra", "nombre": "Copa Alhambra", "precio": 2.50, "foto": "" },
-        { "id": "alhambra-especial", "nombre": "Alhambra Especial", "precio": 2.50, "foto": "" },
-        { "id": "alhambra-1925", "nombre": "Alhambra Verde 1925", "precio": 3.00, "foto": "" },
-        { "id": "alhambra-radler", "nombre": "Alhambra Radler", "precio": 2.60, "foto": "" },
-        { "id": "sm-especial", "nombre": "San Miguel Especial", "precio": 2.50, "foto": "" },
-        { "id": "sm-00", "nombre": "San Miguel 0,0", "precio": 2.60, "foto": "" },
-        { "id": "sm-00-tostada", "nombre": "San Miguel 0,0 Tostada", "precio": 2.60, "foto": "" },
-        { "id": "mahou5", "nombre": "Mahou 5 Estrellas", "precio": 2.80, "foto": "" },
-        { "id": "corona", "nombre": "Corona", "precio": 3.00, "foto": "" },
-        { "id": "sin-gluten", "nombre": "Sin gluten", "precio": 3.00, "foto": "" }
-      ] },
-
-    { "id": "g-vinos", "titulo": "Vinos", "tipo": "beber",
+        {
+          "id": "pan",
+          "nombre": "Pan",
+          "precio": 1.0
+        },
+        {
+          "id": "salsa",
+          "nombre": "Salsa extra",
+          "precio": 0.5
+        }
+      ]
+    },
+    {
+      "id": "g-cervezas",
+      "titulo": "Cervezas",
+      "tipo": "beber",
+      "platos": [
+        {
+          "id": "cana-alhambra",
+          "nombre": "Caña Alhambra",
+          "precio": 2.0,
+          "foto": ""
+        },
+        {
+          "id": "copa-alhambra",
+          "nombre": "Copa Alhambra",
+          "precio": 2.5,
+          "foto": ""
+        },
+        {
+          "id": "alhambra-especial",
+          "nombre": "Alhambra Especial",
+          "precio": 2.5,
+          "foto": ""
+        },
+        {
+          "id": "alhambra-1925",
+          "nombre": "Alhambra Verde 1925",
+          "precio": 3.0,
+          "foto": ""
+        },
+        {
+          "id": "alhambra-radler",
+          "nombre": "Alhambra Radler",
+          "precio": 2.6,
+          "foto": ""
+        },
+        {
+          "id": "sm-especial",
+          "nombre": "San Miguel Especial",
+          "precio": 2.5,
+          "foto": ""
+        },
+        {
+          "id": "sm-00",
+          "nombre": "San Miguel 0,0",
+          "precio": 2.6,
+          "foto": ""
+        },
+        {
+          "id": "sm-00-tostada",
+          "nombre": "San Miguel 0,0 Tostada",
+          "precio": 2.6,
+          "foto": ""
+        },
+        {
+          "id": "mahou5",
+          "nombre": "Mahou 5 Estrellas",
+          "precio": 2.8,
+          "foto": ""
+        },
+        {
+          "id": "corona",
+          "nombre": "Corona",
+          "precio": 3.0,
+          "foto": ""
+        },
+        {
+          "id": "sin-gluten",
+          "nombre": "Sin gluten",
+          "precio": 3.0,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "id": "g-vinos",
+      "titulo": "Vinos",
+      "tipo": "beber",
       "nota": "¿Solo una copa? No nos engañemos…<br><b>Pregúntanos por las botellas.</b>",
       "platos": [
-        { "id": "copa-verdejo", "nombre": "Copa Verdejo", "precio": 3.20, "foto": "" },
-        { "id": "copa-rioja", "nombre": "Copa Rioja", "precio": 3.20, "foto": "" },
-        { "id": "copa-ribera", "nombre": "Copa Ribera del Duero", "precio": 3.50, "foto": "" },
-        { "id": "tinto-verano", "nombre": "Tinto de verano", "precio": 3.00, "foto": "" },
-        { "id": "vermut", "nombre": "Vermut Bandarra", "precio": 3.00, "foto": "" },
-        { "id": "copa-manzanilla", "nombre": "Copa Manzanilla", "precio": 3.20, "foto": "" }
-      ] },
-
-    { "id": "g-copas", "titulo": "Copas y licores", "tipo": "beber", "platos": [
-        { "id": "barcelo", "nombre": "Barceló", "precio": 6.50, "foto": "" },
-        { "id": "cacique", "nombre": "Cacique", "precio": 6.00, "foto": "" },
-        { "id": "cacique500", "nombre": "Cacique 500", "precio": 8.00, "foto": "" },
-        { "id": "red-label", "nombre": "Red Label", "precio": 6.00, "foto": "" },
-        { "id": "black-label", "nombre": "Black Label", "precio": 8.00, "foto": "" },
-        { "id": "larios", "nombre": "Larios", "precio": 6.00, "foto": "" },
-        { "id": "beefeater", "nombre": "Beefeater", "precio": 6.00, "foto": "" },
-        { "id": "seagrams", "nombre": "Seagram's", "precio": 6.50, "foto": "" },
-        { "id": "bombay", "nombre": "Bombay Sapphire", "precio": 7.00, "foto": "" },
-        { "id": "tanqueray", "nombre": "Tanqueray", "precio": 6.00, "foto": "" },
-        { "id": "ballantines", "nombre": "Ballantine's", "precio": 6.00, "foto": "" },
-        { "id": "absolut", "nombre": "Absolut", "precio": 6.00, "foto": "" },
-        { "id": "chupito", "nombre": "Chupito", "precio": 1.50, "foto": "" },
-        { "id": "baileys", "nombre": "Baileys", "precio": 4.00, "foto": "" },
-        { "id": "pacharan", "nombre": "Pacharán", "precio": 4.00, "foto": "" }
-      ] },
-
-    { "id": "g-cafes", "titulo": "Cafés e infusiones", "tipo": "beber", "platos": [
-        { "id": "cafe-solo", "nombre": "Café solo", "precio": 1.50, "foto": "" },
-        { "id": "cafe-americano", "nombre": "Café americano", "precio": 1.50, "foto": "" },
-        { "id": "cafe-leche", "nombre": "Café con leche", "precio": 1.90, "foto": "" },
-        { "id": "cafe-bombon", "nombre": "Café bombón", "precio": 2.50, "foto": "" },
-        { "id": "cafelys", "nombre": "Cafélys", "precio": 3.20, "foto": "" },
-        { "id": "vaso-leche", "nombre": "Vaso de leche", "precio": 1.70, "foto": "" },
-        { "id": "cola-cao", "nombre": "Cola Cao", "precio": 2.20, "foto": "" },
-        { "id": "manzanilla", "nombre": "Manzanilla", "precio": 2.20, "foto": "" },
-        { "id": "tila", "nombre": "Tila", "precio": 2.20, "foto": "" },
-        { "id": "te-verde", "nombre": "Té verde", "precio": 2.20, "foto": "" },
-        { "id": "te-rojo", "nombre": "Té rojo", "precio": 2.20, "foto": "" }
-      ] },
-
-    { "id": "g-frias", "titulo": "Bebidas frías", "tipo": "beber", "ancho": true, "dosColumnas": true, "platos": [
-        { "id": "agua", "nombre": "Agua 0,5 L", "precio": 2.00, "foto": "" },
-        { "id": "agua-gas", "nombre": "Agua con gas 0,33 L", "precio": 2.00, "foto": "" },
-        { "id": "zumo-pina", "nombre": "Zumo de piña", "precio": 2.20, "foto": "" },
-        { "id": "zumo-melocoton", "nombre": "Zumo de melocotón", "precio": 2.20, "foto": "" },
-        { "id": "puleva-fresa", "nombre": "Puleva fresa", "precio": 2.50, "foto": "" },
-        { "id": "puleva-choco", "nombre": "Puleva chocolate", "precio": 2.50, "foto": "" },
-        { "id": "coca-cola", "nombre": "Coca-Cola", "precio": 2.20, "foto": "" },
-        { "id": "coca-zero", "nombre": "Coca-Cola Zero", "precio": 2.20, "foto": "" },
-        { "id": "coca-zero-zero", "nombre": "Coca-Cola Zero Zero", "precio": 2.20, "foto": "" },
-        { "id": "fanta-naranja", "nombre": "Fanta naranja", "precio": 2.20, "foto": "" },
-        { "id": "fanta-limon", "nombre": "Fanta limón", "precio": 2.20, "foto": "" },
-        { "id": "aquarius", "nombre": "Aquarius limón", "precio": 2.20, "foto": "" },
-        { "id": "fuze-limon", "nombre": "Fuze Tea limón", "precio": 2.20, "foto": "" },
-        { "id": "fuze-maracuya", "nombre": "Fuze Tea maracuyá", "precio": 2.20, "foto": "" },
-        { "id": "tonica", "nombre": "Tónica", "precio": 2.20, "foto": "" },
-        { "id": "sprite", "nombre": "Sprite", "precio": 2.20, "foto": "" }
-      ] }
+        {
+          "id": "copa-verdejo",
+          "nombre": "Copa Verdejo",
+          "precio": 3.2,
+          "foto": ""
+        },
+        {
+          "id": "copa-rioja",
+          "nombre": "Copa Rioja",
+          "precio": 3.2,
+          "foto": ""
+        },
+        {
+          "id": "copa-ribera",
+          "nombre": "Copa Ribera del Duero",
+          "precio": 3.5,
+          "foto": ""
+        },
+        {
+          "id": "tinto-verano",
+          "nombre": "Tinto de verano",
+          "precio": 3.0,
+          "foto": ""
+        },
+        {
+          "id": "vermut",
+          "nombre": "Vermut Bandarra",
+          "precio": 3.0,
+          "foto": ""
+        },
+        {
+          "id": "copa-manzanilla",
+          "nombre": "Copa Manzanilla",
+          "precio": 3.2,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "id": "g-copas",
+      "titulo": "Copas y licores",
+      "tipo": "beber",
+      "platos": [
+        {
+          "id": "barcelo",
+          "nombre": "Barceló",
+          "precio": 6.5,
+          "foto": ""
+        },
+        {
+          "id": "cacique",
+          "nombre": "Cacique",
+          "precio": 6.0,
+          "foto": ""
+        },
+        {
+          "id": "cacique500",
+          "nombre": "Cacique 500",
+          "precio": 8.0,
+          "foto": ""
+        },
+        {
+          "id": "red-label",
+          "nombre": "Red Label",
+          "precio": 6.0,
+          "foto": ""
+        },
+        {
+          "id": "black-label",
+          "nombre": "Black Label",
+          "precio": 8.0,
+          "foto": ""
+        },
+        {
+          "id": "larios",
+          "nombre": "Larios",
+          "precio": 6.0,
+          "foto": ""
+        },
+        {
+          "id": "beefeater",
+          "nombre": "Beefeater",
+          "precio": 6.0,
+          "foto": ""
+        },
+        {
+          "id": "seagrams",
+          "nombre": "Seagram's",
+          "precio": 6.5,
+          "foto": ""
+        },
+        {
+          "id": "bombay",
+          "nombre": "Bombay Sapphire",
+          "precio": 7.0,
+          "foto": ""
+        },
+        {
+          "id": "tanqueray",
+          "nombre": "Tanqueray",
+          "precio": 6.0,
+          "foto": ""
+        },
+        {
+          "id": "ballantines",
+          "nombre": "Ballantine's",
+          "precio": 6.0,
+          "foto": ""
+        },
+        {
+          "id": "absolut",
+          "nombre": "Absolut",
+          "precio": 6.0,
+          "foto": ""
+        },
+        {
+          "id": "chupito",
+          "nombre": "Chupito",
+          "precio": 1.5,
+          "foto": ""
+        },
+        {
+          "id": "baileys",
+          "nombre": "Baileys",
+          "precio": 4.0,
+          "foto": ""
+        },
+        {
+          "id": "pacharan",
+          "nombre": "Pacharán",
+          "precio": 4.0,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "id": "g-cafes",
+      "titulo": "Cafés e infusiones",
+      "tipo": "beber",
+      "platos": [
+        {
+          "id": "cafe-solo",
+          "nombre": "Café solo",
+          "precio": 1.5,
+          "foto": ""
+        },
+        {
+          "id": "cafe-americano",
+          "nombre": "Café americano",
+          "precio": 1.5,
+          "foto": ""
+        },
+        {
+          "id": "cafe-leche",
+          "nombre": "Café con leche",
+          "precio": 1.9,
+          "foto": ""
+        },
+        {
+          "id": "cafe-bombon",
+          "nombre": "Café bombón",
+          "precio": 2.5,
+          "foto": ""
+        },
+        {
+          "id": "cafelys",
+          "nombre": "Cafélys",
+          "precio": 3.2,
+          "foto": ""
+        },
+        {
+          "id": "vaso-leche",
+          "nombre": "Vaso de leche",
+          "precio": 1.7,
+          "foto": ""
+        },
+        {
+          "id": "cola-cao",
+          "nombre": "Cola Cao",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "manzanilla",
+          "nombre": "Manzanilla",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "tila",
+          "nombre": "Tila",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "te-verde",
+          "nombre": "Té verde",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "te-rojo",
+          "nombre": "Té rojo",
+          "precio": 2.2,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "id": "g-frias",
+      "titulo": "Bebidas frías",
+      "tipo": "beber",
+      "ancho": true,
+      "dosColumnas": true,
+      "platos": [
+        {
+          "id": "agua",
+          "nombre": "Agua 0,5 L",
+          "precio": 2.0,
+          "foto": ""
+        },
+        {
+          "id": "agua-gas",
+          "nombre": "Agua con gas 0,33 L",
+          "precio": 2.0,
+          "foto": ""
+        },
+        {
+          "id": "zumo-pina",
+          "nombre": "Zumo de piña",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "zumo-melocoton",
+          "nombre": "Zumo de melocotón",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "puleva-fresa",
+          "nombre": "Puleva fresa",
+          "precio": 2.5,
+          "foto": ""
+        },
+        {
+          "id": "puleva-choco",
+          "nombre": "Puleva chocolate",
+          "precio": 2.5,
+          "foto": ""
+        },
+        {
+          "id": "coca-cola",
+          "nombre": "Coca-Cola",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "coca-zero",
+          "nombre": "Coca-Cola Zero",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "coca-zero-zero",
+          "nombre": "Coca-Cola Zero Zero",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "fanta-naranja",
+          "nombre": "Fanta naranja",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "fanta-limon",
+          "nombre": "Fanta limón",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "aquarius",
+          "nombre": "Aquarius limón",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "fuze-limon",
+          "nombre": "Fuze Tea limón",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "fuze-maracuya",
+          "nombre": "Fuze Tea maracuyá",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "tonica",
+          "nombre": "Tónica",
+          "precio": 2.2,
+          "foto": ""
+        },
+        {
+          "id": "sprite",
+          "nombre": "Sprite",
+          "precio": 2.2,
+          "foto": ""
+        }
+      ]
+    }
   ],
-
   "analitica": {
     "endpoint": "",
-    "_nota": "Vacío = no se envía nada a ningún sitio y la web sigue sin una sola petición a terceros. Para encenderla, despliega herramientas/analitica-worker.js en Cloudflare Workers (gratis) y pega aquí su dirección. Ver taberna-lazaro/ANALITICA.md."
+    "_nota": "Lo rellena solo el flujo .github/workflows/analitica.yml al desplegar el recolector. Vacío = no se manda nada a ninguna parte. Ver taberna-lazaro/ANALITICA.md."
   }
 }

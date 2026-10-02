@@ -1,12 +1,9 @@
 # Saber qué pide la gente
 
-La web puede contar **cuánta gente entra y qué platos mira**. Viene apagada:
-mientras no se encienda, la página no hace una sola petición a terceros.
+La web puede contar **cuánta gente entra y qué platos mira**. Todo está escrito
+y listo: falta encenderlo, y encenderlo son **tres pasos de cinco minutos**.
 
-Lo que hace falta es un sitio donde se guarden esos números. Está escrito y
-listo en [`herramientas/analitica-worker.js`](../herramientas/analitica-worker.js):
-son 100 líneas, se despliega en **Cloudflare Workers** (gratis de sobra para un
-bar) y los datos son tuyos, no de nadie más.
+Mientras no se encienda, la página no hace una sola petición a terceros.
 
 ---
 
@@ -23,48 +20,74 @@ dónde viene la visita, ni ninguna cookie, ni ningún identificador. No se puede
 seguir a nadie porque no hay a quién seguir: son contadores.
 
 Por eso la web **no necesita aviso de cookies**. Y se respeta «No rastrear» del
-navegador: a quien lo tenga puesto no se le cuenta.
+navegador: a quien lo tenga puesto, no se le cuenta.
 
-## Montarlo (15 minutos, una vez)
+Los datos están en **tu** cuenta de Cloudflare, no en la de ningún
+intermediario, y el recolector son 100 líneas que puedes leer enteras:
+[`herramientas/analitica/worker.js`](../herramientas/analitica/worker.js).
 
-1. Cuenta gratis en [dash.cloudflare.com](https://dash.cloudflare.com).
-2. **Workers & Pages → Create → Worker**. Ponle de nombre `lazaro-numeros`.
-3. **Edit code**: borra lo que haya y pega entero
-   `herramientas/analitica-worker.js`. Dale a **Deploy**.
-4. **Storage & Databases → KV → Create**. Nómbralo `lazaro`.
-5. Vuelve al Worker → **Settings → Bindings**:
-   - **KV namespace**: variable `DATOS` → el KV `lazaro`.
-   - **Variable de entorno**: `CLAVE` → inventa una contraseña larga y
-     guárdala. Marcarla como *secret* si te deja.
-6. Copia la dirección del Worker (algo como
-   `https://lazaro-numeros.tu-cuenta.workers.dev`).
-7. En **/admin/ → Números**, pega esa dirección y guarda. Y la primera vez que
-   abras los números te pedirá la `CLAVE`: se queda en tu navegador.
+---
 
-A partir de ahí, en **/admin/ → Números** tienes visitas, platos más tocados y
-propuestas más usadas de los últimos 30 días.
+## Encenderla
+
+No hay que tocar código ni desplegar nada a mano: lo hace solo un flujo de
+trabajo de GitHub. Solo hay que darle las llaves.
+
+### 1. Una cuenta de Cloudflare y un token
+
+1. Cuenta gratis en [dash.cloudflare.com](https://dash.cloudflare.com) (el plan
+   gratuito sobra de largo para un bar).
+2. Arriba a la derecha: **My Profile → API Tokens → Create Token**.
+3. Elige la plantilla **«Edit Cloudflare Workers»** y dale a *Continue* y
+   *Create*. Copia el token: es la única vez que se ve.
+
+### 2. Dos secretos en GitHub
+
+En el repositorio: **Settings → Secrets and variables → Actions →
+New repository secret**. Hay que crear dos:
+
+| Nombre | Qué se pone |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | El token del paso anterior |
+| `ANALITICA_CLAVE` | Una contraseña larga que te inventes. Es la que te pedirá el panel para enseñarte los números. Apúntala |
+
+*(Si tu cuenta de Cloudflare tiene varias organizaciones, añade también
+`CLOUDFLARE_ACCOUNT_ID`, que sale en el panel de Cloudflare.)*
+
+### 3. Darle al botón
+
+**Actions → Desplegar la analítica → Run workflow.**
+
+Eso crea el almacén, mete la clave, sube el recolector, **escribe su dirección
+en `datos/contenido.json` y republica la web con la analítica ya encendida**.
+Al terminar, el resumen del trabajo te dice la dirección del recolector.
+
+No hay paso 4: a partir de ahí, en **/admin/ → Números** tienes visitas, platos
+más mirados y propuestas más usadas. La primera vez te pedirá la clave de
+lectura (la de `ANALITICA_CLAVE`); se queda guardada en tu navegador.
+
+---
 
 ## Para qué sirve de verdad
 
-- **Qué entra por los ojos.** El plato más tocado no siempre es el más pedido
-  en barra: es el que más llama la atención en la carta. Si la tortilla trufada
-  se toca mucho y se vende poco, el problema no es el plato, es cómo está
-  contado o dónde está puesto.
-- **Qué sobra.** Lo que nadie toca en tres meses, probablemente sobra de la
-  carta.
-- **Cuándo mirar.** Si las visitas se disparan un viernes, es que alguien os ha
+- **Qué entra por los ojos.** El plato más tocado no es el más vendido en
+  barra: es el que más llama la atención en la carta. Si la tortilla trufada se
+  toca mucho y se vende poco, el problema no es el plato: es dónde está puesto
+  o cómo está contado.
+- **Qué sobra.** Lo que nadie toca en tres meses, probablemente sobra.
+- **Cuándo mirar.** Si las visitas se disparan un viernes, alguien os ha
   compartido. Suele ser Instagram.
 - **Si la web sirve.** Visitas subiendo = la ficha de Google y el Instagram
   están trayendo gente.
 
-## Apagarlo
+## Apagarla
 
-Borrar la dirección en **/admin/ → Números** y guardar. Vuelve a no mandarse
-nada a ninguna parte.
+Borrar la dirección en **/admin/ → Números** y publicar. Vuelve a no mandarse
+nada a ninguna parte. (Y si quieres, borra el Worker en Cloudflare.)
 
 ## Un detalle técnico, por honestidad
 
-El Worker guarda un documento por día y lo lee-modifica-escribe en cada tanda
-de eventos. Con el tráfico de un bar eso no da problemas; si algún día dos
-visitas coinciden en la misma milésima, puede perderse un contador. Para contar
-tapas es más que suficiente: no es contabilidad.
+El recolector guarda un documento por día y lo lee-modifica-escribe en cada
+tanda de eventos. Con el tráfico de un bar eso no da problemas; si algún día
+dos visitas coinciden en la misma milésima, puede perderse un contador. Para
+contar tapas sobra: no es contabilidad.

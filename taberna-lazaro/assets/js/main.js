@@ -352,7 +352,6 @@
                     navigator.globalPrivacyControl === true;
 
   var cola = [];
-  var mandado = false;
 
   function apunta(tipo, id) {
     if (!DESTINO || NO_RASTREAR) { return; }
@@ -375,13 +374,15 @@
 
   if (DESTINO && !NO_RASTREAR) {
     apunta('visita');
-    /* Al irse se manda todo junto, en una sola petición. */
-    addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'hidden' && !mandado) { mandado = true; manda(); }
+    /* Al dejar la página se manda lo acumulado de una vez. Va en `document`,
+       que es donde se dispara visibilitychange, y sin pestillo: si el visitante
+       vuelve y sigue tocando platos, eso también se cuenta. */
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') { manda(); }
     });
     addEventListener('pagehide', manda);
-    /* Y a los 20 s la primera tanda, por si no se va nunca de la página. */
-    setTimeout(manda, 20000);
+    /* Y cada 20 s, por si no se va nunca de la página. */
+    setInterval(manda, 20000);
   }
 
   /* ========================================================= 5. EL AÑO ==== */

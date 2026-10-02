@@ -123,7 +123,7 @@ Y fuera de esta carpeta:
 ```
 herramientas/render-taberna.js      Monta el HTML a partir del JSON
 herramientas/construir-taberna.js   El comando que lo ejecuta
-herramientas/analitica-worker.js    El recolector de números (opcional)
+herramientas/analitica/             El recolector de números (se despliega solo)
 ```
 
 ## La versión anti-caché se calcula sola

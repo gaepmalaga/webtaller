@@ -617,10 +617,30 @@
     hoja.appendChild(conf);
 
     var destino = datos.analitica && datos.analitica.endpoint;
+
+    if (destino) {
+      var probar = el('button', 'btn btn--llano', 'Probar la conexión');
+      probar.type = 'button';
+      var dicho = el('p', 'campo__p');
+      dicho.style.marginTop = '0.5rem';
+      probar.addEventListener('click', function () {
+        dicho.textContent = 'Llamando…';
+        fetch(destino.replace(/\/+$/, '') + '/', { method: 'GET' })
+          .then(function (r) { return r.json(); })
+          .then(function (j) {
+            dicho.textContent = j && j.que ? 'Responde bien: ' + j.que : 'Responde, pero no parece el recolector.';
+          })
+          .catch(function (e) { dicho.textContent = 'No responde: ' + e.message; });
+      });
+      conf.appendChild(probar);
+      conf.appendChild(dicho);
+    }
+
     if (!destino) {
       var v = el('div', 'tarjeta vacio');
       v.appendChild(icono('i-grafico'));
       v.appendChild(el('p', null, 'Todavía no hay analítica encendida.'));
+      v.appendChild(el('p', null, 'Se enciende sola desde GitHub: Actions → «Desplegar la analítica». Hacen falta dos secretos, y está explicado paso a paso en ANALITICA.md.'));
       v.appendChild(el('p', null, 'Mientras tanto la web no hace ni una sola petición a terceros, que tampoco está mal.'));
       hoja.appendChild(v);
       return;

@@ -1,0 +1,14 @@
+# Configuración del recolector de números de Taberna Lázaro.
+#
+# No hace falta tocar nada: el identificador del almacén (KV) lo rellena solo
+# el flujo de trabajo .github/workflows/analitica.yml al desplegar, que además
+# lo crea si no existe.
+
+name = "lazaro-numeros"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# El almacén donde se guardan los contadores, un documento por día.
+[[kv_namespaces]]
+binding = "DATOS"
+id = "RELLENADO_AL_DESPLEGAR"
