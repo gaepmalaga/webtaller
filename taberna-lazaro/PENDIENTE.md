@@ -1,31 +1,5 @@
 # Lo que falta para que la web de Taberna Lázaro esté terminada
 
-> ## ⚠️ Lo primero de todo: la historia del abuelo
->
-> La web abre contando de dónde viene el nombre: que el abuelo despertaba a
-> quien durmiera en su casa diciendo **«Levántate, Lázaro»**, por el pasaje de
-> la Biblia. Es lo mejor que tiene la página y lo único que ninguna plantilla
-> puede copiar.
->
-> **Pero es una historia de su familia, contada de oídas y escrita por un
-> tercero.** Antes de que esto sea público hay que:
->
-> 1. Confirmar que es así, con las palabras exactas que decía.
-> 2. Preguntar si quieren contarla en la web, y si quieren que aparezca el
->    nombre del abuelo (ahora no aparece, a propósito).
-> 3. Que la lean ellos y la cambien a su gusto. Está en `index.html`, sección
->    `.intro`, en dos párrafos.
->
-> Si dicen que no, se quita el primer párrafo y la página sigue funcionando: el
-> segundo ya habla de la taberna.
-
-Fecha: **1 de octubre de 2026**.
-
-La carta, los precios, los colores y los lemas salen de las fotos de la carta
-de la casa, así que eso **sí es suyo**. Lo que queda es poco y rápido.
-
----
-
 ## 1. Los cinco datos que faltan
 
 Con esto se quita la franja de «Borrador» y todo lo amarillo de la página:
@@ -88,15 +62,6 @@ decidir con el dueño:
 
 ## 6. Los textos
 
-Los lemas de la tapa, la carta y el cierre son suyos, copiados de la carta. El
-resto —la descripción de la taberna, «por dónde empezar», la instrucción de la
-lista y los comentarios— **los ha escrito la web imitando su tono**. Están
-pensados con guasa a propósito, pero conviene que los lea el dueño: hay un
-guiño al nombre del bar («un tartar de salchichón que levanta a un muerto —de
-eso aquí sabemos—») que o le hace gracia o lo quita en diez segundos.
-
-## 6 bis. Los lemas de la casa
-
 Los lemas son suyos, copiados de la carta:
 
 - «Lázaro, levántate y pídete otra.»
@@ -104,8 +69,12 @@ Los lemas son suyos, copiados de la carta:
 - «¿Solo una copa? No nos engañemos… Pregúntanos por las botellas.»
 - «Una mijilla más y nos vamos.»
 
-Los tres bloques de «cómo es la casa» y el texto de debajo del título **sí los
-ha escrito la web**, no la casa. Que les dé el visto bueno.
+Todo lo demás **lo ha escrito la web** imitando ese tono, no la casa: la
+descripción de la taberna, «por dónde empezar», la instrucción de la lista y
+los comentarios que salen según lo que lleves apuntado. Que les dé el visto
+bueno, sobre todo a los guiños al nombre («aquí los milagros son modestos»,
+«casi nadie resucita con una sola», «con eso resucita cualquiera»): están en el
+mismo registro que su propia carta, pero son nuestros.
 
 ## 7. Y por último
 
